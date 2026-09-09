@@ -19,6 +19,9 @@ permalink: /about/
   <p>Research on scientific machine learning and representation learning for datasets that don't behave.
   See <a href="{{ '/work/' | relative_url }}">Work &amp; Research</a> for specifics.</p>
 
+  <h2>CV</h2>
+  <p><a href="{{ '/assets/files/John_Huang_CV.pdf' | relative_url }}">Download CV (PDF)</a></p>
+
   <h2>Elsewhere</h2>
   <ul>
     <li><a href="{{ site.social.github | default: '#' }}" rel="me">GitHub</a></li>
