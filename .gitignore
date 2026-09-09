@@ -1,0 +1,10 @@
+# Build output
+_site/
+.jekyll-cache/
+
+# Dependencies
+.bundle/
+vendor/bundle/
+
+# Logs
+*.log

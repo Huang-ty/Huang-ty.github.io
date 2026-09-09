@@ -1,0 +1,50 @@
+---
+layout: default
+---
+<h1 class="page-title">{{ page.title | escape }}</h1>
+
+{% assign cats = site.posts | map: "categories" | join: "," | split: "," | uniq %}
+{% assign tags = site.posts | map: "tags" | join: "," | split: "," | uniq %}
+
+{% unless page.no_filters %}
+<nav class="filters" id="filter-bar" aria-label="Filter posts">
+  <span class="filter-label">Filter:</span>
+  <button class="filter-btn is-active" data-filter="*">All</button>
+  {% for cat in cats %}
+    {% assign c = cat | strip %}
+    {% if c != "" %}
+      <button class="filter-btn" data-filter="{{ c }}">{{ c }}</button>
+    {% endif %}
+  {% endfor %}
+</nav>
+{% endunless %}
+
+<ul class="post-list" id="post-list">
+  {% for post in site.posts %}
+    <li class="post-item"
+        data-cats="{% for c in post.categories %}{{ c }} {% endfor %}"
+        data-tags="{% for t in post.tags %}{{ t }} {% endfor %}">
+      <div class="post-item-meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+        {% if post.categories.size > 0 %}
+          <span class="post-item-cat">
+            {% for c in post.categories %}
+              <button class="meta-link" data-filter-link data-cat="{{ c }}">{{ c }}</button>
+            {% endfor %}
+          </span>
+        {% endif %}
+        {% if post.tags.size > 0 %}
+          <span class="post-item-tags">
+            {% for t in post.tags %}
+              <button class="meta-link" data-filter-link data-tag="{{ t }}">#{{ t }}</button>
+            {% endfor %}
+          </span>
+        {% endif %}
+      </div>
+      <h2 class="post-item-title"><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+      {% if post.excerpt %}<p class="post-item-excerpt">{{ post.excerpt | strip_html | truncate: 180 }}</p>{% endif %}
+    </li>
+  {% endfor %}
+</ul>
+
+<p class="empty-note" id="empty-note" hidden>No posts match this filter.</p>

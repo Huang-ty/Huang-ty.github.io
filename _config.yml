@@ -1,0 +1,39 @@
+# ---------- Site settings ----------
+title: Huang-ty
+description: Personal website of Huang-ty. Notes on work, research, and life.
+author: Huang-ty
+
+# Public URL of the site (used for canonical links / feeds).
+url: "https://huang-ty.github.io"
+baseurl: ""
+
+# Language / locale.
+lang: zh
+
+# ---------- Build settings ----------
+markdown: kramdown
+# Posts get clean URLs, independent of categories. Pages use their own
+# front matter `permalink` and are unaffected.
+permalink: /:title/
+
+highlighter: rouge
+
+# Pages can live in the `pages/` directory or the repo root.
+# Keep this default include so Jekyll picks up everything we add.
+include: ["pages"]
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Make categories used only for front-matter metadata, not permalinks, so we
+# can filter freely without affecting URLs. We use a bracket-permalink instead.
+# (posts keep default /:title/ permalink)
+
+exclude:
+  - .jekyll-cache/
+
+# Social / contact links shown in footer.
+social:
+  github: "https://github.com/Huang-ty"
+  email: "hty@example.com"

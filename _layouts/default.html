@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title | escape }} · {{ site.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+  <meta name="description" content="{{ page.description | default: site.description | escape }}">
+  {% feed_meta %}
+  {% seo %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Main">
+      <a href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
+      <span class="nav-links">
+        <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a>
+        <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a>
+        <a href="{{ '/work/' | relative_url }}"{% if page.url == '/work/' %} aria-current="page"{% endif %}>Work &amp; Research</a>
+        <a href="{{ '/publications/' | relative_url }}"{% if page.url == '/publications/' %} aria-current="page"{% endif %}>Publications</a>
+        <a href="{{ '/life-and-notes/' | relative_url }}"{% if page.url == '/life-and-notes/' %} aria-current="page"{% endif %}>Life &amp; Notes</a>
+        <a href="{{ '/contact/' | relative_url }}"{% if page.url == '/contact/' %} aria-current="page"{% endif %}>Contact</a>
+      </span>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <hr>
+    <p>
+      {% if site.social.email %}<a href="mailto:{{ site.social.email }}">Email</a> · {% endif %}
+      {% if site.social.github %}<a href="{{ site.social.github }}" rel="me">GitHub</a>{% endif %}
+    </p>
+    <p class="footer-note">© {{ "now" | date: "%Y" }} {{ site.author | escape }}. Built with Jekyll.</p>
+  </footer>
+
+  {% if page.layout == 'blog' %}
+  <script src="{{ '/assets/js/filter.js' | relative_url }}"></script>
+  {% endif %}
+</body>
+</html>

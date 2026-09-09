@@ -1,0 +1,18 @@
+# Publications. Add a new entry at the top (most recent first).
+# Optional fields: authors, venue, note, links (title, url).
+- date: 2026
+  title: Robust features for scientific data under noise
+  authors: Huang-ty, A. Collaborator, B. Reviewer
+  venue: Journal of Applied Inference
+  note: Preprint.
+  links:
+    - title: PDF
+      url: "#"
+    - title: Code
+      url: https://github.com/Huang-ty
+
+- date: 2024
+  title: Config-driven scientific experiments
+  authors: Huang-ty, C. Someone
+  venue: Workshop on Reproducible Research
+  note: Poster.

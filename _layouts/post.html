@@ -1,0 +1,42 @@
+---
+layout: default
+---
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title | escape }}</h1>
+    <div class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
+      {% if page.categories.size > 0 %}
+        <span class="post-categories">
+          {% for cat in page.categories %}
+            <a class="meta-link" href="{{ '/life-and-notes/' | relative_url }}">{{ cat }}</a>
+          {% endfor %}
+        </span>
+      {% endif %}
+      {% if page.tags.size > 0 %}
+        <span class="post-tags">
+          {% for tag in page.tags %}
+            <span class="meta-link">#{{ tag }}</span>
+          {% endfor %}
+        </span>
+      {% endif %}
+    </div>
+    <hr>
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <footer class="post-footer">
+    <hr>
+    <nav class="post-nav">
+      {% if page.previous %}
+        <a href="{{ page.previous.url | relative_url }}" class="prev">← {{ page.previous.title | escape }}</a>
+      {% endif %}
+      {% if page.next %}
+        <a href="{{ page.next.url | relative_url }}" class="next">{{ page.next.title | escape }} →</a>
+      {% endif %}
+    </nav>
+  </footer>
+</article>

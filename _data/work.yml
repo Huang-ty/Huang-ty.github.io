@@ -1,0 +1,13 @@
+# Work & Research. Add a new entry at the top (most recent first).
+# date is for ordering/label only; it is not required to be a real day.
+- date: 2026-06
+  title: Learning representations for noisy physical data
+  note: Research project. Focused on robustness of learned features under measurement noise.
+
+- date: 2025-11
+  title: A lightweight framework for scientific experiments
+  note: Tooling. A small library for reproducible, config-driven experiments.
+
+- date: 2025-03
+  title: Modelling with sparse observations
+  note: Research direction. Interpolating and extrapolating under partial coverage.
