@@ -35,6 +35,7 @@
     <hr>
     <p>
       {% if site.social.email %}<a href="mailto:{{ site.social.email }}">Email</a> · {% endif %}
+      {% if site.social.linkedin %}<a href="{{ site.social.linkedin }}" rel="me">LinkedIn</a> · {% endif %}
       {% if site.social.github %}<a href="{{ site.social.github }}" rel="me">GitHub</a>{% endif %}
     </p>
     <p class="footer-note">© {{ "now" | date: "%Y" }} {{ site.author | escape }}. Built with Jekyll.</p>

@@ -1,7 +1,7 @@
 # ---------- Site settings ----------
-title: Huang-ty
-description: Personal website of Huang-ty. Notes on work, research, and life.
-author: Huang-ty
+title: John Huang
+description: Personal website of John Huang (Huang Tung Yee John). Notes on mathematics, work, and life.
+author: John Huang
 
 # Public URL of the site (used for canonical links / feeds).
 url: "https://huang-ty.github.io"
@@ -36,4 +36,5 @@ exclude:
 # Social / contact links shown in footer.
 social:
   github: "https://github.com/Huang-ty"
-  email: "hty@example.com"
+  email: "tyhuangaa@connect.ust.hk"
+  linkedin: "https://www.linkedin.com/in/huangty0717"
