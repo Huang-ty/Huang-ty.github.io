@@ -57,6 +57,22 @@ tags: [一个标签]
 Edit `_data/work.yml` or `_data/publications.yml` and add an entry at the **top** (most recent first).
 No HTML needed.
 
+## Course notes
+
+`/courses/` collects four courses and their topic-based reading pages. Course metadata,
+reading order and PDF links live in `_data/courses.json`. Each course's overview and HTML
+notes are in `courses/<course-code>/`; the layouts are `_layouts/course.html` and
+`_layouts/course-note.html`. To add a note, add its front matter (`layout`, `title`, `course`,
+`permalink`, `description`, `lang`, `math`, `updated`) and register it in the course's
+`notes` list. The current pages were adapted from personal study notes prepared in
+September and October 2026; they keep worked examples, conditions and source references.
+
+PDF versions are in `assets/files/courses/`. Course styles live in
+`assets/css/course-notes.css`. Mathematical notation uses a locally hosted copy of
+MathJax 3.2.2 in `assets/vendor/mathjax/`, including its Apache 2.0 license and fonts.
+`assets/images/courses/` contains vector teaching diagrams. The course collection does
+not require a separate build system: GitHub Pages builds the same Jekyll site.
+
 ## Build locally
 
 ```bash

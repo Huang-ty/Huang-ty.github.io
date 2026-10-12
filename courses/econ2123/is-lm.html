@@ -1,0 +1,510 @@
+---
+layout: "course-note"
+title: "IS–LM 与政策反馈"
+course: "econ2123"
+permalink: "/courses/econ2123/is-lm/"
+description: "同时满足商品与货币市场均衡，追踪财政和货币政策的反馈。"
+lang: "zh"
+math: true
+updated: "2026-10-12"
+---
+{% raw %}
+<details class="note-toc" open><summary>本页目录</summary><ol><li><a href="#section-1">8. Building the IS–LM model</a></li><li><a href="#section-10">9. Policy effects, feedback, and policy mixes</a></li></ol></details>
+<h2 id="section-1">8. Building the IS–LM model</h2>
+<p><em>Source: L8–9, slides 1–24.</em></p>
+<h3 id="section-2">8.1 What changes from the Keynesian cross</h3>
+<p>Investment is now a function of output and the interest rate:</p>
+<blockquote>
+<p><strong>Equation:</strong> I = I(Y, i), with Iᵧ &gt; 0 and Iᵢ &lt; 0.</p>
+</blockquote>
+<p>Higher output means higher sales and greater desired productive capacity, encouraging investment. A higher interest rate raises the cost of financing investment and makes fewer projects attractive. The lecture’s historical chart illustrates that investment and output tend to move together and that investment is relatively volatile.</p>
+<p>Investment reacts to two variables. A policy that raises output and raises interest rates creates opposing investment effects. A policy that raises output and lowers interest rates makes both effects expansionary. This distinction explains many of the policy results later.</p>
+<p>Planned demand becomes Z = C(Y − T) + I(Y, i) + G. Holding i fixed, its slope with respect to Y is MPC + MPI, where MPI is the marginal propensity to invest out of output, Iᵧ. The lecture assumes <strong>c₁ + Iᵧ &lt; 1</strong>, so demand still rises less than one-for-one with output and the usual stable crossing remains.</p>
+<p>The model uses the nominal interest rate i in this investment relation. A more detailed treatment distinguishes real borrowing costs and inflation expectations; those extensions are not developed in the supplied lectures.</p>
+<h3 id="section-3">8.2 The IS curve: goods-market equilibria</h3>
+<p>The IS relation is:</p>
+<blockquote>
+<p><strong>Equation:</strong> Y = C(Y − T) + I(Y, i) + G.</p>
+</blockquote>
+<p>The IS curve contains combinations of Y and i that satisfy this equation for given fiscal policy and other spending determinants. To derive its direction:</p>
+<ol type="1">
+<li>Start from a goods-market equilibrium at an initial interest rate.</li>
+<li>Raise i while holding the other exogenous variables fixed.</li>
+<li>Investment falls at every given Y, shifting ZZ down.</li>
+<li>Lower demand reduces output and income, causing additional consumption and investment reductions.</li>
+<li>The new goods-market equilibrium has lower Y.</li>
+</ol>
+<p>Thus the IS curve slopes downward in a diagram with Y horizontally and i vertically. A change in i creates a <strong>movement along IS</strong>. A tax increase, a change in government purchases, or a change in confidence changes equilibrium output at every i and therefore <strong>shifts IS</strong>.</p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Change</th>
+<th>IS shift</th>
+<th>Reason at a given interest rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G rises</td>
+<td>Right</td>
+<td>Higher direct demand</td>
+</tr>
+<tr>
+<td>T falls</td>
+<td>Right</td>
+<td>Higher disposable income and consumption</td>
+</tr>
+<tr>
+<td>c₀ rises</td>
+<td>Right</td>
+<td>Higher consumption at each income</td>
+</tr>
+<tr>
+<td>Autonomous investment rises</td>
+<td>Right</td>
+<td>Higher investment at each Y and i</td>
+</tr>
+<tr>
+<td>Reverse of these changes</td>
+<td>Left</td>
+<td>Lower autonomous demand</td>
+</tr>
+</tbody>
+</table></div>
+<p>The IS curve is an equilibrium locus, not an ordinary demand curve for one commodity. Its slope reflects the feedback of income on spending as well as the response of investment to i.</p>
+<h4 id="section-4">The investment–saving derivation</h4>
+<p>Goods equilibrium can also be written I(Y, i) = S(Y − T) + T − G. At fixed i, the investment schedule rises with Y at slope Iᵧ. National saving rises with Y at slope 1 − c₁, when T and G are fixed.</p>
+<p>The condition c₁ + Iᵧ &lt; 1 is equivalent to <strong>1 − c₁ &gt; Iᵧ</strong>. The saving schedule is therefore steeper than the investment schedule. A fall in i shifts investment upward at every Y. Their new intersection occurs at higher Y, deriving the same downward-sloping IS relationship.</p>
+<h3 id="section-5">8.3 A linear IS equation makes the slope visible</h3>
+<p>For an explanatory linear specification, let:</p>
+<blockquote>
+<p>C = c₀ + c₁(Y − T); I = I₀ + aY − bi, with a ≥ 0, b &gt; 0, and c₁ + a &lt; 1.</p>
+</blockquote>
+<p>Define A = c₀ − c₁T + I₀ + G and α = 1 − c₁ − a &gt; 0. Goods-market equilibrium becomes:</p>
+<blockquote>
+<p><strong>IS:</strong> αY = A − bi, or i = A/b − (α/b)Y.</p>
+</blockquote>
+<p>Its slope in the (Y, i) diagram is −α/b. Stronger interest sensitivity b makes the IS curve flatter: a small rate change has a larger output effect. A stronger income-spending feedback also increases the output response to an initial demand change.</p>
+<p>At a given interest rate, the multiplier on A is <strong>1/(1 − c₁ − a)</strong>. This is greater than 1/(1 − c₁) when a &gt; 0, because additional output now induces both consumption and investment. The ultimate IS–LM multiplier will also include the offsetting interest-rate response.</p>
+<h3 id="section-6">8.4 The LM curve: money-market equilibria</h3>
+<p>Divide the nominal money-market condition by the price level:</p>
+<blockquote>
+<p><strong>Equation:</strong> M/P = YL(i).</p>
+</blockquote>
+<p>Real money supply M/P is the purchasing power of the money stock. The LM curve contains combinations of Y and i that make desired real money balances equal the given real money supply.</p>
+<p>At a higher Y, the public wants more money for transactions at every i. With M/P fixed, i must rise to make bonds more attractive and reduce desired money holdings. Therefore LM slopes upward.</p>
+<p>In the underlying money-market diagram, increasing Y shifts the money-demand curve right. In the IS–LM diagram, the same change corresponds to moving along the existing LM curve. These statements are consistent because the two diagrams have different axes.</p>
+<blockquote>
+<p><strong>中文理解:</strong> “Y 上升使货币需求曲线右移”不等于“LM 右移”。LM 本来就记录了在同一个 M/P 下，不同 Y 所对应的均衡利率。</p>
+</blockquote>
+<p>If M rises with P fixed, real supply increases. At every Y, a lower interest rate is needed to induce the public to hold the larger stock. LM shifts down/right. A reduction in M/P shifts LM up/left. A higher liquidity preference at each i also shifts LM up, while a fall in that preference shifts LM down.</p>
+<p>A rise in P would reduce M/P at fixed nominal M, shifting LM up. In the supplied short-run IS–LM exercises, however, P is held fixed unless a question explicitly changes that assumption.</p>
+<h4 id="section-7">Optional derivative check of the LM slope</h4>
+<p>Along a fixed-M/P LM curve, differentiating M/P = YL(i) gives 0 = L(i)dY + YL′(i)di. Therefore:</p>
+<blockquote>
+<p><strong>Equation:</strong> di/dY = −L(i)/[YL′(i)] &gt; 0.</p>
+</blockquote>
+<p>The numerator is positive and L′ is negative. This recovers the upward slope directly from the money-demand assumptions.</p>
+<h3 id="section-8">8.5 Why this course’s LM differs from the textbook</h3>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Policy assumption</th>
+<th>What is fixed during the experiment?</th>
+<th>LM in the basic diagram</th>
+<th>Fiscal expansion’s interest effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Course’s standard model</td>
+<td>M/P</td>
+<td>Upward-sloping</td>
+<td>i rises as Y raises money demand</td>
+</tr>
+<tr>
+<td>Fixed policy-rate target</td>
+<td>i at its target</td>
+<td>Horizontal</td>
+<td>i stays fixed if the target is maintained</td>
+</tr>
+</tbody>
+</table></div>
+<p>If the central bank fixes i, it must supply the money demanded at that rate. As Y rises, the bank increases M/P to maintain the target. Money supply is then endogenous to the target rather than fixed throughout the fiscal experiment.</p>
+<p>A horizontal LM due to an interest-rate target should also be distinguished from a horizontal segment caused by a liquidity trap. In the first case the central bank chooses to maintain a rate. In the second, the model’s lower bound limits further rate reductions.</p>
+<p>For course questions, use the upward-sloping LM unless a question changes the monetary assumption. Mixing an upward-sloping graph with a fixed-interest-rate multiplier gives inconsistent answers.</p>
+<h3 id="section-9">8.6 Joint equilibrium</h3>
+<p>At the intersection of IS and LM, one pair (Y<em>, i</em>) satisfies both goods and money equilibrium. A point on IS alone need not clear the money market; a point on LM alone need not clear the goods market.</p>
+<p>The useful sequence for any shock is: identify the exogenous change; decide which curve shifts; locate the new intersection; then calculate consumption, investment, and saving from their definitions. A direct effect holding another variable fixed is an intermediate thought experiment, not necessarily the final equilibrium.</p>
+<h2 id="section-10">9. Policy effects, feedback, and policy mixes</h2>
+<p><em>Source: L8–9, slides 26–50. The linear numerical examples in section 9.6 are additional practice.</em></p>
+<h3 id="section-11">9.1 Fiscal contraction through higher taxes</h3>
+<p>Take a rise in T with G and M/P unchanged. At any initial income and interest rate, disposable income and consumption fall. IS shifts left. Because output falls, transactions and money demand fall. At the unchanged money stock, bond demand increases and the interest rate falls. The final equilibrium has <strong>lower Y and lower i</strong>.</p>
+<p>The lower interest rate stimulates investment relative to what it would be at the original rate. It partly cushions the contraction. On the lecture’s diagram, point D on the new IS at the old interest rate shows the hypothetical goods-market result if i did not adjust. The actual equilibrium A′ lies where the new IS intersects the unchanged LM.</p>
+<p>Variable-by-variable analysis is more precise than saying “everything falls”:</p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Effect of T rising, other policy variables fixed</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Y</td>
+<td>Falls</td>
+<td>IS shifts left</td>
+</tr>
+<tr>
+<td>i</td>
+<td>Falls</td>
+<td>Lower Y reduces money demand</td>
+</tr>
+<tr>
+<td>Y − T</td>
+<td>Falls</td>
+<td>Output falls and taxes rise</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Falls</td>
+<td>Disposable income falls</td>
+</tr>
+<tr>
+<td>I</td>
+<td>Ambiguous in the general model</td>
+<td>Lower sales reduce I; lower i raises I</td>
+</tr>
+<tr>
+<td>G</td>
+<td>Unchanged</td>
+<td>Given in the experiment</td>
+</tr>
+<tr>
+<td>Public saving T − G</td>
+<td>Rises</td>
+<td>T rises and G is unchanged</td>
+</tr>
+<tr>
+<td>Private saving S</td>
+<td>Falls</td>
+<td>S = −c₀ + (1 − c₁)(Y − T)</td>
+</tr>
+<tr>
+<td>National saving</td>
+<td>Ambiguous</td>
+<td>It equals I in this closed economy</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Source correction:</strong> L8–9, slide 36, says public saving is unchanged. It should <strong>increase</strong>. The definition T − G and the deck’s speaker notes both support this correction.</p>
+</blockquote>
+<p>Fiscal consolidation reduces the deficit through higher taxes, lower government purchases, or both. The lecture’s debt and austerity examples illustrate a tension: a government may want to improve its fiscal balance while also avoiding a short-run fall in output. Debt sustainability cannot be inferred from IS–LM alone, and a deficit does not mechanically guarantee a rising debt-to-GDP ratio because GDP also changes.</p>
+<h3 id="section-12">9.2 Fiscal expansion and crowding out</h3>
+<p>A rise in G or fall in T shifts IS right. Output rises, money demand rises, and i rises along the unchanged LM. The interest-rate increase dampens investment relative to the result at a fixed interest rate. This interest-rate channel is called <strong>crowding out</strong>.</p>
+<p>It does not prove that total investment must fall. Higher Y increases desired investment through the sales channel, while higher i lowers it through the cost channel. With I = I(Y, i), the net result is ambiguous unless additional information determines which effect dominates.</p>
+<p>If investment depends only on i, fiscal expansion lowers investment in the standard upward-LM model. If the sales response is sufficiently strong, investment can rise despite the higher interest rate. The term <strong>crowding in</strong> is used for a rise in investment accompanying the fiscal expansion.</p>
+<blockquote>
+<p><strong>中文理解:</strong> “存在挤出机制”是指利率上升压低投资的那部分作用；“投资总量最终下降”还要比较收入上升带来的刺激作用。两者不能直接画等号。</p>
+</blockquote>
+<p>The fiscal multiplier in IS–LM is smaller than the multiplier obtained from the <strong>same goods-market model with i held fixed</strong>. If comparing with the earlier fixed-investment Keynesian cross, there are two changes: induced investment can amplify the multiplier, while rising i reduces it. The net comparison with 1/(1 − c₁) is not universally determined when both assumptions change.</p>
+<h3 id="section-13">9.3 Monetary expansion</h3>
+<p>At fixed P, an increase in M raises real money balances and shifts LM down. At the initial Y, money-market equilibrium would require a lower i. The lower rate stimulates investment and goods demand, raising output. The increase in Y then raises transactions and money demand, partly reversing the initial interest-rate drop.</p>
+<p>The final equilibrium has <strong>higher Y and lower i</strong>. In the lecture, D represents the lower rate at the original Y after the money-supply change. At D the goods market is not yet in equilibrium. As Y rises, money demand increases and i rises somewhat from that intermediate value. The final interest rate remains below its original value.</p>
+<figure>
+<img src="/assets/images/courses/econ-basics/islm_policies.png" alt="IS–LM: fiscal and monetary expansion" />
+<figcaption aria-hidden="true">IS–LM: fiscal and monetary expansion</figcaption>
+</figure>
+<p><em>Figure 3. With fixed prices, a fiscal expansion shifts IS right and raises both Y and i. A monetary expansion shifts LM down and raises Y while lowering i. The plotted curves use the illustrative model in section 9.6.</em></p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Effect of M rising, with P, G, and T fixed</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Y</td>
+<td>Rises</td>
+<td>Lower i stimulates spending</td>
+</tr>
+<tr>
+<td>i</td>
+<td>Falls</td>
+<td>Greater real money supply</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Rises</td>
+<td>Y − T rises</td>
+</tr>
+<tr>
+<td>I</td>
+<td>Rises</td>
+<td>Higher sales and lower i both raise investment</td>
+</tr>
+<tr>
+<td>Public saving</td>
+<td>Unchanged</td>
+<td>T and G unchanged</td>
+</tr>
+<tr>
+<td>Private saving</td>
+<td>Rises</td>
+<td>A fraction 1 − c₁ of extra disposable income is saved</td>
+</tr>
+</tbody>
+</table></div>
+<p>A monetary contraction reverses these directions away from the lower bound. Monetary expansion is more reliably investment-supporting than fiscal expansion in this model because its sales and interest-rate effects work in the same direction.</p>
+<h3 id="section-14">9.4 Policy comparison table</h3>
+<p>The table assumes fixed prices, lump-sum T, upward-sloping LM, and stable goods-market responses. Each row is a separate experiment. “Ambiguous” refers to general investment I(Y, i).</p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<thead>
+<tr>
+<th>Policy</th>
+<th>Curve shift</th>
+<th>Y</th>
+<th>i</th>
+<th>C</th>
+<th>I</th>
+<th>Private S</th>
+<th>Public T − G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T rises</td>
+<td>IS left</td>
+<td>↓</td>
+<td>↓</td>
+<td>↓</td>
+<td>Ambiguous</td>
+<td>↓</td>
+<td>↑</td>
+</tr>
+<tr>
+<td>T falls</td>
+<td>IS right</td>
+<td>↑</td>
+<td>↑</td>
+<td>↑</td>
+<td>Ambiguous</td>
+<td>↑</td>
+<td>↓</td>
+</tr>
+<tr>
+<td>G rises</td>
+<td>IS right</td>
+<td>↑</td>
+<td>↑</td>
+<td>↑</td>
+<td>Ambiguous</td>
+<td>↑</td>
+<td>↓</td>
+</tr>
+<tr>
+<td>G falls</td>
+<td>IS left</td>
+<td>↓</td>
+<td>↓</td>
+<td>↓</td>
+<td>Ambiguous</td>
+<td>↓</td>
+<td>↑</td>
+</tr>
+<tr>
+<td>M rises</td>
+<td>LM down</td>
+<td>↑</td>
+<td>↓</td>
+<td>↑</td>
+<td>↑</td>
+<td>↑</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>M falls</td>
+<td>LM up</td>
+<td>↓</td>
+<td>↑</td>
+<td>↓</td>
+<td>↓</td>
+<td>↓</td>
+<td>Same</td>
+</tr>
+</tbody>
+</table></div>
+<p>A change in c₀ deserves separate saving analysis because it enters S directly. For example, lower c₀ shifts IS left, lowering Y and i, but the effect on private saving is not obtained simply by copying the tax-increase row. Always return to S = −c₀ + (1 − c₁)(Y − T).</p>
+<h3 id="section-15">9.5 Combining fiscal and monetary policies</h3>
+<p>A fiscal contraction shifts IS left and a monetary expansion shifts LM down. Both lower i, but their output effects oppose each other. Depending on their sizes, Y can fall, remain unchanged, or rise.</p>
+<p>The lecture uses the Clinton-era policy discussion to illustrate the possibility of monetary easing offsetting the demand loss from fiscal consolidation. If output is held constant while T rises or G falls, i must fall enough to stimulate the required extra investment.</p>
+<p>If consolidation is through taxes and Y stays constant, consumption falls because Y − T falls. Investment must rise to fill that gap. If consolidation is through lower G with T and Y unchanged, consumption is unchanged and investment rises to offset lower government purchases. The same total output can therefore have a different expenditure composition.</p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Policy combination</th>
+<th>Robust direction under the standard assumptions</th>
+<th>Outcome depending on relative size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fiscal expansion + monetary expansion</td>
+<td>Y rises</td>
+<td>i</td>
+</tr>
+<tr>
+<td>Fiscal contraction + monetary expansion</td>
+<td>i falls</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Fiscal expansion + monetary contraction</td>
+<td>i rises</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Fiscal contraction + monetary contraction</td>
+<td>Y falls</td>
+<td>i</td>
+</tr>
+</tbody>
+</table></div>
+<p>Near the lower bound, the central bank may be unable to supply the interest-rate reduction needed to fully offset a fiscal contraction through the model’s conventional channel.</p>
+<h3 id="section-16">9.6 Additional practice: solve the entire model numerically</h3>
+<p>The lecture supplies general functional relationships rather than this particular linear system. This added example makes all the comparative statics calculable. Its additive real-money-demand function is a convenient alternative specification; it is <strong>not an exact algebraic rewriting</strong> of YL(i).</p>
+<p>Assume:</p>
+<blockquote>
+<p>C = 100 + 0.6(Y − T).<br />
+I = 150 + 0.1Y − 1000i.<br />
+M/P = 0.5Y − 2000i.<br />
+Initially T = 100, G = 100, and M/P = 300.</p>
+</blockquote>
+<p><strong>Goods market:</strong> Y = 100 + 0.6(Y − 100) + 150 + 0.1Y − 1000i + 100, so <strong>0.3Y = 290 − 1000i</strong>.</p>
+<p><strong>Money market:</strong> 300 = 0.5Y − 2000i, so i = 0.00025Y − 0.15.</p>
+<p><strong>Substitute:</strong> 0.3Y = 290 − 1000(0.00025Y − 0.15) = 440 − 0.25Y. Hence 0.55Y = 440, giving <strong>Y = 800 and i = 0.05</strong>.</p>
+<p>Then C = 100 + 0.6 × 700 = <strong>520</strong>, I = 150 + 80 − 50 = <strong>180</strong>, private saving = 800 − 100 − 520 = <strong>180</strong>, and public saving = 0. Check: 520 + 180 + 100 = 800 and 0.5 × 800 − 2000 × 0.05 = 300.</p>
+<h4 id="section-17">General solution for this linear class</h4>
+<p>For C = c₀ + c₁(Y − T), I = I₀ + aY − bi, and real-money demand kY − hi, define m = M/P, A = c₀ − c₁T + I₀ + G, and α = 1 − c₁ − a. Then:</p>
+<blockquote>
+<p><strong>Equations:</strong> Y = [A + (b/h)m]/[α + bk/h].<br />
+i = (kY − m)/h.</p>
+</blockquote>
+<p>The spending multiplier is 1/[α + bk/h], and the tax multiplier is −c₁/[α + bk/h]. The money multiplier with respect to <strong>real money balances</strong> is (b/h)/[α + bk/h]. For nominal M at fixed P, multiply that last expression by 1/P.</p>
+<p>The term bk/h captures the financial-market feedback: higher income raises money demand and i, which dampens investment. At a fixed interest rate the spending multiplier is 1/α instead.</p>
+<p>For equal increases in G and lump-sum T, this IS–LM model gives a multiplier of (1 − c₁)/[α + bk/h], which need not equal 1. In the numerical example it is 0.4/0.55 ≈ 0.7273. The balanced-budget multiplier of 1 belongs to the earlier fixed-investment model.</p>
+<h4 id="section-18">Separate policy experiments from the same baseline</h4>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr>
+<th>Scenario</th>
+<th style="text-align: right;">Y</th>
+<th style="text-align: right;">i</th>
+<th style="text-align: right;">C</th>
+<th style="text-align: right;">I</th>
+<th style="text-align: right;">G</th>
+<th style="text-align: right;">Private S</th>
+<th style="text-align: right;">Public S</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Baseline</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">5%</td>
+<td style="text-align: right;">520</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>G rises by 55</td>
+<td style="text-align: right;">900</td>
+<td style="text-align: right;">7.5%</td>
+<td style="text-align: right;">580</td>
+<td style="text-align: right;">165</td>
+<td style="text-align: right;">155</td>
+<td style="text-align: right;">220</td>
+<td style="text-align: right;">−55</td>
+</tr>
+<tr>
+<td>Real money m rises by 110</td>
+<td style="text-align: right;">900</td>
+<td style="text-align: right;">2%</td>
+<td style="text-align: right;">580</td>
+<td style="text-align: right;">220</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">220</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>T rises by 50 and m rises by 60</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">2%</td>
+<td style="text-align: right;">490</td>
+<td style="text-align: right;">210</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">160</td>
+<td style="text-align: right;">50</td>
+</tr>
+</tbody>
+</table></div>
+<p>In the fiscal expansion, the sales effect on investment is +0.1 × 100 = +10, while the rate effect is −1000 × 0.025 = −25. Net investment falls by 15. This particular parameter choice produces crowding out in the level of investment; the general model allows other outcomes.</p>
+<p>The monetary expansion achieves the same 100 output increase but lowers i. Investment rises by 10 from sales and 30 from the lower rate, for a total increase of 40.</p>
+<p>In the policy mix, higher taxes reduce consumption by 30 at unchanged output. A three-percentage-point rate cut raises investment by 30. Public saving rises by 50 and private saving falls by 20, so national saving and investment both rise by 30. Every row satisfies I = S + T − G.</p>
+<h4 id="section-19">Deriving the offset needed to keep output constant</h4>
+<p>At a fixed Y in this linear model, 0 = ΔG − c₁ΔT − bΔi. Thus Δi = (ΔG − c₁ΔT)/b. The money-market condition gives Δm = −hΔi.</p>
+<p>For ΔT = 50 and ΔG = 0, Δi = −0.6 × 50/1000 = −0.03. Required Δm = −2000 × (−0.03) = <strong>60</strong>. This is why the final row returns output to 800.</p>
+<h3 id="section-20">9.7 A repeatable answer structure</h3>
+<ol type="1">
+<li><strong>State the model and what is held fixed.</strong> For example, fixed P and M, lump-sum taxes, investment increasing in Y and decreasing in i.</li>
+<li><strong>Identify the initial mechanism.</strong> A tax rise lowers disposable income and consumption at each Y.</li>
+<li><strong>Name the curve shift.</strong> IS shifts left; LM is unchanged.</li>
+<li><strong>Explain the feedback and final signs.</strong> Lower Y reduces money demand, so i falls; both Y and i end below their original levels.</li>
+<li><strong>Determine other variables from equations.</strong> C falls; public saving rises; investment is ambiguous because its two determinants change in opposite directions.</li>
+<li><strong>Check consistency.</strong> Goods and money markets must both clear; saving and investment must agree under the relevant accounting convention.</li>
+</ol>
+<p>This structure also prevents an unjustified claim that fiscal policy “shifts LM” merely because the resulting output change shifts money demand in the underlying money-market diagram.</p>
+
+{% endraw %}

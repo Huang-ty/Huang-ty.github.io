@@ -1,0 +1,37 @@
+---
+layout: default
+---
+{% assign course = site.data.courses[page.course] %}
+<article class="course-overview" lang="zh">
+  <nav class="breadcrumbs" aria-label="当前位置"><a href="{{ '/courses/' | relative_url }}">课程笔记</a><span aria-hidden="true">/</span><span>{{ course.code }}</span></nav>
+  <header class="course-header">
+    <p class="eyebrow">{{ course.code }} <span>· {{ course.english }}</span></p>
+    <h1 class="page-title">{{ course.title }}</h1>
+    <p class="course-lead">{{ course.summary }}</p>
+    <p class="course-coverage">{{ course.coverage }}</p>
+    <p class="course-meta">更新于 {{ course.date }} <span aria-hidden="true">·</span> {{ course.notes.size }} 篇笔记 <span aria-hidden="true">·</span> {{ course.downloads.size }} 份 PDF</p>
+  </header>
+  <section aria-labelledby="reading-heading">
+    <h2 id="reading-heading">按主题阅读</h2>
+    <ol class="reading-list">
+      {% assign previous_group = '' %}
+      {% for note in course.notes %}
+      <li>
+        {% if note.group != previous_group %}<p class="reading-group">{{ note.group }}</p>{% endif %}
+        <span class="reading-number" aria-hidden="true">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+        <div><h3><a href="{{ note.url | relative_url }}">{{ note.title }}</a></h3><p>{{ note.description }}</p></div>
+      </li>
+      {% assign previous_group = note.group %}
+      {% endfor %}
+    </ol>
+  </section>
+  <section class="downloads" aria-labelledby="download-heading">
+    <h2 id="download-heading">PDF 阅读与下载</h2>
+    <ul class="clean-list">
+      {% for item in course.downloads %}
+      <li><a href="{{ item.url | relative_url }}">{{ item.title }} <span aria-hidden="true">↗</span></a><p>{{ item.description }}</p></li>
+      {% endfor %}
+    </ul>
+  </section>
+  <p class="notes-context">这些是我的个人学习整理，网页按主题拆分，PDF 保留原有的分页、图示与复习索引。覆盖范围随学习进度补充。</p>
+</article>

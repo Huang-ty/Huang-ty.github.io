@@ -1,0 +1,26 @@
+---
+layout: default
+title: Course Notes
+permalink: /courses/
+description: 我的课程学习笔记，按课程与主题整理，包含公式、例题、解题步骤和 PDF 下载。
+lang: zh
+courses_index: true
+---
+<header class="course-header">
+  <p class="eyebrow">COURSE NOTES <span>· 持续整理的学习记录</span></p>
+  <h1 class="page-title">课程笔记</h1>
+  <p class="course-lead">把课堂、阅读与练习中的理解整理成可回看的笔记。先看课程地图，再按主题阅读；需要离线复习时，可以下载 PDF。</p>
+  <p class="course-meta">2026 年秋季 <span aria-hidden="true">·</span> 4 门课程 <span aria-hidden="true">·</span> 20 篇主题笔记</p>
+</header>
+<nav class="course-jump" aria-label="选择课程">{% for entry in site.data.courses %}{% assign course = entry[1] %}<a href="#{{ entry[0] }}">{{ course.code }}</a>{% endfor %}</nav>
+<div class="course-directory">
+  {% for entry in site.data.courses %}{% assign course = entry[1] %}
+  <section id="{{ entry[0] }}" class="course-entry" aria-labelledby="{{ entry[0] }}-heading">
+    <p class="eyebrow">{{ course.code }} <span>· {{ course.english }}</span></p>
+    <h2 id="{{ entry[0] }}-heading"><a href="{{ course.url | relative_url }}">{{ course.title }} <span aria-hidden="true">↗</span></a></h2>
+    <p>{{ course.summary }}</p><p class="course-coverage">{{ course.coverage }}</p>
+    <div class="course-entry-footer"><a href="{{ course.url | relative_url }}">阅读课程笔记 →</a><span>{{ course.notes.size }} 篇 · {{ course.downloads.size }} 份 PDF</span></div>
+  </section>
+  {% endfor %}
+</div>
+<p class="notes-context">数学笔记以中文解释为主，保留英文术语；宏观经济学基础笔记沿用英文正文与中文辅助，AS–AD 部分以中文展开。图示和补充例题用于理解，PDF 中保留原资料的来源索引。</p>

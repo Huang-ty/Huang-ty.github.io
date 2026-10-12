@@ -1,0 +1,129 @@
+---
+layout: "course-note"
+title: "Lagrange 乘子与约束极值"
+course: "math2023"
+permalink: "/courses/math2023/lagrange/"
+description: "一个或两个约束、最近点与最大体积；候选点之后还要验证极值。"
+lang: "zh"
+math: true
+updated: "2026-10-12"
+---
+{% raw %}
+<details class="note-toc" open><summary>本页目录</summary><ol><li><a href="#section-1">Lagrange multiplier 的几何意义</a></li><li><a href="#section-3">一个约束，按分支解方程</a></li><li><a href="#section-5">最短距离与最大体积</a></li><li><a href="#section-8">两个约束与 的联系</a></li></ol></details>
+<figure><img src="/assets/images/courses/lagrange.svg" alt="目标函数的等值线与圆形约束在极值处相切，梯度与约束法向平行"><figcaption>约束极值处，目标函数沿约束切向的变化率为零。</figcaption></figure><h2 id="section-1">Lagrange multiplier 的几何意义</h2>
+<p>约束限制了你可以移动的方向</p>
+<p><span>讲义定位：L12，p.1（单约束定理与证明）；pp.5–6（双约束）。</span></p>
+<p><strong>无约束极值：</strong>可朝任意方向移动，光滑内点极值必须有 <span class="math inline">\(\nabla f=0\)</span>。<strong>约束极值：</strong>只能沿 <span class="math inline">\(g=k\)</span> 移动，所以只要求沿允许的切向方向变化率为零。</p>
+
+<div class="tcolorbox">
+<p><strong>单约束定理（必要条件）：</strong>若 <span class="math inline">\(f,g\)</span> 在附近连续可微，<span class="math inline">\(P\)</span> 是 <span class="math inline">\(g=k\)</span> 上的局部极值点，且 <span class="math inline">\(\nabla g(P)\ne\boldsymbol{0}\)</span>，则存在 <span class="math inline">\(\lambda\in\mathbb R\)</span> 使 <span class="math display">\[\boxed{\nabla f(P)=\lambda\nabla g(P),\qquad g(P)=k}.\]</span> 二维：3 个未知数 <span class="math inline">\(x,y,\lambda\)</span>；三维：4 个未知数 <span class="math inline">\(x,y,z,\lambda\)</span>。</p>
+</div>
+<p><strong>双约束定理：</strong>在 <span class="math inline">\(g=k,h=l\)</span> 上，若 <span class="math inline">\(\nabla g(P),\nabla h(P)\)</span> 线性无关，则 <span class="math display">\[\boxed{\nabla f(P)=\lambda\nabla g(P)+\mu\nabla h(P)},\quad g(P)=k,\ h(P)=l.\]</span> 三维共 5 个未知数、5 个方程。目标梯度可以是约束梯度的<strong>线性组合</strong>，不需要分别平行于每一个约束梯度。</p>
+<h3 class="unnumbered" id="section-2">一句话证明：知道公式从何而来</h3>
+<p>取约束内的光滑曲线 <span class="math inline">\(\boldsymbol{r}(t)\)</span>。极值处 <span class="math inline">\(\nabla f\cdot\boldsymbol{r}&#39;=0\)</span>；约束不变也给出 <span class="math inline">\(\nabla g\cdot\boldsymbol{r}&#39;=0\)</span>。因此 <span class="math inline">\(\nabla f\)</span> 属于约束的法向空间：单约束是 <span class="math inline">\(\nabla g\)</span> 的倍数；双约束是两个梯度的线性组合。 <strong>易错点：</strong>Lagrange 方程给的是<strong>候选点</strong>，不是“解出来就一定是最大值”。还要比较 <span class="math inline">\(f\)</span>，并检查奇异点、端点及是否真的存在全局极值。<span class="math inline">\(\nabla f=0\)</span> 可以对应 <span class="math inline">\(\lambda=0\)</span>，不能随意排除。</p>
+<p><strong>存在性：</strong>连续函数在非空、闭且有界的约束集合上必有全局最大最小值。若集合不紧，必须额外分析无穷远；定理本身不保证极值存在。</p>
+
+<h2 id="section-3">一个约束，按分支解方程</h2>
+<p>不要随意除以 <span class="math inline">\(x\)</span>、<span class="math inline">\(y\)</span> 或 <span class="math inline">\(\lambda\)</span></p>
+<p><span>讲义定位：L12，pp.1、4–6；以下第一个例子为补充例题，第二个来自 p.6。</span></p>
+<h3 class="unnumbered" id="section-4">通用 6 步</h3>
+<ol>
+<li><p>明确目标 <span class="math inline">\(f\)</span> 和约束 <span class="math inline">\(g=k\)</span>。</p></li>
+<li><p>检查正则条件 <span class="math inline">\(\nabla g\ne0\)</span>；奇异点另查。</p></li>
+<li><p>写出每一个梯度分量方程，加上约束。</p></li>
+<li><p>因式分解、分类讨论，保留所有分支。</p></li>
+<li><p>代回验证约束，列出各候选点的 <span class="math inline">\(f\)</span> 值。</p></li>
+<li><p>用紧性、边界分析或其他方法确认全局结论，明确区分“点”和“值”。</p></li>
+</ol>
+<div class="tcolorbox">
+<p><strong>例 A：</strong>求 <span class="math inline">\(f(x,y)=xy\)</span> 在 <span class="math inline">\(x^2+y^2=1\)</span> 上的极值。 <span class="math display">\[y=2\lambda x,\quad x=2\lambda y,\quad x^2+y^2=1.\]</span></p>
+</div>
+<p>如果 <span class="math inline">\(x=0\)</span>，由 <span class="math inline">\(x=2\lambda y\)</span> 与 <span class="math inline">\(y=2\lambda x\)</span> 导致 <span class="math inline">\(y=0\)</span>，违背约束，故该分支无解；同理 <span class="math inline">\(y\ne0\)</span>。代入得 <span class="math inline">\(4\lambda^2=1\)</span>。</p>
+<div class="center">
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align: left;">分支</th>
+<th style="text-align: left;">候选点</th>
+<th style="text-align: left;">目标值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><span class="math inline">\(\lambda=1/2\)</span>，<span class="math inline">\(y=x\)</span></td>
+<td style="text-align: left;"><span class="math inline">\((1/\sqrt2,1/\sqrt2)\)</span>、<span class="math inline">\((-1/\sqrt2,-1/\sqrt2)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(1/2\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">\(\lambda=-1/2\)</span>，<span class="math inline">\(y=-x\)</span></td>
+<td style="text-align: left;"><span class="math inline">\((1/\sqrt2,-1/\sqrt2)\)</span>、<span class="math inline">\((-1/\sqrt2,1/\sqrt2)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(-1/2\)</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>单位圆闭且有界，故最大值 <span class="math inline">\(1/2\)</span>、最小值 <span class="math inline">\(-1/2\)</span>，并分别在上表的点达到。</p>
+<div class="tcolorbox">
+<p><strong>例 B：</strong>求 <span class="math inline">\(f=2x^2+y^2+3z^2\)</span> 在 <span class="math inline">\(2x-3y-4z=49\)</span> 上的最小值。 <span class="math display">\[4x=2\lambda,\quad 2y=-3\lambda,\quad 6z=-4\lambda.\]</span></p>
+</div>
+<p>因此 <span class="math inline">\(x=\lambda/2,y=-3\lambda/2,z=-2\lambda/3\)</span>。代约束得 <span class="math display">\[\left(1+\frac92+\frac83\right)\lambda=49\Rightarrow\lambda=6\Rightarrow P=(3,-9,-4),\quad f(P)=147.\]</span> <strong>为什么确实是全局最小？</strong>可用加权 Cauchy–Schwarz： <span class="math display">\[(2x-3y-4z)^2\le\left(2x^2+y^2+3z^2\right)\left(2+9+\frac{16}{3}\right)=\frac{49}{3}f.\]</span> 约束给 <span class="math inline">\(2401\le49f/3\)</span>，即 <span class="math inline">\(f\ge147\)</span>；候选点恰达到。约束平面无界，沿面走远时 <span class="math inline">\(f\to\infty\)</span>，所以没有最大值。 <strong>易错点：</strong>等式 <span class="math inline">\(x(1-\lambda)=0\)</span> 必须分成 <span class="math inline">\(x=0\)</span> 或 <span class="math inline">\(\lambda=1\)</span>。直接除以 <span class="math inline">\(x\)</span> 会丢掉第一种可能；除以 <span class="math inline">\(\lambda\)</span> 同样可能丢解。</p>
+
+<h2 id="section-5">最短距离与最大体积</h2>
+<p>把几何目标写成便于求导的函数</p>
+<p><span>讲义定位：L12，pp.2–4（最近点）；p.5（椭球内接长方体）。</span></p>
+<h3 class="unnumbered" id="section-6">距离题：最小化距离平方</h3>
+<div class="tcolorbox">
+<p>到给定点 <span class="math inline">\(P_0=(a,b,c)\)</span> 的距离： <span class="math display">\[d=\sqrt{(x-a)^2+(y-b)^2+(z-c)^2}.\]</span> 可改成最小化 <span class="math inline">\(f=d^2\)</span>，因为平方根在非负数上严格递增。<strong>求出的最小平方距离最后要开根号。</strong></p>
+</div>
+<p><strong>讲义例：</strong>抛物线 <span class="math inline">\(y=x^2\)</span> 上哪个点离 <span class="math inline">\((3,0)\)</span> 最近？设 <span class="math inline">\(f=(x-3)^2+y^2\)</span>，<span class="math inline">\(g=x^2-y=0\)</span>。 <span class="math display">\[2(x-3)=2\lambda x,\quad2y=-\lambda,\quad y=x^2.\]</span> 由 <span class="math inline">\(\lambda=-2x^2\)</span> 得 <span class="math inline">\(2x^3+x-3=0\)</span>，因式分解： <span class="math display">\[(x-1)(2x^2+2x+3)=0.\]</span> 二次因子判别式 <span class="math inline">\(4-24&lt;0\)</span>，所以唯一实解是 <span class="math inline">\(x=1,y=1\)</span>。距离平方为 <span class="math inline">\(5\)</span>，故 <span class="math inline">\(\boxed{d_{\min}=\sqrt5}\)</span>。</p>
+
+<p><strong>全局验证：</strong>代 <span class="math inline">\(y=x^2\)</span> 得 <span class="math inline">\(f(x)=(x-3)^2+x^4\to\infty\)</span>（<span class="math inline">\(|x|\to\infty\)</span>），且只有一个临界点，故它是全局最小点；约束梯度 <span class="math inline">\((2x,-1)\)</span> 永不为零。 <strong>解代数方程的辅助：</strong>整系数多项式若有既约有理根 <span class="math inline">\(p/q\)</span>，则 <span class="math inline">\(p\)</span> 整除常数项，<span class="math inline">\(q\)</span> 整除最高次系数。只能缩小候选有理根范围，不能保证所有根都是有理数。</p>
+<h3 class="unnumbered" id="section-7">椭球内接长方体：先辨认半长与全长</h3>
+<p>设椭球 <span class="math inline">\(x^2/a^2+y^2/b^2+z^2/c^2=1\)</span>，轴向长方体顶点为 <span class="math inline">\((\pm x,\pm y,\pm z)\)</span>，<span class="math inline">\(x,y,z\ge0\)</span>。目标体积 <span class="math inline">\(V=8xyz\)</span>，边长是 <span class="math inline">\(2x,2y,2z\)</span>。</p>
+<p>内部正坐标的 Lagrange 方程相乘消去公共量，得到 <span class="math display">\[\frac{x^2}{a^2}=\frac{y^2}{b^2}=\frac{z^2}{c^2}=\frac13\Rightarrow
+(x,y,z)=\left(\frac a{\sqrt3},\frac b{\sqrt3},\frac c{\sqrt3}\right),\quad\boxed{V_{\max}=\frac{8abc}{3\sqrt3}}.\]</span> 第一卦限闭椭球区域紧；边界上任一坐标为零则 <span class="math inline">\(V=0\)</span>，上面的正体积候选是最大值。也可直接对三个非负平方比用 AM–GM 验证。</p>
+
+<h2 id="section-8">两个约束与 的联系</h2>
+<p>同一条交线：求方向，或者求最优点</p>
+<p><span>讲义定位：L12，pp.5–7；下例为便于看清结构的补充例题。</span></p>
+<div class="tcolorbox">
+<p><strong>同样的约束交线 <span class="math inline">\(g=k,h=l\)</span>：</strong><br />
+Q3 求切线：<span class="math inline">\(\boldsymbol{T}=\nabla g\times\nabla h\)</span>。<br />
+Q5 求极值：<span class="math inline">\(\nabla f\cdot\boldsymbol{T}=0\)</span>，等价于 <span class="math inline">\(\nabla f=\lambda\nabla g+\mu\nabla h\)</span>（正则情形）。</p>
+</div>
+<h3 class="unnumbered" id="section-9">例：球面与平面的交圆上，<span class="math inline">\(z\)</span> 最大是多少？</h3>
+<p>目标 <span class="math inline">\(f=z\)</span>；约束 <span class="math inline">\(g=x^2+y^2+z^2=1\)</span>，<span class="math inline">\(h=x+y+z=0\)</span>。 <span class="math display">\[\begin{cases}0=2\lambda x+\mu,\\0=2\lambda y+\mu,\\1=2\lambda z+\mu,\\x^2+y^2+z^2=1,\\x+y+z=0.\end{cases}\]</span> 前两式相减得 <span class="math inline">\(2\lambda(x-y)=0\)</span>。若 <span class="math inline">\(\lambda=0\)</span>，前式要求 <span class="math inline">\(\mu=0\)</span>，但第三式要求 <span class="math inline">\(1=0\)</span>，矛盾。因此 <span class="math inline">\(x=y\)</span>。由平面约束 <span class="math inline">\(x=y=-z/2\)</span>，代球面得 <span class="math display">\[\frac{z^2}{4}+\frac{z^2}{4}+z^2=1\Rightarrow z=\pm\sqrt{\frac23}.\]</span></p>
+<div class="center">
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">取得极值的点</th>
+<th style="text-align: left;">极值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">最大</td>
+<td style="text-align: left;"><span class="math inline">\((-1/\sqrt6,-1/\sqrt6,2/\sqrt6)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\sqrt{2/3}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">最小</td>
+<td style="text-align: left;"><span class="math inline">\((1/\sqrt6,1/\sqrt6,-2/\sqrt6)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(-\sqrt{2/3}\)</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p><strong>验证正则：</strong>若 <span class="math inline">\((2x,2y,2z)\)</span> 与 <span class="math inline">\((1,1,1)\)</span> 平行，则 <span class="math inline">\(x=y=z\)</span>；加上平面约束得全为零，违反球面约束。故交圆上两个梯度处处独立。交圆紧，目标连续，所以以上是全局最大最小值。</p>
+<h3 class="unnumbered" id="section-10">第二种写法：不引入乘子也能验证几何条件</h3>
+<p><span class="math display">\[\nabla g\times\nabla h=(2y-2z,\ 2z-2x,\ 2x-2y).\]</span> 因为 <span class="math inline">\(\nabla f=(0,0,1)\)</span>，极值必要条件为 <span class="math inline">\(\nabla f\cdot(\nabla g\times\nabla h)=2x-2y=0\)</span>，再联立两个约束就得到同样的候选点。 <strong>易错点：</strong>考试若指定用 Lagrange multiplier theorem，应完整写乘子方程；上面的方法用于理解或检查。</p>
+<h3 class="unnumbered" id="section-11">两种常见不足条件</h3>
+<ul>
+<li><p><span class="math inline">\(\nabla g\times\nabla h=0\)</span>：法向量不独立，常规定理不能直接覆盖该点；必须单独检查，不能自动删除。</p></li>
+<li><p>约束还有“只取一段”“<span class="math inline">\(x\ge0\)</span>”等限制：段端点或新增边界也是候选点，要分别比较。</p></li>
+</ul>
+<p><strong>作答收尾：</strong>写出“maximum value / minimum value”，并紧接“attained at”。乘子 <span class="math inline">\(\lambda,\mu\)</span> 是中间未知数，不是目标函数的极值。</p>
+
+{% endraw %}

@@ -1,0 +1,122 @@
+---
+layout: "course-note"
+title: "距离与空间几何"
+course: "math2023"
+permalink: "/courses/math2023/distance-geometry/"
+description: "点到平面、异面直线、等值集，以及过两点的垂直平面。"
+lang: "zh"
+math: true
+updated: "2026-10-12"
+---
+{% raw %}
+<details class="note-toc" open><summary>本页目录</summary><ol><li><a href="#section-1">点到平面的最短距离</a></li><li><a href="#section-4">两条异面直线的最短距离</a></li><li><a href="#section-7">Level sets 到底是什么？</a></li><li><a href="#section-9">过两点，且垂直于已知平面</a></li></ol></details>
+<h2 id="section-1">点到平面的最短距离</h2>
+<p>距离就是法向投影</p>
+<p><span>讲义定位：L4，p.2（点到面）；p.3（点到线）；p.4（平行平面）。</span></p>
+
+<div class="tcolorbox">
+<p>若 <span class="math inline">\(\Pi:Ax+By+Cz+D=0\)</span>，<span class="math inline">\(P=(x_0,y_0,z_0)\)</span>，则 <span class="math display">\[\boxed{d(P,\Pi)=\frac{|Ax_0+By_0+Cz_0+D|}{\sqrt{A^2+B^2+C^2}}}.\]</span> 条件：<span class="math inline">\((A,B,C)\ne(0,0,0)\)</span>。分子是代点后的残差；分母是法向量长度。</p>
+</div>
+<p><strong>为什么：</strong>任取 <span class="math inline">\(Q\in\Pi\)</span>，沿单位法向量的投影长度为 <span class="math display">\[\left|(P-Q)\cdot\frac{\boldsymbol{n}}{\left\lVert \boldsymbol{n}\right\rVert}\right|=\frac{|\boldsymbol{n}\cdot P+D|}{\left\lVert \boldsymbol{n}\right\rVert}.\]</span></p>
+<h3 class="unnumbered" id="section-2">考试书写模板</h3>
+<ol>
+<li><p>把平面移到 <span class="math inline">\(Ax+By+Cz+D=0\)</span>，读出法向量。</p></li>
+<li><p>代入点的三个坐标，分子取绝对值。</p></li>
+<li><p>除以法向量长度；检查结果非负。</p></li>
+</ol>
+<p><strong>例：</strong><span class="math inline">\(P=(1,2,3)\)</span>，<span class="math inline">\(\Pi:2x-y+2z-4=0\)</span>， <span class="math display">\[d=\frac{|2-2+6-4|}{\sqrt{4+1+4}}=\frac23.\]</span> 如果还要求垂足，令 <span class="math inline">\(s=\boldsymbol{n}\cdot P+D\)</span>，则 <span class="math display">\[\boxed{H=P-\frac{s}{\left\lVert \boldsymbol{n}\right\rVert^2}\boldsymbol{n}};\qquad H=(5/9,20/9,23/9)\quad\text{（上例）}.\]</span></p>
+<h3 class="unnumbered" id="section-3">两个相关距离：不要混用</h3>
+<p><strong>点到直线</strong> <span class="math inline">\(L:P_0+t\boldsymbol{v}\)</span>：<span class="math inline">\(d=\left\lVert (P-P_0)\times\boldsymbol{v}\right\rVert/\left\lVert \boldsymbol{v}\right\rVert\)</span>，是连接向量垂直于直线的部分。</p>
+<p><strong>平行平面</strong> <span class="math inline">\(\boldsymbol{n}\cdot\boldsymbol{r}+D_1=0\)</span>、<span class="math inline">\(\boldsymbol{n}\cdot\boldsymbol{r}+D_2=0\)</span>：<span class="math inline">\(d=|D_2-D_1|/\left\lVert \boldsymbol{n}\right\rVert\)</span>。先把两个方程的法向量系数统一；相交平面距离为零。 <strong>易错点：</strong>用 <span class="math inline">\(Ax+By+Cz=E\)</span> 时，分子是 <span class="math inline">\(|Ax_0+By_0+Cz_0-E|\)</span>；绝对值括住整个分子。垂足公式的 <span class="math inline">\(s\)</span> 则保留正负。</p>
+
+<h2 id="section-4">两条异面直线的最短距离</h2>
+<p>Skew lines | 两个方向共同的法向投影</p>
+<p><span>讲义定位：L4，pp.4–5，特别是 p.5 Practice Exercise 3。</span></p>
+<p><strong>异面直线：</strong>三维中既不平行、也不相交的两条直线，不能放在同一个平面内。透视图上看似交叉，不能当作真实相交。</p>
+
+<div class="tcolorbox">
+<p>设 <span class="math inline">\(L_1:P+t\boldsymbol{u}\)</span>，<span class="math inline">\(L_2:Q+s\boldsymbol{v}\)</span>，<span class="math inline">\(\boldsymbol{u}\times\boldsymbol{v}\ne\boldsymbol{0}\)</span>，则 <span class="math display">\[\boxed{d(L_1,L_2)=\frac{|(Q-P)\cdot(\boldsymbol{u}\times\boldsymbol{v})|}{\left\lVert \boldsymbol{u}\times\boldsymbol{v}\right\rVert}}.\]</span> 分子是标量三重积的绝对值，分母是共同法向量的长度。若结果为零，两条非平行直线相交。</p>
+</div>
+<p><strong>为什么：</strong>用 <span class="math inline">\(\boldsymbol{n}=\boldsymbol{u}\times\boldsymbol{v}\)</span> 构造两个平行平面，分别通过 <span class="math inline">\(P,Q\)</span>，且都包含 <span class="math inline">\(\boldsymbol{u},\boldsymbol{v}\)</span> 的方向。两条线的最短距离就是两平面距离。连接向量在面内的部分不影响距离。</p>
+<h3 class="unnumbered" id="section-5">讲义例题：按 4 步写完整</h3>
+<p><span class="math display">\[L_1:(1,-2,4)+t(1,3,-1),\qquad L_2:(0,3,-3)+s(2,1,4).\]</span></p>
+<ol>
+<li><p>取 <span class="math inline">\(P=(1,-2,4)\)</span>、<span class="math inline">\(Q=(0,3,-3)\)</span>，<span class="math inline">\(Q-P=(-1,5,-7)\)</span>。</p></li>
+<li><p><span class="math inline">\(\boldsymbol{n}=(1,3,-1)\times(2,1,4)=(13,-6,-5)\)</span>。</p></li>
+<li><p><span class="math inline">\((Q-P)\cdot\boldsymbol{n}=-13-30+35=-8\)</span>，<span class="math inline">\(\left\lVert \boldsymbol{n}\right\rVert=\sqrt{230}\)</span>。</p></li>
+<li><p><span class="math inline">\(\boxed{d=8/\sqrt{230}}\)</span>。叉积非零、三重积非零，也验证了异面。</p></li>
+</ol>
+<h3 class="unnumbered" id="section-6">需要最接近的两个点时</h3>
+<p>令 <span class="math inline">\(W=(Q+s\boldsymbol{v})-(P+t\boldsymbol{u})\)</span>，解 <span class="math inline">\(W\cdot\boldsymbol{u}=0\)</span> 与 <span class="math inline">\(W\cdot\boldsymbol{v}=0\)</span>，得到 <span class="math inline">\(t,s\)</span>，再分别代回两条线。这是额外要求时才需要的步骤。 <strong>易错点：</strong>两条线分别用 <span class="math inline">\(t,s\)</span>，不要强迫参数相同。若 <span class="math inline">\(\boldsymbol{u}\times\boldsymbol{v}=\boldsymbol{0}\)</span>，不能套上面的分式，应改用平行直线公式 <span class="math inline">\(d=\left\lVert (Q-P)\times\boldsymbol{u}\right\rVert/\left\lVert \boldsymbol{u}\right\rVert\)</span>。</p>
+
+<h2 id="section-7">Level sets 到底是什么？</h2>
+<p>固定“输出”，看哪些“输入”给出它</p>
+<p><span>讲义定位：L6，pp.3–6；L8，pp.10–13；L10，pp.1–2。</span></p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align: left;">对象</th>
+<th style="text-align: left;">写法</th>
+<th style="text-align: left;">在哪里看</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">二变量函数的图像</td>
+<td style="text-align: left;"><span class="math inline">\(z=f(x,y)\)</span></td>
+<td style="text-align: left;">在三维，是一张曲面</td>
+</tr>
+<tr>
+<td style="text-align: left;">Level curve（等值曲线）</td>
+<td style="text-align: left;"><span class="math inline">\(f(x,y)=c\)</span></td>
+<td style="text-align: left;">在输入平面 <span class="math inline">\(\mathbb R^2\)</span> 中</td>
+</tr>
+<tr>
+<td style="text-align: left;">三变量函数的图像</td>
+<td style="text-align: left;"><span class="math inline">\(w=F(x,y,z)\)</span></td>
+<td style="text-align: left;">四维，无法完整画在三维中</td>
+</tr>
+<tr>
+<td style="text-align: left;">Level surface（等值曲面）</td>
+<td style="text-align: left;"><span class="math inline">\(F(x,y,z)=c\)</span></td>
+<td style="text-align: left;">在输入空间 <span class="math inline">\(\mathbb R^3\)</span> 中</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tcolorbox">
+<p><strong>不是增加一个变量，而是固定一个输出值。</strong><br />
+<span class="math inline">\(f(x,y)=x^2+y^2\)</span> 的 level curves 是同心圆；<span class="math inline">\(F(x,y,z)=x^2+y^2+z^2\)</span> 的 level surfaces 是同心球面。</p>
+</div>
+
+<h3 class="unnumbered" id="section-8">遇到 level surface 概念题的回答顺序</h3>
+<ol>
+<li><p>写 <span class="math inline">\(F(x,y,z)=c\)</span>，说明 <span class="math inline">\(c\)</span> 是固定常数。</p></li>
+<li><p>化简并识别形状，检查 <span class="math inline">\(c\)</span> 的取值是否真的产生曲面。</p></li>
+<li><p>若求法向量，计算 <span class="math inline">\(\nabla F=(F_x,F_y,F_z)\)</span> 并代入该点。</p></li>
+</ol>
+<p><strong>例：</strong><span class="math inline">\(x^2+y^2+z^2=c\)</span>：<span class="math inline">\(c&gt;0\)</span> 是半径 <span class="math inline">\(\sqrt c\)</span> 的球面，<span class="math inline">\(c=0\)</span> 只有原点，<span class="math inline">\(c&lt;0\)</span> 是空集。等值集不一定都是光滑曲面。</p>
+<div class="tcolorbox">
+<p>若 <span class="math inline">\(F\)</span> 在附近连续可微且 <span class="math inline">\(\nabla F(P)\ne\boldsymbol{0}\)</span>，则 <span class="math inline">\(\nabla F(P)\)</span> 垂直于通过 <span class="math inline">\(P\)</span> 的等值曲面。沿面走，输出不变，所以 <span class="math inline">\(\dfrac{d}{dt}F(\boldsymbol{r}(t))=\nabla F\cdot\boldsymbol{r}&#39;(t)=0\)</span>。</p>
+</div>
+<p><strong>易错点：</strong>对图像 <span class="math inline">\(z=f(x,y)\)</span>，三维法向量不是二维的 <span class="math inline">\((f_x,f_y)\)</span>。先写 <span class="math inline">\(F(x,y,z)=f(x,y)-z\)</span>，法向量才是 <span class="math inline">\((f_x,f_y,-1)\)</span>。</p>
+
+<h2 id="section-9">过两点，且垂直于已知平面</h2>
+<p>找法向量是核心</p>
+<p><span>讲义定位：L4，p.4 Example 4；L3，pp.1–2。</span></p>
+<p>给定两点 <span class="math inline">\(P,Q\)</span>，已知平面 <span class="math inline">\(\Pi_0:A_0x+B_0y+C_0z+D_0=0\)</span>。要求平面 <span class="math inline">\(\Pi\)</span> 经过 <span class="math inline">\(P,Q\)</span>，且 <span class="math inline">\(\Pi\perp\Pi_0\)</span>。</p>
+<div class="tcolorbox">
+<p>令 <span class="math inline">\(\boldsymbol{d}=Q-P\)</span>，<span class="math inline">\(\boldsymbol{n}_0=(A_0,B_0,C_0)\)</span>。所求法向量必须满足 <span class="math display">\[\boldsymbol{n}\cdot\boldsymbol{d}=0\quad\text{且}\quad\boldsymbol{n}\cdot\boldsymbol{n}_0=0.
+\quad\Rightarrow\quad\boxed{\boldsymbol{n}=\boldsymbol{d}\times\boldsymbol{n}_0}.\]</span> 最后写 <span class="math inline">\(\boxed{\boldsymbol{n}\cdot(\boldsymbol{r}-P)=0}\)</span>，要求叉积非零。</p>
+</div>
+
+<h3 class="unnumbered" id="section-10">讲义原型：完整算一次</h3>
+<p><span class="math inline">\(P=(2,2,1)\)</span>、<span class="math inline">\(Q=(-1,1,-1)\)</span>，<span class="math inline">\(\Pi_0:2x-3y+z=3\)</span>。 <span class="math display">\[\begin{align*}
+\boldsymbol{d}&amp;=(-3,-1,-2),\quad \boldsymbol{n}_0=(2,-3,1),\\
+\boldsymbol{d}\times\boldsymbol{n}_0&amp;=(-7,-1,11)\sim(7,1,-11),\\
+\Pi:\quad 7(x-2)+(y-2)-11(z-1)&amp;=0\quad\Rightarrow\quad\boxed{7x+y-11z=5}.
+\end{align*}\]</span> <strong>检查三件事：</strong>代 <span class="math inline">\(P\)</span> 得 <span class="math inline">\(14+2-11=5\)</span>；代 <span class="math inline">\(Q\)</span> 得 <span class="math inline">\(-7+1+11=5\)</span>；法向量点积 <span class="math inline">\(14-3-11=0\)</span>。这三个检查直接对应题目三个条件。</p>
+<h3 class="unnumbered" id="section-11">如果另一平面本身也要求你求出来</h3>
+<p>先从它的条件求法向量：三点就做两个连接向量的叉积；一点加已知法向量就直接用点法式。得到 <span class="math inline">\(\boldsymbol{n}_0\)</span> 后再套上面的步骤。<strong>仅说“两平面垂直，其中一个过两点”，通常不足以唯一确定两个平面</strong>；须读完整题目中的其他条件。 <strong>易错点：</strong>两个平面垂直，表示它们的<strong>法向量垂直</strong>，不是相同。若取 <span class="math inline">\(\boldsymbol{n}=\boldsymbol{n}_0\)</span>，反而得到平行平面。</p>
+<p><strong>退化情况：</strong>若 <span class="math inline">\(P\ne Q\)</span> 且 <span class="math inline">\(\boldsymbol{d}\parallel\boldsymbol{n}_0\)</span>，两个法向条件重复，存在无穷多个所求平面；从 <span class="math inline">\(\boldsymbol{n}\cdot\boldsymbol{d}=0\)</span> 中任选非零法向量。若 <span class="math inline">\(P=Q\)</span>，也少了一个独立条件。不要把零叉积拿去写 <span class="math inline">\(0=0\)</span>。</p>
+
+{% endraw %}

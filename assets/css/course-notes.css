@@ -1,0 +1,84 @@
+/* Course notes share the site's paper, ink, type and hairline separators. */
+.course-page .site-main, .courses-index .site-main { max-width: 49rem; }
+.course-header, .note-header { padding: .75rem 0 1.75rem; border-bottom: 1px solid var(--line); }
+.eyebrow { font-family: var(--sans); font-size: .78rem; font-weight: 600; letter-spacing: .07em; margin: 0 0 .65rem; }
+.eyebrow span { color: var(--muted); font-weight: 400; letter-spacing: 0; }
+.course-header .page-title, .note-header .page-title { font-size: clamp(1.7rem, 4vw, 2.15rem); margin: 0 0 1rem; }
+.course-lead { font-size: 1.08rem; color: var(--ink-soft); line-height: 1.9; margin-bottom: .9rem; }
+.course-coverage { color: var(--muted); font-size: .91rem; margin-bottom: 1rem; }
+.course-meta, .note-tools, .breadcrumbs, .course-entry-footer, .reading-group { font-family: var(--sans); font-size: .8rem; color: var(--muted); }
+.course-meta { display: flex; flex-wrap: wrap; gap: .3rem .7rem; margin: 1rem 0 0; }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: .55rem; margin: .2rem 0 1.5rem; }
+.course-jump { display: flex; flex-wrap: wrap; gap: .5rem 1.4rem; padding: 1rem 0; font: .85rem var(--sans); border-bottom: 1px solid var(--line); }
+.course-entry { padding: 2rem 0; border-bottom: 1px solid var(--line); }
+.course-entry h2 { margin: 0 0 .8rem; font-size: 1.45rem; }
+.course-entry h2 a { color: var(--ink); }
+.course-entry h2 span { font-size: 1rem; color: var(--accent); }
+.course-entry > p:not(.eyebrow):not(.course-coverage) { font-size: 1.02rem; margin-bottom: .7rem; }
+.course-entry-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
+.reading-list { padding: 0; margin: 0; list-style: none; }
+.reading-list li { display: grid; grid-template-columns: 2rem 1fr; column-gap: .8rem; padding: 1.3rem 0; border-bottom: 1px solid var(--line); }
+.reading-number { font: .8rem var(--sans); color: var(--muted); padding-top: .25rem; font-variant-numeric: tabular-nums; }
+.reading-list h3 { font-size: 1.08rem; margin: 0 0 .45rem; }
+.reading-list p { font-size: .94rem; color: var(--ink-soft); margin: 0; }
+.reading-list .reading-group { grid-column: 1 / -1; font-size: .75rem; color: var(--accent); margin: 0 0 1rem; letter-spacing: .04em; }
+.downloads { margin-top: 2.8rem; }
+.downloads .clean-list p { margin: .4rem 0 0; color: var(--muted); font-size: .85rem; }
+.notes-context { margin: 2.5rem 0 0; font-size: .88rem; color: var(--muted); line-height: 1.85; }
+.note-source-context { margin: 1rem 0; font-size: .78rem; }
+.note-tools { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.2rem; }
+.print-note { border: 0; border-bottom: 1px solid var(--line); background: none; color: var(--accent); padding: 0; font: inherit; cursor: pointer; }
+.note-toc { margin: 1.6rem 0 2.3rem; padding-bottom: 1.3rem; border-bottom: 1px solid var(--line); font-family: var(--sans); font-size: .88rem; }
+.note-toc summary { cursor: pointer; color: var(--ink); font-weight: 600; }
+.note-toc ol { padding-left: 1.3rem; margin: 1rem 0 0; columns: 2; column-gap: 2rem; }
+.note-toc li { break-inside: avoid; padding: .18rem 0; line-height: 1.65; }
+.note-content { font-size: 1.03rem; line-height: 1.95; overflow-wrap: anywhere; }
+.note-content h2 { font-size: 1.4rem; padding-top: 1rem; margin-top: 2.7rem; border-top: 1px solid var(--line); }
+.note-content h3 { font-size: 1.1rem; margin-top: 1.8rem; }
+.note-content h4 { font-size: 1rem; }
+.note-content p { margin-bottom: 1.1em; }
+.note-content li { margin: .3rem 0; }
+.note-content .tcolorbox, .note-content .keybox, .study-callout { border-left: 2px solid var(--accent); padding: .6rem 0 .6rem 1rem; margin: 1.4rem 0; font-size: .98rem; }
+.note-content .tcolorbox p:last-child, .note-content .keybox p:last-child { margin-bottom: 0; }
+.note-content blockquote { font-style: normal; font-size: .98rem; }
+.table-scroll { max-width: 100%; overflow-x: auto; margin: 1.5rem 0; }
+.note-content table { border-collapse: collapse; width: 100%; min-width: 28rem; font-size: .86rem; line-height: 1.7; }
+.note-content th { font-family: var(--sans); font-weight: 600; text-align: left; border-bottom: 1px solid var(--ink-soft); }
+.note-content th, .note-content td { padding: .65rem .7rem; vertical-align: top; }
+.note-content td { border-bottom: 1px solid var(--line); }
+.note-content table p { margin: 0; }
+.note-content .math.display, .note-content mjx-container[display="true"] { display: block; max-width: 100%; overflow-x: auto; overflow-y: hidden; padding: .5rem 0; }
+.note-content mjx-container:not([display="true"]) { max-width: 100%; }
+.formula-line { font-size: .99rem; color: var(--ink); line-height: 2; border-left: 2px solid var(--line); padding: .6rem 1rem; overflow-x: auto; }
+.formula-line sup, .formula-line sub { line-height: 0; }
+.note-content figure { margin: 2rem 0; }
+.note-content figure img { margin: 0 auto; width: 100%; }
+.note-content figcaption { font-family: var(--sans); font-size: .8rem; color: var(--muted); line-height: 1.7; margin-top: .7rem; }
+.note-pagination { display: flex; justify-content: space-between; gap: 2rem; border-top: 1px solid var(--line); padding-top: 1.5rem; margin-top: 3rem; font: .9rem var(--sans); }
+.note-pagination a { flex: 1; }
+.note-pagination a:last-child { text-align: right; }
+.note-pagination span { display: block; color: var(--muted); font-size: .75rem; margin-bottom: .5rem; }
+.back-to-course { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .7rem; margin: 1.5rem 0 0; font: .8rem var(--sans); }
+[id] { scroll-margin-top: 1.25rem; }
+.skip-link { position: absolute; left: 1rem; top: -6rem; background: var(--paper); padding: .5rem; z-index: 10; font-family: var(--sans); }
+.skip-link:focus { top: .5rem; }
+a:focus-visible, button:focus-visible, summary:focus-visible, .table-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+@media (max-width: 640px) {
+  .note-content { font-size: .99rem; line-height: 1.9; }
+  .note-toc ol { columns: 1; }
+  .course-header, .note-header { padding-bottom: 1.4rem; }
+  .note-content h2 { font-size: 1.22rem; }
+  .note-pagination { gap: 1rem; font-size: .8rem; }
+  .reading-list li { grid-template-columns: 1.5rem 1fr; gap: .6rem; }
+}
+@media print {
+  body { background: white; color: black; font-size: 10pt; }
+  .site-header, .site-footer, .breadcrumbs, .note-tools, .note-toc, .note-pagination, .back-to-course, .skip-link { display: none; }
+  .site-main, .course-page .site-main { max-width: none; padding: 0; }
+  .note-content { font-size: 10pt; }
+  .note-content h2, .note-content h3 { break-after: avoid; }
+  .note-content figure, .note-content tr { break-inside: avoid; }
+  .table-scroll { overflow: visible; }
+  .note-content table { min-width: 0; font-size: 8pt; }
+  a { color: black; }
+}

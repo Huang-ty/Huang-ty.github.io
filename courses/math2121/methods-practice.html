@@ -1,0 +1,211 @@
+---
+layout: "course-note"
+title: "解题流程、易错点与自测"
+course: "math2121"
+permalink: "/courses/math2121/methods-practice/"
+description: "比较四个基本空间，核对向量长度、基底个数与矩阵形状。"
+lang: "zh"
+math: true
+updated: "2026-10-09"
+---
+{% raw %}
+<details class="note-toc" open><summary>本页目录</summary><ol><li><a href="#section-1">通用解題流程與快速對照表</a></li><li><a href="#section-5">數值核對、修正與常見錯誤</a></li><li><a href="#section-8">自我測驗與參考答案</a></li></ol></details>
+<h2 id="section-1">通用解題流程與快速對照表</h2>
+<h3 id="section-2">先辨認題目究竟在找什麼</h3>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align: left;">題型</th>
+<th style="text-align: left;">通用做法</th>
+<th style="text-align: left;">最後取什麼／如何驗算</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><span class="math inline">\(2\times2\)</span> inverse</td>
+<td style="text-align: left;">算 <span class="math inline">\(ad-bc\)</span>；非零才套公式</td>
+<td style="text-align: left;">驗 <span class="math inline">\(AA^{-1}=I\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Elementary matrix</td>
+<td style="text-align: left;">對 <span class="math inline">\(I\)</span> 做題目指定的<strong>一次</strong>行操作</td>
+<td style="text-align: left;">檢查 <span class="math inline">\(EA\)</span> 執行正確操作</td>
+</tr>
+<tr>
+<td style="text-align: left;">Elementary inverse</td>
+<td style="text-align: left;">撤銷該操作，再套到 <span class="math inline">\(I\)</span></td>
+<td style="text-align: left;">驗 <span class="math inline">\(E^{-1}E=I\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Subspace 判斷</td>
+<td style="text-align: left;">零向量、加法封閉、純量封閉</td>
+<td style="text-align: left;">成立用一般證明；否定用反例</td>
+</tr>
+<tr>
+<td style="text-align: left;">Linear independence</td>
+<td style="text-align: left;">把向量作為欄，求 RREF</td>
+<td style="text-align: left;">每欄有 pivot／只有零解</td>
+</tr>
+<tr>
+<td style="text-align: left;">是否為 <span class="math inline">\(\mathbb R^n\)</span> 的 basis</td>
+<td style="text-align: left;">檢查向量數為 <span class="math inline">\(n\)</span> 且 rank <span class="math inline">\(=n\)</span></td>
+<td style="text-align: left;">方陣也可用 <span class="math inline">\(\det\ne0\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">是否為 <span class="math inline">\(W\)</span> 的 basis</td>
+<td style="text-align: left;">先檢查在 <span class="math inline">\(W\)</span>；再驗獨立和 span</td>
+<td style="text-align: left;">已知 <span class="math inline">\(\dim(W)=d\)</span> 可簡化</td>
+</tr>
+<tr>
+<td style="text-align: left;">由齊次方程求 basis</td>
+<td style="text-align: left;"><span class="math inline">\(A\mathbf x=0\)</span>；RREF；參數向量形式</td>
+<td style="text-align: left;">自由變數前的係數向量</td>
+</tr>
+<tr>
+<td style="text-align: left;">從向量抽取 span basis</td>
+<td style="text-align: left;">向量作欄；RREF；記 pivot 欄號</td>
+<td style="text-align: left;"><strong>原來</strong>的對應向量</td>
+</tr>
+<tr>
+<td style="text-align: left;">Column space basis</td>
+<td style="text-align: left;">RREF；記 pivot 欄號</td>
+<td style="text-align: left;"><strong>原矩陣</strong>的對應欄</td>
+</tr>
+<tr>
+<td style="text-align: left;">Null space basis</td>
+<td style="text-align: left;">解 <span class="math inline">\(A\mathbf x=0\)</span>；找 free variables</td>
+<td style="text-align: left;">每一自由參數的係數向量</td>
+</tr>
+<tr>
+<td style="text-align: left;">Rank-nullity</td>
+<td style="text-align: left;">數 pivot：<span class="math inline">\(r\)</span>；數欄：<span class="math inline">\(n\)</span></td>
+<td style="text-align: left;">nullity <span class="math inline">\(=n-r\)</span></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="section-3">四個空間：操作後哪些能直接取？</h3>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align: left;">空間</th>
+<th style="text-align: left;">由 RREF 得 basis 的方法</th>
+<th style="text-align: left;">向量長度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Column space</td>
+<td style="text-align: left;">以 pivot 欄號回原矩陣選欄</td>
+<td style="text-align: left;"><span class="math inline">\(m\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Row space</td>
+<td style="text-align: left;">直接取 RREF 的非零行，作行向量</td>
+<td style="text-align: left;"><span class="math inline">\(n\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Null space</td>
+<td style="text-align: left;">解 RREF 的齊次方程，拆參數</td>
+<td style="text-align: left;"><span class="math inline">\(n\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">給定向量的 span</td>
+<td style="text-align: left;">向量放欄後，同 column space 方法</td>
+<td style="text-align: left;">原向量長度</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="section-4">交卷前的三層驗算</h3>
+<ol>
+<li><p><strong>形狀：</strong>向量有幾個座標？Column space 看行數；null space 看欄數。</p></li>
+<li><p><strong>內容：</strong>解空間向量代回 <span class="math inline">\(A\mathbf b_i=0\)</span>；抽取 span 時，檢查被刪向量能否由保留向量生成。</p></li>
+<li><p><strong>維度：</strong>basis 個數應等於 rank 或 nullity。僅檢查個數正確，不能代替 membership 與 independence。</p></li>
+</ol>
+
+<h2 id="section-5">數值核對、修正與常見錯誤</h2>
+<h3 id="section-6">可取回原題的核對結果</h3>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align: left;">原題</th>
+<th style="text-align: left;">重新核對的關鍵結果</th>
+<th style="text-align: left;">判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">單一線性方程</td>
+<td style="text-align: left;"><span class="math inline">\(x_1=-\frac57x_2+\frac47x_3\)</span>；整數 basis <span class="math inline">\((-5,7,0)^T,(4,0,7)^T\)</span></td>
+<td style="text-align: left;">數值正確，維度 <span class="math inline">\(2\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">四個 <span class="math inline">\(\mathbb R^4\)</span> 向量</td>
+<td style="text-align: left;"><span class="math inline">\(\mathbf v_3=\mathbf v_1+\mathbf v_2\)</span>；<span class="math inline">\(\mathbf v_4=3\mathbf v_1+4\mathbf v_2\)</span></td>
+<td style="text-align: left;">數值正確，rank <span class="math inline">\(2\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">\(3\times4\)</span> column space</td>
+<td style="text-align: left;">第 1、2 欄為 pivot；第 3 欄係數 <span class="math inline">\((-5/4,1)\)</span>，第 4 欄係數 <span class="math inline">\((5/4,-3/4)\)</span></td>
+<td style="text-align: left;">數值正確，rank <span class="math inline">\(2\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">\(2\times4\)</span> null space</td>
+<td style="text-align: left;"><span class="math inline">\(x_1=x_2+\frac12x_3-x_4\)</span>；三個 basis 向量均代回為 <span class="math inline">\(0\)</span></td>
+<td style="text-align: left;">數值正確，nullity <span class="math inline">\(3\)</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>用詞修正：</strong>原解說有時把 pivot columns 稱作「第一列、第二列」。本冊改為「第 1、2 欄」，行操作一律稱「行」。</p>
+<p><strong>思考題補充：</strong>頁 11 的三欄矩陣，選第 1、2 欄或第 1、3 欄都可得到 column space 的 basis。Pivot 選法給出前者，不代表後者不合法。</p>
+<p><strong>範圍說明：</strong>較早原題數值未完整取得，不能宣稱已核對那些原題；相應補充例題均有獨立驗算。</p>
+<h3 id="section-7">十個高頻錯誤</h3>
+<ol>
+<li><p><strong>把逆矩陣當逐項倒數。</strong>應用矩陣逆公式或 <span class="math inline">\([A\mid I]\)</span> 消去。</p></li>
+<li><p><strong>漏 determinant 或負號。</strong>先算 <span class="math inline">\(ad-bc\)</span>；檢查非對角項變號。</p></li>
+<li><p><strong>把行操作寫成右乘。</strong>操作 <span class="math inline">\(A\)</span> 的行要寫 <span class="math inline">\(EA\)</span>。</p></li>
+<li><p><strong>把 elementary matrix 乘積順序寫反。</strong>後做的操作左乘在前。</p></li>
+<li><p><strong>見到零向量就說是 subspace。</strong>仍須驗加法與任意實數純量封閉。</p></li>
+<li><p><strong>只測正純量。</strong>非負卦限恰好敗在 <span class="math inline">\(c=-1\)</span>。</p></li>
+<li><p><strong>互非倍數便認定多個向量獨立。</strong>此捷徑只適用兩個非零向量。</p></li>
+<li><p><strong>直接用 RREF 的欄作原 column space basis。</strong>必須回原矩陣。</p></li>
+<li><p><strong>Null space 也挑 pivot 欄。</strong>應解齊次方程，再從 free variables 構造向量。</p></li>
+<li><p><strong>向量縮放後保留原係數。</strong>basis 仍可用，general solution 的係數須調整。</p></li>
+</ol>
+<div class="keybox">
+<p>Basis 不唯一，但維度唯一。零向量不能放在線性獨立集合中；零空間 <span class="math inline">\(\{0\}\)</span> 的 basis 為空集合。</p>
+</div>
+
+<h2 id="section-8">自我測驗與參考答案</h2>
+<h3 id="section-9">先遮住答案，用自己的話解釋</h3>
+<ol>
+<li><p><span class="math inline">\(A=\begin{pmatrix}1&amp;2\\2&amp;4\end{pmatrix}\)</span> 是否有 inverse？理由是什麼？</p></li>
+<li><p>對 <span class="math inline">\(3\times n\)</span> 矩陣做 <span class="math inline">\(R_2\leftarrow R_2-4R_1\)</span>，寫出 <span class="math inline">\(E\)</span> 與 <span class="math inline">\(E^{-1}\)</span>。</p></li>
+<li><p><span class="math inline">\(W=\{(x,y)^T:x\ge0,y\ge0\}\)</span> 包含零向量且加法封閉，是否為 subspace？</p></li>
+<li><p>三個 <span class="math inline">\(\mathbb R^3\)</span> 向量互非倍數，就一定是 basis 嗎？給反例。</p></li>
+<li><p>求 <span class="math inline">\(\operatorname{Col}(A)\)</span> 的 basis，為何不能直接取 RREF 的 pivot 欄向量？</p></li>
+<li><p>若 <span class="math inline">\(A\)</span> 是 <span class="math inline">\(5\times7\)</span> 且 <span class="math inline">\(\operatorname{rank}(A)=3\)</span>，求 nullity；兩種 basis 向量各有幾個座標？</p></li>
+<li><p>求 <span class="math inline">\(x_1-2x_2+x_3=0\)</span> 的解空間的一組 basis。</p></li>
+<li><p>若 <span class="math inline">\(\operatorname{rref}(A)=I_4\)</span>，則 <span class="math inline">\(\operatorname{Null}(A)\)</span> 是什麼？其 basis 是什麼？</p></li>
+</ol>
+<h3 id="section-10">參考答案</h3>
+<ol>
+<li><p>沒有。<span class="math inline">\(\det(A)=4-4=0\)</span>；第二欄是第一欄的 <span class="math inline">\(2\)</span> 倍。</p></li>
+<li><p><span class="math display">\[E=\begin{pmatrix}1&amp;0&amp;0\\-4&amp;1&amp;0\\0&amp;0&amp;1\end{pmatrix},\qquad
+E^{-1}=\begin{pmatrix}1&amp;0&amp;0\\4&amp;1&amp;0\\0&amp;0&amp;1\end{pmatrix}.\]</span></p></li>
+<li><p>不是。<span class="math inline">\((1,0)^T\in W\)</span>，但 <span class="math inline">\(-(1,0)^T\notin W\)</span>，純量乘法封閉失敗。</p></li>
+<li><p>不一定。例如 <span class="math inline">\((1,0,1)^T,(0,1,1)^T,(1,1,2)^T\)</span> 互非倍數，但第三個是前兩個之和。</p></li>
+<li><p>行操作保留欄間的線性關係，未必保留 column space 本身。Pivot 欄號回原矩陣取，才能得到原空間的向量。</p></li>
+<li><p><span class="math inline">\(\operatorname{nullity}(A)=7-3=4\)</span>。Column space basis 有 <span class="math inline">\(3\)</span> 個向量，每個有 <span class="math inline">\(5\)</span> 個座標；null space basis 有 <span class="math inline">\(4\)</span> 個向量，每個有 <span class="math inline">\(7\)</span> 個座標。</p></li>
+<li><p>令 <span class="math inline">\(x_2=s,x_3=t\)</span>，則 <span class="math inline">\(x_1=2s-t\)</span>，故 <span class="math display">\[\mathbf x=s\begin{pmatrix}2\\1\\0\end{pmatrix}+t\begin{pmatrix}-1\\0\\1\end{pmatrix},\qquad
+B=\left\{\begin{pmatrix}2\\1\\0\end{pmatrix},\begin{pmatrix}-1\\0\\1\end{pmatrix}\right\}.\]</span></p></li>
+<li><p><span class="math inline">\(\operatorname{Null}(A)=\{0\}\)</span>，basis 是空集合 <span class="math inline">\(\varnothing\)</span>，nullity 為 <span class="math inline">\(0\)</span>。</p></li>
+</ol>
+<div class="keybox">
+<p><strong>複習時的四句自問：</strong></p>
+<p>我研究的是輸入、輸出，還是給定向量的 span？</p>
+<p>我要選原向量，還是從方程構造新向量？</p>
+<p>我證明了獨立與張成嗎？</p>
+<p>我的向量長度與 basis 個數，是否與矩陣形狀、rank-nullity 相符？</p>
+</div>
+
+{% endraw %}

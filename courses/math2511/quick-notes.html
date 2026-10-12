@@ -1,0 +1,131 @@
+---
+layout: "course-note"
+title: "20 分钟概念与公式速读"
+course: "math2511"
+permalink: "/courses/math2511/quick-notes/"
+description: "用一条现金流主线贯通利息、年金和贷款。"
+lang: "zh"
+math: true
+updated: "2026-10-12"
+---
+{% raw %}
+<details class="note-toc" open><summary>本页目录</summary><ol><li><a href="#section-1">01  先懂「钱在时间轴上移动」</a></li><li><a href="#section-5">02  利率先统一单位，再代公式</a></li><li><a href="#section-10">03  年金就是一串钱，逐笔折现</a></li><li><a href="#section-14">04  付款或利率会变：拆开再加</a></li><li><a href="#section-20">05  贷款 = 用未来还款抵掉本金</a></li><li><a href="#section-26">06  特殊贷款，也从余额继续算</a></li><li><a href="#section-32">07  做题时直接查这一页</a></li><li><a href="#section-33">08  最后一轮：易错点 + 自检</a></li></ol></details>
+<h2 id="section-1">01  先懂「钱在时间轴上移动」</h2>
+<aside class="study-callout">阅读目标：跟上三份 lecture 的概念和公式。按页码读前 6 页，再扫第 7 页公式表、做第 8 页自检，总计约 20 分钟。长证明和重复例题已压缩。</aside>
+<h3 id="section-2">三份 lecture 其实是一条线</h3>
+<p>Interest theory：一笔钱怎么变值；Annuity theory：一串付款怎么加总；Loan repayment：把一串未来还款的价值，匹配今天借到的钱。贯穿全课的原则是：<b>不同时间的钱，先换到同一时点，才可以相加或比较。</b></p>
+<h3 id="section-3">A(t) 是金额；a(t) 是 1 元的成长倍数</h3>
+<p>本金 P 在时间 0 投入，A(t) 表示它在时间 t 的金额；a(t)=A(t)/P，所以 a(0)=1。若题目给的是同一个从 0 开始的基金，在 s 时投入 C，则在 t 时的价值用比值计算。</p>
+<p class="formula-line">A(t) = P a(t)； C 在 s 的钱 → t 的价值 = C · a(t)/a(s)</p>
+<p>向未来移动叫 accumulation / FV（终值）；向过去移动叫 discounting / PV（现值）。即使 t&lt;s，同一个比值规则仍然适用。一般不能把 a(t)/a(s) 换成 a(t-s)；固定复利模型才有这个性质。</p>
+<p class="formula-line">PV<sub>0</sub> = Σ<sub>k</sub> C<sub>k</sub>/a(t<sub>k</sub>)； V(T) = Σ<sub>k</sub> C<sub>k</sub> · a(T)/a(t<sub>k</sub>)</p>
+<h3 id="section-4">单利与复利：利息是否继续生利息</h3>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table><thead><tr><th>模型</th><th>增长函数（t 按年）</th><th>理解</th></tr></thead><tbody><tr><td>Simple interest 单利</td><td>a(t)=1+rt</td><td>始终按最初本金计息</td></tr><tr><td>Compound interest 固定年实际利率 i</td><td>a(t)=(1+i)<sup>t</sup></td><td>每期余额成为下一期本金</td></tr><tr><td>年名义利率 i<sup>(m)</sup>，一年复利 m 次</td><td>a(t)=[1+i<sup>(m)</sup>/m]<sup>mt</sup></td><td>每次复利利率 = i<sup>(m)</sup>/m</td></tr></tbody></table></div>
+<p>单利固定 r，但第 k 年的实际利率为 r/[1+r(k-1)]，并不固定。单利中途关户、把全部余额重新存入新账户，会重新设定本金。例如 3% 单利存 2 年后重新存 3 年：P(1.06)(1.09)，不是 P(1.15)。固定复利则没有这种重存差别。</p>
+<aside class="study-callout">天数约定：exact = 实际天数/365 或 366（跨年分段）；ordinary = 按讲义的 30/360 规则；banker’s rule = 实际天数/360。ordinary 中 31 日及 2 月最后一天先改为 30 日。</aside>
+<h2 id="section-5">02  利率先统一单位，再代公式</h2>
+<h3 id="section-6">Effective ≠ nominal：年利率不一定能直接除以 12</h3>
+<p>Effective interest rate（实际利率）是某一段时间里，钱实际增加的比例；nominal interest rate（名义利率）是连同复利频率一起给出的报价。<b>年金和贷款公式里的 i，必须是每个付款周期的实际利率。</b>设付款间隔为 T 年：</p>
+<p class="formula-line">i<sub>[s,t]</sub> = a(t)/a(s) - 1</p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table><thead><tr><th>题目给的利率</th><th>每个付款周期的实际利率 j</th></tr></thead><tbody><tr><td>年实际利率 i</td><td>j = (1+i)<sup>T</sup> - 1</td></tr><tr><td>年名义利率 i<sup>(m)</sup>，一年复利 m 次</td><td>j = [1+i<sup>(m)</sup>/m]<sup>mT</sup> - 1</td></tr><tr><td>年利息力 δ，连续复利</td><td>j = e<sup>δT</sup> - 1</td></tr></tbody></table></div>
+<p>例：6% 年名义利率、每月复利，但每季付款。季度利率是 (1+0.06/12)<sup>3</sup>-1 = <b>1.5075%</b>。若给的是 6% 年实际利率，月实际利率是 (1.06)<sup>1/12</sup>-1，不能用 0.06/12。</p>
+<h3 id="section-7">Force of interest δ(t)：瞬间的相对增长速度</h3>
+<p class="formula-line">δ(t) = a′(t)/a(t) = d[ln a(t)]/dt</p>
+<p class="formula-line">a(t) = exp[∫<sub>0</sub><sup>t</sup> δ(u) du]； a(t)/a(s) = exp[∫<sub>s</sub><sup>t</sup> δ(u) du]</p>
+<p>给 a(t) 就求导再除以自身；给 δ(t) 就积分再取指数。δ 为常数时，a(t)=e<sup>δt</sup>，年实际利率 i=e<sup>δ</sup>-1。例如 δ=0.06，对应 i≈6.1837%，两者不同。单利 a(t)=1+rt 的 δ(t)=r/(1+rt)，会随时间下降。</p>
+<h3 id="section-8">Discount rate d：同一段利息，除以期末金额</h3>
+<p>若 100 一期后变成 110，i=10/100=10%，d=10/110≈9.09%。i 的分母是期初；d 的分母是期末。令 v 为每期贴现因子：</p>
+<p class="formula-line">v = 1/(1+i) = 1-d； d = i/(1+i)； i = d/(1-d)</p>
+<p>Simple discount：PV=F(1-dt)，a(t)=1/(1-dt)，需 dt&lt;1；它与单利 PV=F/(1+rt) 不同。年名义贴现率 d<sup>(m)</sup> 对应 a(t)=[1-d<sup>(m)</sup>/m]<sup>-mt</sup>。</p>
+<h3 id="section-9">Inflation：关心能买多少，而不只是钱有多少</h3>
+<p class="formula-line">1+i<sub>real</sub> = (1+i)/(1+π)； i<sub>real</sub> = (i-π)/(1+π)</p>
+<p>i 和通胀率 π 必须覆盖同一段时间。多个时段的增长倍数相乘，不直接把利率相加。i-π 只是小利率下的近似。</p>
+<h2 id="section-10">03  年金就是一串钱，逐笔折现</h2>
+<h3 id="section-11">先数付款次数 n，再看第一笔什么时候付</h3>
+<p>Annuity 是按指定时间间隔支付的一串现金流。“年金”不代表一年付一次；可以每月、每季或连续支付。Level 表示金额固定。Annuity-certain 的期限固定；contingent 的付款取决于事件（如生存），本阶段主要学前者。</p>
+<figure><img src="/assets/images/courses/annuity-timeline.svg" alt="期末付款在第 1 至 n 期，期初付款在第 0 至 n−1 期；两者都估值到时间 n"><figcaption>同一估值时点下，期初付款比期末付款多积累一期。</figcaption></figure>
+<p>每期支付 P，利率 i 固定且为每个付款周期的实际利率，v=1/(1+i)。本笔记把讲义带横线的 n 简写为下标 n；s 的双点期初符号写作 s<sup>due</sup>。<b>a(t) 是增长函数，a<sub>n|i</sub> 是年金现值因子，别混用。</b></p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table><thead><tr><th>n 笔，每笔 1</th><th>PV：时间 0</th><th>FV：时间 n</th></tr></thead><tbody><tr><td>Immediate 期末付<br/>时间 1,2,…,n</td><td>a<sub>n|i</sub> = (1-v<sup>n</sup>)/i</td><td>s<sub>n|i</sub> = [(1+i)<sup>n</sup>-1]/i</td></tr><tr><td>Due 期初付<br/>时间 0,1,…,n-1</td><td>ä<sub>n|i</sub> = (1+i)a<sub>n|i</sub></td><td>s<sub>n|i</sub><sup>due</sup> = (1+i)s<sub>n|i</sub></td></tr></tbody></table></div>
+<p>每笔是 P，就把表中的因子乘 P。PV 是把每笔钱向时间 0 折现；FV 是把每笔钱向时间 n 滚存。due 的每笔钱比 immediate 提前一期，因此在同一估值时点，价值多乘一个 (1+i)。</p>
+<p class="formula-line">a<sub>n|i</sub> = v+v<sup>2</sup>+…+v<sup>n</sup>； s<sub>n|i</sub> = (1+i)<sup>n</sup>a<sub>n|i</sub></p>
+<aside class="study-callout">Due 的标准 FV 仍在时间 n：最后一笔在 n-1 付，再计一期利息。若题目问“最后一笔刚付完”的金额，则是在 n-1，要用 P s<sub>n|i</sub>。i=0 时，四个基本因子都等于 n。</aside>
+<h3 id="section-12">用一个小例子把公式连起来</h3>
+<p>每月底存 100，存 3 个月，月实际利率 1%。第三个月底：FV=100[(1.01)<sup>2</sup>+1.01+1]=<b>303.01</b>，即 100s<sub>3|0.01</sub>。若改成月初存，第三个月底：303.01×1.01=<b>306.0401</b>。</p>
+<h3 id="section-13">延迟与永续：看清第一笔付款</h3>
+<p class="formula-line">第一笔在 m+1，之后共 n 笔：PV = P v<sup>m</sup>a<sub>n|i</sub> = P(a<sub>m+n|i</sub>-a<sub>m|i</sub>)</p>
+<p>第一笔在第 4 期：m=3，因为普通 immediate 本来就到第 1 期才付款。Perpetuity 是无穷多期；i&gt;0 时，期末永续 PV=P/i，期初永续 PV=P(1+i)/i。</p>
+<h2 id="section-14">04  付款或利率会变：拆开再加</h2>
+<h3 id="section-15">万能公式：找不到标准年金，就逐笔估值</h3>
+<p class="formula-line">PV = Σ<sub>k=1</sub><sup>n</sup> P<sub>k</sub>/a(t<sub>k</sub>)； FV(T) = a(T) · PV</p>
+<p>金额变了、利率变了、付款间隔变了，这两条仍然成立。标准公式只是特定现金流的求和结果；不必给每种题型另背一套逻辑。</p>
+<h3 id="section-16">利率分段变化：后半段要先在分界点估值</h3>
+<p>期末每期付 P：前 m 期每期利率 i，后 n 期每期利率 j。后 n 笔在时间 m 的价值是 P a<sub>n|j</sub>，还要再折现 m 期回到 0。</p>
+<p class="formula-line">PV = P a<sub>m|i</sub> + (1+i)<sup>-m</sup> P a<sub>n|j</sub></p>
+<p>一般每期利率 i<sub>k</sub> 不同，则 a(k)=∏<sub>h=1</sub><sup>k</sup>(1+i<sub>h</sub>)。不能对全段套单一利率，也不能把 i、j 简单取平均。</p>
+<h3 id="section-17">付款为等差数列：每次增加 Q</h3>
+<p>第 k 期付款 P<sub>k</sub>=P+(k-1)Q。P 是第一笔，Q 是每次增加的金额；减少时 Q&lt;0。讲义记作 (I<sub>P,Q</sub>a)<sub>n|i</sub>。</p>
+<p class="formula-line">PV = P a<sub>n|i</sub> + (Q/i)[a<sub>n|i</sub>-n v<sup>n</sup>]</p>
+<p class="formula-line">FV = P s<sub>n|i</sub> + (Q/i)[s<sub>n|i</sub>-n]</p>
+<p>递增 1,2,…,n：P=Q=1，记 (Ia)；递减 n,n-1,…,1：P=n、Q=-1，记 (Da)。若整串付款提前一期成为 due，在相同估值时点多乘 (1+i)。</p>
+<h3 id="section-18">付款为等比数列：每次增加 r%</h3>
+<p>第 k 期付款 P<sub>k</sub>=P(1+r)<sup>k-1</sup>。r 是付款增长率，i 是资金利率，两者不是同一件事。以下为期末付款，且 i≠r：</p>
+<p class="formula-line">PV = P{1-[(1+r)/(1+i)]<sup>n</sup>}/(i-r)</p>
+<p class="formula-line">FV = P[(1+i)<sup>n</sup>-(1+r)<sup>n</sup>]/(i-r)</p>
+<p>i=r 时，每笔付款折现后都等于 P/(1+i)，所以 PV=nP/(1+i)。等比永续要 i&gt;r（假设 i,r&gt;-1），才有 PV=P/(i-r)。</p>
+<h3 id="section-19">Continuous annuity：付款变成连续流量</h3>
+<p class="formula-line">PV = ∫<sub>0</sub><sup>T</sup> f(t)/a(t) dt； FV(T) = ∫<sub>0</sub><sup>T</sup> f(t)·a(T)/a(t) dt</p>
+<p>f(t) 是每年的付款速度，不是一笔付款。常数速度 c、常数年利息力 δ：PV=c(1-e<sup>-δT</sup>)/δ，FV=c(e<sup>δT</sup>-1)/δ。δ=0 时两者为 cT。连续年金分母是 δ=ln(1+i)，不是年实际利率 i。</p>
+<h2 id="section-20">05  贷款 = 用未来还款抵掉本金</h2>
+<h3 id="section-21">先抓住三个量：本金 L、每次还款 P<sub>k</sub>、余额 B<sub>k</sub></h3>
+<p>OLB（outstanding loan balance）是尚欠余额。本笔记用 B<sub>k</sub>=OLB<sub>k</sub>，默认是<b>第 k 笔还款刚付完</b>的余额；B<sub>0</sub>=L，完全还清时 B<sub>n</sub>=0。先计息，再扣本次还款。</p>
+<p class="formula-line">B<sub>k</sub> = B<sub>k-1</sub> · a(t<sub>k</sub>)/a(t<sub>k-1</sub>) - P<sub>k</sub></p>
+<p class="formula-line">L = Σ<sub>k=1</sub><sup>n</sup> P<sub>k</sub>/a(t<sub>k</sub>)</p>
+<p>第二式是 equation of value（价值方程）：今天借到的钱，等于所有未来还款今天的价值。计算存钱、退休提款、贷款，其实都在平衡同一时点的流入与流出。</p>
+<h3 id="section-22">每次还款分成利息和本金</h3>
+<p class="formula-line">I<sub>k</sub> = i<sub>k</sub>B<sub>k-1</sub>； PR<sub>k</sub> = P<sub>k</sub>-I<sub>k</sub> = B<sub>k-1</sub>-B<sub>k</sub></p>
+<p>I<sub>k</sub> 是本期利息；PR<sub>k</sub> 是本次真正减少的本金；i<sub>k</sub> 是本期实际利率。<b>偿还金额不等于偿还本金。</b>等额还款通常前期利息较多，随着余额下降，本金占比上升。</p>
+<h3 id="section-23">固定每期利率 i、期末等额还款 X、共 n 笔</h3>
+<p class="formula-line">L = X a<sub>n|i</sub>； X = L/a<sub>n|i</sub> = Li/[1-(1+i)<sup>-n</sup>]</p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table><thead><tr><th>方法</th><th>第 k 笔付完的余额</th><th>从哪边看</th></tr></thead><tbody><tr><td>Retrospective 回顾法</td><td>B<sub>k</sub> = L(1+i)<sup>k</sup>-X s<sub>k|i</sub></td><td>本金终值 - 已还款终值</td></tr><tr><td>Prospective 前瞻法</td><td>B<sub>k</sub> = X a<sub>n-k|i</sub></td><td>剩余 n-k 笔的现值</td></tr></tbody></table></div>
+<aside class="study-callout">付款前余额 B<sub>k</sub><sup>before</sup>=B<sub>k-1</sub>(1+i)；付款后 B<sub>k</sub>=B<sub>k</sub><sup>before</sup>-X。求第 k 笔的利息，乘的是 B<sub>k-1</sub>，不是 B<sub>k</sub>。前瞻法要采用适用的剩余付款及未来利率。</aside>
+<h3 id="section-24">用一个小例子建立直觉</h3>
+<p>借 1000，月实际利率 1%，分 2 次月末还：X=1000/a<sub>2|0.01</sub>≈<b>507.5124</b>。第一期 I<sub>1</sub>=10，PR<sub>1</sub>≈497.5124，B<sub>1</sub>≈502.4876。第二期 I<sub>2</sub>≈5.0249，余下部分还本金。总利息=2X-1000≈15.0249。</p>
+<h3 id="section-25">固定 X，反过来求需要多少期</h3>
+<p class="formula-line">n* = ln[X/(X-Li)] / ln(1+i)； 要求 i&gt;0 且 X&gt;Li</p>
+<p>X=Li 时只够付利息；X&lt;Li 时余额增加。i=0 则 n*=L/X。n* 不一定是整数，末次付款要调整；见下一页。</p>
+<h2 id="section-26">06  特殊贷款，也从余额继续算</h2>
+<h3 id="section-27">Drop 与 balloon：最后一期究竟怎么结清</h3>
+<p>若理论期数 n*=m+f，m 是整数、0&lt;f&lt;1；先用回顾法算“付完 m 笔正常还款后”的 B<sub>m</sub>。按照本讲义的正常调整方案：</p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table><thead><tr><th>方案</th><th>最终付款</th><th>已付的普通 X</th></tr></thead><tbody><tr><td>Drop：到 m+1 期才结清</td><td>D = B<sub>m</sub>(1+i)，通常 D&lt;X</td><td>先付 m 笔 X</td></tr><tr><td>Balloon：提前到 m 期结清</td><td>F = X+B<sub>m</sub> = B<sub>m-1</sub>(1+i)</td><td>先付 m-1 笔 X</td></tr></tbody></table></div>
+<p>例：n*=27.58。drop 是 27 笔 X + 第 28 期较小尾款；balloon 是 26 笔 X + 第 27 期较大尾款。若 n* 为整数，就按原额正常结清。若题目另定结清日期，直接在那天求付款前余额。</p>
+<h3 id="section-28">利率变化 / refinancing：旧余额成为新本金</h3>
+<p class="formula-line">旧贷款第 k 笔付完 → B<sub>k</sub>； 新每期利率 j、剩余 N 期：Y = B<sub>k</sub>/a<sub>N|j</sub></p>
+<p>先按旧条款算到变更日的余额，再按新条款计算剩余还款；两笔贷款合并，就把当天的两个余额相加。未来付款改了以后，不能继续用原来的付款数额做前瞻估值。</p>
+<h3 id="section-29">Repayment holiday：暂停付款，利息仍累积</h3>
+<p>第 k 笔刚付完后，连续跳过 h 个付款日；在第 k+h+1 期恢复，还剩 N 笔等额还款。若每期利率仍为 i：</p>
+<p class="formula-line">暂停结束时余额 = B<sub>k</sub>(1+i)<sup>h</sup>； Y = B<sub>k</sub>(1+i)<sup>h</sup>/a<sub>N|i</sub></p>
+<h3 id="section-30">Sinking fund：贷款只还利息，另一个账户存本金</h3>
+<p>贷款本金 L 在期限内保持不变，每期向贷款方付 Li；另外向利率 j 的基金存 D，最终用基金偿还 L。若 n 次期末存款恰好达到 L：</p>
+<p class="formula-line">D = L/s<sub>n|j</sub>； 每期总支出 = Li + D</p>
+<p>同一期数、无额外费用、基金恰好达到 L：j=i 时总支出与等额摊还相同；j&gt;i 时 sinking fund 较低；j&lt;i 时摊还较低。这是讲义模型的数学比较。</p>
+<h3 id="section-31">其他还款规律：写出 P<sub>k</sub>，再用余额递推</h3>
+<p>等额本金（不是等额还款）：每期本金 L/n，B<sub>k</sub>=L(1-k/n)，P<sub>k</sub>=L/n+iB<sub>k-1</sub>。因此还款会逐期减少，总利息=iL(n+1)/2。</p>
+<p>若 P<sub>k</sub>=c·本期利息，则 B<sub>k</sub>=[1-(c-1)i]B<sub>k-1</sub>。等比或等差还款则用第 4 页求价值；求剩余余额时，第一笔应改成<b>下一笔尚未付的金额</b>，不能继续用最初第一笔 P。</p>
+<h2 id="section-32">07  做题时直接查这一页</h2>
+<aside class="study-callout">解题顺序：① 画现金流并标第一笔／最后一笔；② 统一利率到付款周期；③ 选估值时点；④ 写价值方程；⑤ 检查金额、次数、付款前后。</aside>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table><thead><tr><th>要解决什么</th><th>公式 / 操作</th></tr></thead><tbody><tr><td>任意现金流在时点 τ 的价值</td><td>V(τ)=Σ<sub>k</sub>C<sub>k</sub>a(τ)/a(t<sub>k</sub>)；流入取正、流出取负</td></tr><tr><td>给 a(t) 求区间利率</td><td>i<sub>[s,t]</sub>=a(t)/a(s)-1；d<sub>[s,t]</sub>=1-a(s)/a(t)</td></tr><tr><td>年利率 → 付款周期 T 年</td><td>年实际：(1+i)<sup>T</sup>-1<br/>年名义、m 次复利：[1+i<sup>(m)</sup>/m]<sup>mT</sup>-1<br/>常数年利息力：e<sup>δT</sup>-1</td></tr><tr><td>i、d、v、δ 的转换（同一周期）</td><td>v=1/(1+i)=1-d；d=i/(1+i)<br/>i=d/(1-d)；δ=ln(1+i)（周期为一年时）</td></tr><tr><td>增长函数与利息力</td><td>δ(t)=a′(t)/a(t)；a(t)=exp[∫<sub>0</sub><sup>t</sup>δ(u)du]</td></tr><tr><td>期末等额年金：每次 P，n 次</td><td>PV=P a<sub>n|i</sub>；FV=P s<sub>n|i</sub><br/>a<sub>n|i</sub>=[1-(1+i)<sup>-n</sup>]/i；s<sub>n|i</sub>=[(1+i)<sup>n</sup>-1]/i</td></tr><tr><td>期初等额年金</td><td>ä<sub>n|i</sub>=(1+i)a<sub>n|i</sub>；s<sub>n|i</sub><sup>due</sup>=(1+i)s<sub>n|i</sub><br/>FV 在第 n 期末，不是最后付款时点 n-1</td></tr><tr><td>延迟 m 期：第一笔在 m+1</td><td>PV=P v<sup>m</sup>a<sub>n|i</sub>；永续时改为 P v<sup>m</sup>/i</td></tr><tr><td>永续（i&gt;0）</td><td>期末：P/i；期初：P(1+i)/i</td></tr><tr><td>贷款：本金与还款</td><td>L=X a<sub>n|i</sub>；X=L/a<sub>n|i</sub></td></tr><tr><td>第 k 笔还款后的余额</td><td>B<sub>k</sub>=L(1+i)<sup>k</sup>-X s<sub>k|i</sub>=X a<sub>n-k|i</sub></td></tr><tr><td>第 k 笔利息 / 还本金</td><td>I<sub>k</sub>=iB<sub>k-1</sub>；PR<sub>k</sub>=P<sub>k</sub>-I<sub>k</sub><br/>等额还款：PR<sub>k</sub>=Xv<sup>n-k+1</sup>，PR<sub>k+1</sub>=(1+i)PR<sub>k</sub></td></tr><tr><td>固定 X，求理论期数（i&gt;0）</td><td>n*=ln[X/(X-Li)]/ln(1+i)，要求 X&gt;Li</td></tr><tr><td>一般还款 / 分段利率</td><td>B<sub>k</sub>=B<sub>k-1</sub>(1+i<sub>k</sub>)-P<sub>k</sub></td></tr><tr><td>利息总额 / 实际购买力</td><td>完全清偿、无费用：总利息=ΣP<sub>k</sub>-L<br/>i<sub>real</sub>=(i-π)/(1+π)</td></tr></tbody></table></div>
+<h2 id="section-33">08  最后一轮：易错点 + 自检</h2>
+<h3 id="section-34">四个自检：能答出，核心概念就接上了</h3>
+<p><b>1.</b> 年名义利率 12%，每月复利、每季付款。年金公式用什么利率？<br/><b>2.</b> 第一笔在第 5 期，后面共付 n 笔 P，PV 是什么？<br/><b>3.</b> 第 10 笔还款付完后，还剩 20 笔等额 X。余额和第 11 笔利息分别是什么？<br/><b>4.</b> 每月初存钱，存 12 笔。第 12 笔刚存完，与第 12 个月底的金额，用哪个因子？</p>
+<aside class="study-callout">答案：1. (1.01)<sup>3</sup>-1=3.0301%。2. P v<sup>4</sup>a<sub>n|i</sub>。3. B<sub>10</sub>=X a<sub>20|i</sub>；I<sub>11</sub>=iB<sub>10</sub>。4. 最后一笔刚存完（第 11 月）：P s<sub>12|i</sub>；第 12 月底：P s<sub>12|i</sub><sup>due</sup>。</aside>
+<h3 id="section-35">遇到陌生题，先排除这六个错误</h3>
+<p>① 把年实际利率直接除以 12。<br/>② 把 due 的最后付款时点 n-1 当成标准 FV 时点 n。<br/>③ 第一笔在第 q 期，却把 immediate 折现 q 期；应折现 q-1 期。<br/>④ 求本期利息，用付款后的余额；应使用上期付款后的余额。<br/>⑤ 把账户增长全当作利息，忘记扣掉新存款、加回提款。<br/>⑥ 题目问“至少需要几次”，把解出的 23.38 四舍五入；应向上取整为 24。</p>
+<p class="formula-line">期间实际赚得的利息 = 期末余额 - 期初余额 - 存入总额 + 提款总额</p>
+<p>这一式使用该期间实际现金额，不把存款的未来价值当作“存入总额”；期初、期末是否已包含边界时点的存取，要保持一致。有中途存取时，不能直接用账户期末/期初余额-1 当作基金实际利率。</p>
+<h3 id="section-36">扩展公式定位：第 4 页不熟就回看这里</h3>
+<p>每次加金额 Q → 等差；每次乘 (1+r) → 等比；支付速度 f(t) → 积分；利率变动 → 分段；基金达到目标 → 写 FV≥目标；退休提款 → 在退休日令已积累金额=提款现值。</p>
+<h3 id="section-37">已核实的讲义细节，避免照抄出错</h3>
+<p>L2 的 due 终值应按公式理解为时间 nT 的价值；最后一笔实际在 (n-1)T。L3 Example 19（PDF 第 79 页）末行：636.822952-288.4563482≈<b>348.3666</b>，讲义写成 3483.3666，是小数位笔误。</p>
+<h3 id="section-38">回讲义复习的入口（均为 PDF 页码，含封面）</h3>
+<p><b>L1</b> = Lecture_1.pdf：34-37 实际利率；46-50 利息力；58-71 现值与贴现；74-77 通胀。<br/><b>L2</b> = Lecture_2_note.pdf：8-16 基本年金（含手写补页）；31-32 延迟；47-50 等差；58-59 等比；65-73 连续。<br/><b>L3</b> = Lecture_3.pdf：4-17 余额与摊还；29-36 期数及尾款；54-60 转贷与暂停；61-65 sinking fund。</p>
+{% endraw %}

@@ -1,0 +1,99 @@
+---
+layout: "course-note"
+title: "逆矩阵与行操作"
+course: "math2121"
+permalink: "/courses/math2121/inverse-row-operations/"
+description: "从 2×2 逆矩阵到初等矩阵，理解左乘与操作顺序。"
+lang: "zh"
+math: true
+updated: "2026-10-09"
+---
+{% raw %}
+<details class="note-toc" open><summary>本页目录</summary><ol><li><a href="#section-1">2×2 逆矩陣與行列式</a></li><li><a href="#section-6">Elementary matrices 與其逆</a></li><li><a href="#section-10">行操作順序與 Gauss-Jordan 求逆</a></li></ol></details>
+<h2 id="section-1">2×2 逆矩陣與行列式</h2>
+<h3 id="section-2">定義與直覺</h3>
+<p>方陣 <span class="math inline">\(A\)</span> 的 inverse（逆矩陣）滿足 <span class="math inline">\(AA^{-1}=A^{-1}A=I\)</span>。它把 <span class="math inline">\(A\)</span> 的線性變換「還原」。只有可逆（invertible）的方陣才有逆矩陣。 <span class="math display">\[A=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix},\qquad \det(A)=ad-bc.\]</span></p>
+<div class="keybox">
+<p><span class="math display">\[\det(A)\ne0\quad\Longleftrightarrow\quad
+A^{-1}=\frac{1}{ad-bc}\begin{pmatrix}d&amp;-b\\-c&amp;a\end{pmatrix}.\]</span> 記法：交換對角線的 <span class="math inline">\(a,d\)</span>，把另外兩項 <span class="math inline">\(b,c\)</span> 變號，再除以 determinant。</p>
+</div>
+<p><strong>幾何直覺：</strong>在 <span class="math inline">\(\mathbb R^2\)</span>，<span class="math inline">\(|\det(A)|\)</span> 是面積的伸縮倍數。<span class="math inline">\(\det(A)=0\)</span> 表示兩個欄向量線性相關，平面被壓到一條線或一點，無法唯一還原。</p>
+<h3 id="section-3">公式為什麼成立？</h3>
+<p><span class="math display">\[\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\begin{pmatrix}d&amp;-b\\-c&amp;a\end{pmatrix}
+=\begin{pmatrix}ad-bc&amp;0\\0&amp;ad-bc\end{pmatrix}=(ad-bc)I.\]</span> 反向乘積也得到同一結果；當 <span class="math inline">\(ad-bc\ne0\)</span>，除以它便得到 <span class="math inline">\(I\)</span>。</p>
+<h3 id="section-4"><strong>補充例題</strong>：逐步求逆與驗算</h3>
+<p><span class="math display">\[A=\begin{pmatrix}2&amp;1\\5&amp;3\end{pmatrix},\qquad \det(A)=2(3)-1(5)=1.\]</span> 所以 <span class="math display">\[A^{-1}=\begin{pmatrix}3&amp;-1\\-5&amp;2\end{pmatrix},\qquad
+AA^{-1}=\begin{pmatrix}6-5&amp;-2+2\\15-15&amp;-5+6\end{pmatrix}=I.\]</span> 反向核對： <span class="math display">\[A^{-1}A=\begin{pmatrix}6-5&amp;3-3\\-10+10&amp;-5+6\end{pmatrix}=I.\]</span></p>
+<h3 id="section-5">通用流程與易錯點</h3>
+<ol>
+<li><p>先算 <span class="math inline">\(ad-bc\)</span>；若為 <span class="math inline">\(0\)</span>，立即寫「沒有逆矩陣」。</p></li>
+<li><p>套公式時檢查非對角項的負號，再乘 <span class="math inline">\(1/\det(A)\)</span>。</p></li>
+<li><p>用矩陣乘法檢驗得到 <span class="math inline">\(I\)</span>，不要逐項相乘。</p></li>
+</ol>
+<p>例如 <span class="math inline">\(\begin{pmatrix}1&amp;2\\2&amp;4\end{pmatrix}\)</span> 的 determinant 是 <span class="math inline">\(0\)</span>。不能把 <span class="math inline">\(1/0\)</span> 代入公式。<strong>逆矩陣也不是把每個元素取倒數。</strong></p>
+
+<h2 id="section-6">Elementary matrices 與其逆</h2>
+<h3 id="section-7">定義：對單位矩陣做一次 elementary row operation</h3>
+<p>Elementary matrix（初等矩陣）由 <span class="math inline">\(I_m\)</span> 經<strong>一次</strong>初等行操作得到。對 <span class="math inline">\(A\in\mathbb R^{m\times n}\)</span>，<strong>左乘</strong> <span class="math inline">\(EA\)</span>，就會對 <span class="math inline">\(A\)</span> 執行同一個行操作。右乘通常作用在欄，不能混用。</p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align: left;">類型</th>
+<th style="text-align: left;">行操作</th>
+<th style="text-align: left;">逆操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">交換</td>
+<td style="text-align: left;"><span class="math inline">\(R_i\leftrightarrow R_j\)</span></td>
+<td style="text-align: left;">再交換一次</td>
+</tr>
+<tr>
+<td style="text-align: left;">非零倍乘</td>
+<td style="text-align: left;"><span class="math inline">\(R_i\leftarrow kR_i\)</span>, <span class="math inline">\(k\ne0\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(R_i\leftarrow\frac1kR_i\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">倍加</td>
+<td style="text-align: left;"><span class="math inline">\(R_i\leftarrow R_i+kR_j\)</span>, <span class="math inline">\(i\ne j\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(R_i\leftarrow R_i-kR_j\)</span></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="section-8"><strong>補充例題</strong>：三種 <span class="math inline">\(3\times3\)</span> 初等矩陣</h3>
+<p>交換第 1、2 行： <span class="math display">\[E_s=\begin{pmatrix}0&amp;1&amp;0\\1&amp;0&amp;0\\0&amp;0&amp;1\end{pmatrix},\qquad E_s^{-1}=E_s.\]</span> 把第 2 行乘以 <span class="math inline">\(-2\)</span>： <span class="math display">\[E_m=\begin{pmatrix}1&amp;0&amp;0\\0&amp;-2&amp;0\\0&amp;0&amp;1\end{pmatrix},\qquad
+E_m^{-1}=\begin{pmatrix}1&amp;0&amp;0\\0&amp;-\frac 12&amp;0\\0&amp;0&amp;1\end{pmatrix}.\]</span> 把第 1 行的 <span class="math inline">\(3\)</span> 倍加到第 3 行： <span class="math display">\[E_a=\begin{pmatrix}1&amp;0&amp;0\\0&amp;1&amp;0\\3&amp;0&amp;1\end{pmatrix},\qquad
+E_a^{-1}=\begin{pmatrix}1&amp;0&amp;0\\0&amp;1&amp;0\\-3&amp;0&amp;1\end{pmatrix}.\]</span></p>
+<h3 id="section-9">如何從行操作寫出 <span class="math inline">\(E\)</span>？</h3>
+<p>以 <span class="math inline">\(R_3\leftarrow R_3+3R_1\)</span> 為例，從 <span class="math inline">\(I_3\)</span> 開始，第 3 行原是 <span class="math inline">\((0,0,1)\)</span>，加上 <span class="math inline">\(3(1,0,0)\)</span>，得到 <span class="math inline">\((3,0,1)\)</span>。</p>
+<p>若 <span class="math inline">\(A\)</span> 的三行為 <span class="math inline">\(\mathbf r_1,\mathbf r_2,\mathbf r_3\)</span>，則 <span class="math display">\[E_a A=\begin{pmatrix}\mathbf r_1\\\mathbf r_2\\3\mathbf r_1+\mathbf r_3\end{pmatrix}.\]</span></p>
+<div class="keybox">
+<p><strong>逆矩陣的直覺：撤銷操作。</strong>先問「怎樣還原這一步？」再把撤銷操作套到 <span class="math inline">\(I\)</span>，便得到 <span class="math inline">\(E^{-1}\)</span>。所有 elementary matrices 都可逆。</p>
+</div>
+<p>交換行會使 determinant 變號；倍乘 <span class="math inline">\(k\)</span> 會使 determinant 乘 <span class="math inline">\(k\)</span>；倍加不改變 determinant。這也可用來交叉核對計算。</p>
+
+<h2 id="section-10">行操作順序與 Gauss-Jordan 求逆</h2>
+<h3 id="section-11">先做的操作，出現在乘積的右邊</h3>
+<p>若依序做 <span class="math inline">\(E_1,E_2,\ldots,E_k\)</span>，最終矩陣是 <span class="math display">\[E_k\cdots E_2E_1A.\]</span> 要撤銷整段操作，必須反向撤銷： <span class="math display">\[(E_k\cdots E_1)^{-1}=E_1^{-1}\cdots E_k^{-1}.\]</span></p>
+<h3 id="section-12"><strong>補充例題</strong>：把 <span class="math inline">\(A=\begin{pmatrix}2&amp;1\\5&amp;3\end{pmatrix}\)</span> 化成 <span class="math inline">\(I\)</span></h3>
+<p>對增廣矩陣 <span class="math inline">\([A\mid I]\)</span> 的<strong>整行</strong>做同一操作： <span class="math display">\[\left[\begin{array}{cc|cc}2&amp;1&amp;1&amp;0\\5&amp;3&amp;0&amp;1\end{array}\right]
+\xrightarrow{R_1\leftarrow R_1/2}
+\left[\begin{array}{cc|cc}1&amp;\frac12&amp;\frac12&amp;0\\5&amp;3&amp;0&amp;1\end{array}\right]\]</span> <span class="math display">\[\xrightarrow{R_2\leftarrow R_2-5R_1}
+\left[\begin{array}{cc|cc}1&amp;\frac12&amp;\frac12&amp;0\\0&amp;\frac12&amp;-\frac52&amp;1\end{array}\right]
+\xrightarrow{R_2\leftarrow2R_2}
+\left[\begin{array}{cc|cc}1&amp;\frac12&amp;\frac12&amp;0\\0&amp;1&amp;-5&amp;2\end{array}\right]\]</span> <span class="math display">\[\xrightarrow{R_1\leftarrow R_1-\frac12R_2}
+\left[\begin{array}{cc|cc}1&amp;0&amp;3&amp;-1\\0&amp;1&amp;-5&amp;2\end{array}\right]
+=[I\mid A^{-1}].\]</span> 相應初等矩陣為 <span class="math display">\[E_1=\begin{pmatrix}\frac 12&amp;0\\0&amp;1\end{pmatrix},\quad E_2=\begin{pmatrix}1&amp;0\\-5&amp;1\end{pmatrix},\quad
+E_3=\begin{pmatrix}1&amp;0\\0&amp;2\end{pmatrix},\quad E_4=\begin{pmatrix}1&amp;-\frac 12\\0&amp;1\end{pmatrix}.\]</span> 由 <span class="math inline">\(E_4E_3E_2E_1A=I\)</span> 得 <span class="math display">\[A^{-1}=E_4E_3E_2E_1=\begin{pmatrix}3&amp;-1\\-5&amp;2\end{pmatrix}.\]</span></p>
+<h3 id="section-13">通用流程</h3>
+<ol>
+<li><p>確認 <span class="math inline">\(A\)</span> 是 <span class="math inline">\(n\times n\)</span> 方陣，建立 <span class="math inline">\([A\mid I_n]\)</span>。</p></li>
+<li><p>用 Gauss-Jordan elimination 把左半部化成 RREF。</p></li>
+<li><p>左半部若成為 <span class="math inline">\(I_n\)</span>，右半部就是 <span class="math inline">\(A^{-1}\)</span>；否則 <span class="math inline">\(A\)</span> 不可逆。</p></li>
+</ol>
+<div class="keybox">
+<p><strong>常見錯誤：</strong>只改左半部；消去時用已更新的一行卻代入舊數值；把初等矩陣乘積順序寫反。每一步都應清楚記錄行操作。</p>
+</div>
+
+{% endraw %}

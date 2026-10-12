@@ -1,0 +1,274 @@
+---
+layout: "course-note"
+title: "解题决策表与自测"
+course: "math2023"
+permalink: "/courses/math2023/revision-practice/"
+description: "用决策表选工具，再用自测检查公式和适用条件。"
+lang: "zh"
+math: true
+updated: "2026-10-12"
+---
+{% raw %}
+<details class="note-toc" open><summary>本页目录</summary><ol><li><a href="#section-1">考前决策表：看到题干就选工具</a></li><li><a href="#section-3">小测：自测练习</a></li><li><a href="#section-9">自测答案与讲义索引</a></li></ol></details>
+<h2 id="section-1">考前决策表：看到题干就选工具</h2>
+<p>把判断依据也记住</p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align: left;">题干关键词</th>
+<th style="text-align: left;">第一反应</th>
+<th style="text-align: left;">最终输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Distance from point to plane</td>
+<td style="text-align: left;">读法向量，沿法向投影</td>
+<td style="text-align: left;">非负距离</td>
+</tr>
+<tr>
+<td style="text-align: left;">Distance between skew lines</td>
+<td style="text-align: left;">两方向叉积；连接向量投影</td>
+<td style="text-align: left;">三重积除法向长度</td>
+</tr>
+<tr>
+<td style="text-align: left;">Through two points, perpendicular to plane</td>
+<td style="text-align: left;"><span class="math inline">\(\boldsymbol{d}=Q-P\)</span>，<span class="math inline">\(\boldsymbol{n}=\boldsymbol{d}\times\boldsymbol{n}_0\)</span></td>
+<td style="text-align: left;">点法式或一般式</td>
+</tr>
+<tr>
+<td style="text-align: left;">Level surface</td>
+<td style="text-align: left;">固定 <span class="math inline">\(F(x,y,z)=c\)</span>；检查 <span class="math inline">\(c\)</span></td>
+<td style="text-align: left;">曲面形状、非空条件</td>
+</tr>
+<tr>
+<td style="text-align: left;">Tangent to intersection curve</td>
+<td style="text-align: left;">两个曲面梯度先代点，再叉积</td>
+<td style="text-align: left;">经过切点的直线</td>
+</tr>
+<tr>
+<td style="text-align: left;">Tangent plane / normal line</td>
+<td style="text-align: left;">同一个 <span class="math inline">\(\nabla F(P)\)</span></td>
+<td style="text-align: left;">点积式 / 参数式</td>
+</tr>
+<tr>
+<td style="text-align: left;">Rate in a direction</td>
+<td style="text-align: left;">方向单位化，点乘梯度</td>
+<td style="text-align: left;">一个标量变化率</td>
+</tr>
+<tr>
+<td style="text-align: left;">Maximum / minimum subject to</td>
+<td style="text-align: left;">写目标与全部约束；乘子系统</td>
+<td style="text-align: left;">所有候选点与函数值</td>
+</tr>
+<tr>
+<td style="text-align: left;">Closest point on surface</td>
+<td style="text-align: left;">最小化距离平方</td>
+<td style="text-align: left;">点；距离需开根号</td>
+</tr>
+<tr>
+<td style="text-align: left;">Absolute extrema on a region</td>
+<td style="text-align: left;">内部、边界、顶点全部查</td>
+<td style="text-align: left;">比较全部目标值</td>
+</tr>
+<tr>
+<td style="text-align: left;">Arc length</td>
+<td style="text-align: left;">先找参数范围，积分速率</td>
+<td style="text-align: left;">长度</td>
+</tr>
+<tr>
+<td style="text-align: left;">Limit at origin</td>
+<td style="text-align: left;">路径反例或方向统一的估计</td>
+<td style="text-align: left;">存在及值 / 不存在</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="unnumbered" id="section-2">你应该能口头回答的 8 个“为什么”</h3>
+<ol>
+<li><p>点到平面为何除以法向量长度？要把法向量变成单位方向，才得到真实长度。</p></li>
+<li><p>异面线为何做叉积？最短连接线同时垂直于两个方向。</p></li>
+<li><p>过两点为何还不足以定平面？这两点只定一条线，还可绕线转动。</p></li>
+<li><p>梯度为何垂直等值面？沿面走输出不变，链式法则点积为零。</p></li>
+<li><p>交线切向量为何不等于一个梯度？梯度向外，切向量要同时垂直两个梯度。</p></li>
+<li><p>Lagrange 为何不用 <span class="math inline">\(\nabla f=0\)</span>？只需要沿允许方向一阶变化为零。</p></li>
+<li><p>乘子方程为何不是充分条件？它只找候选点，需另外验证或比较。</p></li>
+<li><p>几条路径极限相同为何不够？极限要求所有定义域内的路径同时一致。</p></li>
+</ol>
+<div class="tcolorbox">
+<p><strong>交卷前 20 秒检查：</strong>距离有绝对值吗？方向导数单位化了吗？求梯度后代点了吗？直线经过指定点吗？平面满足所有给定点与垂直条件吗？Lagrange 有没有漏分支、约束或最后的函数值？</p>
+</div>
+
+<h2 id="section-3">小测：自测练习</h2>
+<p>几何、约束极值与多元微积分自测</p>
+<p><strong>以下为重新编写的练习，不是考试原题。</strong>建议先不看速查表；每题写出用的向量及其几何角色。</p>
+<h3 class="unnumbered" id="section-4">A. Q1 概念与距离</h3>
+<ol>
+<li><p>求 <span class="math inline">\(P=(2,-1,3)\)</span> 到 <span class="math inline">\(\Pi:2x+y-2z+1=0\)</span> 的距离，并求垂足。</p></li>
+<li><p><span class="math inline">\(F(x,y,z)=x^2+y^2+4z^2\)</span>。描述 <span class="math inline">\(F=4\)</span> 的曲面；描述 <span class="math inline">\(F=0\)</span> 和 <span class="math inline">\(F=-1\)</span> 的等值集。</p></li>
+<li><p><span class="math inline">\(L_1=(0,0,0)+t(1,0,0)\)</span>，<span class="math inline">\(L_2=(0,1,1)+s(0,1,0)\)</span>。说明是否异面，并求最短距离。</p></li>
+</ol>
+<h3 class="unnumbered" id="section-5">B. Q2 平面</h3>
+<ol>
+<li><p>求经过 <span class="math inline">\(P=(1,0,0),Q=(0,1,0)\)</span>，且垂直于平面 <span class="math inline">\(x+y+z=2\)</span> 的平面。用代点与法向量点积检查。</p></li>
+<li><p>若改成 <span class="math inline">\(Q=(2,1,1)\)</span>，条件是否还唯一确定平面？说明原因。</p></li>
+</ol>
+<h3 class="unnumbered" id="section-6">C. Q3 交线切线</h3>
+<ol>
+<li><p>球面 <span class="math inline">\(x^2+y^2+z^2=3\)</span> 与平面 <span class="math inline">\(x+y+z=3\)</span>，在 <span class="math inline">\((1,1,1)\)</span> 能直接套梯度叉积吗？实际交集是什么？</p></li>
+<li><p>球面 <span class="math inline">\(x^2+y^2+z^2=3\)</span> 与平面 <span class="math inline">\(z=1\)</span>，在 <span class="math inline">\((1,1,1)\)</span> 求交线的切线。</p></li>
+</ol>
+<h3 class="unnumbered" id="section-7">D. Q5 Lagrange</h3>
+<ol>
+<li><p>求 <span class="math inline">\(f=x+2y\)</span> 在 <span class="math inline">\(x^2+y^2=5\)</span> 上的最大值、最小值及取得位置。</p></li>
+<li><p>求 <span class="math inline">\(f=x^2+y^2+z^2\)</span> 在 <span class="math inline">\(x+y+z=3\)</span> 上的最小值。有没有最大值？给出理由。</p></li>
+<li><p>求 <span class="math inline">\(f=z\)</span> 在 <span class="math inline">\(x^2+y^2+z^2=4\)</span>、<span class="math inline">\(x+y=0\)</span> 的交线上的最大最小值。</p></li>
+<li><p>轴向长方体八个顶点为 <span class="math inline">\((\pm x,\pm y,\pm z)\)</span>，都在球面 <span class="math inline">\(x^2+y^2+z^2=3\)</span> 上，且 <span class="math inline">\(x,y,z\ge0\)</span>。求最大体积与边长。</p></li>
+</ol>
+<h3 class="unnumbered" id="section-8">E. 基础快速自测</h3>
+<ol>
+<li><p><span class="math inline">\(f=x^2y\)</span> 在 <span class="math inline">\((1,2)\)</span> 沿 <span class="math inline">\((3,4)\)</span> 方向的方向导数。</p></li>
+<li><p>螺旋线 <span class="math inline">\(\boldsymbol{r}=(2\cos t,2\sin t,3t)\)</span> 从 <span class="math inline">\(t=0\)</span> 到 <span class="math inline">\(2\pi\)</span> 的弧长。</p></li>
+<li><p><span class="math inline">\(f=x^4+y^4\)</span> 在原点的 <span class="math inline">\(D\)</span> 是多少？能否仅由该 <span class="math inline">\(D\)</span> 判极值？</p></li>
+<li><p><span class="math inline">\(\int_0^1\int_0^2xy\,dy\,dx\)</span> 的值。</p></li>
+</ol>
+
+<h2 id="section-9">自测答案与讲义索引</h2>
+<p>核对步骤，也核对适用条件</p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align: left;">题目</th>
+<th style="text-align: left;">核心答案与判断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">A1</td>
+<td style="text-align: left;">残差 <span class="math inline">\(s=-2\)</span>，<span class="math inline">\(\left\lVert \boldsymbol{n}\right\rVert=3\)</span>，<span class="math inline">\(d=2/3\)</span>；<span class="math inline">\(H=P+(2/9)(2,1,-2)=(22/9,-7/9,23/9)\)</span>。</td>
+</tr>
+<tr>
+<td style="text-align: left;">A2</td>
+<td style="text-align: left;"><span class="math inline">\(F=4\)</span> 是椭球面，半轴 <span class="math inline">\(2,2,1\)</span>；<span class="math inline">\(F=0\)</span> 为原点；<span class="math inline">\(F=-1\)</span> 为空集。</td>
+</tr>
+<tr>
+<td style="text-align: left;">A3</td>
+<td style="text-align: left;"><span class="math inline">\(\boldsymbol{u}\times\boldsymbol{v}=(0,0,1)\)</span>，三重积为 <span class="math inline">\(1\)</span>，异面且 <span class="math inline">\(d=1\)</span>。</td>
+</tr>
+<tr>
+<td style="text-align: left;">B1</td>
+<td style="text-align: left;"><span class="math inline">\(\boldsymbol{d}=(-1,1,0)\)</span>，叉积 <span class="math inline">\((1,1,-2)\)</span>；所求平面 <span class="math inline">\(x+y-2z=1\)</span>。</td>
+</tr>
+<tr>
+<td style="text-align: left;">B2</td>
+<td style="text-align: left;"><span class="math inline">\(\boldsymbol{d}=(1,1,1)\parallel\boldsymbol{n}_0\)</span>，叉积为零，存在无穷多个平面。</td>
+</tr>
+<tr>
+<td style="text-align: left;">C1</td>
+<td style="text-align: left;">两梯度平行，叉积为零，不能套。由 <span class="math inline">\((x+y+z)^2\le3(x^2+y^2+z^2)=9\)</span>，等号需 <span class="math inline">\(x=y=z\)</span>；交集只有 <span class="math inline">\((1,1,1)\)</span>，不是一条曲线。</td>
+</tr>
+<tr>
+<td style="text-align: left;">C2</td>
+<td style="text-align: left;"><span class="math inline">\((2,2,2)\times(0,0,1)=(2,-2,0)\)</span>，切线 <span class="math inline">\((1,1,1)+t(1,-1,0)\)</span>。</td>
+</tr>
+<tr>
+<td style="text-align: left;">D1</td>
+<td style="text-align: left;"><span class="math inline">\((1,2)=2\lambda(x,y)\)</span>；最大值 <span class="math inline">\(5\)</span> 在 <span class="math inline">\((1,2)\)</span>，最小值 <span class="math inline">\(-5\)</span> 在 <span class="math inline">\((-1,-2)\)</span>。</td>
+</tr>
+<tr>
+<td style="text-align: left;">D2</td>
+<td style="text-align: left;"><span class="math inline">\(2x=2y=2z=\lambda\)</span>，得 <span class="math inline">\((1,1,1)\)</span>，最小值 <span class="math inline">\(3\)</span>。由 <span class="math inline">\((x+y+z)^2\le3f\)</span> 证下界；沿 <span class="math inline">\((1+t,1-t,1)\)</span> 使 <span class="math inline">\(f=3+2t^2\to\infty\)</span>，无最大值。</td>
+</tr>
+<tr>
+<td style="text-align: left;">D3</td>
+<td style="text-align: left;">最大 <span class="math inline">\(2\)</span> 在 <span class="math inline">\((0,0,2)\)</span>，最小 <span class="math inline">\(-2\)</span> 在 <span class="math inline">\((0,0,-2)\)</span>；交圆紧且梯度独立。</td>
+</tr>
+<tr>
+<td style="text-align: left;">D4</td>
+<td style="text-align: left;">最大体积 <span class="math inline">\(8\)</span>，在 <span class="math inline">\(x=y=z=1\)</span>；三条边长都是 <span class="math inline">\(2\)</span>。用 Lagrange 或 AM–GM 验证，零坐标边界体积为 <span class="math inline">\(0\)</span>。</td>
+</tr>
+<tr>
+<td style="text-align: left;">E1–E4</td>
+<td style="text-align: left;">E1：<span class="math inline">\((4,1)\cdot(3/5,4/5)=16/5\)</span>。E2：<span class="math inline">\(2\pi\sqrt{13}\)</span>。E3：<span class="math inline">\(D=0\)</span>，测试失效，但由 <span class="math inline">\(f\ge0\)</span> 知原点最小。E4：<span class="math inline">\(1\)</span>。</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="unnumbered" id="section-10">讲义来源：按主题回查</h3>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align: left;">原讲义</th>
+<th style="text-align: left;">本册页</th>
+<th style="text-align: left;">主要对应内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Math 2023-L1.pdf</td>
+<td style="text-align: left;">03</td>
+<td style="text-align: left;">三维坐标、柱面、二次曲面</td>
+</tr>
+<tr>
+<td style="text-align: left;">Math 2023-L2.pdf</td>
+<td style="text-align: left;">02</td>
+<td style="text-align: left;">向量、点积、投影、叉积、三重积</td>
+</tr>
+<tr>
+<td style="text-align: left;">Math 2023-L3.pdf</td>
+<td style="text-align: left;">04、08</td>
+<td style="text-align: left;">直线、平面与两平面的交线</td>
+</tr>
+<tr>
+<td style="text-align: left;">Math 2023-L4.pdf</td>
+<td style="text-align: left;">04–08、15</td>
+<td style="text-align: left;">距离、垂直平面、异面直线、参数化</td>
+</tr>
+<tr>
+<td style="text-align: left;">Math 2023-L5.pdf</td>
+<td style="text-align: left;">10、15</td>
+<td style="text-align: left;">向量函数微积分、切线、运动、弧长</td>
+</tr>
+<tr>
+<td style="text-align: left;">Math 2023-L6.pdf</td>
+<td style="text-align: left;">03、07、16</td>
+<td style="text-align: left;">定义域、等值集、极限与连续</td>
+</tr>
+<tr>
+<td style="text-align: left;">Math 2023-L7.pdf</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">偏导与高阶偏导</td>
+</tr>
+<tr>
+<td style="text-align: left;">Math 2023-L8.pdf</td>
+<td style="text-align: left;">07、09、17</td>
+<td style="text-align: left;">可微、链式法则、隐函数、梯度</td>
+</tr>
+<tr>
+<td style="text-align: left;">Math 2023-L9.pdf</td>
+<td style="text-align: left;">09</td>
+<td style="text-align: left;">方向导数与梯度的变化率解释</td>
+</tr>
+<tr>
+<td style="text-align: left;">Math 2023-L10.pdf</td>
+<td style="text-align: left;">07、09–10、17</td>
+<td style="text-align: left;">等值面、切平面、交线切线、线性近似</td>
+</tr>
+<tr>
+<td style="text-align: left;">Math 2023-L11.pdf</td>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">局部极值、闭区域上的绝对极值</td>
+</tr>
+<tr>
+<td style="text-align: left;">Math 2023-L12.pdf</td>
+<td style="text-align: left;">11–14</td>
+<td style="text-align: left;">Lagrange 定理、最近点、体积、双约束</td>
+</tr>
+<tr>
+<td style="text-align: left;">Math 2023-L13.pdf</td>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">矩形上的二重积分与累次积分</td>
+</tr>
+</tbody>
+</table></div>
+<p><span>原讲义作者：Dr. Hon-Ming HO。本册为概念及公式摘要；条件说明、图示与额外例题为重新组织。</span></p>
+
+{% endraw %}

@@ -1,0 +1,90 @@
+---
+layout: "course-note"
+title: "AS–AD 的推导与短中期调整"
+course: "econ2123"
+permalink: "/courses/econ2123/as-ad/"
+description: "分清曲线移动与沿曲线移动，理解价格预期如何推动中期调整。"
+lang: "zh"
+math: true
+updated: "2026-10-12"
+---
+{% raw %}
+<details class="note-toc" open><summary>本页目录</summary><ol><li><a href="#section-1">06 · AS 公式的完整推导</a></li><li><a href="#section-5">07 · AS 怎么画，什么时候会移动？</a></li><li><a href="#section-9">08 · AD 怎么从 IS–LM 推出来？</a></li><li><a href="#section-10">09 · 沿曲线移动与整条曲线移动</a></li><li><a href="#section-13">10 · 短期与中期：预期怎样推动调整？</a></li></ol></details>
+<h2 id="section-1">06 · AS 公式的完整推导</h2>
+<p>课件对应：slides 7–9</p>
+<h3 id="section-2">第一步：把工资放入企业定价</h3>
+<p><span class="math display">\[P=(1+m)\frac{W}{A}=(1+m)\frac{A P^e F(u,z)}{A}\]</span></p>
+<p><span class="math display">\[P=P^e(1+m)F(u,z)\]</span></p>
+<p>这一步把 W 消去，让价格由预期价格、失业和加成决定。</p>
+<h3 id="section-3">第二步：把失业改写为产出</h3>
+<p><span class="math display">\[u=\frac{L-N}{L}=1-\frac{N}{L}=1-\frac{Y}{AL}\]</span></p>
+<p>现在消去 u，留下我们想画在图上的 Y：</p>
+<p><span class="math display">\[P=P^e(1+m)F\left(1-\frac{Y}{AL},z\right)\]</span></p>
+<p>这就是 <strong>Aggregate Supply relation，AS 关系</strong>。每给一个 Y，都能算出相应的 P，条件是 P^e、m、A、L、z 给定。</p>
+<h3 id="section-4">为什么 Y 增加会令 P 上升？</h3>
+<p>更多产出需要更多就业 N。就业增加，失业率 u 下降，工人更容易找到工作，议价能力增强，名义工资 W 上升。劳动成本 W/A 上升，企业按照定价公式提高 P。于是 AS 在 (Y,P) 平面向上倾斜。</p>
+<p><strong>沿一条 AS 分析时，P^e 固定，但 W 与 P 可以改变。</strong> 固定预期不等于固定实际价格或固定名义工资。</p>
+<p>补充：若 F(u,z)=1−αu+z，则 AS 可写成 P=P^e(1+m)[1−α+αY/(AL)+z]。这个线性形式常见于计算题，α&gt;0 时斜率为正。题目若没有给具体 F，用一般式和因果解释即可。</p>
+<h2 id="section-5">07 · AS 怎么画，什么时候会移动？</h2>
+<p>课件对应：slides 9–11</p>
+<figure>
+<img src="/assets/images/courses/econ-as-ad/fig_as.png" alt="AS 的锚点与预期变化" />
+<figcaption aria-hidden="true">AS 的锚点与预期变化</figcaption>
+</figure>
+<h3 id="section-6">每条 AS 都有一个重要的锚点</h3>
+<p>当 Y=Y_n 时，u=u_n，F(u_n,z)=1/(1+m)，代入 AS 得到 P=P^e。因此，<strong>AS 一定经过 (Y_n,P^e)</strong>。画图时先找这个点，再画向上倾斜的曲线。</p>
+<p>在同一条 AS 上，Y&gt;Y_n 对应 P&gt;P^e，Y&lt;Y_n 对应 P&lt;P^e。注意比较的是实际 P 与这条 AS 所对应的预期 P^e。</p>
+<h3 id="section-7">P^e 上升：整条 AS 上移</h3>
+<p>在相同 Y 下，预期价格更高，工人要求更高 W，企业成本上升，P 更高。所以整条 AS 上移。m、z、A、L 没变时，Y_n 不变，新的锚点变成 (Y_n,更高的 P^e)。</p>
+<p>P^e 下降则使 AS 下移。一般不要求它平行移动：预期 P^e 在公式中乘在整个表达式上，可能同时改变截距和斜率。图上画清方向和锚点即可。</p>
+<h3 id="section-8">供给参数改变：还要重新找 Y_n</h3>
+<p>m 或 z 上升，会提高同一 Y 下的价格，并降低 Y_n。A 或 L 下降，则在同一 Y 下需要更高就业率、较低失业率，AS 上移，Y_n 下降。方向判断采用本课件的工资、定价和生产假设。</p>
+<p>自检：只是沿 AS 发生 Y 上升，不能据此再画一条新的 AS。只有决定整条关系的条件改变，才画曲线移动。</p>
+<h2 id="section-9">08 · AD 怎么从 IS–LM 推出来？</h2>
+<p>课件对应：slides 13–17</p>
+<figure>
+<img src="/assets/images/courses/econ-as-ad/fig_ad.png" alt="由价格变化推导 AD" />
+<figcaption aria-hidden="true">由价格变化推导 AD</figcaption>
+</figure>
+<p>给定 G、T 与名义货币供给 M，选择一个价格 P_0，IS 与 LM(P_0) 相交，得到 Y_0 和 i_0。在 AS–AD 图中记录点 (Y_0,P_0)。</p>
+<p>再选择更高的价格 P_1。由于 M 不变，M/P_1 比 M/P_0 小，LM 上移。IS 没变，新均衡利率较高，投资较少，产出降到 Y_1。在右侧的图中记录 (Y_1,P_1)。</p>
+<p><span class="math display">\[P\uparrow\quad\Rightarrow\quad M/P\downarrow\quad\Rightarrow\quad i\uparrow\quad\Rightarrow\quad I\downarrow\quad\Rightarrow\quad Y\downarrow\]</span></p>
+<p>反复改变 P，收集这些配对，就得到向下倾斜的 AD。其经济含义是：每个价格水平下，商品市场与金融市场共同均衡时的产出。</p>
+<p><span class="math display">\[Y=Y\left(\frac{M}{P},G,T\right)\]</span></p>
+<p>这是一种函数记号，右边的 Y(…) 不是 Y 乘以括号。它表示均衡产出随 M/P、G 增加而增加，随 T 增加而减少，标准条件下其他因素不变。</p>
+<p><strong>一个 P 的改变，在左侧的 IS–LM 图会移动 LM；把结果整理到右侧的 AD 图，则是在同一条 AD 上移动。</strong> 同一个经济变化，在不同坐标的图中，表现可以不同。</p>
+<h2 id="section-10">09 · 沿曲线移动与整条曲线移动</h2>
+<p>课件对应：slides 10–16；补充：画图判断表</p>
+<h3 id="section-11">判断整条关系是否改变，要固定一个坐标比较</h3>
+<p>问 AD 是否移动：先固定 P，看看政策或需求条件改变后，均衡 Y 是否不同。问 AS 是否移动：先固定 Y，看看预期或供给条件改变后，企业设定的 P 是否不同。</p>
+<div class="line-block">变化 | AS–AD 图上的处理 | 原因 |<br />
+只有实际 P 改变，M、G、T 不变 | 沿同一条 AD 移动 | AD 已包含 P 对 M/P 和 Y 的影响 |<br />
+G 增加或 T 减少 | AD 右移 | 同一个 P 下，IS 右移，均衡 Y 增加 |<br />
+M 增加 | AD 右移 | 同一个 P 下，M/P 增加，LM 下移 |<br />
+G 减少、T 增加或 M 减少 | AD 左移 | 同一个 P 下，均衡 Y 减少 |<br />
+P^e 增加，其他供给条件不变 | AS 上移 | 同一个 Y 下，工资和售价更高 |<br />
+m 增加 | AS 上移，Y_n 降低 | 企业加成变高，WS–PS 自然均衡改变 |<br />
+A 减少 | AS 上移，Y_n 降低 | 同一个 Y 下，就业率要求更高 |</div>
+<h3 id="section-12">三个容易混淆的地方</h3>
+<ol type="1">
+<li><p>沿 AD 出现 P 下降，导致 LM 下移，但 AD 本身不因这个 P 下降而再次移动。</p></li>
+<li><p>一次 M 增加先让 AD 右移。后来 P^e 改变，使 AS 移动；如果 M 没再变，就继续使用新的 AD。</p></li>
+<li><p>G 改变本身不直接改变本模型的 Y_n。m、z、A、L 改变才会改变自然产出。政策可能先改变实际 Y，让它暂时偏离 Y_n。</p></li>
+</ol>
+<p>预习练习：如果题目说“消费者信心下降”，即使 G、T、M 不变，也可能因为消费的自主部分下降，IS 左移，从而使 AD 左移。</p>
+<h2 id="section-13">10 · 短期与中期：预期怎样推动调整？</h2>
+<p>课件对应：slides 19–23</p>
+<figure>
+<img src="/assets/images/courses/econ-as-ad/fig_adjust.png" alt="产出缺口与预期调整" />
+<figcaption aria-hidden="true">产出缺口与预期调整</figcaption>
+</figure>
+<p><strong>短期：P^e 给定。</strong> AS 与 AD 的交点决定实际 P 和 Y，P 不一定等于 P^e，Y 也不一定等于 Y_n。短期并没有规定价格完全不动。</p>
+<h3 id="section-14">当 Y 高于自然产出</h3>
+<p>由 AS 的锚点可知 P&gt;P^e。工人发现价格比原先预计的高，下一次订工资时提高 P^e，要求更高名义工资。AS 上移。在 AD 不变时，新交点沿 AD 向左上方移动，P 更高，Y 更低，逐步回到 Y_n。</p>
+<h3 id="section-15">当 Y 低于自然产出</h3>
+<p>这时 P&lt;P^e。工人逐步下调 P^e，工资要求降低，AS 下移。新交点沿 AD 向右下方移动，P 更低，Y 更高，逐步回到 Y_n。</p>
+<p><span class="math display">\[\text{Medium run:}\qquad P=P^e,\quad u=u_n,\quad Y=Y_n\]</span></p>
+<p><strong>中期的定义是预期已经调整到实际价格，并形成自然均衡。</strong> 如果供给参数不变，就回到原来的 Y_n；如果冲击改变了供给条件，就回到新的 Y_n。</p>
+<p>本课程没有指定每期如何形成预期，也没有给固定调整年数。课件 slide 23 的时间讨论是背景说明，做模型题时根据题目给的预期规则分析，不能把“中期”机械地定义成某个年数。</p>
+
+{% endraw %}

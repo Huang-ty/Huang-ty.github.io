@@ -1,0 +1,76 @@
+---
+layout: "course-note"
+title: "WS–PS、自然失业率与自然产出"
+course: "econ2123"
+permalink: "/courses/econ2123/wage-price-setting/"
+description: "从工资与企业定价出发，建立 AS 的供给侧基础。"
+lang: "zh"
+math: true
+updated: "2026-10-12"
+---
+{% raw %}
+<details class="note-toc" open><summary>本页目录</summary><ol><li><a href="#section-1">02 · 从 IS–LM 接到 AS–AD</a></li><li><a href="#section-4">03 · 符号与模型条件</a></li><li><a href="#section-6">04 · AS 的基础：工资与企业定价</a></li><li><a href="#section-10">05 · 自然失业率与自然产出</a></li></ol></details>
+<h2 id="section-1">02 · 从 IS–LM 接到 AS–AD</h2>
+<p>课件对应：slides 6、13–19</p>
+<h3 id="section-2">你已经学过的部分</h3>
+<p>IS 描述商品市场均衡，LM 描述货币市场均衡。两条曲线画在横轴 Y、纵轴 i 的平面上。此前分析时通常把价格 P 当成给定条件，所以 IS–LM 的交点先确定 Y 和 i。</p>
+<p>现在我们让 P 也变化。每换一个 P，实际货币供给 M/P 就变化，LM 的位置也会变化，于是 IS–LM 会给出一个新的均衡 Y。把这些不同的 (Y,P) 配对收集起来，就得到 AD。</p>
+<p>另一方面，生产需要工人。产出 Y 改变会影响就业、失业、工资和企业成本，由此得到 AS。AS 与 AD 相交，确定 Y 与 P。知道它们后，还能回到 IS–LM 找到 i。</p>
+<div class="line-block">图 | 横轴 | 纵轴 | 曲线上的一个点表示什么 |<br />
+IS–LM | Y：实际产出 | i：利率 | 商品或货币市场的均衡配对 |<br />
+AS–AD | Y：实际产出 | P：价格水平 | 需求侧或工资／定价侧的均衡配对 |<br />
+WS–PS | u：失业率 | W/P：实际工资 | 工资设定或企业定价的关系 |</div>
+<h3 id="section-3">目标利率与固定货币供给有何区别？</h3>
+<p>此前的目标利率例题规定央行维持目标利率，而且货币需求没有 Y，因此得到水平 LM。这份课件推导 AD 时采用 <strong>固定名义货币供给 M</strong>，并使用下面的标准货币需求：</p>
+<p><span class="math display">\[\frac{M}{P}=Y\mathcal{L}(i),\qquad \mathcal{L}&#39;(i)&lt;0\]</span></p>
+<p>它对应通常向上倾斜的 LM。<strong>画图要先看题目采用哪一种货币政策设定。</strong> 固定 M 时，P 上升会使 M/P 下降；若央行始终维持同一目标利率，它会调整 M，不能直接照搬本章这条 AD 推导。</p>
+<p>预习自检：为什么 AD 图的纵轴是 P，而 LM 图的纵轴是 i？因为它们整理的是不同变量之间的均衡关系。</p>
+<h2 id="section-4">03 · 符号与模型条件</h2>
+<p>课件对应：slides 2–3、7、13、19</p>
+<div class="line-block">符号 | 含义与读法 |<br />
+Y / Y_n | 实际产出／自然产出。Y_n 是预期正确时的均衡产出 |<br />
+P / P^e | 实际价格水平／工资设定时预期的价格水平 |<br />
+W / W/P | 名义工资／实际工资，即工资能买多少商品 |<br />
+N / L / U | 就业人数／劳动力人数／失业人数，L=N+U |<br />
+u / u_n | 失业率 U/L／自然失业率 |<br />
+A | 每名工人的产出，即劳动生产率，Y=AN |<br />
+z | 影响工资要求的制度或议价因素，例如失业保障 |<br />
+m | 企业的加成率 markup，不是货币供给，也不是进口 |<br />
+M / M/P | 名义货币供给／实际货币供给 |<br />
+C / I / G / T | 消费／投资／政府购买／税收 |<br />
+F(u,z) | 工资设定函数。失业越高，F 越低；z 越高，F 越高 |</div>
+<h3 id="section-5">这份课件的模型条件</h3>
+<p>封闭经济：商品市场写成 Y=C+I+G。消费随可支配收入 Y−T 增加，投资随 Y 增加、随 i 降低而增加。货币需求随 Y 增加、随 i 降低而增加。标准图形分析采用固定 M，暂不考虑利率下限约束，疫情政策部分再讨论 ZLB。</p>
+<p>生产函数是 Y=AN。分析某个冲击时，如果题目没有改变 A、L、m、z，就把它们当作给定。短期价格预期 P^e 给定，实际 P 可以改变。中期允许人们逐步修正 P^e。</p>
+<p><strong>两个 L 要分清：</strong> 生产侧的 L 是劳动力人数；货币需求中的 L(i) 是一个函数。本册把后者写成花体的 ℒ(i)。它们不是同一个东西。</p>
+<p><strong>P 是价格水平，π 才是通胀率。</strong> P 上升描述价格变高；π 描述价格随时间增长的百分比。静态图中一次 P 上升，不足以说明以后每一期都持续高通胀。</p>
+<h2 id="section-6">04 · AS 的基础：工资与企业定价</h2>
+<p>课件对应：slides 2–3、7；补充：逐项解释</p>
+<h3 id="section-7">工资设定 Wage setting（WS）</h3>
+<p><span class="math display">\[W=A P^e F(u,z)\]</span></p>
+<p>工人关心工资的购买力。订工资时，实际价格还未完全确定，所以先依据 P^e。如果预期商品更贵，就要求更高的名义工资。失业率 u 高时，工作更难找，工人的议价能力弱，工资要求较低。z 上升代表其他因素提高了工资要求。课件还让工资随生产率 A 增加。</p>
+<p>这里的 F 是把失业和制度因素合在一起的函数，先记住方向即可：F_u&lt;0，F_z&gt;0。不用在第一次预习时背一个不存在于题目中的具体函数形式。</p>
+<h3 id="section-8">企业定价 Price setting（PS）</h3>
+<p><span class="math display">\[P=(1+m)\frac{W}{A}\]</span></p>
+<p>一个工人获得工资 W，生产 A 单位商品，所以每单位商品的劳动成本是 W/A。企业在单位成本上加上比例 m，就得到售价。</p>
+<p>例如 A=2、W=100、m=20%，单位成本为 50，售价为 60。这个例子只帮助理解公式，数字由本册添加。</p>
+<p><span class="math display">\[\frac{W}{P}=\frac{A}{1+m}\]</span></p>
+<p>把 PS 改写后可见：给定 A 和 m，企业定价所对应的实际工资固定。m 越高，企业价格相对工资越高，工人的实际工资越低。</p>
+<h3 id="section-9">预期正确时，两边必须相容</h3>
+<p>若 P=P^e，WS 变成 W/P=A F(u,z)，PS 变成 W/P=A/(1+m)。两者一致时的失业率，就是 u_n。下一页用这个条件找出自然产出。</p>
+<h2 id="section-10">05 · 自然失业率与自然产出</h2>
+<p>课件对应：slides 3、9；补充：线性算例</p>
+<p><span class="math display">\[A F(u_n,z)=\frac{A}{1+m}\quad\Rightarrow\quad F(u_n,z)=\frac{1}{1+m}\]</span></p>
+<p>在本课件的工资和定价设定下，A 抵消了。自然失业率由 m、z 和 F 的形式确定。<strong>自然失业率可以大于零，也会随制度和企业加成变化。</strong> “自然”表示模型的均衡状态，并不表示最好或无法改变。</p>
+<p>由 N=L−U=L(1−u)，再代入生产函数 Y=AN：</p>
+<p><span class="math display">\[Y=AL(1-u),\qquad Y_n=AL(1-u_n)\]</span></p>
+<p>给定 A 与 L，失业越少，就业越多，产出越高。因此 Y&gt;Y_n 对应 u&lt;u_n，Y<Y_n 对应 u>u_n。经济短期可以超过 Y_n，Y_n 并不是最大物理产能的硬上限。</p>
+<h3 id="section-11">补充算例：把抽象的 F 变成可计算的式子</h3>
+<p>假设 F(u,z)=1−2u+z，z=0.05，m=0.10。自然失业率满足：</p>
+<p><span class="math display">\[1-2u_n+0.05=\frac{1}{1.10}\]</span></p>
+<p><span class="math display">\[u_n=\frac{1.05-1/1.10}{2}\approx 0.07045=7.045\%\]</span></p>
+<p>若 A=2、L=100，则 Y_n=2×100×(1−0.07045)≈185.91。</p>
+<p>如果 m 增加，右边 1/(1+m) 下降。因为 F 随 u 下降，要让 F 降到更低，就需要更高的 u_n。于是 Y_n 下降。z 上升也会提高 u_n、降低 Y_n，其他条件不变。</p>
+<p>预习自检：若只有名义货币 M 增加，m、z、A、L 都不变，自然产出会改变吗？不会。M 没有进入确定 Y_n 的这组条件。</p>
+
+{% endraw %}

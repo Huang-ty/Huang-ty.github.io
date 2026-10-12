@@ -11,8 +11,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/course-notes.css' | relative_url }}">
+  {% if page.math %}
+  <script src="{{ '/assets/js/mathjax-config.js' | relative_url }}"></script>
+  <script defer src="{{ '/assets/vendor/mathjax/tex-chtml.js' | relative_url }}"></script>
+  {% endif %}
 </head>
-<body>
+<body{% if page.course %} class="course-page"{% elsif page.courses_index %} class="courses-index"{% endif %}>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
     <nav class="site-nav" aria-label="Main">
       <a href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
@@ -21,13 +27,14 @@
         <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a>
         <a href="{{ '/work/' | relative_url }}"{% if page.url == '/work/' %} aria-current="page"{% endif %}>Work &amp; Research</a>
         <a href="{{ '/publications/' | relative_url }}"{% if page.url == '/publications/' %} aria-current="page"{% endif %}>Publications</a>
+        <a href="{{ '/courses/' | relative_url }}"{% if page.url contains '/courses/' %} aria-current="page"{% endif %}>Course Notes</a>
         <a href="{{ '/life-and-notes/' | relative_url }}"{% if page.url == '/life-and-notes/' %} aria-current="page"{% endif %}>Life &amp; Notes</a>
         <a href="{{ '/contact/' | relative_url }}"{% if page.url == '/contact/' %} aria-current="page"{% endif %}>Contact</a>
       </span>
     </nav>
   </header>
 
-  <main class="site-main">
+  <main class="site-main" id="main-content">
     {{ content }}
   </main>
 
@@ -44,5 +51,6 @@
   {% if page.layout == 'blog' %}
   <script src="{{ '/assets/js/filter.js' | relative_url }}"></script>
   {% endif %}
+  {% if page.course %}<script src="{{ '/assets/js/course-notes.js' | relative_url }}"></script>{% endif %}
 </body>
 </html>

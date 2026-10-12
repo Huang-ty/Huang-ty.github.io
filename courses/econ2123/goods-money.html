@@ -1,0 +1,398 @@
+---
+layout: "course-note"
+title: "商品市场、乘数与货币市场"
+course: "econ2123"
+permalink: "/courses/econ2123/goods-money/"
+description: "从收入消费反馈到储蓄、财政政策、货币需求与债券。"
+lang: "zh"
+math: true
+updated: "2026-10-12"
+---
+{% raw %}
+<details class="note-toc" open><summary>本页目录</summary><ol><li><a href="#section-1">5. The goods market and the Keynesian cross</a></li><li><a href="#section-9">6. Saving, fiscal policy, and stabilisers</a></li><li><a href="#section-20">7. Money, bonds, and monetary policy</a></li></ol></details>
+<h2 id="section-1">5. The goods market and the Keynesian cross</h2>
+<p><em>Sources: L4–5, slides 14–28; L6–7, slides 2–4; T2, pages 9–18.</em></p>
+<h3 id="section-2">5.1 Consumption responds to disposable income</h3>
+<p>The course assumes a linear aggregate consumption function:</p>
+<blockquote>
+<p><strong>Equation:</strong> C = c₀ + c₁Yᴰ = c₀ + c₁(Y − T), with 0 &lt; c₁ &lt; 1.</p>
+</blockquote>
+<p><strong>c₀, autonomous consumption</strong>, is consumption when disposable income is zero in this linear function. It also captures shifts associated with wealth, confidence, expected future income, access to credit, and other influences held outside the model. Positive consumption at zero current income can be financed through assets, borrowing, or transfers already reflected in net taxes.</p>
+<p><strong>c₁, the marginal propensity to consume (MPC)</strong>, measures the increase in consumption from one extra unit of disposable income. If c₁ = 0.6, an extra 100 of disposable income raises consumption by 60 and saving by 40, holding other influences fixed.</p>
+<p>MPC is a marginal response, not the average fraction of income consumed. The average propensity to consume is C/Yᴰ = c₀/Yᴰ + c₁ when Yᴰ is positive. It can exceed MPC, and consumption can exceed current disposable income.</p>
+<p>The lecture discusses heterogeneity: households facing tighter resources often consume a larger fraction of an extra unit of income. The model’s aggregate c₁ simplifies these different responses. Use the parameter specified in the question rather than assuming one universal empirical MPC.</p>
+<h4 id="section-3">Movement versus shift</h4>
+<p>On a graph with Yᴰ horizontally and C vertically, changing Yᴰ moves along the consumption line. Changing c₀ shifts the line vertically. Changing c₁ changes its slope.</p>
+<p>On a graph with Y horizontally, a rise in T lowers the intercept c₀ − c₁T. On the C-versus-Yᴰ graph, that same tax change reduces Yᴰ and causes a movement along the line. A correct answer must say which axes are being used.</p>
+<blockquote>
+<p><strong>中文理解:</strong> 加税到底是“沿线移动”还是“曲线移动”，取决于横轴。如果横轴是可支配收入，税收通过横轴变化起作用；如果横轴是总收入，固定总收入时消费更低，因此曲线下移。</p>
+</blockquote>
+<h3 id="section-4">5.2 Planned demand and equilibrium</h3>
+<p>In the first closed-economy model, investment is fixed at Ī and net exports are zero:</p>
+<blockquote>
+<p><strong>Equation:</strong> Z = C + Ī + G = c₀ − c₁T + Ī + G + c₁Y.</p>
+</blockquote>
+<p>Define autonomous expenditure A = c₀ − c₁T + Ī + G. Then Z = A + c₁Y. “Autonomous” means independent of current Y in this particular equation, not permanently unchanging.</p>
+<p>Equilibrium requires Y = Z. Substitution gives:</p>
+<blockquote>
+<p><strong>Derivation:</strong> Y = A + c₁Y<br />
+(1 − c₁)Y = A<br />
+Y* = A/(1 − c₁) = (c₀ + Ī + G − c₁T)/(1 − c₁).</p>
+</blockquote>
+<p>The asterisk marks the equilibrium value. Consumption is endogenous because it responds to equilibrium income. In this model c₀, c₁, Ī, G, and T are given.</p>
+<p>All terms must use consistent real units. In the goods-market model, Y is real output and real income. If nominal income is PY, dividing by P converts it to real purchasing power. Setting P = 1 is a convenient normalisation, not a reason to mix nominal income with real expenditure.</p>
+<h3 id="section-5">5.3 Reading the Keynesian-cross diagram</h3>
+<p>Put income/output Y on the horizontal axis and demand Z and production on the vertical axis. The 45-degree line has height Y and slope 1. The ZZ line has intercept A and slope c₁. Their intersection is equilibrium.</p>
+<p>If Y is below equilibrium, ZZ lies above the 45-degree line: planned demand exceeds current production. Inventories are unexpectedly depleted, which encourages firms to increase output. If Y is above equilibrium, output exceeds planned demand, inventories accumulate unexpectedly, and firms reduce production.</p>
+<p>The condition c₁ &lt; 1 ensures that planned demand rises by less than output when Y increases. It also makes the simple multiplier series converge. A change in autonomous expenditure shifts ZZ in parallel if c₁ is unchanged. The vertical shift in ZZ is the initial spending change; the horizontal change in equilibrium Y is the total multiplied response.</p>
+<figure>
+<img src="/assets/images/courses/econ-basics/keynesian_cross.png" alt="Keynesian cross: demand shock and equilibrium" />
+<figcaption aria-hidden="true">Keynesian cross: demand shock and equilibrium</figcaption>
+</figure>
+<p><em>Figure 1. An illustrative fall in autonomous expenditure shifts ZZ down. The decline in equilibrium output exceeds the initial spending reduction because consumption also falls.</em></p>
+<h3 id="section-6">5.4 Why the multiplier exists</h3>
+<p>Suppose c₀ increases by 100. Buyers initially demand 100 more output. Firms expand production, generating 100 more income. Households spend c₁ × 100 of the extra income, leading to another round of production and income, followed by c₁² × 100, and so on.</p>
+<blockquote>
+<p><strong>Equation:</strong> ΔY = [1 + c₁ + c₁² + …]ΔA = ΔA/(1 − c₁).</p>
+</blockquote>
+<p>If c₁ = 0.5, the rounds are 100 + 50 + 25 + 12.5 + … = 200. The multiplier is 2. It is larger when more of each extra income unit is spent, because less leaks into saving at each round.</p>
+<p>The same reasoning applies to a fall in autonomous expenditure: the initial loss of sales reduces income, which reduces consumption and sales further. The multiplier amplifies both expansions and contractions.</p>
+<p>Do not confuse this spending feedback with the velocity of money. The multiplier follows from income-induced expenditure. Velocity measures nominal expenditure relative to the money stock. They are distinct concepts.</p>
+<h3 id="section-7">5.5 Tutorial 2: full equilibrium solution</h3>
+<p>The exercise gives C = 480 + 0.5Yᴰ, Ī = 105, T = 70, and G = 250.</p>
+<p><strong>Step 1: express demand as a function of Y.</strong></p>
+<blockquote>
+<p>Z = 480 + 0.5(Y − 70) + 105 + 250 = 800 + 0.5Y.</p>
+</blockquote>
+<p><strong>Step 2: impose equilibrium.</strong> Y = 800 + 0.5Y, so 0.5Y = 800 and <strong>Y* = 1,600</strong>.</p>
+<p><strong>Step 3: calculate disposable income.</strong> Yᴰ = 1600 − 70 = <strong>1,530</strong>.</p>
+<p><strong>Step 4: calculate consumption.</strong> C = 480 + 0.5 × 1530 = <strong>1,245</strong>.</p>
+<p><strong>Step 5: check goods-market equilibrium.</strong> C + I + G = 1245 + 105 + 250 = <strong>1,600</strong>, matching output.</p>
+<p>An additional saving check connects to the next chapter. Private saving is 1530 − 1245 = <strong>285</strong>. Public saving is 70 − 250 = <strong>−180</strong>. National saving is 285 − 180 = <strong>105</strong>, equal to investment.</p>
+<p>The answer 800 is autonomous expenditure, not equilibrium output. The answer 1,530 is disposable income, not output. Keeping these three objects separate prevents a common mistake.</p>
+<h3 id="section-8">5.6 Tutorial 2: the pandemic demand shock</h3>
+<p>The tutorial asks what happens when autonomous consumption falls by 200 and investment falls by 50. Initially, at any given income, planned expenditure falls by 250.</p>
+<blockquote>
+<p><strong>Equation:</strong> ΔA = Δc₀ + ΔĪ = −250; ΔY = −250/(1 − c₁).</p>
+</blockquote>
+<p>Using c₁ = 0.5 from the preceding exercise gives <strong>ΔY = −500</strong>. If we also retain that exercise’s starting values, new output is <strong>1,100</strong>. New c₀ = 280, investment = 55, disposable income = 1030, and consumption = 280 + 0.5 × 1030 = <strong>795</strong>. Check: 795 + 55 + 250 = 1100.</p>
+<p>The direct consumption loss is 200. The further consumption loss from lower income is 0.5 × 500 = 250. Total consumption therefore falls by 450, while investment falls by 50, together explaining the 500 output decline.</p>
+<p>The slide presenting the shock does not restate c₁. The general answer is −250/(1 − c₁); the numerical result −500 assumes the earlier value continues to apply.</p>
+<p>The model captures weaker confidence, postponed purchases, and reduced investment. A pandemic can also disrupt supply, force business closures, change sectoral demand, and alter prices. A demand-only fixed-price model cannot explain all of those developments. This limitation is the appropriate response to the tutorial’s question about how well the model describes events.</p>
+<h2 id="section-9">6. Saving, fiscal policy, and stabilisers</h2>
+<p><em>Source: L4–5, slides 30–55.</em></p>
+<h3 id="section-10">6.1 Private, public, and national saving</h3>
+<p>Private saving is disposable income not consumed:</p>
+<blockquote>
+<p><strong>Equations:</strong> S = Y − T − C = −c₀ + (1 − c₁)(Y − T).<br />
+Public saving = T − G. National saving = S + T − G = Y − C − G.</p>
+</blockquote>
+<p>The <strong>marginal propensity to save</strong> is 1 − c₁. Public saving is positive for a surplus and negative for a deficit in this simple model. With T defined as net taxes, transfers have already been included in the tax-and-transfer balance.</p>
+<p>Rearranging goods-market equilibrium gives the investment–saving relation:</p>
+<blockquote>
+<p><strong>Derivation:</strong> Y = C + I + G<br />
+I = Y − C − G = (Y − T − C) + (T − G)<br />
+I = S + (T − G).</p>
+</blockquote>
+<p>This is the same goods-market condition viewed through saving. It does not say private saving alone always equals investment. That would require T = G. It also applies here to a closed economy; international lending and borrowing change the relationship in an open economy.</p>
+<p>Actual saving and actual investment, including unintended inventory changes, satisfy the accounting identity. The equilibrium condition says planned saving and planned investment are compatible without unintended inventories. The equality alone does not establish which variable drives the adjustment.</p>
+<h3 id="section-11">6.2 The paradox of thrift</h3>
+<p>Suppose all households try to save more at any given income by reducing c₀. With Ī, G, and T fixed, demand and equilibrium income fall. Because investment and public saving are fixed, equilibrium private saving must remain:</p>
+<blockquote>
+<p><strong>Equation:</strong> S = Ī − (T − G), a fixed amount in this model.</p>
+</blockquote>
+<p>For a reduction in c₀ of 1, Δc₀ = −1 and ΔY = −1/(1 − c₁). The change in saving is:</p>
+<blockquote>
+<p>ΔS = −Δc₀ + (1 − c₁)ΔY = 1 − 1 = 0.</p>
+</blockquote>
+<p>The initial desire to save more is offset by the loss of income. Each household’s intention is understandable; the aggregate result reflects that everyone’s lower spending reduces everyone else’s sales and income.</p>
+<blockquote>
+<p><strong>中文理解:</strong> 大家都想在“原来的收入”下多存钱，但减少消费后，总收入也下降了。最后收入下降抵消了想多储蓄的效果。这并不代表个人储蓄没有意义。</p>
+</blockquote>
+<p>The lecture also asks about reducing c₁. Under fixed investment and fiscal variables, equilibrium private saving is still fixed by S = Ī − T + G. For positive disposable income, a lower c₁ reduces consumption demand and equilibrium output. Differentiating the equilibrium relation gives dY/dc₁ = (Y − T)/(1 − c₁), which is positive when Y − T &gt; 0.</p>
+<p>This is a short-run result under specific assumptions. If investment responds to income and interest rates, public saving changes, or productive capacity adjusts over time, the final saving outcome can change. Do not carry “saving never rises” into every model.</p>
+<h3 id="section-12">6.3 What governments spend on</h3>
+<p>The lecture distinguishes public goods such as infrastructure and safety, social programmes such as education and retirement support, and measures intended to stabilise economic activity. Its historical charts show the expansion of the welfare state and changes in spending composition. Those charts provide context for the importance of fiscal policy; their percentages are historical examples rather than fixed parameters of the model.</p>
+<p><strong>Mandatory or entitlement spending</strong> follows eligibility and benefit rules, so spending can change as the number of recipients changes. <strong>Discretionary spending</strong> is set through budget decisions. The distinction does not mean mandatory programmes can never be changed: legislators can change their rules. It also does not mean every mandatory programme responds strongly to recessions.</p>
+<p>Government budget outlays are broader than G in the GDP equation. Transfers and interest payments are not direct purchases of current goods and services. Keep the institutional budget discussion separate from the simplified expenditure variable G.</p>
+<h3 id="section-13">6.4 Spending, tax, and balanced-budget multipliers</h3>
+<p>With c₁ unchanged, changes in the Keynesian-cross equilibrium satisfy:</p>
+<blockquote>
+<p><strong>Master equation:</strong> ΔY = [Δc₀ + ΔĪ + ΔG − c₁ΔT]/(1 − c₁).</p>
+</blockquote>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Change, holding other exogenous variables fixed</th>
+<th>Multiplier</th>
+<th>Initial effect on demand</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Higher government purchases</td>
+<td>ΔY/ΔG = 1/(1 − c₁)</td>
+<td>One unit for each unit of G</td>
+</tr>
+<tr>
+<td>Higher taxes</td>
+<td>ΔY/ΔT = −c₁/(1 − c₁)</td>
+<td>Consumption falls by c₁ per tax unit</td>
+</tr>
+<tr>
+<td>Tax cut of one unit</td>
+<td>Output rises by c₁/(1 − c₁)</td>
+<td>Households spend only the MPC fraction initially</td>
+</tr>
+<tr>
+<td>Equal increases in G and T</td>
+<td>ΔY/ΔG = 1, when ΔG = ΔT</td>
+<td>Initial net demand rises by 1 − c₁ per unit</td>
+</tr>
+<tr>
+<td>Higher c₀ or fixed investment</td>
+<td>1/(1 − c₁)</td>
+<td>Direct addition to autonomous demand</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="section-14">Why a tax cut has a smaller effect than equal purchases</h4>
+<p>An extra unit of G directly buys one unit of output. A one-unit tax cut raises disposable income by one, but only c₁ is initially spent; the rest is saved. Both initial effects then pass through the same consumption feedback. The spending multiplier therefore exceeds the absolute tax multiplier by exactly 1 in this model.</p>
+<h4 id="section-15">Why the balanced-budget multiplier is positive</h4>
+<p>If ΔG = ΔT = x, substitute into the master equation:</p>
+<blockquote>
+<p>ΔY = (x − c₁x)/(1 − c₁) = x.</p>
+</blockquote>
+<p>Government purchases add x directly, whereas higher taxes initially reduce consumption by c₁x. The net initial demand increase is (1 − c₁)x. Multiplication by 1/(1 − c₁) gives x.</p>
+<p>The government’s initial budget need not be balanced. Equal increases in purchases and taxes leave its existing balance unchanged. “Balanced-budget multiplier” refers to the financing of the change.</p>
+<p>In this fixed-investment model, ΔY = ΔT implies disposable income is unchanged after the adjustment. Consequently ΔC = 0, ΔS = 0, and public saving is unchanged. The increase in output equals the increase in G.</p>
+<blockquote>
+<p><strong>Source correction:</strong> L4–5, slides 46–47, contain a downward tax arrow in the first feedback line. The stated experiment requires <strong>G rises and T rises by the same amount</strong>.</p>
+</blockquote>
+<h4 id="section-16">Numerical comparison using the Tutorial 2 baseline</h4>
+<p>Start from c₁ = 0.5 and Y = 1600.</p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<thead>
+<tr>
+<th>Policy</th>
+<th style="text-align: right;">Change in Y</th>
+<th style="text-align: right;">New Y</th>
+<th style="text-align: right;">Change in C</th>
+<th style="text-align: right;">Change in T − G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G rises by 100</td>
+<td style="text-align: right;">+200</td>
+<td style="text-align: right;">1,800</td>
+<td style="text-align: right;">+100</td>
+<td style="text-align: right;">−100</td>
+</tr>
+<tr>
+<td>T falls by 100</td>
+<td style="text-align: right;">+100</td>
+<td style="text-align: right;">1,700</td>
+<td style="text-align: right;">+100</td>
+<td style="text-align: right;">−100</td>
+</tr>
+<tr>
+<td>G and T both rise by 100</td>
+<td style="text-align: right;">+100</td>
+<td style="text-align: right;">1,700</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are separate experiments. Do not accumulate them unless a question explicitly asks for a sequence.</p>
+<h3 id="section-17">6.5 Automatic stabilisers</h3>
+<p>Automatic stabilisers are existing rules that cushion fluctuations without requiring a new discretionary policy decision each time. When income falls, tax collections tend to fall and eligibility for some transfers rises. Disposable income therefore falls by less than pre-tax income, limiting the decline in consumption.</p>
+<p>Unemployment insurance supports the income of eligible people who lose their jobs. Progressive taxes collect more as incomes rise and less as incomes fall. Both can dampen the feedback between output and consumption. An automatic increase in benefits can widen a deficit even if no new stimulus legislation has passed.</p>
+<h4 id="section-18">Algebraic extension of the lecture’s intuition</h4>
+<p>Let net taxes be T = T₀ + tY, with 0 &lt; t &lt; 1 and investment still fixed. Here t is the marginal response of net taxes to income. This linear rule illustrates the stabilising mechanism; a constant t need not be a progressive tax system by itself.</p>
+<p>Then disposable income is (1 − t)Y − T₀, and:</p>
+<blockquote>
+<p><strong>Equations:</strong> Z = c₀ − c₁T₀ + Ī + G + c₁(1 − t)Y.<br />
+Y* = (c₀ − c₁T₀ + Ī + G)/[1 − c₁(1 − t)].</p>
+</blockquote>
+<p>The spending multiplier becomes 1/[1 − c₁(1 − t)]. This is smaller than 1/(1 − c₁), because some additional income automatically becomes net taxes instead of disposable income. With c₁ = 0.8 and t = 0.25, the multiplier falls from 5 to 2.5.</p>
+<p>The new autonomous-tax multiplier is −c₁/[1 − c₁(1 − t)]. The earlier balanced-budget result of exactly 1 cannot be applied mechanically to changes in T₀: total taxes now also change when output changes.</p>
+<h3 id="section-19">6.6 Policy lags and model limits</h3>
+<p>Discretionary fiscal measures can take time to recognise, approve, and implement. Automatic stabilisers respond through existing rules. Monetary decisions may be taken more quickly, although their effects on spending also take time.</p>
+<p>The basic multiplier holds investment, interest rates, prices, and external trade fixed. Real outcomes can differ because these variables respond, because households have different MPCs, because policy is financed differently, or because capacity is constrained. The lecture cites a historical review suggesting a central range of roughly 0.8–1.5 for certain temporary, deficit-financed government-purchase multipliers, with wider uncertainty. This is evidence about specified settings, not a universal constant.</p>
+<p>At a zero interest-rate bound, conventional monetary easing may have limited additional scope, making fiscal demand support especially relevant within this framework. IS–LM now adds the financial feedback that the first multiplier model leaves out.</p>
+<h2 id="section-20">7. Money, bonds, and monetary policy</h2>
+<p><em>Sources: L6–7, slides 7–37; T3, pages 3–15.</em></p>
+<h3 id="section-21">7.1 The portfolio choice</h3>
+<p>Money is a liquid asset used for transactions. The course describes M1 as currency plus readily usable deposits, and M2 as a broader aggregate including some less liquid assets. These are stylised descriptions; exact aggregate definitions depend on the statistical system. Their role in the model is to distinguish readily spendable balances from broader wealth.</p>
+<p>Given financial wealth, households choose how much to hold as money and how much as bonds. Money provides liquidity but pays zero nominal interest in the model. Bonds pay interest but are not directly usable for ordinary purchases. Holding money therefore has an opportunity cost: the interest forgone on bonds.</p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Model asset</th>
+<th>Direct transaction use</th>
+<th>Nominal return</th>
+<th>Reason to hold it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Money</td>
+<td>Yes</td>
+<td>0</td>
+<td>Liquidity</td>
+</tr>
+<tr>
+<td>One-year risk-free bond</td>
+<td>Must first be converted to money</td>
+<td>i</td>
+<td>Interest income</td>
+</tr>
+</tbody>
+</table></div>
+<p>This completes the comparison table in Tutorial 3. Money demand is a desired <strong>stock of liquid assets</strong>, not how much income a person wants to earn or how much consumption they want to buy.</p>
+<h3 id="section-22">7.2 Bond prices and yields</h3>
+<p>For a one-year zero-coupon bond, the holder pays Pᴮ today and receives the face value F in one year. There are no coupon payments during the year.</p>
+<blockquote>
+<p><strong>Equations:</strong> i = (F − Pᴮ)/Pᴮ = F/Pᴮ − 1.<br />
+Pᴮ = F/(1 + i).</p>
+</blockquote>
+<p>With a fixed future payoff, a higher purchase price gives a lower return. The bond-price–interest-rate relationship is therefore inverse. The denominator in the return formula is the amount invested today, not the face value received later.</p>
+<h4 id="section-23">Tutorial 3: a bond paying 100</h4>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<thead>
+<tr>
+<th>Price today</th>
+<th>Calculation</th>
+<th style="text-align: right;">One-year yield</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>98</td>
+<td>(100 − 98)/98</td>
+<td style="text-align: right;">2.0408%</td>
+</tr>
+<tr>
+<td>99</td>
+<td>(100 − 99)/99</td>
+<td style="text-align: right;">1.0101%</td>
+</tr>
+<tr>
+<td>97</td>
+<td>(100 − 97)/97</td>
+<td style="text-align: right;">3.0928%</td>
+</tr>
+</tbody>
+</table></div>
+<p>The lecture rounds the price-99 yield to 1%; its exact value is approximately 1.0101%. If a question specifies a 5% yield, the price is 100/1.05 ≈ 95.2381. Enter 0.05, not 5, into the formula.</p>
+<p>The lecture also shows a coupon bond with face value 5,000 and annual coupon rate 8%, paid semiannually. It pays 5,000 × 0.08/2 = <strong>200 every half-year</strong>, plus the principal at maturity. A coupon rate is a payment rule based on face value; it need not equal the market yield when the price changes. The one-year zero-coupon formula is the formula used in the core model.</p>
+<h3 id="section-24">7.3 Money demand</h3>
+<p>The money-demand equation is:</p>
+<blockquote>
+<p><strong>Equation:</strong> Mᵈ = PY × L(i), with L(i) &gt; 0 and L′(i) &lt; 0 in the relevant range.</p>
+</blockquote>
+<p>Nominal income PY proxies for the value of transactions. More real activity raises transactions; higher prices make a given quantity of transactions require more nominal spending. Both increase desired nominal money holdings at a given interest rate.</p>
+<p>The function L(i) measures desired money holdings relative to nominal income. A higher interest rate makes holding bonds more attractive and holding non-interest-bearing money more costly, so L(i) falls.</p>
+<p>With i vertically and M horizontally, money demand slopes downward. An interest-rate change moves along the curve when nominal income is fixed. Higher nominal income shifts the curve to the right. A change in payment technology or liquidity preference can also shift the function itself.</p>
+<blockquote>
+<p><strong>中文理解:</strong> 货币需求不是“想消费多少”，而是“为了交易和流动性，想把多少财富以货币形式拿在手里”。利率越高，持有不生息货币的机会成本越高。</p>
+</blockquote>
+<h3 id="section-25">7.4 Money supply and equilibrium</h3>
+<p>The central bank sets Mˢ = M in the simple model. Money supply is vertical in the (M, i) diagram because the supplied quantity is fixed rather than chosen as a function of i within that experiment.</p>
+<blockquote>
+<p><strong>Equilibrium:</strong> M = Mᵈ = PY L(i).</p>
+</blockquote>
+<p>If the central bank raises M while PY is fixed, the equilibrium interest rate falls. At the old rate, people collectively hold more money than they wish to. Attempts to buy bonds raise bond prices and reduce yields until people willingly hold the larger money stock.</p>
+<p>An individual can exchange money for bonds, but that transaction transfers money to another person. It does not eliminate aggregate money. The adjustment in bond prices and interest rates changes the public’s desired aggregate holdings.</p>
+<p>If PY increases while M is fixed, money demand shifts right and i rises. People seek more liquid balances and sell or demand fewer bonds. Bond prices fall, raising yields. The higher opportunity cost of money reduces desired holdings enough to restore equilibrium.</p>
+<h4 id="section-26">Tutorial 3, page 6: numerical equilibrium</h4>
+<p>The image-based exercise gives Mᵈ = $Y(0.2 − i), nominal income $Y = 2000, and Mˢ = 300. The stated monetary units are trillions of US dollars.</p>
+<blockquote>
+<p>300 = 2000(0.2 − i) = 400 − 2000i.<br />
+2000i = 100, so <strong>i = 0.05 = 5%</strong>.</p>
+</blockquote>
+<p>For the graph, invert demand: i = 0.2 − Mᵈ/2000. Its vertical intercept is 20% and its horizontal intercept is 400. Draw supply vertically at M = 300 and mark equilibrium at (300, 5%). The equation is economically relevant over the range where desired money is non-negative.</p>
+<p>Added comparative-static checks: with nominal income still 2000, raising money supply to 320 gives i = 4%. With M still 300, raising nominal income to 2400 gives i = 7.5%. These isolate the two distinct shifts.</p>
+<figure>
+<img src="/assets/images/courses/econ-basics/money_market.png" alt="Money market: tutorial equilibrium" />
+<figcaption aria-hidden="true">Money market: tutorial equilibrium</figcaption>
+</figure>
+<p><em>Figure 2. Tutorial 3’s original equilibrium is M = 300 and i = 5%. An illustrative increase in M to 320 lowers i to 4% at unchanged nominal income.</em></p>
+<h3 id="section-27">7.5 Open market operations: the same change in two markets</h3>
+<p>An open market operation is a central-bank purchase or sale of bonds in the market. In the course model, the central bank pays for a purchase by supplying money and absorbs money when it sells bonds.</p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Money in circulation</th>
+<th>Bond-market pressure</th>
+<th>Bond price</th>
+<th>Interest rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Central bank buys bonds</td>
+<td>Increases</td>
+<td>Additional demand for bonds</td>
+<td>Rises</td>
+<td>Falls</td>
+</tr>
+<tr>
+<td>Central bank sells bonds</td>
+<td>Decreases</td>
+<td>More bonds offered / less central-bank demand</td>
+<td>Falls</td>
+<td>Rises</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Expansion:</strong> The central bank buys bonds; sellers receive money; M rises. The money-supply line shifts right. Bond prices rise and interest rates fall.</p>
+<p><strong>Contraction:</strong> The central bank sells bonds; buyers pay money to it; M falls. The money-supply line shifts left. Bond prices fall and interest rates rise.</p>
+<p>These fill Tutorial 3’s blanks: to lower rates the central bank <strong>increases</strong> money supply; bond sales <strong>remove or reduce</strong> money in circulation; supply <strong>decreases</strong> and shifts <strong>left</strong>.</p>
+<blockquote>
+<p><strong>中文记忆:</strong> 央行买债，把钱付给市场；央行卖债，把钱收回。先确认交易主体是“央行”，再判断货币供给方向。</p>
+</blockquote>
+<h4 id="section-28">Why the tutorial’s bond-demand curve slopes upward</h4>
+<p>Tutorial 3 draws i on the vertical axis. A higher yield corresponds to a lower bond price and makes bonds more attractive, so desired bond holdings rise. The bond-demand curve is therefore upward-sloping in this diagram. With bond price vertically, the usual demand curve slopes downward.</p>
+<p>An increase in nominal income shifts money demand right and, at given financial wealth, shifts private bond demand left. In the tutorial’s interest-rate diagram, a leftward shift of the upward-sloping bond-demand curve raises the equilibrium yield at fixed bond supply.</p>
+<p>A central-bank purchase can be represented as additional total demand for bonds, shifting that demand right and reducing i. Alternatively, if the graph includes only private holdings, the central bank’s purchase reduces the supply of bonds left for the public. These are alternative accounting conventions for the same transaction; do not apply both shifts to one graph and double-count it.</p>
+<p>The tutorial’s historical rate chart suggests expansionary policy during the sharp 2008–2009 rate reductions and contractionary policy during the 2016–2018 increases. Within the simple model these correspond to bond purchases and bond sales respectively. The chart shows the policy-rate stance, not a transaction-by-transaction record of the central bank’s actual operating tools.</p>
+<h3 id="section-29">7.6 Velocity and the quantity equation</h3>
+<p>Velocity measures nominal expenditure relative to the money stock:</p>
+<blockquote>
+<p><strong>Equations:</strong> V = PY/M; MV = PY. At money-market equilibrium, V = 1/L(i).</p>
+</blockquote>
+<p>If nominal GDP is 1000 and the money stock is 200, velocity is 5 per period. A unit of money can support multiple transactions as it moves between holders. It is therefore unnecessary for the money stock to equal a year’s total spending.</p>
+<p>Payment technologies can reduce the quantity of balances needed for a given level of transactions. This is the intuition behind the lecture’s discussion of shifts in M/PY over time. It does not establish that velocity must always rise in every period.</p>
+<p>MV = PY is an identity when V is defined as PY/M. A theory predicting that more money only raises prices requires additional assumptions about V and real output. In short-run IS–LM, P is fixed and Y can respond; do not import a fixed-output conclusion from a different model.</p>
+<h3 id="section-30">7.7 The liquidity trap and zero lower bound</h3>
+<p>In the stylised model, money pays zero nominal interest and is more liquid than bonds. If a comparable bond offered a negative nominal return, costlessly held money would dominate it. This gives the model a zero lower bound on i.</p>
+<p>At i = 0, once transaction needs are met, holders are willing to absorb extra money instead of bonds without a further fall in the interest rate. Money demand becomes horizontal at zero in the usual diagram, and a further expansion of money supply can leave i unchanged. This is the liquidity trap.</p>
+<p>The limitation concerns the conventional channel “more money lowers i, which raises investment.” It does not logically imply that all forms of policy or every change in financial conditions are ineffective. The literal zero bound depends on the model’s assumptions about money, returns, and storage costs.</p>
+<p>The lecture uses Japan’s low-yield history and the US low-rate episodes as illustrations. A chart of a long-term bond yield and a chart of a short-term policy rate are not interchangeable measures, even though both can illustrate low nominal interest rates.</p>
+<blockquote>
+<p><strong>中文理解:</strong> 流动性陷阱中，新增货币可能只是被持有，并没有继续压低模型中的利率。因此，“增加货币”到“增加投资”的这条传导链会受限。</p>
+</blockquote>
+
+{% endraw %}

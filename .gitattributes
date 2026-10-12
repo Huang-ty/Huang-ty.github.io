@@ -1,0 +1,4 @@
+*.pdf binary
+*.png binary
+*.woff binary
+assets/vendor/mathjax/** -whitespace

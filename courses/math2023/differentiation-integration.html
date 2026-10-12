@@ -1,0 +1,115 @@
+---
+layout: "course-note"
+title: "多元微分与二重积分"
+course: "math2023"
+permalink: "/courses/math2023/differentiation-integration/"
+description: "空间曲线、极限、可微、隐函数、无约束极值与累次积分。"
+lang: "zh"
+math: true
+updated: "2026-10-12"
+---
+{% raw %}
+<details class="note-toc" open><summary>本页目录</summary><ol><li><a href="#section-1">空间曲线、向量函数与弧长</a></li><li><a href="#section-2">定义域、极限与连续</a></li><li><a href="#section-6">偏导、可微、隐函数与线性近似</a></li><li><a href="#section-9">无约束极值与区域上的绝对极值</a></li><li><a href="#section-11">矩形上的二重积分与累次积分</a></li></ol></details>
+<h2 id="section-1">空间曲线、向量函数与弧长</h2>
+<p>L4–L5 | 参数把“形状”变成“运动”</p>
+<p><span>讲义定位：L4，pp.6–9；L5，pp.1–14。</span></p>
+<div class="tcolorbox">
+<p>位置 <span class="math inline">\(\boldsymbol{r}(t)=(x(t),y(t),z(t))\)</span>；速度 <span class="math inline">\(\boldsymbol{v}=\boldsymbol{r}&#39;(t)\)</span>；速率 <span class="math inline">\(=\left\lVert \boldsymbol{r}&#39;(t)\right\rVert\)</span>；加速度 <span class="math inline">\(\boldsymbol{a}=\boldsymbol{r}&#39;&#39;(t)\)</span>。<br />
+切线 <span class="math inline">\(\boldsymbol{r}=\boldsymbol{r}(t_0)+s\boldsymbol{r}&#39;(t_0)\)</span>，要求 <span class="math inline">\(\boldsymbol{r}&#39;(t_0)\ne 0\)</span>；单位切向量 <span class="math inline">\(\boldsymbol{T}=\boldsymbol{r}&#39;/\left\lVert \boldsymbol{r}&#39;\right\rVert\)</span>。</p>
+</div>
+<p><strong>按分量运算：</strong>向量函数的极限、连续、求导、积分都逐分量进行。不定积分加一个常向量 <span class="math inline">\(\boldsymbol{C}\)</span>。 <span class="math display">\[\begin{align*}
+(f\boldsymbol{u})&#39;&amp;=f&#39;\boldsymbol{u}+f\boldsymbol{u}&#39;,\\
+(\boldsymbol{u}\cdot\boldsymbol{v})&#39;&amp;=\boldsymbol{u}&#39;\cdot\boldsymbol{v}+\boldsymbol{u}\cdot\boldsymbol{v}&#39;,\\
+(\boldsymbol{u}\times\boldsymbol{v})&#39;&amp;=\boldsymbol{u}&#39;\times\boldsymbol{v}+\boldsymbol{u}\times\boldsymbol{v}&#39;.
+\end{align*}\]</span> 叉积的顺序不能交换。若长度固定，<span class="math inline">\((\boldsymbol{r}\cdot\boldsymbol{r})&#39;=2\boldsymbol{r}\cdot\boldsymbol{r}&#39;=0\)</span>，因此位置与速度垂直。</p>
+<div class="center">
+<div class="minipage">
+<p><strong>圆柱螺旋线</strong><br />
+<span class="math inline">\(\boldsymbol{r}=(a\cos t,a\sin t,bt)\)</span>。<br />
+绕一圈 <span class="math inline">\(0\le t\le2\pi\)</span>，高度增加 <span class="math inline">\(2\pi b\)</span>。<br />
+速度 <span class="math inline">\((-a\sin t,a\cos t,b)\)</span>，速率固定为 <span class="math inline">\(\sqrt{a^2+b^2}\)</span>。</p>
+</div>
+</div>
+<div class="tcolorbox">
+<p>对分段光滑、只遍历一次的曲线， <span class="math display">\[\boxed{L=\int_a^b\left\lVert \boldsymbol{r}&#39;(t)\right\rVert\,dt=\int_a^b\sqrt{x&#39;(t)^2+y&#39;(t)^2+z&#39;(t)^2}\,dt}.\]</span> 弧长函数 <span class="math inline">\(s(t)=\int_a^t\left\lVert \boldsymbol{r}&#39;(u)\right\rVert\,du\)</span>，<span class="math inline">\(ds/dt=\left\lVert \boldsymbol{r}&#39;(t)\right\rVert\)</span>。若速率始终正，可以反解 <span class="math inline">\(t=t(s)\)</span>；弧长参数下速率为 <span class="math inline">\(1\)</span>。</p>
+</div>
+<p>上面螺旋线一圈长为 <span class="math inline">\(2\pi\sqrt{a^2+b^2}\)</span>。圆、椭圆常取 <span class="math inline">\(x=a\cos t,y=b\sin t\)</span>；再由另一个曲面方程求 <span class="math inline">\(z\)</span>，用于参数化交线。 <strong>已知速率与运动方向：</strong><span class="math inline">\(\boldsymbol{v}=({\rm speed})\times\)</span>(对应方向的单位切向量)。<span class="math inline">\(\pm\)</span> 号由运动方向决定。 <strong>易错点：</strong>弧长必须先用端点或区域条件找参数区间；若曲线重复遍历，积分计入重复路程。参数化的向量函数存在，并不意味着每处都有非零切向量。</p>
+
+<h2 id="section-2">定义域、极限与连续</h2>
+<p>L6 | “所有路径”与“某两条路径”要分清</p>
+<p><span>讲义定位：L6，pp.1–2、7–16。</span></p>
+<h3 class="unnumbered" id="section-3">定义域与值域</h3>
+<p>自然定义域是使表达式有意义的<strong>所有输入</strong>；值域是实际能达到的<strong>输出</strong>。实函数里：分母 <span class="math inline">\(\ne0\)</span>；偶次根号内部 <span class="math inline">\(\ge0\)</span>；对数内部 <span class="math inline">\(&gt;0\)</span>。多个条件取交集。</p>
+<p>例：<span class="math inline">\(f(x,y)=\ln(9-x^2-y^2)/\sqrt{y-x}\)</span>，定义域为 <span class="math inline">\(x^2+y^2&lt;9\)</span> 且 <span class="math inline">\(y&gt;x\)</span>。分母中的根号要求严格正。等值集 <span class="math inline">\(L_c=\{P:f(P)=c\}\)</span> 也必须位于定义域内。</p>
+<div class="tcolorbox">
+<p><strong>二维极限：</strong><span class="math inline">\(\lim_{(x,y)\to(a,b)}f=L\)</span> 表示从定义域内任意方向逼近都接近 <span class="math inline">\(L\)</span>。<br />
+严格说：任给 <span class="math inline">\(\varepsilon&gt;0\)</span>，存在 <span class="math inline">\(\delta&gt;0\)</span>，使 <span class="math inline">\(0&lt;\sqrt{(x-a)^2+(y-b)^2}&lt;\delta\)</span> 时都有 <span class="math inline">\(|f-L|&lt;\varepsilon\)</span>。</p>
+</div>
+
+<h3 class="unnumbered" id="section-4">不存在：找到两条路径不同即可</h3>
+<p><span class="math inline">\(f(x,y)=xy/(x^2+y^2)\)</span>。沿 <span class="math inline">\(y=0\)</span>，值为 <span class="math inline">\(0\)</span>；沿 <span class="math inline">\(y=x\)</span>，值为 <span class="math inline">\(1/2\)</span>，因此原点极限不存在。 <strong>易错点：</strong>两条甚至所有直线路径的极限相同，都不够证明极限存在。例如 <span class="math inline">\(f=x^2y/(x^4+y^2)\)</span>，所有过原点直线极限为 <span class="math inline">\(0\)</span>，但沿 <span class="math inline">\(y=x^2\)</span> 为 <span class="math inline">\(1/2\)</span>。</p>
+<h3 class="unnumbered" id="section-5">存在：给不依赖方向的估计</h3>
+<p>连续表达式可直接代入；有 <span class="math inline">\(0/0\)</span> 时用夹逼或极坐标 <span class="math inline">\(x=r\cos\theta,y=r\sin\theta\)</span>。要让估计对所有 <span class="math inline">\(\theta\)</span> 有效。 <span class="math display">\[\left|\frac{x^2y}{x^2+y^2}\right|\le |y|\le\sqrt{x^2+y^2}\longrightarrow0.\]</span> 所以该函数在原点的极限为 <span class="math inline">\(0\)</span>。夹逼定理：如果 <span class="math inline">\(h_1\le f\le h_2\)</span> 且两端同趋 <span class="math inline">\(L\)</span>，则 <span class="math inline">\(f\to L\)</span>。和、积、商的极限法则照常使用，但商要求分母极限非零。</p>
+<div class="tcolorbox">
+<p><strong>连续的三件事：</strong><span class="math inline">\(f(P)\)</span> 有定义；<span class="math inline">\(\lim_{Q\to P}f(Q)\)</span> 存在；两者相等。分段函数想在接缝连续，应把点值设为邻域极限；如果极限不存在，改点值也无济于事。</p>
+</div>
+
+<h2 id="section-6">偏导、可微、隐函数与线性近似</h2>
+<p>L7–L10 | 偏导是局部切片，可微是整体近似</p>
+<p><span>讲义定位：L7，pp.1–6；L8，pp.1–2、6–9；L10，pp.8–12。</span></p>
+<div class="tcolorbox">
+<p><strong>偏导：</strong>只改变一个自变量，其他<strong>独立变量</strong>暂时固定。 <span class="math display">\[f_x(a,b)=\lim_{h\to 0}\frac{f(a+h,b)-f(a,b)}h,\quad
+f_y(a,b)=\lim_{h\to 0}\frac{f(a,b+h)-f(a,b)}h.\]</span></p>
+</div>
+<p>对 <span class="math inline">\(f=x^2y+\sin(xy)\)</span>：<span class="math inline">\(f_x=2xy+y\cos(xy)\)</span>，<span class="math inline">\(f_y=x^2+x\cos(xy)\)</span>。混合二阶偏导 <span class="math inline">\(f_{xy}=\partial_y(f_x)\)</span>；若二阶混合偏导在附近连续，则 <span class="math inline">\(f_{xy}=f_{yx}\)</span>。</p>
+<h3 class="unnumbered" id="section-7">可微比“两个偏导存在”更强</h3>
+<p><span class="math display">\[f(a+h,b+k)=f(a,b)+f_x(a,b)h+f_y(a,b)k+o\!\left(\sqrt{h^2+k^2}\right).\]</span> 这表示误差相对于移动距离趋于零。偏导在附近连续是可微的充分条件；可微推出连续与偏导存在；仅偏导存在不能反推可微或连续。</p>
+
+<h3 class="unnumbered" id="section-8">隐函数求导：依赖变量也要跟着求导</h3>
+<p>若 <span class="math inline">\(F(x,y)=0\)</span> 局部定义 <span class="math inline">\(y=y(x)\)</span>，且 <span class="math inline">\(F_y\ne0\)</span>，则 <span class="math inline">\(dy/dx=-F_x/F_y\)</span>。若 <span class="math inline">\(F(x,y,z)=0\)</span> 局部定义 <span class="math inline">\(z=z(x,y)\)</span> 且 <span class="math inline">\(F_z\ne0\)</span>，则 <span class="math display">\[\boxed{z_x=-\frac{F_x}{F_z},\qquad z_y=-\frac{F_y}{F_z}}.\]</span> 例如球面 <span class="math inline">\(x^2+y^2+z^2=9\)</span> 在 <span class="math inline">\(z\ne0\)</span> 处：<span class="math inline">\(z_x=-x/z,z_y=-y/z\)</span>。这里 <span class="math inline">\(z\)</span> 是依赖变量，不可把它误当常数。</p>
+<div class="tcolorbox">
+<p><strong>线性近似：</strong><span class="math display">\[L(x,y)=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)\]</span><br />
+<strong>全微分：</strong><span class="math inline">\(df=f_x\,dx+f_y\,dy\)</span>（三变量加 <span class="math inline">\(f_z\,dz\)</span>）。<br />
+实际变化 <span class="math inline">\(\Delta f=f(a+\Delta x,b+\Delta y)-f(a,b)\)</span>，小变化时 <span class="math inline">\(\Delta f\approx df\)</span>，取 <span class="math inline">\(dx=\Delta x,dy=\Delta y\)</span>。</p>
+</div>
+<p><strong>例：</strong><span class="math inline">\(f=\sqrt{4-x^2-y^2}\)</span> 在 <span class="math inline">\((1,1)\)</span> 的偏导都是 <span class="math inline">\(-1/\sqrt2\)</span>。移动量 <span class="math inline">\((.01,-.03)\)</span> 时，<span class="math inline">\(df=.02/\sqrt2\approx.01414\)</span>，函数值约为 <span class="math inline">\(\sqrt2+.01414\)</span>。 <strong>误差估计：</strong><span class="math inline">\(|df|\le|f_x|\varepsilon_x+|f_y|\varepsilon_y+|f_z|\varepsilon_z\)</span>。这是最大绝对误差的<strong>一阶近似</strong>；相对误差约 <span class="math inline">\(|df|/|f|\)</span>，百分比再乘 <span class="math inline">\(100\%\)</span>。所有测量单位先统一。</p>
+
+<h2 id="section-9">无约束极值与区域上的绝对极值</h2>
+<p>L11 | 临界点不等于极值点</p>
+<p><span>讲义定位：L11，pp.1–9。</span></p>
+<p><strong>局部极值</strong>只比较附近；<strong>绝对极值</strong>比较整个指定区域。定义域内点若 <span class="math inline">\(f_x=f_y=0\)</span>，或至少一个一阶偏导不存在，称为临界点；光滑内点极值必为驻点，但驻点可能是鞍点。</p>
+
+<div class="tcolorbox">
+<p><strong>二阶导数判别：</strong>在驻点 <span class="math inline">\((a,b)\)</span>，假设附近二阶偏导连续，计算 <span class="math display">\[\boxed{D=f_{xx}f_{yy}-(f_{xy})^2}.\]</span> <span class="math inline">\(D&gt;0,f_{xx}&gt;0\)</span>：局部最小；<span class="math inline">\(D&gt;0,f_{xx}&lt;0\)</span>：局部最大；<span class="math inline">\(D&lt;0\)</span>：鞍点；<span class="math inline">\(D=0\)</span>：无法判断。</p>
+</div>
+<p><strong>讲义例：</strong><span class="math inline">\(f=3x^2-2xy+y^2-8y\)</span>。解 <span class="math inline">\(6x-2y=0,-2x+2y-8=0\)</span>，得 <span class="math inline">\((2,6)\)</span>。<span class="math inline">\(D=6\cdot2-(-2)^2=8&gt;0\)</span> 且 <span class="math inline">\(f_{xx}&gt;0\)</span>，局部最小值为 <span class="math inline">\(-24\)</span>。</p>
+<p><span class="math inline">\(D=0\)</span> 真正意味着测试失效：<span class="math inline">\(x^4+y^4\)</span> 在原点最小，<span class="math inline">\(x^4-y^4\)</span> 在原点是鞍点，但二者的 <span class="math inline">\(D\)</span> 都是 <span class="math inline">\(0\)</span>。</p>
+<h3 class="unnumbered" id="section-10">闭且有界区域上的绝对极值：三类点一起比较</h3>
+<p>若 <span class="math inline">\(f\)</span> 连续，区域 <span class="math inline">\(R\)</span> 非空、闭且有界，极值存在。完整候选清单：</p>
+<ol>
+<li><p>内部：驻点、偏导不存在的点。</p></li>
+<li><p>边界：每条边参数化成单变量函数，或用 Lagrange；找边界上的临界点。</p></li>
+<li><p>边界端点、顶点、角点：逐个代入。最后比较全部 <span class="math inline">\(f\)</span> 值。</p></li>
+</ol>
+<p><strong>补充例：</strong><span class="math inline">\(f=x^2+y^2\)</span>，<span class="math inline">\(0\le x\le1,0\le y\le2\)</span>。四边分别限制为 <span class="math inline">\(x^2\)</span>、<span class="math inline">\(x^2+4\)</span>、<span class="math inline">\(y^2\)</span>、<span class="math inline">\(1+y^2\)</span>。比较边界点后，最小为 <span class="math inline">\(0\)</span> 在 <span class="math inline">\((0,0)\)</span>，最大为 <span class="math inline">\(5\)</span> 在 <span class="math inline">\((1,2)\)</span>。 <strong>易错点：</strong>二阶导数判别只判局部行为，不直接给区域上的绝对极值。边界极值也不必满足 <span class="math inline">\(\nabla f=0\)</span>。</p>
+
+<h2 id="section-11">矩形上的二重积分与累次积分</h2>
+<p>L13 | 范围未确认的补充复习</p>
+<p><span>讲义定位：L13，pp.1–4。本主题在所附讲义中，但不据此断言它属于 Q4。</span></p>
+<p><strong>直观意义：</strong>把区域分成小块，每块取“函数值 <span class="math inline">\(\times\)</span> 小面积”，再加起来；若 <span class="math inline">\(f\ge0\)</span>，结果是图像下方的体积；有负值时得到有正负的净体积。 <span class="math display">\[\iint_R f\,dA=\lim_{\max\Delta x_i,\max\Delta y_j\to0}\sum_{i,j} f(x_{ij}^*,y_{ij}^*)\Delta x_i\Delta y_j.\]</span></p>
+
+<div class="tcolorbox">
+<p><strong>Fubini 定理（此处的版本）：</strong>若 <span class="math inline">\(f\)</span> 在矩形 <span class="math inline">\(R=[a,b]\times[c,d]\)</span> 上连续， <span class="math display">\[\boxed{\iint_R f\,dA=\int_a^b\!\left[\int_c^d f(x,y)\,dy\right]dx
+=\int_c^d\!\left[\int_a^b f(x,y)\,dx\right]dy}.\]</span></p>
+</div>
+<h3 class="unnumbered" id="section-12">计算顺序：从最里面开始</h3>
+<ol>
+<li><p>看内层微分是 <span class="math inline">\(dx\)</span> 还是 <span class="math inline">\(dy\)</span>，只对该变量积分。</p></li>
+<li><p>另一个变量先当常数，代内层上下限。</p></li>
+<li><p>得到一个单变量函数，再算外层定积分。</p></li>
+</ol>
+<p><strong>补充例：</strong><span class="math inline">\(R=[0,1]\times[0,2]\)</span>，<span class="math inline">\(f=x+2y\)</span>。 <span class="math display">\[\int_0^1\int_0^2(x+2y)\,dy\,dx=\int_0^1[xy+y^2]_0^2\,dx=\int_0^1(2x+4)\,dx=5.\]</span> <strong>不定积分的常数可以依赖另一变量：</strong> <span class="math display">\[\int(x^2+y)\,dx=x^3/3+xy+C(y),\qquad\int(x^2+y)\,dy=x^2y+y^2/2+C(x).\]</span> <strong>性质：</strong>积分线性；区域可分割并相加；<span class="math inline">\(\iint_R1\,dA={\rm Area}(R)\)</span>。若 <span class="math inline">\(m\le f\le M\)</span>，则 <span class="math inline">\(m\,{
+m Area}(R)\le\iint_R f\le M\,{
+m Area}(R)\)</span>。若 <span class="math inline">\(f=X(x)Y(y)\)</span> 且为矩形区域，可分离为两个一元积分的乘积。 <strong>易错点：</strong>交换次序要同时交换对应的上下限。一般曲边区域不能把同一组常数范围硬套进去；本份 L13 仅讲矩形区域。</p>
+
+{% endraw %}

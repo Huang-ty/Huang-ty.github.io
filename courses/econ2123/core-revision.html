@@ -1,0 +1,569 @@
+---
+layout: "course-note"
+title: "基础模型速查、自测与来源"
+course: "econ2123"
+permalink: "/courses/econ2123/core-revision/"
+description: "复习公式、重做练习，并查阅原笔记的覆盖与修正记录。"
+lang: "zh"
+math: true
+updated: "2026-10-12"
+---
+{% raw %}
+<details class="note-toc" open><summary>本页目录</summary><ol><li><a href="#section-1">10. Revision sheet and self-test</a></li><li><a href="#section-8">Appendix A. Source and coverage map</a></li><li><a href="#section-9">Appendix B. Corrections and interpretation notes</a></li></ol></details>
+<h2 id="section-1">10. Revision sheet and self-test</h2>
+<h3 id="section-2">10.1 Essential formulas with conditions</h3>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Formula</th>
+<th>Condition or interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GDP accounting</td>
+<td>Y = C + I + G + X − IM</td>
+<td>I includes inventory investment</td>
+</tr>
+<tr>
+<td>Value added</td>
+<td>Output value − intermediate inputs</td>
+<td>Do not subtract wages again</td>
+</tr>
+<tr>
+<td>Nominal GDP</td>
+<td>Σpₜqₜ</td>
+<td>Current prices and quantities</td>
+</tr>
+<tr>
+<td>Fixed-base real GDP</td>
+<td>Σpᵦqₜ</td>
+<td>Common base-year prices</td>
+</tr>
+<tr>
+<td>Fisher growth</td>
+<td>√(RᴸRᴾ) − 1</td>
+<td>Geometric average of quantity growth factors</td>
+</tr>
+<tr>
+<td>Chained level</td>
+<td>Previous chained level × Fₜ</td>
+<td>Reference-year level equals nominal GDP</td>
+</tr>
+<tr>
+<td>GDP deflator</td>
+<td>Nominal GDP/real GDP</td>
+<td>Base 1, or multiply by 100</td>
+</tr>
+<tr>
+<td>Inflation</td>
+<td>Pₜ/Pₜ₋₁ − 1</td>
+<td>Growth of the price index</td>
+</tr>
+<tr>
+<td>Nominal growth</td>
+<td>(1 + gᴿ)(1 + π) − 1</td>
+<td>Exact relationship</td>
+</tr>
+<tr>
+<td>Unemployment</td>
+<td>U/(N + U)</td>
+<td>Only labour-force members in denominator</td>
+</tr>
+<tr>
+<td>Participation</td>
+<td>(N + U)/working-age population</td>
+<td>Different denominator from unemployment</td>
+</tr>
+<tr>
+<td>Consumption</td>
+<td>c₀ + c₁(Y − T)</td>
+<td>0 &lt; c₁ &lt; 1</td>
+</tr>
+<tr>
+<td>Simple output</td>
+<td>(c₀ + Ī + G − c₁T)/(1 − c₁)</td>
+<td>Fixed investment, lump-sum taxes</td>
+</tr>
+<tr>
+<td>Spending multiplier</td>
+<td>1/(1 − c₁)</td>
+<td>Basic Keynesian cross</td>
+</tr>
+<tr>
+<td>Tax multiplier</td>
+<td>−c₁/(1 − c₁)</td>
+<td>Change measured as a rise in T</td>
+</tr>
+<tr>
+<td>Balanced-budget multiplier</td>
+<td>1</td>
+<td>Equal changes in G and lump-sum T; fixed I</td>
+</tr>
+<tr>
+<td>Private saving</td>
+<td>−c₀ + (1 − c₁)(Y − T)</td>
+<td>Linear consumption model</td>
+</tr>
+<tr>
+<td>National saving</td>
+<td>S + T − G = I</td>
+<td>Closed-economy equilibrium</td>
+</tr>
+<tr>
+<td>Bond yield</td>
+<td>F/Pᴮ − 1</td>
+<td>One-year zero-coupon bond</td>
+</tr>
+<tr>
+<td>Bond price</td>
+<td>F/(1 + i)</td>
+<td>Rate in decimal form</td>
+</tr>
+<tr>
+<td>Money demand</td>
+<td>Mᵈ = PYL(i)</td>
+<td>L′(i) &lt; 0</td>
+</tr>
+<tr>
+<td>Velocity</td>
+<td>V = PY/M</td>
+<td>MV = PY by definition of V</td>
+</tr>
+<tr>
+<td>IS</td>
+<td>Y = C(Y − T) + I(Y, i) + G</td>
+<td>Goods-market equilibrium</td>
+</tr>
+<tr>
+<td>LM</td>
+<td>M/P = YL(i)</td>
+<td>Money-market equilibrium</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="section-3">10.2 Graph checklist</h3>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Graph</th>
+<th>Horizontal axis</th>
+<th>Vertical axis</th>
+<th>Key slope or shift</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Consumption function</td>
+<td>Disposable income Yᴰ</td>
+<td>Consumption C</td>
+<td>Slope c₁; intercept c₀</td>
+</tr>
+<tr>
+<td>Keynesian cross</td>
+<td>Output/income Y</td>
+<td>Demand Z and production</td>
+<td>ZZ slope c₁, or c₁ + MPI; 45° slope 1</td>
+</tr>
+<tr>
+<td>Money market</td>
+<td>M, or M/P consistently</td>
+<td>Interest rate i</td>
+<td>Demand downward; fixed supply vertical</td>
+</tr>
+<tr>
+<td>Bond market in Tutorial 3</td>
+<td>Bond quantity</td>
+<td>Interest rate i</td>
+<td>Demand upward because a higher i means a lower price</td>
+</tr>
+<tr>
+<td>IS–LM</td>
+<td>Real output Y</td>
+<td>Interest rate i</td>
+<td>IS downward; course LM upward</td>
+</tr>
+</tbody>
+</table></div>
+<p>Label the original and new equilibria, write the exogenous shock beside the curve that shifts, and mark the final changes in Y and i. A change in an axis variable ordinarily moves along a fixed curve; a change in something held fixed when constructing that curve can shift it.</p>
+<h3 id="section-4">10.3 Common mistakes and their repairs</h3>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Mistake</th>
+<th>Repair</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Adding sales of both intermediate and final goods</td>
+<td>Count final output or sum value added</td>
+</tr>
+<tr>
+<td>Treating value added as profit</td>
+<td>Wages are part of value added</td>
+</tr>
+<tr>
+<td>Treating a new house as household consumption</td>
+<td>New residential construction is investment</td>
+</tr>
+<tr>
+<td>Counting a transfer as G</td>
+<td>Trace its effect through net taxes and household spending</td>
+</tr>
+<tr>
+<td>Forgetting negative inventories when old output is sold</td>
+<td>Record the offsetting inventory withdrawal</td>
+</tr>
+<tr>
+<td>Averaging two growth rates to form a Fisher link</td>
+<td>Take the square root of the product of the two growth factors</td>
+</tr>
+<tr>
+<td>Using 3,050 as the tutorial’s chained year 1 level</td>
+<td>Divide 3,366 by F₂, giving 3,045.78</td>
+</tr>
+<tr>
+<td>Interpreting disinflation as falling prices</td>
+<td>Prices still rise when inflation remains positive</td>
+</tr>
+<tr>
+<td>Using total population in the unemployment denominator</td>
+<td>Use N + U</td>
+</tr>
+<tr>
+<td>Using 1/(1 − c₁) for every model</td>
+<td>Check investment, taxes, and interest-rate assumptions</td>
+</tr>
+<tr>
+<td>Giving a positive tax multiplier for ΔT</td>
+<td>The multiplier on a tax increase is negative</td>
+</tr>
+<tr>
+<td>Saying T rises but public saving is unchanged</td>
+<td>At fixed G, T − G rises</td>
+</tr>
+<tr>
+<td>Equating bond price with bond yield</td>
+<td>They move in opposite directions for a fixed payoff</td>
+</tr>
+<tr>
+<td>Saying Y rising shifts LM</td>
+<td>At fixed M/P it causes movement along LM</td>
+</tr>
+<tr>
+<td>Saying fiscal expansion always reduces total I</td>
+<td>Compare the sales and interest-rate effects</td>
+</tr>
+<tr>
+<td>Treating nominal M and real M/P as identical</td>
+<td>Account for the price-level convention</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="section-5">10.4 Retrieval questions</h3>
+<p>Cover the answers below and explain each result in complete sentences before using formulas.</p>
+<ol type="1">
+<li>Why do production, income, and expenditure measure the same GDP?</li>
+<li>Why is a firm’s wage bill not subtracted from value added?</li>
+<li>Can real GDP exceed nominal GDP? Give the relevant price comparison.</li>
+<li>How does changing a chain series’ reference year differ from changing fixed-base prices?</li>
+<li>Why can unemployment fall without employment rising?</li>
+<li>If c₁ = 0.8, what are the spending and tax multipliers in the basic Keynesian cross?</li>
+<li>With that MPC, what happens to Y if G rises by 20 and T rises by 20?</li>
+<li>Why does an economy-wide attempt to save more fail to increase saving in the fixed-investment model?</li>
+<li>A bond pays 100 next year and costs 96 today. What is its yield?</li>
+<li>If nominal income rises while money supply is fixed, what happens to i and bond prices?</li>
+<li>Why is IS downward-sloping, while the course’s LM is upward-sloping?</li>
+<li>A government raises T. What happens to C, public saving, private saving, and I in IS–LM?</li>
+<li>Why does monetary expansion unambiguously raise investment in the standard model?</li>
+<li>What policy mix can reduce the budget deficit while keeping output unchanged?</li>
+<li>Why is a zero-lower-bound limitation not the same assumption as an interest-rate target?</li>
+</ol>
+<h4 id="section-6">Answer key</h4>
+<p><strong>1.</strong> Producing final output generates value added, that value added generates factor income, and the output is used as final expenditure or inventory investment. Consistent accounting links all three measures.</p>
+<p><strong>2.</strong> Value added is the income available to labour and capital after intermediate inputs are paid for. Subtracting wages would move toward profit instead.</p>
+<p><strong>3.</strong> Yes. For example, if the base-year prices used in real GDP exceed current prices, the constant-price value can exceed the nominal value. This is not a contradiction.</p>
+<p><strong>4.</strong> A reference-year change rescales a given chain series. A fixed-base price change alters the weights placed on different quantities and can change growth rates.</p>
+<p><strong>5.</strong> People can stop searching and leave both U and L. The unemployment rate can then fall while N is unchanged.</p>
+<p><strong>6.</strong> Spending multiplier = 1/0.2 = 5. Tax multiplier = −0.8/0.2 = −4.</p>
+<p><strong>7.</strong> ΔY = 5 × 20 − 4 × 20 = 20, under the basic model’s fixed-investment and lump-sum-tax assumptions.</p>
+<p><strong>8.</strong> Lower consumption reduces demand and equilibrium income. With I, T, and G fixed, equilibrium private saving is fixed by S = I − T + G.</p>
+<p><strong>9.</strong> i = 4/96 = 0.0416667, approximately 4.1667%.</p>
+<p><strong>10.</strong> Money demand rises. The equilibrium interest rate rises and the bond price falls.</p>
+<p><strong>11.</strong> A higher i reduces investment and goods-market equilibrium Y. A higher Y raises money demand, requiring a higher i at fixed real money supply.</p>
+<p><strong>12.</strong> C falls, public saving rises, and private saving falls. Investment is ambiguous because both Y and i fall.</p>
+<p><strong>13.</strong> It raises Y and lowers i, so both determinants stimulate investment.</p>
+<p><strong>14.</strong> Fiscal contraction with sufficient monetary expansion. The required easing lowers i enough to offset the reduction in goods demand, if the lower bound does not prevent it.</p>
+<p><strong>15.</strong> A rate target is a policy choice supported by an accommodating money supply. A liquidity trap reflects the inability to reduce the rate further through the model’s conventional money-for-bonds operation.</p>
+<h3 id="section-7">10.5 A compact bilingual glossary</h3>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>English</th>
+<th>中文</th>
+<th>Meaning to retain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Value added</td>
+<td>增加值</td>
+<td>Output value less intermediate inputs</td>
+</tr>
+<tr>
+<td>Disposable income</td>
+<td>可支配收入</td>
+<td>Income after net taxes</td>
+</tr>
+<tr>
+<td>Autonomous expenditure</td>
+<td>自主支出</td>
+<td>Spending independent of current income in the model</td>
+</tr>
+<tr>
+<td>Marginal propensity to consume</td>
+<td>边际消费倾向</td>
+<td>Extra consumption per extra unit of disposable income</td>
+</tr>
+<tr>
+<td>Multiplier</td>
+<td>乘数</td>
+<td>Total equilibrium response divided by the initial exogenous change</td>
+</tr>
+<tr>
+<td>Paradox of thrift</td>
+<td>节俭悖论 / 储蓄悖论</td>
+<td>Desired extra saving can reduce income without raising aggregate saving</td>
+</tr>
+<tr>
+<td>Automatic stabiliser</td>
+<td>自动稳定器</td>
+<td>Existing rules that dampen economic fluctuations</td>
+</tr>
+<tr>
+<td>Liquidity</td>
+<td>流动性</td>
+<td>Ease of using an asset for payments</td>
+</tr>
+<tr>
+<td>Opportunity cost</td>
+<td>机会成本</td>
+<td>Return or benefit forgone by choosing another use</td>
+</tr>
+<tr>
+<td>Open market operation</td>
+<td>公开市场操作</td>
+<td>Central-bank purchases or sales of bonds</td>
+</tr>
+<tr>
+<td>Liquidity trap</td>
+<td>流动性陷阱</td>
+<td>Extra money need not reduce the interest rate at its lower bound</td>
+</tr>
+<tr>
+<td>Fiscal consolidation</td>
+<td>财政整顿 / 财政紧缩</td>
+<td>Measures to reduce the budget deficit</td>
+</tr>
+<tr>
+<td>Crowding out</td>
+<td>挤出效应</td>
+<td>A channel through which higher interest rates reduce private investment</td>
+</tr>
+<tr>
+<td>Endogenous / exogenous</td>
+<td>内生 / 外生</td>
+<td>Determined inside / taken as given in the model</td>
+</tr>
+<tr>
+<td>Equilibrium</td>
+<td>均衡</td>
+<td>A configuration satisfying the model’s consistency conditions</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="section-8">Appendix A. Source and coverage map</h2>
+<p>The source labels used throughout refer to the files below. Slide numbers count the title slide as slide 1. Tutorial page numbers refer to PDF pages, including inserted handwritten pages, rather than the sometimes inconsistent footer numbering.</p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 23%" />
+<col style="width: 30%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr>
+<th>Label</th>
+<th>Supplied file</th>
+<th style="text-align: right;">Extent</th>
+<th>Main coverage in these notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>Slides_export/Lecture 1_Intro.pptx</td>
+<td style="text-align: right;">40 slides</td>
+<td>Chapter 1: motivation, growth versus cycles, course framework</td>
+</tr>
+<tr>
+<td>L2–3</td>
+<td>Slides_export/Lecture 2_3_Measurement.pptx</td>
+<td style="text-align: right;">50 slides</td>
+<td>Chapters 2–4: GDP, chain indexes, labour statistics, price indexes</td>
+</tr>
+<tr>
+<td>L4–5</td>
+<td>Slides_export/Lecture 4_5_GoodsMarket.pptx</td>
+<td style="text-align: right;">56 slides</td>
+<td>Chapters 2, 5–6: expenditure, consumption, equilibrium, saving, fiscal policy</td>
+</tr>
+<tr>
+<td>L6–7</td>
+<td>Slides_export/Lecture 6_7_FinancialMarkets.pptx</td>
+<td style="text-align: right;">38 slides</td>
+<td>Chapter 7: money, bonds, monetary policy, liquidity trap</td>
+</tr>
+<tr>
+<td>L8–9</td>
+<td>Slides_export/Lecture 8_9_IS_LM.pptx</td>
+<td style="text-align: right;">51 slides</td>
+<td>Chapters 8–9: IS, LM, joint equilibrium, policy feedback and mixes</td>
+</tr>
+<tr>
+<td>T1</td>
+<td>Tutorial_export/26fall_T1_annotated.pdf</td>
+<td style="text-align: right;">20 pages</td>
+<td>Chapters 2–3: production examples, cars, full chain-index exercise</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>Tutorial_export/26fall_T2 _annotated.pdf</td>
+<td style="text-align: right;">18 pages</td>
+<td>Chapters 1, 5: maths, Keynesian cross, numerical equilibrium, pandemic shock</td>
+</tr>
+<tr>
+<td>T3</td>
+<td>Tutorial_export/26fall_T3.pdf</td>
+<td style="text-align: right;">15 pages</td>
+<td>Chapter 7: money-market calculation, bond yields, all OMO prompts</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Total source coverage:</strong> 235 lecture slides and 53 tutorial pages. The separate top-level Lecture 2_3_Measurement.pptx is identical to the copy in Slides_export and is counted once. The textbook, problem sets, and separate GDP spreadsheets are present in the folder but are outside this request’s lecture-and-tutorial source set.</p>
+<p><strong>Assigned reading as listed in the decks:</strong> Blanchard Chapter 1 for the introduction; Chapter 2 except section 2–4 for measurement; Chapter 3 for the goods market; Chapter 4 except section 4.3 for financial markets; Chapter 5 for IS–LM, using the lecture’s upward-sloping LM convention. The notes explain the supplied course materials without claiming coverage of textbook sections not developed in those materials.</p>
+<p><strong>Tutorial completion map:</strong> T1 pages 8–9, apples and juice, appears in section 2.2; pages 10–11, missing firm values, in section 2.2; page 15, cars, in section 3.4; pages 16–20, chain linking, in sections 3.2–3.3. T2 pages 3–8, maths, appears in section 1.6; pages 13–15, equilibrium, in section 5.5; pages 16–18, pandemic, in section 5.6. T3 pages 3–5, money demand and supply, appears in sections 7.1–7.4; page 6, the image-based calculation, in section 7.4; pages 7–9 and 12–15, operations and bond-market graphs, in section 7.5; pages 10–11, yields, in section 7.2.</p>
+<h2 id="section-9">Appendix B. Corrections and interpretation notes</h2>
+<p>These corrections preserve the course’s intended models while repairing arithmetic, notation, or overly broad wording. They should be used when comparing the notes with the original slides.</p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Location</th>
+<th>Issue</th>
+<th>Correct interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L4–5, slides 46–47</td>
+<td>A tax arrow points down in the balanced-budget example</td>
+<td>Both G and T rise by equal amounts; ΔY = ΔG in the basic model</td>
+</tr>
+<tr>
+<td>L8–9, slide 36</td>
+<td>Public saving labelled unchanged after T rises</td>
+<td>T − G rises when G is fixed; the speaker notes also indicate an increase</td>
+</tr>
+<tr>
+<td>T3, page 15</td>
+<td>A line says “To increases money supply” within the contractionary example</td>
+<td>Central-bank bond sales decrease money supply</td>
+</tr>
+<tr>
+<td>T1, page 20</td>
+<td>Chained year 1 GDP displayed as approximately 3,045</td>
+<td>Full-precision calculation gives 3,045.7802, or 3,045.78 to two decimals</td>
+</tr>
+<tr>
+<td>L6–7, slides 18–19</td>
+<td>Price 99 gives a yield rounded to 1%</td>
+<td>Exact yield on face value 100 is 1/99 = 1.0101%</td>
+</tr>
+<tr>
+<td>L6–7, slide 17</td>
+<td>Principal shown with a percent sign before 5,000</td>
+<td>Principal repayment is 5,000 currency units, in addition to the final coupon</td>
+</tr>
+<tr>
+<td>L4–5, slide 5</td>
+<td>Imports briefly labelled I</td>
+<td>Use IM for imports and reserve I for investment</td>
+</tr>
+<tr>
+<td>L2–3, slide 29</td>
+<td>Chain-growth notation has ambiguous time subscripts</td>
+<td>Multiply adjacent-year factors (1 + g) forward; divide backward</td>
+</tr>
+<tr>
+<td>T1, pages 8–9</td>
+<td>Same firm example has inconsistent year labels</td>
+<td>Data and GDP result are the same; GDP = 2,600</td>
+</tr>
+<tr>
+<td>L2–3, slide 43; T1, page 15</td>
+<td>Same car data use different calendar years</td>
+<td>Use the middle year as base; calculations are identical</td>
+</tr>
+<tr>
+<td>T1, page 6</td>
+<td>Final goods described as directly consumed</td>
+<td>Final uses also include investment, such as new machines and houses</td>
+</tr>
+<tr>
+<td>T1, page 12; L2–3, slide 31</td>
+<td>Broad statements about non-cash or unreported activity</td>
+<td>Distinguish the production boundary from measurement limitations and imputation</td>
+</tr>
+<tr>
+<td>L4–5, slide 14</td>
+<td>Small net exports motivate NX = 0</td>
+<td>This is a simplifying assumption; small net trade does not imply small gross trade</td>
+</tr>
+<tr>
+<td>L2–3, slide 42</td>
+<td>Index level described as having no economic interpretation</td>
+<td>Its absolute scale is arbitrary, but comparison with its reference level is meaningful</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>What was added for understanding:</strong> the labour-force numerical example; the exact nominal-growth decomposition; the algebraic automatic-tax stabiliser; explicit linear IS and IS–LM derivations; numerical policy comparisons; and the retrieval questions. These additions follow the stated assumptions and are distinguished from the original tutorial questions.</p>
+<p><strong>Final study principle:</strong> Before using a formula, state the model’s assumptions. Before giving a policy conclusion, trace the initial effect and the feedback. Before accepting a numerical result, check it against the accounting identity and equilibrium conditions.</p>
+
+{% endraw %}

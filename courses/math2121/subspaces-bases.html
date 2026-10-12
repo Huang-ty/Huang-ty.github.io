@@ -1,0 +1,125 @@
+---
+layout: "course-note"
+title: "子空间、RREF 与基底"
+course: "math2121"
+permalink: "/courses/math2121/subspaces-bases/"
+description: "检查封闭性、找 pivot 和自由变量，分别验证独立与张成。"
+lang: "zh"
+math: true
+updated: "2026-10-09"
+---
+{% raw %}
+<details class="note-toc" open><summary>本页目录</summary><ol><li><a href="#section-1">Subspace：三條件與非負卦限反例</a></li><li><a href="#section-6">REF、RREF 與 Pivot</a></li><li><a href="#section-11">Linear independence 與 Basis 判斷</a></li><li><a href="#section-15">由線性方程求 Basis</a></li><li><a href="#section-21">從給定向量抽取 Span 的 Basis</a></li></ol></details>
+<h2 id="section-1">Subspace：三條件與非負卦限反例</h2>
+<h3 id="section-2">定義與通用檢驗</h3>
+<p>實向量空間 <span class="math inline">\(V\)</span> 的子集合 <span class="math inline">\(W\)</span> 是 subspace（子空間），當且僅當：</p>
+<ol>
+<li><p><strong>包含零向量：</strong><span class="math inline">\(\mathbf0\in W\)</span>。</p></li>
+<li><p><strong>加法封閉（closed under addition）：</strong>對任意 <span class="math inline">\(\mathbf u,\mathbf v\in W\)</span>，都有 <span class="math inline">\(\mathbf u+\mathbf v\in W\)</span>。</p></li>
+<li><p><strong>純量乘法封閉（closed under scalar multiplication）：</strong>對任意 <span class="math inline">\(c\in\mathbb R\)</span>、<span class="math inline">\(\mathbf u\in W\)</span>，都有 <span class="math inline">\(c\mathbf u\in W\)</span>。</p></li>
+</ol>
+<p><strong>直覺：</strong>可以加、減、任意伸縮而不離開集合；因此必須能通過原點，也必須容許負方向。若要證明成立，必須涵蓋所有向量與純量；若要否定，只需一個反例。</p>
+<h3 id="section-3">非負卦限（nonnegative orthant）為何不是子空間？</h3>
+<p><span class="math display">\[W=\{(x,y,z)^T\in\mathbb R^3:x\ge0,\ y\ge0,\ z\ge0\}.\]</span> 它包含 <span class="math inline">\(\mathbf0\)</span>，也對加法封閉：非負數相加仍非負。但 <span class="math display">\[\mathbf u=(1,0,0)^T\in W,\qquad
+(-1)\mathbf u=(-1,0,0)^T\notin W.\]</span> 所以純量乘法封閉失敗，<span class="math inline">\(W\)</span> <strong>不是 subspace</strong>。在 <span class="math inline">\(\mathbb R^2\)</span> 的第一象限加邊界，也有完全相同的反例。</p>
+<h3 id="section-4">齊次線性方程的解集一定是子空間</h3>
+<p>設 <span class="math inline">\(W=\{\mathbf x:A\mathbf x=0\}=\operatorname{Null}(A)\)</span>。則 <span class="math display">\[A\mathbf0=0,\quad A(\mathbf u+\mathbf v)=A\mathbf u+A\mathbf v=0,
+\quad A(c\mathbf u)=cA\mathbf u=0.\]</span> 因此三條件全部成立。例如頁 8 的 <span class="math inline">\(-7x_1-5x_2+4x_3=0\)</span>，定義的是通過原點的平面。</p>
+<h3 id="section-5">非齊次與非線性：不能只憑形狀判斷</h3>
+<ul>
+<li><p><span class="math inline">\(x+y=1\)</span>：零向量不滿足，<strong>不是</strong>子空間。若非齊次方程有解，通常得到 affine set（仿射集合）<span class="math inline">\(\mathbf x_p+\operatorname{Null}(A)\)</span>。</p></li>
+<li><p><span class="math inline">\(x^2+y^2=1\)</span>：不含零向量，<strong>不是</strong>子空間。</p></li>
+<li><p><span class="math inline">\(xy=0\)</span>：包含原點，但 <span class="math inline">\((1,0)^T\)</span> 與 <span class="math inline">\((0,1)^T\)</span> 都在其中，其和 <span class="math inline">\((1,1)^T\)</span> 不在其中，<strong>加法封閉失敗</strong>。</p></li>
+</ul>
+<div class="keybox">
+<p><strong>快速次序：</strong>先試零向量；再試負純量 <span class="math inline">\(c=-1\)</span>；最後檢查加法。證明子空間時，用任意 <span class="math inline">\(\mathbf u,\mathbf v,c\)</span> 的一般運算。</p>
+</div>
+
+<h2 id="section-6">REF、RREF 與 Pivot</h2>
+<h3 id="section-7">階梯形與簡約行階梯形</h3>
+<p>REF（row echelon form，行階梯形）要求：零行在最下面；每個非零行的第一個非零項（leading entry）比上一行更靠右；leading entry 下方全部為零。</p>
+<p>RREF（reduced row echelon form，簡約行階梯形）再要求：每個 leading entry 都是 <span class="math inline">\(1\)</span>，而且其所在欄其他元素全部為零。<strong>RREF 唯一，消去過程及 REF 可以不同。</strong></p>
+<h3 id="section-8"><strong>補充例題</strong>：從 REF 到 RREF</h3>
+<p><span class="math display">\[T=\begin{pmatrix}1&amp;2&amp;3\\0&amp;1&amp;4\\0&amp;0&amp;0\end{pmatrix}
+\xrightarrow{R_1\leftarrow R_1-2R_2}
+\begin{pmatrix}1&amp;0&amp;-5\\0&amp;1&amp;4\\0&amp;0&amp;0\end{pmatrix}=\operatorname{rref}(T).\]</span> <span class="math inline">\(T\)</span> 已是 REF，但不是 RREF，因為第 2 欄 pivot 上方仍有 <span class="math inline">\(2\)</span>。化簡後，pivot 位於 <span class="math inline">\((1,1)\)</span> 和 <span class="math inline">\((2,2)\)</span>：<strong>pivot columns 是第 1、2 欄</strong>。</p>
+<p>若解 <span class="math inline">\(T\mathbf x=0\)</span>，<span class="math inline">\(x_1,x_2\)</span> 是 pivot variables（主變數），<span class="math inline">\(x_3\)</span> 是 free variable（自由變數）： <span class="math display">\[x_1-5x_3=0,\quad x_2+4x_3=0
+\quad\Rightarrow\quad
+\mathbf x=t\begin{pmatrix}5\\-4\\1\end{pmatrix}.\]</span></p>
+<h3 id="section-9">通用消去流程</h3>
+<ol>
+<li><p>從左至右找可用的非零元素，必要時交換行。</p></li>
+<li><p>把 pivot 所在行縮放，使 pivot 等於 <span class="math inline">\(1\)</span>。</p></li>
+<li><p>用該行消去同欄其他行的元素。</p></li>
+<li><p>移到右下方繼續；最後確認零行在最底部。</p></li>
+</ol>
+<p>手算可先消去 pivot 下方得到 REF，再從右至左消去上方得到 RREF。用精確分數可避免小數誤差。</p>
+<h3 id="section-10">行操作保留什麼？</h3>
+<p>若 <span class="math inline">\(R=EA\)</span>，其中 <span class="math inline">\(E\)</span> 可逆，則：</p>
+<ul>
+<li><p><span class="math inline">\(A\mathbf x=0\Longleftrightarrow R\mathbf x=0\)</span>，所以 <strong>null space 不變</strong>。</p></li>
+<li><p><strong>rank、row space、欄之間的線性關係</strong>不變。</p></li>
+<li><p><strong>column space 一般會改變</strong>：<span class="math inline">\(\operatorname{Col}(R)=E\operatorname{Col}(A)\)</span>。</p></li>
+</ul>
+<div class="keybox">
+<p>對 <span class="math inline">\([A\mid\mathbf b]\)</span> 做行操作時，必須連右側一起改。若出現 <span class="math inline">\([0\ \cdots\ 0\mid d]\)</span> 且 <span class="math inline">\(d\ne0\)</span>，方程組無解。解齊次方程時不會出現這種矛盾行。</p>
+</div>
+
+<h2 id="section-11">Linear independence 與 Basis 判斷</h2>
+<h3 id="section-12">兩個定義，一個檢驗矩陣</h3>
+<p>向量 <span class="math inline">\(\mathbf v_1,\ldots,\mathbf v_k\)</span> 線性獨立（linearly independent），指 <span class="math display">\[c_1\mathbf v_1+\cdots+c_k\mathbf v_k=\mathbf0
+\quad\Rightarrow\quad c_1=\cdots=c_k=0.\]</span> 若有非全零係數得到 <span class="math inline">\(\mathbf0\)</span>，則線性相關（linearly dependent）。將向量作為欄組成 <span class="math inline">\(V=[\mathbf v_1\ \cdots\ \mathbf v_k]\)</span>，獨立等價於 <span class="math inline">\(V\mathbf c=0\)</span> 只有零解，也等價於<strong>每一欄都有 pivot</strong>。</p>
+<p><span class="math inline">\(B\)</span> 是空間 <span class="math inline">\(W\)</span> 的 basis，必須同時滿足 <span class="math inline">\(B\subseteq W\)</span>、<span class="math inline">\(B\)</span> 線性獨立、<span class="math inline">\(\operatorname{span}(B)=W\)</span>。<strong>直覺：</strong>每個方向都必要，而且已足夠生成整個空間；每個向量在此 basis 下的係數唯一。</p>
+<h3 id="section-13"><strong>補充例題</strong>：三個向量不構成 <span class="math inline">\(\mathbb R^3\)</span> 的 basis</h3>
+<p><span class="math display">\[\mathbf u_1=\begin{pmatrix}1\\0\\1\end{pmatrix},\quad
+\mathbf u_2=\begin{pmatrix}0\\1\\1\end{pmatrix},\quad
+\mathbf u_3=\begin{pmatrix}1\\1\\2\end{pmatrix}.\]</span> <span class="math display">\[V=\begin{pmatrix}1&amp;0&amp;1\\0&amp;1&amp;1\\1&amp;1&amp;2\end{pmatrix}
+\xrightarrow{R_3\leftarrow R_3-R_1-R_2}
+\begin{pmatrix}1&amp;0&amp;1\\0&amp;1&amp;1\\0&amp;0&amp;0\end{pmatrix}.\]</span> 因為 <span class="math inline">\(\mathbf u_3=\mathbf u_1+\mathbf u_2\)</span>，有非零關係 <span class="math display">\[\mathbf u_1+\mathbf u_2-\mathbf u_3=\mathbf0.\]</span> 故三向量相關，rank 為 <span class="math inline">\(2\)</span>，只能張成二維平面，不是 <span class="math inline">\(\mathbb R^3\)</span> 的 basis。<strong>但 <span class="math inline">\(\{\mathbf u_1,\mathbf u_2\}\)</span> 是它們所張成平面的 basis。</strong></p>
+<p>把第三向量改成 <span class="math inline">\(\mathbf e_3=(0,0,1)^T\)</span>，則矩陣 <span class="math display">\[F=\begin{pmatrix}1&amp;0&amp;0\\0&amp;1&amp;0\\1&amp;1&amp;1\end{pmatrix},\qquad \det(F)=1\ne0.\]</span> 所以 <span class="math inline">\(\{\mathbf u_1,\mathbf u_2,\mathbf e_3\}\)</span> 是 <span class="math inline">\(\mathbb R^3\)</span> 的 basis。</p>
+<h3 id="section-14">通用判斷與快捷規則</h3>
+<ul>
+<li><p><span class="math inline">\(k\)</span> 個 <span class="math inline">\(\mathbb R^n\)</span> 向量獨立 <span class="math inline">\(\Longleftrightarrow\operatorname{rank}(V)=k\)</span>；張成 <span class="math inline">\(\mathbb R^n\)</span> <span class="math inline">\(\Longleftrightarrow\operatorname{rank}(V)=n\)</span>。</p></li>
+<li><p>要成為 <span class="math inline">\(\mathbb R^n\)</span> 的 basis，必須有恰好 <span class="math inline">\(n\)</span> 個向量且 rank 為 <span class="math inline">\(n\)</span>。</p></li>
+<li><p>若已知 <span class="math inline">\(\dim(W)=d\)</span> 且 <span class="math inline">\(d\)</span> 個向量都在 <span class="math inline">\(W\)</span> 中，只需再證明獨立<strong>或</strong>張成即可。</p></li>
+<li><p>兩個非零向量獨立 iff 互非倍數。<strong>三個以上互非倍數，仍可能相關</strong>，如本頁例題。</p></li>
+</ul>
+
+<h2 id="section-15">由線性方程求 Basis</h2>
+<h3 id="section-16"><strong>原對話例題</strong>：通過原點的平面</h3>
+<p><span class="math display">\[W=\left\{\mathbf x\in\mathbb R^3:-7x_1-5x_2+4x_3=0\right\}.\]</span> 這是 <span class="math inline">\(A\mathbf x=0\)</span>，其中 <span class="math inline">\(A=\begin{pmatrix}-7&amp;-5&amp;4\end{pmatrix}\)</span>。非零的一條獨立限制使三個座標剩下兩個自由度，因此預期 <span class="math inline">\(\dim(W)=2\)</span>。</p>
+<h3 id="section-17">Step 1：找主變數與自由變數</h3>
+<p><span class="math display">\[\operatorname{rref}(A)=\begin{pmatrix}1&amp;\frac57&amp;-\frac47\end{pmatrix},\qquad
+x_1=-\frac57x_2+\frac47x_3.\]</span> <span class="math inline">\(x_1\)</span> 是主變數；<span class="math inline">\(x_2,x_3\)</span> 是自由變數。令 <span class="math inline">\(x_2=s,\ x_3=t\)</span>，其中 <span class="math inline">\(s,t\in\mathbb R\)</span>。</p>
+<h3 id="section-18">Step 2：寫成參數向量形式</h3>
+<p><span class="math display">\[\mathbf x=\begin{pmatrix}-\frac 57s+\frac 47t\\s\\t\end{pmatrix}
+=s\begin{pmatrix}-\frac 57\\1\\0\end{pmatrix}+t\begin{pmatrix}\frac 47\\0\\1\end{pmatrix}.\]</span> 上述 <span class="math inline">\(s,t\)</span> 前的兩個向量張成所有解；看第 2、3 個座標，零線性組合必須使兩個係數都為 <span class="math inline">\(0\)</span>，故它們線性獨立，構成一組 basis。</p>
+<h3 id="section-19">Step 3：可把分數基底向量縮放為整數</h3>
+<p><span class="math display">\[\boxed{B&#39;=\left\{\begin{pmatrix}-5\\7\\0\end{pmatrix},\begin{pmatrix}4\\0\\7\end{pmatrix}\right\}.}\]</span> 每個 basis 向量乘上非零純量，仍得到同一空間的一組 basis。若沿用上面的 <span class="math inline">\(s,t\)</span>，則 <span class="math display">\[\mathbf x=\frac{s}{7}\begin{pmatrix}-5\\7\\0\end{pmatrix}+\frac{t}{7}\begin{pmatrix}4\\0\\7\end{pmatrix}.\]</span> <strong>向量縮放後，線性組合係數也要相應調整。</strong></p>
+<h3 id="section-20">Step 4：代回與維度核對</h3>
+<p><span class="math display">\[-7(-5)-5(7)+4(0)=0,\qquad -7(4)-5(0)+4(7)=0.\]</span> 兩個向量都在 <span class="math inline">\(W\)</span> 中，且互非倍數。又 <span class="math inline">\(\operatorname{rank}(A)=1\)</span>，故 <span class="math display">\[\dim(W)=\operatorname{nullity}(A)=3-1=2.\]</span></p>
+<div class="keybox">
+<p><strong>通用方法：</strong><span class="math inline">\(A\mathbf x=0\to\mathrm{RREF}\to\)</span> 自由變數 <span class="math inline">\(\to\)</span> 參數向量形式 <span class="math inline">\(\to\)</span> 取參數前的向量。多條線性齊次方程也使用相同流程。</p>
+</div>
+
+<h2 id="section-21">從給定向量抽取 Span 的 Basis</h2>
+<h3 id="section-22"><strong>原對話例題</strong>：刪除冗餘方向，保留原來的 span</h3>
+<p><span class="math display">\[\begin{aligned}
+\mathbf v_1&amp;=(-1,-5,0,2)^T,&amp;\mathbf v_2&amp;=(1,3,-3,-3)^T,\\
+\mathbf v_3&amp;=(0,-2,-3,-1)^T,&amp;\mathbf v_4&amp;=(1,-3,-12,-6)^T.
+\end{aligned}\]</span> 目標：從這四個向量中挑出一個子集合，作為 <span class="math inline">\(W=\operatorname{span}\{\mathbf v_1,\ldots,\mathbf v_4\}\)</span> 的 basis。</p>
+<h3 id="section-23">Step 1：把向量排成 Columns，再做行操作</h3>
+<p><span class="math display">\[V=\begin{pmatrix}-1&amp;1&amp;0&amp;1\\-5&amp;3&amp;-2&amp;-3\\0&amp;-3&amp;-3&amp;-12\\2&amp;-3&amp;-1&amp;-6\end{pmatrix}.\]</span> 先 <span class="math inline">\(R_1\leftarrow-R_1\)</span>，再 <span class="math inline">\(R_2\leftarrow R_2+5R_1\)</span>、<span class="math inline">\(R_4\leftarrow R_4-2R_1\)</span>： <span class="math display">\[\begin{pmatrix}1&amp;-1&amp;0&amp;-1\\0&amp;-2&amp;-2&amp;-8\\0&amp;-3&amp;-3&amp;-12\\0&amp;-1&amp;-1&amp;-4\end{pmatrix}.\]</span> 再 <span class="math inline">\(R_2\leftarrow-\frac12R_2\)</span>，消去第 2 欄： <span class="math display">\[\xrightarrow{\substack{R_1\leftarrow R_1+R_2\\R_3\leftarrow R_3+3R_2\\R_4\leftarrow R_4+R_2}}
+\operatorname{rref}(V)=\begin{pmatrix}1&amp;0&amp;1&amp;3\\0&amp;1&amp;1&amp;4\\0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0\end{pmatrix}.\]</span></p>
+<h3 id="section-24">Step 2：取原矩陣的第 1、2 欄</h3>
+<p><span class="math display">\[\boxed{B=\left\{\begin{pmatrix}-1\\-5\\0\\2\end{pmatrix},\begin{pmatrix}1\\3\\-3\\-3\end{pmatrix}\right\},\qquad \dim(W)=2.}\]</span> 注意：<span class="math inline">\(W\subseteq\mathbb R^4\)</span>，但 <span class="math inline">\(\dim(W)=2\)</span>；四個座標不代表有四個獨立方向。</p>
+<h3 id="section-25">Step 3：直接核對被刪除向量</h3>
+<p><span class="math display">\[\begin{aligned}
+\mathbf v_1+\mathbf v_2&amp;=(0,-2,-3,-1)^T=\mathbf v_3,\\
+3\mathbf v_1+4\mathbf v_2&amp;=(1,-3,-12,-6)^T=\mathbf v_4.
+\end{aligned}\]</span> 故 span 不變。若 <span class="math inline">\(a\mathbf v_1+b\mathbf v_2=0\)</span>，第 3 座標給 <span class="math inline">\(-3b=0\)</span>，再由第 1 座標得 <span class="math inline">\(a=0\)</span>，所以保留的兩向量獨立。</p>
+<div class="keybox">
+<p><strong>通用流程：</strong>向量作為欄 <span class="math inline">\(\to\)</span> RREF <span class="math inline">\(\to\)</span> 記下 pivot 欄編號 <span class="math inline">\(\to\)</span> 回原向量挑選。若題目要求「從給定向量中挑選」，不要把它們任意縮放或改寫。</p>
+</div>
+
+{% endraw %}

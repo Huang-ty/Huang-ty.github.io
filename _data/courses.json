@@ -1,0 +1,209 @@
+{
+  "math2023": {
+    "code": "MATH2023",
+    "title": "多元微积分",
+    "english": "Multivariable Calculus",
+    "summary": "从空间向量与曲面出发，连接梯度、交线切线和约束极值，补齐多元微分与二重积分。",
+    "coverage": "Lecture Notes 1–13；概念、适用条件、完整例题与自测。",
+    "date": "2026-10-12",
+    "notes": [
+      {
+        "title": "空间向量、曲面与平面",
+        "url": "/courses/math2023/vectors-surfaces/",
+        "description": "先认清点、方向向量和法向量，再读懂三维曲面。",
+        "group": "核心笔记"
+      },
+      {
+        "title": "距离与空间几何",
+        "url": "/courses/math2023/distance-geometry/",
+        "description": "点到平面、异面直线、等值集，以及过两点的垂直平面。",
+        "group": "核心笔记"
+      },
+      {
+        "title": "梯度、方向导数与交线切线",
+        "url": "/courses/math2023/gradient-tangent/",
+        "description": "梯度给出法向，两个法向的叉积给出交线切向。",
+        "group": "核心笔记"
+      },
+      {
+        "title": "Lagrange 乘子与约束极值",
+        "url": "/courses/math2023/lagrange/",
+        "description": "一个或两个约束、最近点与最大体积；候选点之后还要验证极值。",
+        "group": "核心笔记"
+      },
+      {
+        "title": "多元微分与二重积分",
+        "url": "/courses/math2023/differentiation-integration/",
+        "description": "空间曲线、极限、可微、隐函数、无约束极值与累次积分。",
+        "group": "核心笔记"
+      },
+      {
+        "title": "解题决策表与自测",
+        "url": "/courses/math2023/revision-practice/",
+        "description": "用决策表选工具，再用自测检查公式和适用条件。",
+        "group": "核心笔记"
+      }
+    ],
+    "downloads": [
+      {
+        "title": "完整复习笔记",
+        "description": "22 页 · 概念、图示、例题和自测",
+        "url": "/assets/files/courses/math2023-study-notes.pdf"
+      },
+      {
+        "title": "公式速查表",
+        "description": "2 页 · 复习时快速检索",
+        "url": "/assets/files/courses/math2023-cheatsheet.pdf"
+      }
+    ],
+    "url": "/courses/math2023/"
+  },
+  "math2121": {
+    "code": "MATH2121",
+    "title": "线性代数",
+    "english": "Linear Algebra",
+    "summary": "以行操作为主线，区分逆矩阵、子空间、基底、列空间和零空间，理解 pivot 与自由变量。",
+    "coverage": "已整理的矩阵与向量空间主题；四道对话例题已验算，补充例题有独立标注。",
+    "date": "2026-10-09",
+    "notes": [
+      {
+        "title": "逆矩阵与行操作",
+        "url": "/courses/math2121/inverse-row-operations/",
+        "description": "从 2×2 逆矩阵到初等矩阵，理解左乘与操作顺序。",
+        "group": "核心笔记"
+      },
+      {
+        "title": "子空间、RREF 与基底",
+        "url": "/courses/math2121/subspaces-bases/",
+        "description": "检查封闭性、找 pivot 和自由变量，分别验证独立与张成。",
+        "group": "核心笔记"
+      },
+      {
+        "title": "列空间、零空间与 Rank–Nullity",
+        "url": "/courses/math2121/column-null-spaces/",
+        "description": "原矩阵的 pivot 栏与齐次方程的自由变量，回答的是不同问题。",
+        "group": "核心笔记"
+      },
+      {
+        "title": "解题流程、易错点与自测",
+        "url": "/courses/math2121/methods-practice/",
+        "description": "比较四个基本空间，核对向量长度、基底个数与矩阵形状。",
+        "group": "核心笔记"
+      }
+    ],
+    "downloads": [
+      {
+        "title": "线性代数学习笔记",
+        "description": "16 页 · 定义、方法、验算和例题",
+        "url": "/assets/files/courses/math2121-study-notes.pdf"
+      }
+    ],
+    "url": "/courses/math2121/"
+  },
+  "math2511": {
+    "code": "MATH2511",
+    "title": "利息理论与年金",
+    "english": "Interest Theory & Annuities",
+    "summary": "把不同时间的现金流移到共同估值时点，贯通利率换算、年金、贷款摊还与偿债基金。",
+    "coverage": "Lectures 1–3：Basic Interest Theory、Basic Annuity Theory、Loan Repayment。",
+    "date": "2026-10-12",
+    "notes": [
+      {
+        "title": "20 分钟概念与公式速读",
+        "url": "/courses/math2511/quick-notes/",
+        "description": "用一条现金流主线贯通利息、年金和贷款。",
+        "group": "核心笔记"
+      },
+      {
+        "title": "22 类题型与解题路线",
+        "url": "/courses/math2511/example-guide/",
+        "description": "识别线索、对应公式、步骤、易错点和讲义 example 编号。",
+        "group": "核心笔记"
+      }
+    ],
+    "downloads": [
+      {
+        "title": "20 分钟速读笔记",
+        "description": "8 页 · 概念与公式",
+        "url": "/assets/files/courses/math2511-quick-notes.pdf"
+      },
+      {
+        "title": "22 类题型指南",
+        "description": "11 页 · Examples、公式与步骤",
+        "url": "/assets/files/courses/math2511-example-guide.pdf"
+      }
+    ],
+    "url": "/courses/math2511/"
+  },
+  "econ2123": {
+    "code": "ECON2123",
+    "title": "宏观经济学",
+    "english": "Macroeconomics",
+    "summary": "从 GDP 与就业统计到商品、货币市场，再用 IS–LM、WS–PS 和 AS–AD 解释政策与调整。",
+    "coverage": "Lectures 1–9 / Tutorials 1–3 综合笔记，加 Lecture 11–12 的 AS–AD 预习笔记。",
+    "date": "2026-10-12",
+    "notes": [
+      {
+        "title": "宏观框架、GDP 与就业统计",
+        "url": "/courses/econ2123/measurement/",
+        "description": "区分恒等式、行为方程与均衡条件，再理解实际 GDP、通胀与失业率。",
+        "group": "基础模型 · Lectures 1–9"
+      },
+      {
+        "title": "商品市场、乘数与货币市场",
+        "url": "/courses/econ2123/goods-money/",
+        "description": "从收入消费反馈到储蓄、财政政策、货币需求与债券。",
+        "group": "基础模型 · Lectures 1–9"
+      },
+      {
+        "title": "IS–LM 与政策反馈",
+        "url": "/courses/econ2123/is-lm/",
+        "description": "同时满足商品与货币市场均衡，追踪财政和货币政策的反馈。",
+        "group": "基础模型 · Lectures 1–9"
+      },
+      {
+        "title": "基础模型速查、自测与来源",
+        "url": "/courses/econ2123/core-revision/",
+        "description": "复习公式、重做练习，并查阅原笔记的覆盖与修正记录。",
+        "group": "基础模型 · Lectures 1–9"
+      },
+      {
+        "title": "WS–PS、自然失业率与自然产出",
+        "url": "/courses/econ2123/wage-price-setting/",
+        "description": "从工资与企业定价出发，建立 AS 的供给侧基础。",
+        "group": "AS–AD · Lectures 11–12"
+      },
+      {
+        "title": "AS–AD 的推导与短中期调整",
+        "url": "/courses/econ2123/as-ad/",
+        "description": "分清曲线移动与沿曲线移动，理解价格预期如何推动中期调整。",
+        "group": "AS–AD · Lectures 11–12"
+      },
+      {
+        "title": "财政、货币政策与供给冲击",
+        "url": "/courses/econ2123/as-ad-policy/",
+        "description": "财政紧缩、货币扩张、疫情和油价冲击的完整因果链。",
+        "group": "AS–AD · Lectures 11–12"
+      },
+      {
+        "title": "AS–AD 算例、自测与速查",
+        "url": "/courses/econ2123/as-ad-practice/",
+        "description": "把图形和数字连接起来，用练习检查模型条件与政策机制。",
+        "group": "AS–AD · Lectures 11–12"
+      }
+    ],
+    "downloads": [
+      {
+        "title": "基础模型综合笔记",
+        "description": "Lectures 1–9 / Tutorials 1–3",
+        "url": "/assets/files/courses/econ2123-study-notes.pdf"
+      },
+      {
+        "title": "AS–AD 预习笔记",
+        "description": "Lecture 11–12 · 23 页",
+        "url": "/assets/files/courses/econ2123-as-ad-notes.pdf"
+      }
+    ],
+    "url": "/courses/econ2123/"
+  }
+}

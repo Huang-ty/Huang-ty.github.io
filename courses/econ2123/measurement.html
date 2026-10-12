@@ -1,0 +1,626 @@
+---
+layout: "course-note"
+title: "宏观框架、GDP 与就业统计"
+course: "econ2123"
+permalink: "/courses/econ2123/measurement/"
+description: "区分恒等式、行为方程与均衡条件，再理解实际 GDP、通胀与失业率。"
+lang: "zh"
+math: true
+updated: "2026-10-12"
+---
+{% raw %}
+<details class="note-toc" open><summary>本页目录</summary><ol><li><a href="#section-1">1. The common logic behind the course</a></li><li><a href="#section-8">2. GDP: production, income, and expenditure</a></li><li><a href="#section-17">3. Real GDP, chain indexes, and inflation</a></li><li><a href="#section-28">4. Employment, unemployment, and participation</a></li></ol></details>
+<h2 id="section-1">1. The common logic behind the course</h2>
+<p><em>Sources: L1, slides 22–40; L2–3, slides 2–6; T2, pages 3–8; L8–9, slides 6–8.</em></p>
+<h3 id="section-2">1.1 What macroeconomics studies</h3>
+<p>Macroeconomics studies the economy as a whole: how much it produces, how many people work, how prices change, and how policy affects these outcomes. Individual spending and saving decisions interact. One person’s expenditure becomes another person’s income, so an action that is sensible for one household can have a different effect when everyone takes it at once.</p>
+<p><strong>Economic growth</strong> concerns the long-run rise in productive capacity and real income per person. <strong>Business cycles</strong> concern expansions and contractions around the economy’s longer-run path. Real GDP per capita equals real GDP divided by population. It is useful for comparing average production per person, although it does not reveal the distribution of income or capture every aspect of welfare.</p>
+<p>The course introduces four sets of questions. What drives growth and differences between countries? How do central banks influence interest rates and activity? How do government purchases and taxes affect demand? How do exchange rates and trade connect economies? The supplied lectures develop the closed-economy, short-run part of that agenda.</p>
+<p>The Great Depression motivates both measurement and modelling. Policymakers need reliable aggregate statistics to identify the scale of a downturn. Keynes’s demand-based analysis explains why weak expenditure can leave an economy producing below its capacity. Hicks and Hansen developed the IS–LM framework to analyse goods and financial markets together.</p>
+<h3 id="section-3">1.2 The chain linking the chapters</h3>
+<ol type="1">
+<li><strong>Measurement:</strong> GDP measures production, income, and expenditure from different angles. Nominal and real measures separate prices from quantities.</li>
+<li><strong>Goods market:</strong> Planned spending influences production. Production generates income, and income influences consumption. This feedback creates a multiplier.</li>
+<li><strong>Financial markets:</strong> Transactions create demand for money. The interest rate adjusts to reconcile money demand with money supply.</li>
+<li><strong>IS–LM:</strong> Interest rates affect investment and output; output affects money demand and interest rates. Equilibrium must satisfy both markets simultaneously.</li>
+<li><strong>Policy:</strong> Fiscal policy changes goods demand directly. Monetary policy changes financial conditions and then investment. Their interaction determines the final outcome.</li>
+</ol>
+<blockquote>
+<p><strong>中文理解:</strong> 生产形成收入，收入影响消费；交易需要货币，利率影响投资。IS–LM 把这两组反馈放在一起，所以不能只看政策的第一步效果。</p>
+</blockquote>
+<h3 id="section-4">1.3 Three kinds of equations</h3>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Meaning</th>
+<th>Example</th>
+<th>What it does not establish by itself</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accounting identity</td>
+<td>True by definition when measured consistently</td>
+<td>Y ≡ C + I + G + NX, with inventory investment included in I</td>
+<td>Which variable causes another to change</td>
+</tr>
+<tr>
+<td>Behavioural equation</td>
+<td>Describes an assumed response</td>
+<td>C = c₀ + c₁(Y − T)</td>
+<td>An accounting truth valid under all circumstances</td>
+</tr>
+<tr>
+<td>Equilibrium condition</td>
+<td>A condition that jointly determined variables must satisfy</td>
+<td>Y = Z; Mˢ = Mᵈ</td>
+<td>That the economy starts in equilibrium or adjusts instantly</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Actual expenditure and planned expenditure must be distinguished.</strong> Unsold output counts as inventory investment, so actual GDP accounting still balances. The condition Y = Z in the Keynesian cross says firms produce exactly what buyers plan to buy, with no unintended inventory accumulation or depletion.</p>
+<blockquote>
+<p><strong>中文理解:</strong> “恒等式”是记账关系；“行为方程”是对人的反应的假设；“均衡条件”是模型要求供需一致的条件。三者用途不同。</p>
+</blockquote>
+<h3 id="section-5">1.4 Assumptions are part of the answer</h3>
+<p>The basic Keynesian cross assumes a closed economy, a fixed price level, fixed investment, and given government purchases and net taxes. Firms can respond to changes in demand by changing production. The simple consumption function has 0 &lt; c₁ &lt; 1.</p>
+<p>The financial-market model initially treats nominal income as given, assumes two assets (money and a one-year risk-free bond), and lets the central bank set money supply. Money earns zero nominal interest in this model.</p>
+<p>IS–LM makes output and interest rates jointly endogenous. It replaces fixed investment with I(Y, i), while retaining a fixed price level and, for the standard course diagrams, a given nominal money supply. In the short run, “fixed prices” is a modelling approximation motivated by price stickiness, not a claim that every actual price is constant.</p>
+<p>An <strong>exogenous variable</strong> is taken as given in the model. An <strong>endogenous variable</strong> is determined inside it. Investment is exogenous in the first goods-market model but endogenous in IS–LM. A bar, as in Ī, indicates a given value.</p>
+<h3 id="section-6">1.5 Notation and units</h3>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Meaning</th>
+<th>Important distinction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Y</td>
+<td>Real output or real income</td>
+<td>In the model, measured consistently in goods or constant-price units</td>
+</tr>
+<tr>
+<td>PY or $Y</td>
+<td>Nominal GDP or nominal income</td>
+<td>The slides’ dollar sign marks a nominal value</td>
+</tr>
+<tr>
+<td>P</td>
+<td>Aggregate price level</td>
+<td>A normalised index, not the price of one particular good</td>
+</tr>
+<tr>
+<td>Z</td>
+<td>Planned demand for goods</td>
+<td>Equals output at goods-market equilibrium</td>
+</tr>
+<tr>
+<td>C, I, G</td>
+<td>Consumption, investment, government purchases</td>
+<td>Flows per period</td>
+</tr>
+<tr>
+<td>T</td>
+<td>Net taxes: taxes less transfers</td>
+<td>A rise in transfers lowers T in the simple model</td>
+</tr>
+<tr>
+<td>Yᴰ</td>
+<td>Disposable income, Y − T</td>
+<td>Income available for consumption or saving</td>
+</tr>
+<tr>
+<td>S</td>
+<td>Private saving</td>
+<td>National saving is S + T − G</td>
+</tr>
+<tr>
+<td>M, M/P</td>
+<td>Nominal and real money balances</td>
+<td>Stocks at a point in time</td>
+</tr>
+<tr>
+<td>i</td>
+<td>Nominal interest rate</td>
+<td>Use decimal form in calculations: 5% = 0.05</td>
+</tr>
+<tr>
+<td>Pᴮ, F</td>
+<td>Bond price and face value</td>
+<td>Different from the aggregate price level P</td>
+</tr>
+<tr>
+<td>N, U, L</td>
+<td>Employment, unemployment, labour force</td>
+<td>L = N + U; unrelated to the function L(i)</td>
+</tr>
+<tr>
+<td>u, π</td>
+<td>Unemployment rate, inflation rate</td>
+<td>Ratios, usually reported as percentages</td>
+</tr>
+</tbody>
+</table></div>
+<p>Income and saving are flows. Wealth, money holdings, and government debt are stocks. A government deficit is a flow that contributes to the accumulation of debt. Buying a financial asset changes a portfolio; it is not automatically new investment expenditure in GDP.</p>
+<h3 id="section-7">1.6 The mathematics used in the tutorials</h3>
+<p>For a straight line y = a + bx, a is the vertical intercept and b = Δy/Δx is the slope. A larger absolute slope means a steeper line, given the same axes and scales. The lines y = x, y = 0.5x, y = 4x, y = −x, and y = −2x have slopes 1, 0.5, 4, −1, and −2 respectively. A slope describes the change in the vertical variable per unit of the horizontal variable.</p>
+<p>A derivative gives the slope at a point. The power rule is:</p>
+<blockquote>
+<p><strong>Equation:</strong> If y = axⁿ, then dy/dx = anxⁿ⁻¹.</p>
+</blockquote>
+<p>Tutorial answers: d(2x²)/dx = 4x; d(0.1x)/dx = 0.1; d(100)/dx = 0. Also, d(2x − 1)/dx = 2 and d(2x² + 3x + 4)/dx = 4x + 3.</p>
+<p>A <strong>partial derivative</strong> changes one input while holding the others constant. For y = 0.8(x₁ + 100 + 2x₂), ∂y/∂x₁ = 0.8 and ∂y/∂x₂ = 1.6. This “holding other things constant” reasoning is essential when separating the output effect and interest-rate effect on investment.</p>
+<p>For any positive level X, its growth rate is gₜ = (Xₜ − Xₜ₋₁)/Xₜ₋₁. A change from 100 to 103 is 3%; a change from 200 to 198 is −1%. If an interest rate changes from 5% to 4%, it falls by <strong>1 percentage point</strong>, or <strong>20% of its previous value</strong>. These are different statements.</p>
+<h2 id="section-8">2. GDP: production, income, and expenditure</h2>
+<p><em>Sources: L2–3, slides 7–23 and 31–32; L4–5, slides 5–14; T1, pages 4–14.</em></p>
+<h3 id="section-9">2.1 What GDP counts</h3>
+<p>Gross domestic product is the value of final goods and services produced within an economy during a given period. Each part of the definition matters.</p>
+<p><strong>Value:</strong> Prices allow different products, such as haircuts and computers, to be added in common units.</p>
+<p><strong>Final:</strong> Count each product’s value once. An intermediate input is used up or transformed in producing another good. Final uses include consumption and investment. A newly produced machine is a final investment good even though a firm uses it to make other goods over several years. The classification depends on use: an apple eaten by a household is final consumption; an apple processed into juice is an intermediate input.</p>
+<p><strong>Goods and services:</strong> Both count. Government services without market prices are generally valued through production costs.</p>
+<p><strong>Produced during the period:</strong> Reselling an existing car or house does not create that asset again. Newly provided dealer or brokerage services can still contribute to current GDP.</p>
+<p><strong>Domestic:</strong> Location of production matters. A foreign-owned factory’s domestic production counts; production abroad by a domestically owned business does not.</p>
+<p><strong>Gross:</strong> Depreciation has not been deducted. The lectures do not develop depreciation calculations.</p>
+<h3 id="section-10">2.2 Three equivalent measurements</h3>
+<p><strong>Final-output method:</strong> Sum the value of domestically produced final goods and services.</p>
+<p><strong>Value-added method:</strong> For each producer, subtract purchased intermediate inputs from the value of production. Add value added across domestic producers.</p>
+<blockquote>
+<p><strong>Equation:</strong> Value added = value of output − value of intermediate inputs.</p>
+</blockquote>
+<p><strong>Income method:</strong> Add the incomes generated by production. In the simplified course examples, this is wages plus profits. More detailed national accounts contain additional income categories and accounting adjustments; use the simplified definitions when solving the two-firm exercises.</p>
+<p>Wages are part of value added, so do not subtract them when calculating it. Profit subtracts both intermediate-input costs and wages from revenue in these examples. In T1’s bread example, value added is 1 for the farmer, 3 − 1 = 2 for the miller, and 7 − 3 = 4 for the baker: a total of 7, the bread’s final value.</p>
+<blockquote>
+<p><strong>中文理解:</strong> 增加值不是利润。增加值先扣中间投入，再分给劳动者（工资）和资本所有者（利润等）。把工资也扣掉，就不能再把结果当作增加值。</p>
+</blockquote>
+<h4 id="section-11">Lecture example: steel and cars</h4>
+<p>The steel firm sells steel for 100, pays wages of 80, and earns profit of 20. The car firm sells cars for 200, buys steel for 100, pays wages of 70, and earns profit of 30.</p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Calculation</th>
+<th>GDP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Final goods</td>
+<td>Cars sold to final buyers</td>
+<td>200</td>
+</tr>
+<tr>
+<td>Value added</td>
+<td>Steel: 100; cars: 200 − 100</td>
+<td>200</td>
+</tr>
+<tr>
+<td>Income</td>
+<td>Wages: 80 + 70; profits: 20 + 30</td>
+<td>200</td>
+</tr>
+</tbody>
+</table></div>
+<p>Adding both firms’ revenue, 100 + 200, double-counts the steel. Labour’s income share is 150/200 = 75%; the profit share is 25%. The lecture’s historical labour-share chart illustrates that the division of income between labour and capital can change even when total GDP rises.</p>
+<p>If the steel firm is abroad, the car firm’s domestic value added is still 200 − 100 = 100, but the steel producer’s value added is foreign. Domestic GDP is therefore 100. The expenditure calculation gives the same result: final car expenditure of 200 less imported steel of 100.</p>
+<h4 id="section-12">Tutorial 1, Exercise 1: apples and juice</h4>
+<p>Firm A grows 200 kg of apples at 2 per kg. It sells 50 kg to households and 150 kg to Firm B. A’s <strong>total wage bill</strong> is 120. Firm B produces 500 bottles of juice at 5 each, and pays <strong>each of 10 workers</strong> 200. Its wage bill is therefore 2,000.</p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th style="text-align: right;">Firm A</th>
+<th style="text-align: right;">Firm B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td style="text-align: right;">200 × 2 = 400</td>
+<td style="text-align: right;">500 × 5 = 2,500</td>
+</tr>
+<tr>
+<td>Intermediate inputs</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">150 × 2 = 300</td>
+</tr>
+<tr>
+<td>Value added</td>
+<td style="text-align: right;">400</td>
+<td style="text-align: right;">2,200</td>
+</tr>
+<tr>
+<td>Wages</td>
+<td style="text-align: right;">120</td>
+<td style="text-align: right;">2,000</td>
+</tr>
+<tr>
+<td>Profit</td>
+<td style="text-align: right;">400 − 120 = 280</td>
+<td style="text-align: right;">2,500 − 300 − 2,000 = 200</td>
+</tr>
+</tbody>
+</table></div>
+<p>Final-output GDP = 50 × 2 + 500 × 5 = <strong>2,600</strong>. Value-added GDP = 400 + 2,200 = <strong>2,600</strong>. Income GDP = 120 + 2,000 + 280 + 200 = <strong>2,600</strong>. All three match.</p>
+<p>The wording of the wages matters: 120 is A’s total, while 200 is B’s payment per worker. The tutorial uses different year labels on pages 8 and 9 for the same example; the numerical solution is unchanged.</p>
+<h4 id="section-13">Tutorial 1, Exercise 2: missing values</h4>
+<p>The steel company has wage costs of 80 and profit of 40, with no other stated inputs. Its revenue is 120. The car company’s total expenses are 200. GDP is 250, and cars are the only final output in the exercise.</p>
+<ol type="1">
+<li>Car revenue is <strong>250</strong>, equal to GDP.</li>
+<li>Steel purchases cost 120, so car-sector wages are 200 − 120 = <strong>80</strong>.</li>
+<li>Car-sector profit is 250 − 200 = <strong>50</strong>.</li>
+</ol>
+<p>Check: total income = 80 + 40 + 80 + 50 = 250. Alternatively, value added = 120 + (250 − 120) = 250. These are the requested values (i), (ii), and (iii): <strong>250, 80, 50</strong>.</p>
+<h3 id="section-14">2.3 Expenditure components</h3>
+<blockquote>
+<p><strong>Equation:</strong> Y = C + I + G + NX, where NX = X − IM.</p>
+</blockquote>
+<p>In this standard identity, I includes inventory investment. When the lecture writes inventory investment separately, I refers to fixed investment only. Use one convention consistently and do not add inventories twice.</p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Component</th>
+<th>What belongs in it</th>
+<th>Common error</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Consumption C</td>
+<td>Household purchases of goods and services, including new consumer cars</td>
+<td>Treating every durable good as investment</td>
+</tr>
+<tr>
+<td>Fixed investment I</td>
+<td>New business plant and equipment; new residential construction</td>
+<td>Calling a purchase of shares or existing bonds GDP investment</td>
+</tr>
+<tr>
+<td>Government purchases G</td>
+<td>Government purchases of goods and services, including employee services</td>
+<td>Including cash transfers as direct purchases</td>
+</tr>
+<tr>
+<td>Exports X</td>
+<td>Domestically produced goods and services sold abroad</td>
+<td>Excluding them because the buyer is foreign</td>
+</tr>
+<tr>
+<td>Imports IM</td>
+<td>Foreign production included in domestic spending</td>
+<td>Forgetting to subtract imports already counted in C, I, or G</td>
+</tr>
+<tr>
+<td>Inventory investment</td>
+<td>Change in stocks of produced but unsold goods</td>
+<td>Equating production with sales in every period</td>
+</tr>
+</tbody>
+</table></div>
+<p>Imports are subtracted to remove foreign production from domestic spending. An imported consumer good can raise C and IM by the same amount, leaving domestic GDP unchanged by that imported production. Domestic distribution services may still add domestic value.</p>
+<p>Government transfers redistribute purchasing power without directly purchasing newly produced output. In the model they affect disposable income through net taxes T. If a recipient subsequently buys a service, that purchase enters the appropriate expenditure category. The same transfer must not be counted again as G.</p>
+<h4 id="section-15">Inventories reconcile production and sales</h4>
+<p>Suppose a firm produces 100 worth of goods but sells 80. Inventory investment is +20, so GDP is 100 rather than 80. If next period it sells the remaining 20 without producing anything new, expenditure on those goods is +20 and inventory investment is −20. Their net contribution to next period’s GDP is zero.</p>
+<blockquote>
+<p><strong>Equation:</strong> Inventory investment = production − sales, using consistent valuation.</p>
+</blockquote>
+<p>In the course’s simplified equilibrium model, unintended inventory changes disappear when Y = Z. Small net inventory investment or net exports in a particular dataset is a motivation for simplifying the model, not proof that inventories or international trade are unimportant. Small NX can coexist with very large exports and imports.</p>
+<h3 id="section-16">2.4 GDP and welfare</h3>
+<p>GDP measures production. It does not directly deduct pollution, describe inequality, measure leisure, or fully capture unpaid care and volunteer work. Repairs after damage can raise GDP without making society better off overall.</p>
+<p>The tutorials’ pollution and happiness examples show why GDP per capita is informative about material resources but incomplete as a welfare measure. Correlation between income and life satisfaction also does not establish causation.</p>
+<p>The slides overgeneralise when excluding activities without money. Some services are imputed, notably owner-occupied housing, and non-cash production can count. Unreported production creates measurement problems; tax reporting does not define the production boundary. In exercises, identify current domestic production and apply the stated accounting treatment.</p>
+<h2 id="section-17">3. Real GDP, chain indexes, and inflation</h2>
+<p><em>Sources: L2–3, slides 24–32 and 41–49; T1, pages 15–20.</em></p>
+<h3 id="section-18">3.1 Separating quantity from price</h3>
+<p>Nominal GDP uses each year’s prices and quantities. It can increase because the economy produces more, because prices rise, or both. Real GDP aims to measure the change in production while separating price changes.</p>
+<blockquote>
+<p><strong>Equations:</strong> Nominal GDPₜ = Σⱼ pⱼₜqⱼₜ.<br />
+Fixed-base real GDPₜ = Σⱼ pⱼᵦqⱼₜ, where b is the base year.</p>
+</blockquote>
+<p>The subscript j identifies a good, and t identifies time. Fixed-base real GDP uses the base year’s prices to value every year’s quantities. Nominal and real GDP are equal in the base year by construction. Outside the base year, either can be larger, depending on prices relative to the base.</p>
+<h4 id="section-19">Lecture example: potatoes and wine</h4>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Item</th>
+<th style="text-align: right;">Year 0 quantity</th>
+<th style="text-align: right;">Year 0 price</th>
+<th style="text-align: right;">Year 1 quantity</th>
+<th style="text-align: right;">Year 1 price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Potatoes</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Wine</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3</td>
+</tr>
+</tbody>
+</table></div>
+<p>Nominal GDP is 20 in year 0 and 30 in year 1. At year 0 prices, real GDP rises from 20 to 25, giving growth of 25%. At year 1 prices, real GDP rises from 25 to 30, giving growth of 20%.</p>
+<p>Why do the growth rates differ? The quantity of potatoes rises while wine production is unchanged. Year 1 prices give wine a larger weight, so the growing component has a smaller relative weight. Real growth in a multi-good economy depends on how heterogeneous quantities are weighted.</p>
+<blockquote>
+<p><strong>中文理解:</strong> 实际 GDP 仍然需要用价格作权重。固定价格是为了排除当期涨价的影响，不代表“价格从计算里消失了”。</p>
+</blockquote>
+<h3 id="section-20">3.2 Fisher quantity growth and chain linking</h3>
+<p>A distant fixed base can become unrepresentative as relative prices, product quality, and the range of goods change. The course addresses the choice of weights using adjacent-year prices and the geometric average of two quantity ratios.</p>
+<p>For the link from t − 1 to t, calculate:</p>
+<blockquote>
+<p><strong>Previous-price ratio:</strong> Rᴸₜ = (Σⱼ pⱼ,ₜ₋₁qⱼₜ)/(Σⱼ pⱼ,ₜ₋₁qⱼ,ₜ₋₁).</p>
+</blockquote>
+<blockquote>
+<p><strong>Current-price ratio:</strong> Rᴾₜ = (Σⱼ pⱼₜqⱼₜ)/(Σⱼ pⱼₜqⱼ,ₜ₋₁).</p>
+</blockquote>
+<blockquote>
+<p><strong>Fisher quantity factor:</strong> Fₜ = √(Rᴸₜ × Rᴾₜ). Real growth gₜ = Fₜ − 1.</p>
+</blockquote>
+<p>Take the geometric average of the <strong>growth factors</strong>, not the growth rates. The names Laspeyres and Paasche are useful labels for the two ratios, but the actual price–quantity combinations are more important to remember.</p>
+<p>For potatoes and wine, F₁ = √[(25/20) × (30/25)] = √1.5 = 1.2247449. Real growth is <strong>22.4745%</strong>. With year 0 as the reference year, chained real GDP₁ = 20 × 1.2247449 = <strong>24.4949</strong>.</p>
+<h4 id="section-21">Converting growth factors into a level series</h4>
+<p>Set chained real GDP in reference year r equal to that year’s nominal GDP. Move forward by multiplying successive Fisher factors, and backward by dividing.</p>
+<blockquote>
+<p><strong>Equations:</strong> Yᶜʰᵃⁱⁿᵣ = nominal GDPᵣ; Yᶜʰᵃⁱⁿₜ = Yᶜʰᵃⁱⁿₜ₋₁Fₜ.<br />
+Going backward: Yᶜʰᵃⁱⁿₜ₋₁ = Yᶜʰᵃⁱⁿₜ/Fₜ.</p>
+</blockquote>
+<p>For a future year r + k, multiply nominal GDPᵣ by Fᵣ₊₁ × Fᵣ₊₂ × … × Fᵣ₊ₖ. This notation avoids the ambiguous subscripts in the slide’s chain formula.</p>
+<p>Changing the reference year rescales an already constructed chain series. It does not change its adjacent-year growth rates. This differs from changing the fixed price weights in a fixed-base series, which can change measured growth. Chained component levels also need not sum exactly to aggregate chained GDP outside the reference year; they use different changing weights.</p>
+<blockquote>
+<p><strong>中文理解:</strong> “固定基年法”是一直用同一套价格作权重；“链式法的参考年”主要决定整条序列的标尺。链式增长率先由相邻两年的价格和数量算出，再串起来。</p>
+</blockquote>
+<h3 id="section-22">3.3 Tutorial 1: complete three-year chain calculation</h3>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th style="text-align: right;">Year 1</th>
+<th style="text-align: right;">Year 2, reference</th>
+<th style="text-align: right;">Year 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quantity of Good 1</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">76</td>
+<td style="text-align: right;">77</td>
+</tr>
+<tr>
+<td>Quantity of Good 2</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">35</td>
+</tr>
+<tr>
+<td>Price of Good 1</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr>
+<td>Price of Good 2</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">58</td>
+</tr>
+<tr>
+<td>Nominal GDP</td>
+<td style="text-align: right;">3,000</td>
+<td style="text-align: right;">3,366</td>
+<td style="text-align: right;">3,724</td>
+</tr>
+</tbody>
+</table></div>
+<p>First form the price–quantity cross-valuations. Keeping prices fixed across each row prevents mismatched numerator and denominator weights.</p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 26%" />
+<col style="width: 26%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr>
+<th>Valuation prices</th>
+<th style="text-align: right;">Year 1 quantities</th>
+<th style="text-align: right;">Year 2 quantities</th>
+<th style="text-align: right;">Year 3 quantities</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Year 1 prices</td>
+<td style="text-align: right;">3,000</td>
+<td style="text-align: right;">3,320</td>
+<td style="text-align: right;">3,640</td>
+</tr>
+<tr>
+<td>Year 2 prices</td>
+<td style="text-align: right;">3,050</td>
+<td style="text-align: right;">3,366</td>
+<td style="text-align: right;">3,682</td>
+</tr>
+<tr>
+<td>Year 3 prices</td>
+<td style="text-align: right;">3,100</td>
+<td style="text-align: right;">3,412</td>
+<td style="text-align: right;">3,724</td>
+</tr>
+</tbody>
+</table></div>
+<p>Year 1 to year 2: Rᴸ₂ = 3320/3000 = 1.1066667 and Rᴾ₂ = 3366/3050 = 1.1036066. Therefore F₂ = <strong>1.1051355528</strong>, so growth is <strong>10.5136%</strong>.</p>
+<p>Year 2 to year 3: Rᴸ₃ = 3682/3366 = 1.0938800 and Rᴾ₃ = 3724/3412 = 1.0914420. Therefore F₃ = <strong>1.0926602929</strong>, so growth is <strong>9.2660%</strong>.</p>
+<p>Because year 2 is the reference year, chained real GDP₂ = 3,366. Chained real GDP₁ = 3366/F₂ ≈ <strong>3,045.78</strong>. Chained real GDP₃ = 3366F₃ ≈ <strong>3,677.89</strong>. Keep full precision until the final rounding. The tutorial’s displayed year 1 result of 3,045 is a rough value, not the correctly rounded two-decimal answer.</p>
+<p>The number 3,050 is year 1 GDP valued at year 2 prices using the fixed-base method. It is not the same object as year 1 chained real GDP in year 2 reference dollars, 3,045.78.</p>
+<h3 id="section-23">3.4 GDP deflator and inflation</h3>
+<p>The GDP deflator is an aggregate price index for domestic production:</p>
+<blockquote>
+<p><strong>Equations:</strong> Pₜ = nominal GDPₜ/real GDPₜ.<br />
+Inflation πₜ = (Pₜ − Pₜ₋₁)/Pₜ₋₁ = Pₜ/Pₜ₋₁ − 1.</p>
+</blockquote>
+<p>The slides normalise P to 1 in the base or reference year. Many published tables instead use 100. Both conventions produce the same inflation rate because multiplying every index value by 100 cancels in the ratio.</p>
+<p>The numerical level of a price index depends on the normalisation. Its ratios and percentage changes are economically meaningful. A value of 1.20 on a base-1 index means a price level 20% above its reference value. An index number alone is not a currency price for the whole economy.</p>
+<p>Inflation means π &gt; 0. Deflation means π &lt; 0. <strong>Disinflation</strong> means inflation is falling: if inflation declines from 8% to 3%, prices are still rising, but more slowly. A lower inflation rate does not itself mean a lower price level.</p>
+<h4 id="section-24">Cars: fixed-base real GDP and the deflator</h4>
+<p>The lecture uses years 2008–2010 with 2009 as base; Tutorial 1 uses the same data labelled 2011–2013 with 2012 as base. The calculations are identical.</p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr>
+<th>Period</th>
+<th style="text-align: right;">Quantity</th>
+<th style="text-align: right;">Price</th>
+<th style="text-align: right;">Nominal GDP</th>
+<th style="text-align: right;">Real GDP at 24,000</th>
+<th style="text-align: right;">Deflator, base = 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>First year</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">20,000</td>
+<td style="text-align: right;">200,000</td>
+<td style="text-align: right;">240,000</td>
+<td style="text-align: right;">0.833333</td>
+</tr>
+<tr>
+<td>Base year</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">24,000</td>
+<td style="text-align: right;">288,000</td>
+<td style="text-align: right;">288,000</td>
+<td style="text-align: right;">1.000000</td>
+</tr>
+<tr>
+<td>Third year</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">26,000</td>
+<td style="text-align: right;">338,000</td>
+<td style="text-align: right;">312,000</td>
+<td style="text-align: right;">1.083333</td>
+</tr>
+</tbody>
+</table></div>
+<p>Real growth is 20% and then 8.3333%. Inflation is 20% and then 8.3333%. These happen to match numerically in this example but need not do so generally. Nominal GDP growth is 44% and then 17.3611%.</p>
+<p>Because there is only one good, the deflator equals that good’s price divided by its base-year price. In a multi-good economy, the GDP deflator is an aggregate index, not the relative price between two individual goods.</p>
+<h4 id="section-25">Exact relationship between nominal and real growth</h4>
+<p>Since nominal GDP = P × real GDP:</p>
+<blockquote>
+<p><strong>Equation:</strong> 1 + gᴺ = (1 + π)(1 + gᴿ).</p>
+</blockquote>
+<p>Thus gᴺ = π + gᴿ + πgᴿ. The familiar rule gᴺ ≈ π + gᴿ is an approximation. For 20% real growth and 20% inflation, nominal growth is 1.2 × 1.2 − 1 = 44%, not 40%.</p>
+<h3 id="section-26">3.5 Consumer price index</h3>
+<p>The CPI measures the price of a representative consumer basket. In the course’s fixed-basket construction, choose quantities for a basket, price that same basket each year, and divide by its base-year cost.</p>
+<blockquote>
+<p><strong>Equation:</strong> CPIₜ = (Σⱼ pⱼₜqⱼᵇᵃˢᵏᵉᵗ)/(Σⱼ pⱼᵦqⱼᵇᵃˢᵏᵉᵗ), optionally multiplied by 100.</p>
+</blockquote>
+<p>Added illustration: a basket costs 200 in the base year and 220 next year. CPI rises from 100 to 110, and inflation is 10%. The basket quantities remain fixed during this comparison.</p>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Question</th>
+<th>GDP deflator</th>
+<th>CPI in the basic course construction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Which goods?</td>
+<td>Domestic final production</td>
+<td>Representative household purchases</td>
+</tr>
+<tr>
+<td>Imported consumer goods?</td>
+<td>Excluded as foreign production</td>
+<td>Included if in the consumer basket</td>
+</tr>
+<tr>
+<td>Exports?</td>
+<td>Included as domestic production</td>
+<td>Generally outside the domestic consumer basket</td>
+</tr>
+<tr>
+<td>Domestic capital or military equipment?</td>
+<td>Included when part of final domestic production</td>
+<td>Generally excluded from household consumption</td>
+</tr>
+<tr>
+<td>Weights?</td>
+<td>Based on the output measure, with quantities changing</td>
+<td>Fixed basket quantities in the simple calculation</td>
+</tr>
+</tbody>
+</table></div>
+<p>An imported oil price increase can raise consumer prices substantially without directly raising the domestic-output deflator through the imported oil itself. Indirect effects on domestic production costs can still matter. “Core inflation” commonly removes food and energy categories to help distinguish their volatility from other price movements; it does not mean those costs are irrelevant to households.</p>
+<h3 id="section-27">3.6 Why inflation matters</h3>
+<p>If every price and nominal income rose in exactly the same proportion, purchasing power and relative prices would be unchanged in a very simplified thought experiment. Actual inflation is uneven. Fixed nominal pensions or incomes can lose purchasing power, while different goods’ prices adjust at different speeds.</p>
+<p>Relative-price movements normally convey information about scarcity and demand. Uneven price adjustment during inflation can obscure those signals and affect spending or investment decisions. The lecture’s price-rigidity evidence also prepares the fixed-price assumption used later in IS–LM.</p>
+<h2 id="section-28">4. Employment, unemployment, and participation</h2>
+<p><em>Source: L2–3, slides 34–39.</em></p>
+<h3 id="section-29">4.1 The definitions fit together</h3>
+<p>Employment N counts people with jobs. Unemployment U counts people without work who satisfy the relevant job-search and availability criteria. The course simplifies this to people without jobs who are looking for work. The labour force L consists of the employed plus the unemployed.</p>
+<blockquote>
+<p><strong>Equations:</strong> L = N + U; unemployment rate u = U/L.<br />
+Participation rate = L/working-age population.</p>
+</blockquote>
+<p>The denominator of the unemployment rate is the labour force, not the entire population. A person without a job is not automatically classified as unemployed. A student, retiree, or discouraged worker may be outside the labour force if they do not meet the search criteria. National statistical definitions determine the precise population and age coverage.</p>
+<p><strong>Discouraged workers</strong> want work but stop searching because they believe suitable work is unavailable. They leave measured unemployment and the labour force under the course definition. This can lower the unemployment rate without creating a single job.</p>
+<h3 id="section-30">4.2 Worked interpretation example</h3>
+<p>Added illustration: a working-age population of 1,000 contains 570 employed people, 30 unemployed people, and 400 outside the labour force. Then L = 600, u = 30/600 = <strong>5%</strong>, and participation = 600/1000 = <strong>60%</strong>.</p>
+<p>If 10 unemployed people stop searching, employment stays at 570, unemployment falls to 20, and the labour force falls to 590. The unemployment rate becomes 20/590 ≈ <strong>3.39%</strong>, and participation falls to <strong>59%</strong>. The headline unemployment rate improves while employment does not change.</p>
+<p>If those 10 people instead find jobs, employment rises to 580, unemployment falls to 20, and L remains 600. The unemployment rate becomes <strong>3.33%</strong>, with participation still <strong>60%</strong>. Similar unemployment-rate movements can describe quite different labour-market developments.</p>
+<blockquote>
+<p><strong>中文理解:</strong> 失业率下降，可能是找到了工作，也可能是放弃找工作。要同时看就业人数和劳动参与率，不能只看一个百分比。</p>
+</blockquote>
+<h3 id="section-31">4.3 Why the measure matters</h3>
+<p>High unemployment often accompanies weak demand and unused productive resources. Job losses can also have lasting earnings effects, as the lecture’s layoff study illustrates. GDP and unemployment therefore provide complementary information: aggregate production and the use of labour.</p>
+<p>The supplied lectures do not yet specify a production function or a quantitative equation linking Y to u. IS–LM predicts output effects under its assumptions; it does not by itself calculate an unemployment rate or the natural rate of unemployment. Those belong to the later labour-market material announced at the end of Lecture 8–9.</p>
+
+{% endraw %}

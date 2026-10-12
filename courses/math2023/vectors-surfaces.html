@@ -1,0 +1,137 @@
+---
+layout: "course-note"
+title: "空间向量、曲面与平面"
+course: "math2023"
+permalink: "/courses/math2023/vectors-surfaces/"
+description: "先认清点、方向向量和法向量，再读懂三维曲面。"
+lang: "zh"
+math: true
+updated: "2026-10-12"
+---
+{% raw %}
+<details class="note-toc" open><summary>本页目录</summary><ol><li><a href="#section-1">向量：点积、叉积、投影</a></li><li><a href="#section-3">三维坐标、柱面与二次曲面</a></li><li><a href="#section-5">直线与平面：统一用“点＋向量”</a></li></ol></details>
+<h2 id="section-1">向量：点积、叉积、投影</h2>
+<p>Vector toolkit | 所有已知题型的基础</p>
+<p><span>讲义定位：L2，pp.1–14；其中投影 pp.5–6，叉积 pp.10–14。</span></p>
+<h3 class="unnumbered" id="section-2">从两个点造出一个方向</h3>
+<p><span class="math display">\[\overrightarrow{AB}=B-A=(b_1-a_1,b_2-a_2,b_3-a_3),\quad \left\lVert \boldsymbol{v}\right\rVert=\sqrt{v_1^2+v_2^2+v_3^2},\quad \widehat{\boldsymbol{v}}=\frac{\boldsymbol{v}}{\left\lVert \boldsymbol{v}\right\rVert}.\]</span> 单位化要求 <span class="math inline">\(\boldsymbol{v}\ne\boldsymbol{0}\)</span>。向量可平移；只要长度与方向相同就是同一向量。<span class="math inline">\(\boldsymbol{i},\boldsymbol{j},\boldsymbol{k}\)</span> 是坐标单位向量。</p>
+<div class="tcolorbox">
+<p><strong>点积是一个数：</strong><span class="math inline">\(\boldsymbol{u}\cdot\boldsymbol{v}=u_1v_1+u_2v_2+u_3v_3=\left\lVert \boldsymbol{u}\right\rVert\left\lVert \boldsymbol{v}\right\rVert\cos\theta\)</span>.<br />
+非零向量垂直 <span class="math inline">\(\iff\boldsymbol{u}\cdot\boldsymbol{v}=0\)</span>；夹角满足 <span class="math inline">\(\cos\theta=\dfrac{\boldsymbol{u}\cdot\boldsymbol{v}}{\left\lVert \boldsymbol{u}\right\rVert\left\lVert \boldsymbol{v}\right\rVert}\)</span>。</p>
+</div>
+
+<p><span class="math display">\[\operatorname{comp}_{\boldsymbol{v}}\boldsymbol{u}=\frac{\boldsymbol{u}\cdot\boldsymbol{v}}{\left\lVert \boldsymbol{v}\right\rVert},\qquad
+\operatorname{proj}_{\boldsymbol{v}}\boldsymbol{u}=\frac{\boldsymbol{u}\cdot\boldsymbol{v}}{\left\lVert \boldsymbol{v}\right\rVert^2}\boldsymbol{v}.\]</span></p>
+<div class="tcolorbox">
+<p><strong>叉积是一个向量：</strong>仅在这里的三维情形使用。 <span class="math display">\[\boldsymbol{u}\times\boldsymbol{v}=\begin{vmatrix}\boldsymbol{i}&amp;\boldsymbol{j}&amp;\boldsymbol{k}\\u_1&amp;u_2&amp;u_3\\v_1&amp;v_2&amp;v_3\end{vmatrix}
+=(u_2v_3-u_3v_2,\ u_3v_1-u_1v_3,\ u_1v_2-u_2v_1).\]</span> 它垂直于 <span class="math inline">\(\boldsymbol{u},\boldsymbol{v}\)</span>，长度为 <span class="math inline">\(\left\lVert \boldsymbol{u}\right\rVert\left\lVert \boldsymbol{v}\right\rVert\sin\theta\)</span>。</p>
+</div>
+<p><strong>几何量：</strong>平行四边形面积 <span class="math inline">\(=\left\lVert \boldsymbol{u}\times\boldsymbol{v}\right\rVert\)</span>；三角形面积是其一半；平行六面体体积 <span class="math inline">\(=|\boldsymbol{w}\cdot(\boldsymbol{u}\times\boldsymbol{v})|\)</span>。</p>
+<p><strong>运算性质：</strong>点积交换；叉积反交换 <span class="math inline">\(\boldsymbol{v}\times\boldsymbol{u}=-\boldsymbol{u}\times\boldsymbol{v}\)</span>；二者都分配。叉积一般不满足结合律。<span class="math inline">\(\boldsymbol{i}\times\boldsymbol{j}=\boldsymbol{k}\)</span>，循环同理，逆序变号。 <strong>易错点：</strong>叉积为零表示非零向量<strong>平行</strong>，不是垂直。L2 最后一页练习的一项表述容易造成混淆，请以这个判别为准。</p>
+<p><strong>小例子：</strong><span class="math inline">\(\boldsymbol{u}=(1,2,0),\boldsymbol{v}=(0,1,3)\)</span>，则 <span class="math inline">\(\boldsymbol{u}\cdot\boldsymbol{v}=2\)</span>，<span class="math inline">\(\boldsymbol{u}\times\boldsymbol{v}=(6,-3,1)\)</span>；与两个原向量分别点积都为零。</p>
+
+<h2 id="section-3">三维坐标、柱面与二次曲面</h2>
+<p>Surfaces | 先认形状，再做计算</p>
+<p><span>讲义定位：L1，pp.1–12；L6，pp.1–6。</span></p>
+<p>同一方程在不同空间里表示不同对象：在 <span class="math inline">\(\mathbb R^2\)</span> 中 <span class="math inline">\(x^2+y^2=1\)</span> 是圆；在 <span class="math inline">\(\mathbb R^3\)</span> 中它是沿 <span class="math inline">\(z\)</span> 方向延伸的柱面。要指定空间里的圆，还需要 <span class="math inline">\(z=0\)</span> 等第二个条件。</p>
+<div class="tcolorbox">
+<p><strong>缺一个变量</strong> <span class="math inline">\(\Rightarrow\)</span> 沿该坐标方向自由延伸。<strong>trace（截痕）</strong>：把 <span class="math inline">\(x\)</span>、<span class="math inline">\(y\)</span> 或 <span class="math inline">\(z\)</span> 固定成常数，观察二维截面。</p>
+</div>
+
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align: left;">形状</th>
+<th style="text-align: left;">标准形式（<span class="math inline">\(a,b,c&gt;0\)</span>）</th>
+<th style="text-align: left;">快速识别</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">球面</td>
+<td style="text-align: left;"><span class="math inline">\((x-h)^2+(y-k)^2+(z-l)^2=R^2\)</span></td>
+<td style="text-align: left;">中心、半径</td>
+</tr>
+<tr>
+<td style="text-align: left;">椭球面</td>
+<td style="text-align: left;"><span class="math inline">\(x^2/a^2+y^2/b^2+z^2/c^2=1\)</span></td>
+<td style="text-align: left;">三个平方同号</td>
+</tr>
+<tr>
+<td style="text-align: left;">单叶双曲面</td>
+<td style="text-align: left;"><span class="math inline">\(x^2/a^2+y^2/b^2-z^2/c^2=1\)</span></td>
+<td style="text-align: left;">两正一负，连通</td>
+</tr>
+<tr>
+<td style="text-align: left;">双叶双曲面</td>
+<td style="text-align: left;"><span class="math inline">\(z^2/c^2-x^2/a^2-y^2/b^2=1\)</span></td>
+<td style="text-align: left;">一正两负，两块</td>
+</tr>
+<tr>
+<td style="text-align: left;">椭圆锥面</td>
+<td style="text-align: left;"><span class="math inline">\(z^2/c^2=x^2/a^2+y^2/b^2\)</span></td>
+<td style="text-align: left;">齐次二次，过原点</td>
+</tr>
+<tr>
+<td style="text-align: left;">椭圆抛物面</td>
+<td style="text-align: left;"><span class="math inline">\(z/c=x^2/a^2+y^2/b^2\)</span></td>
+<td style="text-align: left;">碗形，一个变量一次</td>
+</tr>
+<tr>
+<td style="text-align: left;">双曲抛物面</td>
+<td style="text-align: left;"><span class="math inline">\(z/c=x^2/a^2-y^2/b^2\)</span></td>
+<td style="text-align: left;">鞍形，一个变量一次</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="unnumbered" id="section-4">用截面判断：不要只靠背名字</h3>
+<p>对 <span class="math inline">\(x^2+y^2-z^2=1\)</span>，固定 <span class="math inline">\(z=k\)</span> 得半径 <span class="math inline">\(\sqrt{1+k^2}\)</span> 的圆：中间细，两端宽。对 <span class="math inline">\(z^2-x^2-y^2=1\)</span>，固定 <span class="math inline">\(z=k\)</span> 得 <span class="math inline">\(x^2+y^2=k^2-1\)</span>：只有 <span class="math inline">\(|k|\ge1\)</span> 才有截面，所以分成上下两叶。 <strong>易错点：</strong><span class="math inline">\(z=\sqrt{x^2+y^2}\)</span> 只有上半锥面；平方后 <span class="math inline">\(z^2=x^2+y^2\)</span> 多出了下半部分，须保留 <span class="math inline">\(z\ge 0\)</span>。</p>
+<p><strong>坐标与距离：</strong>坐标面为 <span class="math inline">\(x=0\)</span>（<span class="math inline">\(yz\)</span> 面）、<span class="math inline">\(y=0\)</span>（<span class="math inline">\(xz\)</span> 面）、<span class="math inline">\(z=0\)</span>（<span class="math inline">\(xy\)</span> 面）。两点距离 <span class="math inline">\(\left\lVert B-A\right\rVert\)</span>；球的方程来自“到中心的距离固定”。平移曲面时，把 <span class="math inline">\(x,y,z\)</span> 分别替换为 <span class="math inline">\(x-h,y-k,z-l\)</span>。</p>
+
+<h2 id="section-5">直线与平面：统一用“点＋向量”</h2>
+<p>Lines and planes | Q2、Q3 的输出格式</p>
+<p><span>讲义定位：L3，pp.1–5；L4，pp.2–5。</span></p>
+<div class="tcolorbox">
+<p><strong>直线：</strong>已知点 <span class="math inline">\(P\)</span> 和非零方向 <span class="math inline">\(\boldsymbol{v}=(a,b,c)\)</span>， <span class="math display">\[\boldsymbol{r}=P+t\boldsymbol{v},\qquad x=p_1+at,\ y=p_2+bt,\ z=p_3+ct.\]</span> 若 <span class="math inline">\(a,b,c\)</span> 都不为零，可写 <span class="math inline">\(\dfrac{x-p_1}{a}=\dfrac{y-p_2}{b}=\dfrac{z-p_3}{c}\)</span>。</p>
+</div>
+<p>若 <span class="math inline">\(a=0\)</span>，应写 <span class="math inline">\(x=p_1\)</span>，不要把零放在分母。直线参数的范围通常是 <span class="math inline">\(\mathbb R\)</span>；线段需要限制参数区间。</p>
+<div class="tcolorbox">
+<p><strong>平面：</strong>已知点 <span class="math inline">\(P\)</span> 和非零法向量 <span class="math inline">\(\boldsymbol{n}=(A,B,C)\)</span>， <span class="math display">\[\boldsymbol{n}\cdot(\boldsymbol{r}-P)=0\iff A(x-p_1)+B(y-p_2)+C(z-p_3)=0.\]</span> 一般式 <span class="math inline">\(Ax+By+Cz+D=0\)</span>，其中 <span class="math inline">\(D=-\boldsymbol{n}\cdot P\)</span>。</p>
+</div>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align: left;">给定条件</th>
+<th style="text-align: left;">如何得到平面法向量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">三点 <span class="math inline">\(P,Q,R\)</span></td>
+<td style="text-align: left;"><span class="math inline">\((Q-P)\times(R-P)\)</span>，要求三点不共线</td>
+</tr>
+<tr>
+<td style="text-align: left;">过点且垂直于直线</td>
+<td style="text-align: left;">用该直线的方向向量作法向量</td>
+</tr>
+<tr>
+<td style="text-align: left;">过点、平行于已知平面</td>
+<td style="text-align: left;">用已知平面的法向量</td>
+</tr>
+<tr>
+<td style="text-align: left;">含两个不平行的面内方向 <span class="math inline">\(\boldsymbol{u},\boldsymbol{v}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\boldsymbol{n}=\boldsymbol{u}\times\boldsymbol{v}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">过两点、垂直于已知平面</td>
+<td style="text-align: left;"><span class="math inline">\((Q-P)\times\boldsymbol{n}_0\)</span>，详见 08</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="unnumbered" id="section-6">平面与线的关系</h3>
+<p>两平面垂直 <span class="math inline">\(\iff\boldsymbol{n}_1\cdot\boldsymbol{n}_2=0\)</span>；平行 <span class="math inline">\(\iff\boldsymbol{n}_1\times\boldsymbol{n}_2=\boldsymbol{0}\)</span>。两平面夹角通常取锐角：<span class="math inline">\(\cos\theta=|\boldsymbol{n}_1\cdot\boldsymbol{n}_2|/(\left\lVert \boldsymbol{n}_1\right\rVert\left\lVert \boldsymbol{n}_2\right\rVert)\)</span>。</p>
+<p>直线平行于平面方向 <span class="math inline">\(\iff\boldsymbol{v}\cdot\boldsymbol{n}=0\)</span>，此时再代点区分“在面内”或“不相交”。直线垂直于平面 <span class="math inline">\(\iff\boldsymbol{v}\)</span> 与 <span class="math inline">\(\boldsymbol{n}\)</span> 平行。线面锐角 <span class="math inline">\(\alpha\)</span> 满足 <span class="math inline">\(\sin\alpha=|\boldsymbol{v}\cdot\boldsymbol{n}|/(\left\lVert \boldsymbol{v}\right\rVert\left\lVert \boldsymbol{n}\right\rVert)\)</span>。</p>
+<h3 class="unnumbered" id="section-7">两平面的交线</h3>
+<p>若 <span class="math inline">\(\boldsymbol{n}_1\times\boldsymbol{n}_2\ne\boldsymbol{0}\)</span>：先解两个平面方程找交点 <span class="math inline">\(P\)</span>，再写 <span class="math display">\[\boldsymbol{r}=P+t(\boldsymbol{n}_1\times\boldsymbol{n}_2).\]</span> <strong>讲义例子：</strong><span class="math inline">\(x-2y+z=1\)</span> 与 <span class="math inline">\(2x+3y-2z=0\)</span>。取 <span class="math inline">\(x=0\)</span> 得 <span class="math inline">\(P=(0,-2,-3)\)</span>，法向量叉积为 <span class="math inline">\((1,4,7)\)</span>，所以 <span class="math display">\[x=t,\qquad y=-2+4t,\qquad z=-3+7t.\]</span> <strong>易错点：</strong>法向量与方向向量都可以乘非零常数，包括 <span class="math inline">\(-1\)</span>；对应几何对象不变。检查答案时要比方向是否平行，不只比数字是否相同。</p>
+
+{% endraw %}

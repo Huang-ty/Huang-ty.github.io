@@ -1,0 +1,56 @@
+---
+layout: "course-note"
+title: "梯度、方向导数与交线切线"
+course: "math2023"
+permalink: "/courses/math2023/gradient-tangent/"
+description: "梯度给出法向，两个法向的叉积给出交线切向。"
+lang: "zh"
+math: true
+updated: "2026-10-12"
+---
+{% raw %}
+<details class="note-toc" open><summary>本页目录</summary><ol><li><a href="#section-1">梯度、方向导数与切平面</a></li><li><a href="#section-4">两曲面交线的切线</a></li></ol></details>
+<figure><img src="/assets/images/courses/intersection-tangent.svg" alt="圆柱与斜平面的交线，以及交线上一点的切向量"><figcaption>圆柱与斜平面的交线：切向量同时垂直于两个曲面的法向量。</figcaption></figure><h2 id="section-1">梯度、方向导数与切平面</h2>
+<p>Gradient | 连接 Q1、Q3、Q5 的桥梁</p>
+<p><span>讲义定位：L8，pp.2、10–13；L9，pp.1–3；L10，pp.1–3。</span></p>
+<div class="tcolorbox">
+<p><strong>梯度：</strong><span class="math inline">\(\nabla f=(f_x,f_y)\)</span> 或 <span class="math inline">\(\nabla F=(F_x,F_y,F_z)\)</span>。<br />
+<strong>方向导数：</strong>对单位方向 <span class="math inline">\(\boldsymbol{u}\)</span>，<span class="math inline">\(\boxed{D_{\boldsymbol{u}}f(P)=\nabla f(P)\cdot\boldsymbol{u}}\)</span>，要求 <span class="math inline">\(f\)</span> 在该点可微。</p>
+</div>
+<p><span class="math display">\[D_{\boldsymbol{u}}f(P)=\lim_{h\to0}\frac{f(P+h\boldsymbol{u})-f(P)}h,\qquad\left\lVert \boldsymbol{u}\right\rVert=1.\]</span> 若题目给 <span class="math inline">\(\boldsymbol{v}=(3,-4)\)</span>，先除以 <span class="math inline">\(5\)</span>。非单位向量直接做点积得到的是该参数化的变化率，不能当作单位距离的方向导数。</p>
+
+<p><strong>最大变化率：</strong><span class="math inline">\(\left\lVert \nabla f(P)\right\rVert\)</span>，方向为 <span class="math inline">\(\nabla f/\left\lVert \nabla f\right\rVert\)</span>；最小为 <span class="math inline">\(-\left\lVert \nabla f(P)\right\rVert\)</span>，方向相反。若梯度为零，各单位方向的一阶方向导数均为零，不能据此断言函数局部常数。</p>
+<h3 class="unnumbered" id="section-2">切平面与法线：一个用点积，一个用参数</h3>
+<p>对 <span class="math inline">\(F(x,y,z)=c\)</span>，先验证 <span class="math inline">\(F(P)=c\)</span> 且 <span class="math inline">\(\nabla F(P)\ne0\)</span>： <span class="math display">\[\boxed{\text{切平面：}\ \nabla F(P)\cdot(\boldsymbol{r}-P)=0};\qquad
+\boxed{\text{法线：}\ \boldsymbol{r}=P+t\nabla F(P)}.\]</span> 对 <span class="math inline">\(z=f(x,y)\)</span>，在 <span class="math inline">\(P=(a,b,f(a,b))\)</span>： <span class="math display">\[\boxed{z-f(a,b)=f_x(a,b)(x-a)+f_y(a,b)(y-b)}.\]</span> <strong>例：</strong>球面 <span class="math inline">\(x^2+y^2+z^2=9\)</span>，<span class="math inline">\(P=(1,2,2)\)</span>：梯度 <span class="math inline">\((2,4,4)\)</span>，切平面 <span class="math inline">\(x+2y+2z=9\)</span>，法线 <span class="math inline">\(\boldsymbol{r}=(1,2,2)+t(1,2,2)\)</span>。</p>
+<h3 class="unnumbered" id="section-3">链式法则：沿一条路径看函数变化</h3>
+<p><span class="math display">\[\frac{d}{dt}f(x(t),y(t),z(t))=f_xx&#39;(t)+f_yy&#39;(t)+f_zz&#39;(t)=\nabla f(\boldsymbol{r}(t))\cdot\boldsymbol{r}&#39;(t).\]</span> 这里 <span class="math inline">\(f_xx&#39;(t)\)</span> 表示 <span class="math inline">\(f_x\,x&#39;(t)\)</span> 的乘积，不是二阶偏导。若是 <span class="math inline">\(w=f(x(r,s),y(r,s),z(r,s))\)</span>，则 <span class="math inline">\(w_r=f_xx_r+f_yy_r+f_zz_r\)</span>，<span class="math inline">\(w_s\)</span> 同理。各条依赖路径“导数相乘，再相加”。</p>
+
+<h2 id="section-4">两曲面交线的切线</h2>
+<p>两个法向量叉积</p>
+<p><span>讲义定位：L10，pp.4–7；参数化方法另见 L5，pp.4、6–9。</span></p>
+<div class="tcolorbox">
+<p>对 <span class="math inline">\(F(x,y,z)=c_1\)</span>、<span class="math inline">\(G(x,y,z)=c_2\)</span> 的交线，在公共点 <span class="math inline">\(P\)</span>： <span class="math display">\[\boxed{\boldsymbol{T}=\nabla F(P)\times\nabla G(P)},\qquad\boxed{\boldsymbol{r}=P+t\boldsymbol{T}}.\]</span> 条件：<span class="math inline">\(F,G\)</span> 在附近连续可微，且两个梯度在 <span class="math inline">\(P\)</span> 线性无关，即 <span class="math inline">\(\boldsymbol{T}\ne\boldsymbol{0}\)</span>。</p>
+</div>
+<p><strong>为什么：</strong>沿交线的切向量必须同时落在两张曲面的切平面内，所以同时垂直于两个梯度。交线的切线就是两个切平面的交线。</p>
+<div class="center">
+<div class="minipage">
+<p><span style="color: teal">浅蓝网格：柱面 <span class="math inline">\(x^2+y^2=2\)</span></span><br />
+<span style="color: navy">半透明面：平面 <span class="math inline">\(x+z=4\)</span></span><br />
+<span style="color: orange">橙色：真实的交线（椭圆）</span><br />
+深蓝：在 <span class="math inline">\(P=(1,1,3)\)</span> 的切线。<br />
+切线方向同时垂直于柱面和平面在 <span class="math inline">\(P\)</span> 的法向量。</p>
+</div>
+</div>
+<h3 class="unnumbered" id="section-5">标准 5 步：不要跳过“代点”</h3>
+<ol>
+<li><p>两曲面整理成等值形式；<span class="math inline">\(z=f(x,y)\)</span> 改为 <span class="math inline">\(f(x,y)-z=0\)</span>。</p></li>
+<li><p>代点确认 <span class="math inline">\(P\)</span> 在两个曲面上。</p></li>
+<li><p>先求梯度函数，再代 <span class="math inline">\(P\)</span> 得两个数值向量。</p></li>
+<li><p>做叉积；可约掉共同非零因子。</p></li>
+<li><p>以 <span class="math inline">\(P\)</span> 为基点写参数方程，并检查两个点积均为零。</p></li>
+</ol>
+<p><strong>讲义 Example 3：</strong><span class="math inline">\(x^2+y^2=2\)</span>，<span class="math inline">\(x+z=4\)</span>，在 <span class="math inline">\(P=(1,1,3)\)</span>。 <span class="math display">\[\nabla F(P)=(2,2,0),\quad\nabla G(P)=(1,0,1),\quad\boldsymbol{T}=(2,-2,-2)\sim(1,-1,-1).\]</span> 所以 <span class="math inline">\(\boxed{x=1+t,\ y=1-t,\ z=3-t}\)</span>。</p>
+<p><strong>讲义 Example 4：</strong><span class="math inline">\(F=x^3+3x^2y^2+y^3+4xy-z^2=0\)</span> 与 <span class="math inline">\(G=x^2+y^2+z^2=11\)</span>，在 <span class="math inline">\(P=(1,1,3)\)</span>： <span class="math display">\[\nabla F(P)=(13,13,-6),\quad\nabla G(P)=(2,2,6),\quad\boldsymbol{T}=(90,-90,0)\sim(1,-1,0).\]</span> 故 <span class="math inline">\(\boxed{x=1+t,\ y=1-t,\ z=3}\)</span>。切线通常只在切点接触交线，<strong>并不要求整条切线都在曲面上</strong>。 <strong>易错点：</strong>叉积为零时，这个公式不能确定切线；不一定说明没有切线。需要参数化、局部展开等另行分析。</p>
+
+{% endraw %}

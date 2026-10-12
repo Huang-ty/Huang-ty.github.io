@@ -1,0 +1,112 @@
+---
+layout: "course-note"
+title: "列空间、零空间与 Rank–Nullity"
+course: "math2121"
+permalink: "/courses/math2121/column-null-spaces/"
+description: "原矩阵的 pivot 栏与齐次方程的自由变量，回答的是不同问题。"
+lang: "zh"
+math: true
+updated: "2026-10-09"
+---
+{% raw %}
+<details class="note-toc" open><summary>本页目录</summary><ol><li><a href="#section-1">Column Space Basis：完整計算</a></li><li><a href="#section-7">為何 Column Space 要用原矩陣？</a></li><li><a href="#section-11">Null Space Basis：完整計算</a></li><li><a href="#section-17">Rank-Nullity 與空間維度</a></li></ol></details>
+<h2 id="section-1">Column Space Basis：完整計算</h2>
+<h3 id="section-2">定義與<strong>原對話例題</strong></h3>
+<p><span class="math inline">\(\operatorname{Col}(A)\)</span> 是 <span class="math inline">\(A\)</span> 的全部欄向量張成的空間，也等於 <span class="math inline">\(\{A\mathbf x:\mathbf x\in\mathbb R^n\}\)</span>。本題 <span class="math display">\[A=\begin{pmatrix}0&amp;4&amp;4&amp;-3\\4&amp;4&amp;-1&amp;2\\-8&amp;0&amp;10&amp;-10\end{pmatrix}.\]</span></p>
+<h3 id="section-3">Step 1：交換行並取得第一個 Pivot</h3>
+<p><span class="math display">\[\xrightarrow{R_1\leftrightarrow R_2}
+\begin{pmatrix}4&amp;4&amp;-1&amp;2\\0&amp;4&amp;4&amp;-3\\-8&amp;0&amp;10&amp;-10\end{pmatrix}
+\xrightarrow{R_1\leftarrow R_1/4}
+\begin{pmatrix}1&amp;1&amp;-\frac 14&amp;\frac 12\\0&amp;4&amp;4&amp;-3\\-8&amp;0&amp;10&amp;-10\end{pmatrix}.\]</span></p>
+<h3 id="section-4">Step 2：消去第一欄，取得第二個 Pivot</h3>
+<p><span class="math display">\[\xrightarrow{R_3\leftarrow R_3+8R_1}
+\begin{pmatrix}1&amp;1&amp;-\frac 14&amp;\frac 12\\0&amp;4&amp;4&amp;-3\\0&amp;8&amp;8&amp;-6\end{pmatrix}
+\xrightarrow{R_2\leftarrow R_2/4}
+\begin{pmatrix}1&amp;1&amp;-\frac 14&amp;\frac 12\\0&amp;1&amp;1&amp;-\frac 34\\0&amp;8&amp;8&amp;-6\end{pmatrix}.\]</span></p>
+<h3 id="section-5">Step 3：消去第二欄，讀出 Pivot 欄編號</h3>
+<p><span class="math display">\[\xrightarrow{\substack{R_1\leftarrow R_1-R_2\\R_3\leftarrow R_3-8R_2}}
+\boxed{\operatorname{rref}(A)=\begin{pmatrix}1&amp;0&amp;-\frac 54&amp;\frac 54\\0&amp;1&amp;1&amp;-\frac 34\\0&amp;0&amp;0&amp;0\end{pmatrix}.}\]</span> Pivot columns 是<strong>第 1、2 欄</strong>，所以 <span class="math inline">\(\operatorname{rank}(A)=2\)</span>。</p>
+<h3 id="section-6">Step 4：回到原矩陣取 Basis</h3>
+<p><span class="math display">\[\boxed{B_{\operatorname{Col}(A)}=\left\{\begin{pmatrix}0\\4\\-8\end{pmatrix},\begin{pmatrix}4\\4\\0\end{pmatrix}\right\}.}\]</span> 這兩向量互非倍數，故獨立。令原矩陣的四個欄向量為 <span class="math inline">\(\mathbf v_1,\ldots,\mathbf v_4\)</span>，則 <span class="math display">\[-\frac54\mathbf v_1+\mathbf v_2=\begin{pmatrix}4\\-1\\10\end{pmatrix}=\mathbf v_3,
+\quad
+\frac54\mathbf v_1-\frac34\mathbf v_2=\begin{pmatrix}-3\\2\\-10\end{pmatrix}=\mathbf v_4.\]</span> 因此這個 basis 張成全部四欄。<strong>原對話的 RREF、rank 和兩個線性組合均正確。</strong></p>
+
+<h2 id="section-7">為何 Column Space 要用原矩陣？</h2>
+<h3 id="section-8">保留線性關係，未必保留原來的空間</h3>
+<p>若行操作使 <span class="math inline">\(R=EA\)</span>，<span class="math inline">\(E\)</span> 是可逆矩陣，則每個原欄 <span class="math inline">\(\mathbf v_j\)</span> 變成 <span class="math inline">\(E\mathbf v_j\)</span>。對任意係數 <span class="math inline">\(c_j\)</span>： <span class="math display">\[\sum_j c_j\mathbf v_j=0
+\quad\Longleftrightarrow\quad
+\sum_j c_j E\mathbf v_j=0.\]</span> 所以哪些欄獨立、冗餘欄的組合係數，都沒有改變；但 <span class="math inline">\(E\)</span> 可能把整個空間轉到另一個位置。<strong>Pivot 告訴你挑哪幾欄；向量本身必須從原矩陣取。</strong></p>
+<h3 id="section-9">用上一題直接看見差別</h3>
+<p>上一題的 column space 是 <span class="math display">\[\operatorname{Col}(A)=\left\{\begin{pmatrix}x\\y\\z\end{pmatrix}:2x-2y-z=0\right\}.\]</span> 因為一般線性組合為 <span class="math display">\[a\begin{pmatrix}0\\4\\-8\end{pmatrix}+b\begin{pmatrix}4\\4\\0\end{pmatrix}
+=\begin{pmatrix}4b\\4a+4b\\-8a\end{pmatrix},\]</span> 代入得到 <span class="math inline">\(2(4b)-2(4a+4b)-(-8a)=0\)</span>。反過來，若 <span class="math inline">\(2x-2y-z=0\)</span>，取 <span class="math inline">\(b=x/4\)</span>、<span class="math inline">\(a=-z/8\)</span> 即能寫出同樣的組合。</p>
+<p>但 RREF 的前兩欄是 <span class="math inline">\(\mathbf e_1=(1,0,0)^T\)</span>、<span class="math inline">\(\mathbf e_2=(0,1,0)^T\)</span>；它們不滿足上述平面方程： <span class="math display">\[2(1)-2(0)-0=2\ne0,\qquad
+2(0)-2(1)-0=-2\ne0.\]</span> 因此不能把這兩個 RREF 欄向量作為原 column space 的 basis。</p>
+<h3 id="section-10">Pivot 選法給出一組 Basis，但 Basis 不唯一</h3>
+<p>原對話延伸思考的矩陣 <span class="math display">\[T=\begin{pmatrix}1&amp;2&amp;3\\0&amp;1&amp;4\\0&amp;0&amp;0\end{pmatrix},\quad
+\mathbf t_1=\begin{pmatrix}1\\0\\0\end{pmatrix},\quad
+\mathbf t_2=\begin{pmatrix}2\\1\\0\end{pmatrix},\quad
+\mathbf t_3=\begin{pmatrix}3\\4\\0\end{pmatrix}\]</span> 有 pivot columns 第 1、2 欄，故 <span class="math inline">\(\{\mathbf t_1,\mathbf t_2\}\)</span> 是一組 basis。<strong>但 <span class="math inline">\(\{\mathbf t_1,\mathbf t_3\}\)</span> 也是一組 basis</strong>，因為 <span class="math display">\[\mathbf t_3=-5\mathbf t_1+4\mathbf t_2,\qquad
+\mathbf t_2=\frac54\mathbf t_1+\frac14\mathbf t_3.\]</span> 兩組都獨立且張成相同平面。因此若只問「哪組是 basis」，原對話思考題中的 A、B 兩組皆成立；三欄全選則相關。<strong>若明確問「pivot columns 選法」，才是第 1、2 欄。</strong></p>
+
+<h2 id="section-11">Null Space Basis：完整計算</h2>
+<h3 id="section-12">定義與<strong>原對話例題</strong></h3>
+<p><span class="math display">\[\operatorname{Null}(A)=\{\mathbf x\in\mathbb R^n:A\mathbf x=\mathbf0\},\qquad
+A=\begin{pmatrix}4&amp;-4&amp;-2&amp;4\\2&amp;-2&amp;-1&amp;2\end{pmatrix}.\]</span> Null space 研究<strong>哪些輸入被矩陣送到零向量</strong>。本題輸入有四個座標，所以 <span class="math inline">\(\operatorname{Null}(A)\subseteq\mathbb R^4\)</span>；輸出在 <span class="math inline">\(\mathbb R^2\)</span>。</p>
+<h3 id="section-13">Step 1：求 RREF 與自由變數</h3>
+<p><span class="math display">\[A\xrightarrow{R_1\leftarrow R_1/4}
+\begin{pmatrix}1&amp;-1&amp;-\frac 12&amp;1\\2&amp;-2&amp;-1&amp;2\end{pmatrix}
+\xrightarrow{R_2\leftarrow R_2-2R_1}
+\begin{pmatrix}1&amp;-1&amp;-\frac 12&amp;1\\0&amp;0&amp;0&amp;0\end{pmatrix}.\]</span> Pivot variable 是 <span class="math inline">\(x_1\)</span>；free variables 是 <span class="math inline">\(x_2,x_3,x_4\)</span>。方程是 <span class="math display">\[x_1-x_2-\frac12x_3+x_4=0
+\quad\Rightarrow\quad x_1=x_2+\frac12x_3-x_4.\]</span></p>
+<h3 id="section-14">Step 2：參數向量形式</h3>
+<p>令 <span class="math inline">\(x_2=s\)</span>、<span class="math inline">\(x_3=t\)</span>、<span class="math inline">\(x_4=u\)</span>，其中 <span class="math inline">\(s,t,u\in\mathbb R\)</span>： <span class="math display">\[\mathbf x=\begin{pmatrix}s+\frac 12t-u\\s\\t\\u\end{pmatrix}
+=s\begin{pmatrix}1\\1\\0\\0\end{pmatrix}+t\begin{pmatrix}\frac 12\\0\\1\\0\end{pmatrix}+u\begin{pmatrix}-1\\0\\0\\1\end{pmatrix}.\]</span> 這三個向量張成所有解；看第 2、3、4 座標，若組合等於零，<span class="math inline">\(s,t,u\)</span> 都必須為 <span class="math inline">\(0\)</span>，所以獨立。</p>
+<h3 id="section-15">Step 3：取出 Basis，可縮放為整數</h3>
+<p><span class="math display">\[\boxed{B=\left\{\begin{pmatrix}1\\1\\0\\0\end{pmatrix},\begin{pmatrix}1\\0\\2\\0\end{pmatrix},\begin{pmatrix}-1\\0\\0\\1\end{pmatrix}\right\}.}\]</span> 使用這組整數 basis 時，原解寫成 <span class="math inline">\(s\mathbf b_1+\frac{t}{2}\mathbf b_2+u\mathbf b_3\)</span>。</p>
+<h3 id="section-16">Step 4：代回檢驗與維度核對</h3>
+<p>第一行對三個 basis 向量的乘積分別為 <span class="math display">\[4-4=0,\qquad 4-2(2)=0,\qquad -4+4=0.\]</span> 第二行是第一行的一半，亦為 <span class="math inline">\(0\)</span>。故每個 <span class="math inline">\(\mathbf b_i\)</span> 都滿足 <span class="math inline">\(A\mathbf b_i=0\)</span>。 <span class="math display">\[\operatorname{rank}(A)=1,\qquad\operatorname{nullity}(A)=4-1=3.\]</span></p>
+<div class="keybox">
+<p><strong>通用技巧：</strong>每次設一個自由變數為 <span class="math inline">\(1\)</span>、其他自由變數為 <span class="math inline">\(0\)</span>，再算主變數，便得到一個 basis 向量。不要只把自由變數位置的標準向量直接當作答案。</p>
+</div>
+
+<h2 id="section-17">Rank-Nullity 與空間維度</h2>
+<h3 id="section-18">定理與直覺</h3>
+<p>對 <span class="math inline">\(A\in\mathbb R^{m\times n}\)</span>： <span class="math display">\[\boxed{\operatorname{rank}(A)+\operatorname{nullity}(A)=n.}\]</span> <span class="math display">\[\operatorname{rank}(A)=\dim\operatorname{Col}(A)=\text{pivot 個數},\qquad
+\operatorname{nullity}(A)=\dim\operatorname{Null}(A)=\text{free variables 個數}.\]</span> <strong>直覺：</strong>輸入的 <span class="math inline">\(n\)</span> 個自由度，一部分成為獨立的輸出方向；另一部分落在 kernel（核，即 null space）中。RREF 把 <span class="math inline">\(n\)</span> 個變數分成主變數與自由變數，正好對應這兩部分。</p>
+<h3 id="section-19">不要混淆「所在空間」與「自己的維度」</h3>
+<div class="table-scroll" role="region" aria-label="可横向滚动的学习表格" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align: left;">對象</th>
+<th style="text-align: left;">所在空間</th>
+<th style="text-align: left;">自己的維度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><span class="math inline">\(\operatorname{Col}(A)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mathbb R^m\)</span>，每向量有 <span class="math inline">\(m\)</span> 個座標</td>
+<td style="text-align: left;"><span class="math inline">\(r=\operatorname{rank}(A)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">\(\operatorname{Null}(A)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mathbb R^n\)</span>，每向量有 <span class="math inline">\(n\)</span> 個座標</td>
+<td style="text-align: left;"><span class="math inline">\(n-r\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Row space</td>
+<td style="text-align: left;"><span class="math inline">\(\mathbb R^n\)</span>，每行有 <span class="math inline">\(n\)</span> 個元素</td>
+<td style="text-align: left;"><span class="math inline">\(r\)</span></td>
+</tr>
+</tbody>
+</table></div>
+<p>頁 12 的 <span class="math inline">\(2\times4\)</span> 矩陣：column space 是 <span class="math inline">\(\mathbb R^2\)</span> 中的一維直線；null space 是 <span class="math inline">\(\mathbb R^4\)</span> 中的三維子空間。<span class="math inline">\(1+3=4\)</span>，<strong>右邊是欄數／輸入變數數，並非行數</strong>。</p>
+<h3 id="section-20">同一矩陣的兩種 Basis：頁 10 的 <span class="math inline">\(3\times4\)</span> 矩陣</h3>
+<p>其 RREF 的方程為 <span class="math display">\[x_1-\frac54x_3+\frac54x_4=0,\qquad
+x_2+x_3-\frac34x_4=0.\]</span> 令 <span class="math inline">\(x_3=s\)</span>、<span class="math inline">\(x_4=t\)</span>，得到 <span class="math display">\[\mathbf x=s\begin{pmatrix}\frac 54\\-1\\1\\0\end{pmatrix}+t\begin{pmatrix}-\frac 54\\\frac 34\\0\\1\end{pmatrix}.\]</span> 所以 <span class="math inline">\(\operatorname{rank}(A)=2\)</span>、<span class="math inline">\(\operatorname{nullity}(A)=2\)</span>。一組整數 null space basis 是 <span class="math display">\[\left\{\begin{pmatrix}5\\-4\\4\\0\end{pmatrix},\begin{pmatrix}-5\\3\\0\\4\end{pmatrix}\right\}.\]</span> 核對全部輸出座標： <span class="math display">\[A\begin{pmatrix}5\\-4\\4\\0\end{pmatrix}=\begin{pmatrix}-16+16\\20-16-4\\-40+40\end{pmatrix}=0,\quad
+A\begin{pmatrix}-5\\3\\0\\4\end{pmatrix}=\begin{pmatrix}12-12\\-20+12+8\\40-40\end{pmatrix}=0.\]</span> Column space basis 有 <span class="math inline">\(2\)</span> 個<strong>三維向量</strong>；null space basis 有 <span class="math inline">\(2\)</span> 個<strong>四維向量</strong>。向量數相同，研究的空間卻不同。</p>
+<div class="keybox">
+<p>若 <span class="math inline">\(\operatorname{rank}(A)=n\)</span>，則 <span class="math inline">\(\operatorname{Null}(A)=\{0\}\)</span>，其 basis 是<strong>空集合</strong>，不是 <span class="math inline">\(\{0\}\)</span>。若 <span class="math inline">\(A=0\)</span>，則 <span class="math inline">\(\operatorname{Col}(A)=\{0\}\)</span>、<span class="math inline">\(\operatorname{Null}(A)=\mathbb R^n\)</span>。</p>
+</div>
+
+{% endraw %}

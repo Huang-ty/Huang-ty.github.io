@@ -1,0 +1,24 @@
+---
+layout: default
+---
+{% assign course = site.data.courses[page.course] %}
+<article class="course-note" lang="zh">
+  <nav class="breadcrumbs" aria-label="当前位置"><a href="{{ '/courses/' | relative_url }}">课程笔记</a><span aria-hidden="true">/</span><a href="{{ course.url | relative_url }}">{{ course.code }}</a></nav>
+  <header class="note-header">
+    <p class="eyebrow">{{ course.code }} <span>· {{ course.title }}</span></p>
+    <h1 class="page-title">{{ page.title }}</h1>
+    <p class="course-lead">{{ page.description }}</p>
+    <div class="note-tools"><span>更新于 {{ page.updated }}</span><a href="{{ course.url | relative_url }}#download-heading">PDF 下载</a><button type="button" class="print-note" hidden>打印本页</button></div>
+  </header>
+  <p class="notes-context note-source-context">按配套学习笔记整理；正文中的页码指 PDF 或注明的讲义，网页可用目录直接跳转。</p>
+  <div class="note-content">{{ content }}</div>
+  <nav class="note-pagination" aria-label="继续阅读">
+    {% for note in course.notes %}
+      {% if note.url == page.url %}
+        {% unless forloop.first %}{% assign previous_index = forloop.index0 | minus: 1 %}{% assign previous = course.notes[previous_index] %}<a href="{{ previous.url | relative_url }}"><span>上一篇</span>{{ previous.title }}</a>{% endunless %}
+        {% unless forloop.last %}{% assign next_index = forloop.index0 | plus: 1 %}{% assign next = course.notes[next_index] %}<a href="{{ next.url | relative_url }}"><span>下一篇</span>{{ next.title }}</a>{% endunless %}
+      {% endif %}
+    {% endfor %}
+  </nav>
+  <p class="back-to-course"><a href="{{ course.url | relative_url }}">← 返回 {{ course.code }} 课程目录</a><a href="#main-content">回到顶部 ↑</a></p>
+</article>
