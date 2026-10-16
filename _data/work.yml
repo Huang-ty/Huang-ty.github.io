@@ -1,3 +1,8 @@
+- date: 2026-10
+  title: "Can You Hear the Shape of a Drum?"
+  url: /projects/hear-the-shape/
+  note: "An interactive public mathematics essay on membrane vibration and spectral geometry, with animated modes, a scaling experiment, and an isospectral counterexample."
+
 # Work & Research. Add a new entry at the top (most recent first).
 # date is for ordering/label only; it is not required to be a real day.
 - date: 2026-06

@@ -16,7 +16,7 @@ permalink: /work/
     {% for item in items %}
       <li>
         <span class="list-date">{{ item.date }}</span>
-        <h2 class="entry-title">{{ item.title }}</h2>
+        <h2 class="entry-title">{% if item.url %}<a href="{{ item.url | relative_url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</h2>
         {% if item.note %}<p class="entry-note">{{ item.note }}</p>{% endif %}
       </li>
     {% endfor %}
