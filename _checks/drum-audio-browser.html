@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Native audio signal checks</title>
+<style>body{max-width:850px;margin:40px auto;font:16px/1.6 system-ui}button{padding:12px}pre{white-space:pre-wrap}</style>
+<h1>Native audio signal checks</h1><p>Renders actual Web Audio PCM offline. No audible playback or microphone access.</p><button id="run">Render and check signals</button><pre id="results">Not run.</pre>
+<script src="/projects/hear-the-shape/audio.js?v=20261110a"></script><script src="/projects/hear-the-shape/forward-math.js?v=20261110"></script>
+<script>
+document.getElementById('run').onclick=async()=>{
+ const out=document.getElementById('results');out.textContent='Rendering…';
+ try{
+  const Audio=window.OfflineAudioContext||window.webkitOfflineAudioContext;
+  if(!Audio)throw Error('OfflineAudioContext is unavailable');
+  const ref=1.25*Math.PI**2,square=DrumForwardMath.solvePolygon(DrumForwardMath.presets.square,{quality:'quick'});
+  const cases=[['rectangle mode 1',ref,220],['rectangle mode 2',2*Math.PI**2,220*Math.sqrt(1.6)],['rectangle mode 3',3.25*Math.PI**2,220*Math.sqrt(2.6)],['doubled rectangle',ref/4,110],['square mode 2',square.eigenvalues[1],220*Math.sqrt(square.eigenvalues[1]/ref)],['square mode 3',square.eigenvalues[2],220*Math.sqrt(square.eigenvalues[2]/ref)]];
+  const lines=[];
+  for(const [name,lambda,expected]of cases){
+   const sr=48000,ctx=new Audio(1,Math.round(.4*sr),sr),voice=DrumAudio.createVoice(ctx,DrumAudio.pitch(lambda),.03);
+   const paused=ctx.suspend(.3),rendering=ctx.startRendering();await paused;DrumAudio.releaseVoice(ctx,voice);await ctx.resume();
+   const buffer=await rendering,signal=buffer.getChannelData(0),crossings=[];let sum=0,n=0;
+   for(let i=Math.floor(.08*sr);i<Math.floor(.27*sr);i++){
+    if(signal[i]<=0&&signal[i+1]>0)crossings.push(i-signal[i]/(signal[i+1]-signal[i]));sum+=signal[i]**2;n++;
+   }
+   const measured=sr*(crossings.length-1)/(crossings.at(-1)-crossings[0]),rms=Math.sqrt(sum/n);
+   if(Math.abs(measured-expected)>.03)throw Error(name+': wrong frequency '+measured);
+   if(rms<.019||rms>.023)throw Error(name+': no signal or incorrect gain '+rms);
+   if(signal.slice(Math.floor(.34*sr)).some(v=>v!==0))throw Error(name+': release did not stop');
+   if(Math.max(...signal.slice(0,48).map(Math.abs))>.001)throw Error(name+': hard onset');
+   lines.push(name+': '+measured.toFixed(3)+' Hz; RMS '+rms.toFixed(5)+'; attack and silence after release PASS');
+  }
+  out.textContent='PASS — native Web Audio signal checks\n'+lines.join('\n');out.dataset.result='pass';
+ }catch(e){out.textContent='FAIL: '+e.message;out.dataset.result='fail'}
+};
+</script></html>

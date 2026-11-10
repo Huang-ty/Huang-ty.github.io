@@ -3,7 +3,7 @@
 (function(){
 'use strict';
 const root=document.getElementById('forward-lab');if(!root)return;
-const M=window.DrumForwardMath,$=id=>document.getElementById('fwd-'+id);
+const M=window.DrumForwardMath,A=window.DrumAudio,$=id=>document.getElementById('fwd-'+id);
 const workerURL=new URL('forward-worker.js?v=20261110',document.currentScript.src);
 const editor=$('editor'),canvas=$('mode-canvas'),ctx=canvas.getContext('2d');
 const off=document.createElement('canvas');off.width=460;off.height=360;
@@ -13,6 +13,7 @@ let lang='en',busy=false,result=null,selected=0,worker=null,requestId=0,timeout,
 let playing=false,raf=0,lastTime=0,phase=0,raster=null,active=[],boundaryPath=null,meshPath=null,nodePath=null;
 let statusKind='ready',errorCode='',lastSolved=null,comparison=null;
 const text=(en,zh)=>lang==='zh'?zh:en;
+const sound=A.channel('forward',{onInterrupt:()=>stop(),onChange:()=>renderAudio()});
 const clone=p=>p.map(v=>v.slice()),point=p=>[30+p[0]*100,330-p[1]*100];
 const errors={
  vertices:['Use at least three finite vertex coordinates.','请至少输入三个有效顶点。'],
@@ -50,8 +51,16 @@ function controls(){
  $('cancel').hidden=!busy;$('play').disabled=!result;$('mode-select').disabled=!result;
  root.querySelectorAll('[data-forward-preset]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.forwardPreset===preset?'true':'false'));
 }
-function stop(){playing=false;cancelAnimationFrame(raf);lastTime=0;renderPlay()}
-function renderPlay(){$('play').textContent=playing?text('Pause this mode','暂停这个模式'):text('Play this mode','播放这个模式');$('play').setAttribute('aria-pressed',String(playing))}
+function stop(){playing=false;cancelAnimationFrame(raf);lastTime=0;sound.stop();renderPlay()}
+function start(){if(!result)return;playing=true;lastTime=0;renderPlay();sound.play(result.eigenvalues[selected]);raf=requestAnimationFrame(frame)}
+function renderPlay(){$('play').textContent=playing?text('Pause mode + sound','暂停振型与声音'):text('Play mode + sound','播放振型与声音');$('play').setAttribute('aria-pressed',String(playing))}
+function renderAudio(){
+ const node=$('audio-status'),state=sound.getState();node.dataset.state=state;
+ if(!result){node.textContent=text('Compute a shape, then press Play to hear a mode.','计算形状后，点击播放即可听到对应模式。');return}
+ const hz=A.pitch(result.eigenvalues[selected]).toFixed(1),label=text(`Illustrative pitch ≈ ${hz} Hz`,`示范音高 ≈ ${hz} Hz`);
+ const messages={audible:text(`Tone on · ${label}`,`正在发声 · ${label}`),muted:text(`Muted · ${label}`,`已静音 · ${label}`),starting:text('Starting sound…','正在开启声音……'),unsupported:text('Audio is unavailable in this browser; animation still works.','这个浏览器不支持声音，动画仍可播放。'),blocked:text('Sound was interrupted or blocked. Restart playback to retry.','声音被中断或阻止，请重新播放以重试。'),range:text(`${label} · outside this demo’s supported playback range.`,`${label} · 超出本演示支持的播放范围。`)};
+ node.textContent=messages[state]||`${label} · ${text('press Play to listen.','点击播放试听。')}`;
+}
 function invalidate(){stop();result=null;raster=null;comparison=null;phase=0;renderResults();draw();status(closed?'ready':'drawing')}
 function renderEditor(){
  let s=`<title id="fwd-editor-title">${text('Polygon boundary editor; coordinates in model units','多边形边界编辑器，坐标为模型单位')}</title><rect x="30" y="30" width="400" height="300" fill="#fffdf7"/>`;
@@ -129,7 +138,7 @@ function renderResults(){
  const body=$('spectrum-body');
  $('mode-select').setAttribute('aria-label',text('Select a calculated mode','选择已计算的振型'));
  $('mode-select').innerHTML=result?result.eigenvalues.map((_,i)=>`<option value="${i}" ${i===selected?'selected':''}>${text('Mode','模式')} ${i+1}</option>`).join(''):`<option>${text('No result','等待计算')}</option>`;
- if(!result){body.innerHTML=`<tr><td colspan="3">${text('Compute a shape to see its low spectrum.','计算一个形状后，在这里查看低阶谱。')}</td></tr>`;$('benchmark').hidden=true;$('numerical-details').textContent='';$('mode-label').textContent=text('NO RESULT','等待计算');$('mode-description').textContent=text('No calculated eigenfunction is currently displayed.','当前没有已计算的特征函数。');controls();return}
+ if(!result){body.innerHTML=`<tr><td colspan="3">${text('Compute a shape to see its low spectrum.','计算一个形状后，在这里查看低阶谱。')}</td></tr>`;$('benchmark').hidden=true;$('numerical-details').textContent='';$('mode-label').textContent=text('NO RESULT','等待计算');$('mode-description').textContent=text('No calculated eigenfunction is currently displayed.','当前没有已计算的特征函数。');controls();renderAudio();return}
  body.innerHTML=result.eigenvalues.map((v,i)=>`<tr class="${i===selected?'is-selected':''}"><td><button type="button" data-forward-mode="${i}" aria-pressed="${i===selected}">${text('Mode','模式')} ${i+1}</button></td><td>${v.toFixed(3)}</td><td>${Math.sqrt(v/result.eigenvalues[0]).toFixed(3)}</td></tr>`).join('');
  $('mode-label').textContent=text('MODE ','模式 ')+(selected+1);
  $('mode-description').textContent=text(`Approximate mode ${selected+1}. Eigenvalue ${result.eigenvalues[selected].toFixed(3)}; relative frequency ${Math.sqrt(result.eigenvalues[selected]/result.eigenvalues[0]).toFixed(3)}. Teal and rust are opposite displacements; the dark interior curves are approximate nodal lines.`,`近似振型 ${selected+1}。特征值 ${result.eigenvalues[selected].toFixed(3)}，相对频率 ${Math.sqrt(result.eigenvalues[selected]/result.eigenvalues[0]).toFixed(3)}。青绿与赭色表示相反位移；内部深色曲线是近似节线。`);
@@ -137,9 +146,9 @@ function renderResults(){
  const exact=rectangleLambda(result.polygon),lines=[];
  if(exact){const error=Math.abs(result.eigenvalues[0]/exact-1)*100;lines.push(text(`Rectangle check: exact λ₁ = ${exact.toFixed(3)}; this mesh differs by ${error.toFixed(2)}%.`,`矩形校验：解析值 λ₁ = ${exact.toFixed(3)}；本次网格的近似值与它相差 ${error.toFixed(2)}%。`))}
  if(comparison!==null)lines.push(text(`Changing mesh resolution changed λ₁ by ${Math.abs(comparison).toFixed(2)}%. This is a comparison, not an error bound.`,`切换网格精度后，λ₁ 变化了 ${Math.abs(comparison).toFixed(2)}%。这是两次近似值的比较，不是误差上界。`));
- $('benchmark').textContent=lines.join(' ');$('benchmark').hidden=!lines.length;controls();
+ $('benchmark').textContent=lines.join(' ');$('benchmark').hidden=!lines.length;controls();renderAudio();
 }
-function selectMode(index){if(!result)return;stop();selected=index;phase=0;prepareField();renderResults();draw()}
+function selectMode(index){if(!result)return;const resume=playing;stop();selected=index;phase=0;prepareField();renderResults();draw();if(resume)start()}
 $('mode-select').addEventListener('change',e=>selectMode(Number(e.target.value)));
 $('spectrum-body').addEventListener('click',e=>{const b=e.target.closest('[data-forward-mode]');if(!b||!result)return;selectMode(Number(b.dataset.forwardMode));canvas.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})});
 function pathFromPolygon(p){const path=new Path2D();p.forEach((v,i)=>{const [x,y]=point(v);if(i)path.lineTo(x,y);else path.moveTo(x,y)});path.closePath();return path}
@@ -180,9 +189,11 @@ function draw(){
 function frame(now){
  if(!playing||!result)return;
  if(lastTime&&now-lastTime<30){raf=requestAnimationFrame(frame);return}
- if(lastTime)phase+=(Math.min(now-lastTime,100)/2400)*2*Math.PI*Math.sqrt(result.eigenvalues[selected]/result.eigenvalues[0]);lastTime=now;draw();raf=requestAnimationFrame(frame);
+ if(lastTime)phase=(phase+(Math.min(now-lastTime,100)/1000)*2*Math.PI*A.visualFrequency(result.eigenvalues[selected]))%(2*Math.PI);lastTime=now;draw();raf=requestAnimationFrame(frame);
 }
-$('play').addEventListener('click',()=>{if(!result)return;if(playing)stop();else{playing=true;lastTime=0;renderPlay();raf=requestAnimationFrame(frame)}});
+$('play').addEventListener('click',()=>{if(!result)return;if(playing)stop();else start()});
+$('sound').addEventListener('change',()=>{sound.setEnabled($('sound').checked);renderAudio()});
+$('volume').addEventListener('input',()=>{$('volume-value').textContent=$('volume').value+'%';sound.setVolume(Number($('volume').value)/100);renderAudio()});
 $('show-mesh').addEventListener('change',draw);
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stop()});
 if('IntersectionObserver' in window)new IntersectionObserver(entries=>{if(!entries[0].isIntersecting)stop()}).observe(canvas);
@@ -190,7 +201,7 @@ $('language').addEventListener('click',()=>{
  lang=lang==='en'?'zh':'en';root.lang=lang==='zh'?'zh-Hans':'en';
  root.querySelectorAll('[data-forward-en]').forEach(e=>e.textContent=e.dataset[lang==='zh'?'forwardZh':'forwardEn']);
  $('language').textContent=lang==='zh'?'English':'中文说明';$('language').lang=lang==='zh'?'en':'zh-Hans';
- update();renderResults();renderStatus();renderPlay();draw();
+ update();renderResults();renderStatus();renderPlay();renderAudio();draw();
 });
 update();renderResults();draw();compute();
 })();
