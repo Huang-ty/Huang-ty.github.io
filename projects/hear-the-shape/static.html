@@ -7,6 +7,12 @@
 <p>Imagine a drum behind a curtain. A perfect instrument gives you every natural frequency of its drumhead, including repetitions. Could you draw its outline?</p>
 <p>Real recordings depend on the material, the strike and the room. Our question concerns an ideal, uniform, flat membrane with its edge fixed and its physical properties known. “Hearing” means having the complete frequency list. That is much more information than recognizing a note.</p>
 
+<h2 id="forward-problem">First, a shape gives us a spectrum</h2>
+<p>The <em>forward problem</em> starts with a known drumhead. For its interior Ω, solve −Δφ = λφ with φ = 0 along the outer edge. The eigenfunction φ is a spatial mode; λ is its eigenvalue. The infinite list of eigenvalues, counting repetitions, is the spectrum. With known wave speed c, the natural frequency is f = c√λ/(2π).</p>
+<p><a href="./#forward-lab"><strong>Draw a polygon and compute six low modes →</strong></a> The interactive solver accepts simple convex or concave polygons with 3–16 vertices and no holes. It builds a conforming triangular mesh and uses piecewise linear finite elements with a row-sum lumped mass matrix. It computes approximate eigenpairs of K v = λ M v locally in the browser. Refining the mesh helps assess numerical changes; a small matrix residual alone does not measure the continuum error.</p>
+<p>A useful benchmark is the 2 × 1 rectangle. Its exact lowest eigenvalue is λ₁ = π²(1/2² + 1/1²) ≈ 12.337. The refined example in the solver should approach this value. On a square, the second and third modes have the same exact eigenvalue: a repeated number can correspond to independent spatial patterns. The plotted basis within a repeated eigenspace is not unique.</p>
+<p>Only six low estimates are displayed. They are not the complete spectrum, and matching them would not prove isospectrality. The next question reverses this direction: if the complete ideal spectrum were known, would it identify one outline?</p>
+
 <h2 id="mode-diagrams">One drum, many ways to move</h2>
 <p>The fixed edge cannot move, and neighboring points pull on one another. Only special patterns can oscillate while keeping their spatial shape. These are <em>natural modes</em>, each with its own frequency.</p>
 <p>A vibrating string offers a starting point. Some standing-wave patterns have stationary points between the ends. Across a drumhead, stationary curves are called <em>nodal lines</em>. The regions between them can move in opposite directions.</p>
