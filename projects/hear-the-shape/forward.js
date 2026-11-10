@@ -135,6 +135,7 @@ function rectangleLambda(p){
  return Math.PI**2*(1/length[0]**2+1/length[1]**2);
 }
 function renderResults(){
+ if(window.DrumMathUI)DrumMathUI.forward(result,selected,lang);
  const body=$('spectrum-body');
  $('mode-select').setAttribute('aria-label',text('Select a calculated mode','选择已计算的振型'));
  $('mode-select').innerHTML=result?result.eigenvalues.map((_,i)=>`<option value="${i}" ${i===selected?'selected':''}>${text('Mode','模式')} ${i+1}</option>`).join(''):`<option>${text('No result','等待计算')}</option>`;

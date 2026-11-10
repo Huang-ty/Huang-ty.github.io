@@ -8,11 +8,13 @@ function area(cutoff,announce){
  $('area-estimate-long').textContent=longArea;$('area-estimate-square').textContent=squareArea;
  $('cutoff-label').textContent=`Eigenvalue cutoff Λ = ${cutoff.toLocaleString('en-US')}. Repeated eigenvalues are counted separately.`;
  document.querySelectorAll('[data-cutoff]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.cutoff)===cutoff)));
+ if(window.DrumMathUI)DrumMathUI.area(cutoff,longCount,squareCount);
  if(announce)$('area-status').textContent=`Cutoff ${cutoff}: estimated areas ${longArea} and ${squareArea}. Both true areas are 4 square units.`;
 }
 const sub=['₀','₁','₂','₃','₄','₅','₆'];
 function transfer(k){
  const row=M.transplant[k],terms=[];
+ if(window.DrumMathUI)DrumMathUI.transfer(k,row);
  row.forEach((v,i)=>{if(v)terms.push(`${terms.length?(v>0?' + ':' − '):(v<0?'−':'')}f${sub[i]}`)});
  $('transfer-equation').textContent=`g${sub[k]} = ${terms.join('')}`;
  const plus=row.flatMap((v,i)=>v>0?[i]:[]),minus=row.flatMap((v,i)=>v<0?[i]:[]);

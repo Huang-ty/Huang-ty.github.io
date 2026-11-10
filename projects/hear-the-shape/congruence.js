@@ -14,6 +14,7 @@ const clamp=(value,limit)=>Math.max(-limit,Math.min(limit,value));
 function render(announce=false){
  svg.innerHTML=D.scene(pose,options());
  const percentage=100*M.overlap(M.transformed(M.A,pose),M.B)/total;
+ if(window.DrumMathUI)DrumMathUI.congruence(pose,lang);
  $('overlap-value').innerHTML=percentage.toFixed(1)+'<small>%</small>';
  for(const [id,key] of [['rotation','angle'],['move-x','x'],['move-y','y']])$(id).value=pose[key];
  $('rotation-value').textContent=Math.round(pose.angle)+'°';
