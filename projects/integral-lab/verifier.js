@@ -207,7 +207,7 @@ export function verifyAnswer(input,problem){
     const candidateSamples=samples.map(x=>({x,actual:independent(x),expected:reference(x)}));
     const validSamples=candidateSamples.filter(s=>Number.isFinite(problem.integrand?s.expected.v:s.expected.d));
     if(validSamples.length<3)return {status:'inconclusive',method:'domain',message:'此題的有效定義域取樣不足，暫時無法自動核對。請保留答案並參考解題步驟。'};
-    if(validSamples.some(s=>!Number.isFinite(s.actual.v)||!Number.isFinite(s.actual.d)))return {status:'invalid',method:'domain',message:'你的答案在本題選定定義域內產生非實數或未定義值。檢查 log 的真數、根號與分母。'};
+    if(validSamples.some(s=>!Number.isFinite(s.actual.v)||!Number.isFinite(s.actual.d)))return {status:'invalid',method:'domain',message:'你的答案在驗證點無法得到有限實數，可能是定義域問題或數值溢出。請檢查 log、根號、分母與指數括號；指數含乘法或加法時，請寫成 e^(2*x) 這類形式。'};
     const mismatches=validSamples.filter(s=>Math.abs(s.actual.d-(problem.integrand?s.expected.v:s.expected.d))>1e-8*(1+Math.abs(problem.integrand?s.expected.v:s.expected.d)));
     if(mismatches.length){
       const ratios=validSamples.map(s=>{const f=problem.integrand?s.expected.v:s.expected.d;return Math.abs(f)>1e-7?s.actual.d/f:NaN;}).filter(Number.isFinite);
