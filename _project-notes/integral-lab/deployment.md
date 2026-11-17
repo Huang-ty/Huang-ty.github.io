@@ -20,3 +20,8 @@ The Worker now announces readiness after dependency loading. Loading has a separ
 Updated entry, Worker, and verifier URLs use a release query to avoid mixing cached protocol versions. Input help now explains exponent parentheses, and non-finite evaluations mention overflow as well as domain errors.
 
 Validation: all original 31 tests pass against this release, including all 70 canonical answers; six new regression tests cover delayed loading, computation limits, retry, blocked Workers, dependency failure, practice/timed records, and exponential syntax. Jekyll builds successfully. Browser testing of the built site at `/projects/integral-lab/#train` verifies the exact user input after adding the missing exponent parentheses and unlocks its solution.
+
+
+## Chinese keyboard input fix — 2026-11-17
+
+The fifth qualifier's mathematically correct answer was rejected solely because the opening parentheses were full-width `（`. Normalize full-width ASCII characters before the existing restricted arithmetic parser, preserving superscript square/cube handling and all function, syntax, and complexity restrictions. The exact user input and a fully full-width equivalent now verify correctly; invalid functions and unbalanced parentheses remain invalid. The entry/Worker/verifier cache version is advanced together. All original 31 tests and seven regression tests pass.

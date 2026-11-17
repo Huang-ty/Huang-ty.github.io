@@ -10,7 +10,10 @@ const fail = (message) => { throw new Error(message); };
 /** Normalize a deliberately small arithmetic language; never accepts JS or CAS commands. */
 export function normalizeInput(input) {
   if(typeof input !== 'string' || !input.trim()) fail('請先輸入你的答案。');
-  let raw = input.trim().replace(/[−–]/g,'-').replace(/[×·]/g,'*').replace(/÷/g,'/').replace(/π/g,'pi').replace(/²/g,'^2').replace(/³/g,'^3');
+  // Chinese keyboards may mix full-width ASCII with ordinary parentheses.
+  // Map only that block: broad Unicode normalization would turn x² into x2.
+  let raw = input.trim().replace(/[\uFF01-\uFF5E]/g,c=>String.fromCharCode(c.charCodeAt(0)-0xFEE0))
+    .replace(/[−–]/g,'-').replace(/[×·]/g,'*').replace(/÷/g,'/').replace(/π/g,'pi').replace(/²/g,'^2').replace(/³/g,'^3');
   if(raw.length>320) fail('算式太長；請化簡至 320 個字元內再驗證。');
   // An arbitrary constant is accepted only as a trailing additive term.
   raw=raw.replace(/[+-]\s*[Cc]\s*$/,'');

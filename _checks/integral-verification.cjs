@@ -84,3 +84,16 @@ test('the second qualifier accepts nested exponential notations and rejects the 
  assert.equal(missing.status,'invalid');assert.match(missing.message,/指數括號/);
  assert.equal(c.verify('e^(2026*e^x)/2027',p).status,'incorrect');
 });
+
+test('Chinese keyboard characters preserve the fifth qualifier answer and the restricted arithmetic grammar',()=>{
+ const c={};vm.createContext(c);
+ vm.runInContext(fs.readFileSync(path.join(root,'vendor/nerdamer.js'),'utf8'),c);
+ vm.runInContext(fs.readFileSync(path.join(root,'verifier.js'),'utf8').replace(/export function/g,'function')+';this.verify=verifyAnswer;this.normalize=normalizeInput;',c);
+ const p={kind:'indefinite',integrand:'1/(sqrt(x+1)-sqrt(x-1))',answer:'((x+1)^(3/2)+(x-1)^(3/2))/3',samples:[1.2,1.7,2.3,3.4,5.1,8.2]};
+ for(const input of ['（（x+1)^(3/2)+(x-1)^(3/2))/3','（（ｘ＋１）＾（３／２）＋（ｘ－１）＾（３／２））／３＋Ｃ'])assert.equal(c.verify(input,p).status,'correct');
+ assert.equal(c.normalize('２ｘ＋ｓｉｎ（ｘ）'),'2*x+sin(x)');
+ assert.equal(c.normalize('（x＋１）²'),'(x+1)^2');
+ assert.equal(c.verify('ｄｉｆｆ（ｘ，ｘ）',p).status,'invalid');
+ assert.equal(c.verify('ｃｏｎｓｔｒｕｃｔｏｒ（ｘ）',p).status,'invalid');
+ assert.equal(c.verify('（x＋１',p).status,'invalid');
+});
