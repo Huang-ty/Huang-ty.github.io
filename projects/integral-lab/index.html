@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#164c3b">
+<meta name="description" content="先思考，再揭曉。以 MIT Integration Bee 官方存檔題目，練習辨認技巧、逐步解題與間隔複習。獨立學習工具，非 MIT 官方網站。">
+<title>積分研習室 · Integral Lab</title>
+<link rel="canonical" href="https://huang-ty.github.io/projects/integral-lab/">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="stylesheet" href="vendor/katex.css"><link rel="stylesheet" href="style.css">
+<script src="vendor/katex.js"></script>
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<a href="#view" class="skip-link">跳至訓練內容</a>
+<div class="app-shell">
+<aside class="sidebar">
+ <a class="brand" href="#train" aria-label="積分研習室首頁"><span class="brand-icon">∫</span><span><span class="brand-name">積分研習室</span><span class="brand-subtitle">INTEGRAL LAB</span></span></a>
+ <div class="nav-label">YOUR PRACTICE SPACE</div>
+ <nav aria-label="主要選單">
+  <button class="nav-item" data-nav="season"><span class="nav-icon">⌘</span>2026 完整賽季<span class="count">66</span></button>
+  <button class="nav-item active" data-nav="train"><span class="nav-icon">✧</span>開始訓練</button>
+  <button class="nav-item" data-nav="archive"><span class="nav-icon">▦</span>題目圖書館<span class="count" id="library-count">70</span></button>
+  <button class="nav-item" data-nav="review"><span class="nav-icon">↻</span>間隔複習<span class="count" id="review-count">0</span></button>
+  <button class="nav-item" data-nav="modes"><span class="nav-icon">◷</span>限時挑戰</button>
+  <button class="nav-item" data-nav="dashboard"><span class="nav-icon">◴</span>學習足跡</button>
+ </nav>
+ <div class="sidebar-footer"><div class="footer-mark">∞</div><p>練習的是看見結構的能力。</p><small>Practice the way you think.</small><button class="ghost" data-nav="sources">來源與使用說明 ↗</button><a class="ghost" href="/">← John Huang · 個人網站</a><span class="local-note">● 進度儲存在此裝置</span></div>
+</aside>
+<main class="main">
+ <header class="topbar"><div class="breadcrumb">研習室 <span>/</span> <strong id="section-name">開始訓練</strong></div><div class="top-actions"><span class="status-dot"></span><span>先思考，再揭曉</span><span class="pill">β 1.1</span></div></header>
+ <div id="view" tabindex="-1"></div>
+ <footer class="main-footer">獨立製作的學習工具 · 題目出處：MIT Integration Bee 官方存檔 · 與 MIT 無隸屬或背書關係</footer>
+</main>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript>此訓練網站需要 JavaScript 才能驗證答案及儲存進度。</noscript>
+</body></html>
