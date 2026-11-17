@@ -1,0 +1,270 @@
+---
+layout: default
+title: Research Ideas · RACHEL
+description: Proposed research directions in spectral graph algorithms, streaming complexity, and computational learning theory, with exploratory AI ideas. No completed results are claimed.
+permalink: /research-ideas/
+lang: en
+math: true
+research_ideas: true
+---
+<article class="research" aria-labelledby="research-title">
+  <header class="research-hero">
+    <div>
+      <p class="research-kicker">John Huang / Research directions</p>
+      <h1 id="research-title">RACHEL<span>Research ideas.</span></h1>
+      <p class="research-deck">What can we preserve,<br>count, and learn?</p>
+    </div>
+    <div class="research-intro">
+      <p>A working collection of questions at the intersection of mathematics and computer science.
+      Three theoretical directions lead the way; five exploratory AI ideas extend the horizon.</p>
+      <p class="research-status"><strong>Proposal stage</strong><br>
+      These are research proposals and aspirations, not completed projects, established results,
+      or published papers. The methods and deliverables below are intended next steps.</p>
+      <p class="research-meta">Working outline · <time datetime="2026-11-16">16 November 2026</time></p>
+    </div>
+  </header>
+
+  <nav class="research-index" aria-label="On this page">
+    <a href="#spectral"><span>01</span> Spectral graphs <span aria-hidden="true">↗</span></a>
+    <a href="#streaming"><span>02</span> Streaming <span aria-hidden="true">↗</span></a>
+    <a href="#learning"><span>03</span> Learning theory <span aria-hidden="true">↗</span></a>
+    <a href="#exploratory-ai"><span>+</span> Exploratory AI <span aria-hidden="true">↓</span></a>
+  </nav>
+
+  <section class="research-section" aria-labelledby="tcs-title">
+    <div class="research-section-heading">
+      <p class="research-kicker">Primary directions</p>
+      <h2 id="tcs-title">Theoretical computer science</h2>
+      <p>The ambition is a precise theorem: an algorithmic guarantee, a resource bound, or a structural
+      characterization. Each direction would first need a focused literature review and a narrower problem statement.</p>
+    </div>
+
+    <section class="research-direction" id="spectral" aria-labelledby="spectral-title">
+      <div class="research-margin"><span class="research-number">01</span><span>Research proposal</span></div>
+      <div class="research-body">
+        <p class="research-kicker">Spectral graph algorithms</p>
+        <h3 id="spectral-title">Preserve the graph.<br>Keep fewer edges.</h3>
+        <p class="research-name" data-acronym="RACHEL"><b>R</b>esistance-<b>A</b>ware <b>C</b>onstruction of
+        <b>H</b>igh-fidelity <b>E</b>dge-sparse <b>L</b>aplacians</p>
+        <p class="research-question">Can a well-defined structural property of a graph make resistance-based
+        sparsification cheaper, while retaining a rigorous spectral approximation?</p>
+        <p><strong>Initial scope.</strong> Start with connected, weighted, undirected graphs with positive edge weights.
+        Study one explicitly specified graph family and one source of cost, such as estimating effective
+        resistances. The sparse output would keep the same vertices and may reweight retained edges.</p>
+        <div class="research-equation">
+          <p class="research-kicker">Guarantee to preserve</p>
+          <div>\[(1-\varepsilon)L_G \preceq L_H \preceq (1+\varepsilon)L_G\]</div>
+          <p>For \(0&lt;\varepsilon&lt;1\), every vector's Laplacian quadratic form is preserved within
+          relative error \(\varepsilon\). This is the standard target definition, not a new result.</p>
+        </div>
+        <details class="research-details">
+          <summary>Proposed approach &amp; intended contribution</summary>
+          <div>
+            <h4>Method to investigate</h4>
+            <p>Use effective resistance \(R_e=b_e^\mathsf{T}L_G^{+}b_e\), where \(b_e\) is an edge's
+            signed incidence vector and \(L_G^{+}\) is the pseudoinverse. Begin with the established
+            sampling baseline based on \(w_eR_e\), then investigate whether structure permits cheaper
+            resistance estimates or a sharper analysis. Track edge count, running time, error, and failure probability.</p>
+            <h4>First milestone</h4>
+            <p>Reproduce the baseline proof and implementation. On small graphs, compare Laplacian quadratic
+            forms and generalized eigenvalues on the nonconstant subspace. Numerical checks would help find
+            counterexamples; they would not establish the guarantee.</p>
+            <h4>Target contribution</h4>
+            <p>A proved improvement for a specified graph family or parameter regime, if one can be found,
+            together with reproducible experiments. The spectral inequality itself is already known; novelty
+            would have to lie in a verified improvement over an appropriate baseline.</p>
+            <p class="research-source">Starting point: <a href="#ref-spectral">Spielman &amp; Srivastava, Graph Sparsification by Effective Resistances</a>.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="research-direction" id="streaming" aria-labelledby="streaming-title">
+      <div class="research-margin"><span class="research-number">02</span><span>Research proposal</span></div>
+      <div class="research-body">
+        <p class="research-kicker">Streaming algorithms &amp; lower bounds</p>
+        <h3 id="streaming-title">Count local structure.<br>Understand the memory cost.</h3>
+        <p class="research-name" data-acronym="RACHEL"><b>R</b>andomized <b>A</b>pproximate <b>C</b>ounting with
+        <b>H</b>igh-probability <b>E</b>rror <b>L</b>imits</p>
+        <p class="research-subtitle">Graph motif estimation under limited memory</p>
+        <p class="research-question">How much memory is needed to estimate triangles or other fixed small
+        subgraphs in an edge stream, and which structural parameters determine that cost?</p>
+        <p><strong>Initial scope.</strong> Begin with one pass over an insertion-only stream of a simple,
+        undirected graph in adversarial order, with each edge appearing once. Fix the motif and estimation
+        time. Random-order streams, deletions, and extra passes would be separate models.</p>
+        <div class="research-equation">
+          <p class="research-kicker">Target accuracy, under stated assumptions</p>
+          <div>\[\Pr\!\left[|\widehat T-T|\leq\varepsilon T\right]\geq1-\delta\]</div>
+          <p>Here \(T&gt;0\) is the motif count and \(\varepsilon,\delta\in(0,1)\).
+          Zero or very small counts need an explicit promise, detection guarantee, or additive-error formulation.</p>
+        </div>
+        <details class="research-details">
+          <summary>Proposed approach &amp; intended contribution</summary>
+          <div>
+            <h4>Method to investigate</h4>
+            <p>Start with reservoir or wedge sampling, analyze unbiasedness and variance, and identify how
+            motif overlap affects concentration. Compare space and update time at the same error and
+            confidence levels. For a lower bound, investigate a communication-complexity reduction that
+            preserves the chosen stream model, graph promises, and number of passes.</p>
+            <h4>First milestone</h4>
+            <p>Reproduce a triangle-counting baseline on graph families with different overlap patterns.
+            Write a parameter table that states the number of vertices and edges, any count promise,
+            space in bits, and failure probability. Empirical accuracy would be reported separately from proved guarantees.</p>
+            <h4>Target contribution</h4>
+            <p>A space upper bound under explicit structural assumptions, or a lower bound explaining why
+            a desired memory budget is impossible. A matching bound is an aspiration, not an expected result.
+            Extension to other motifs would follow only after the triangle case is understood.</p>
+            <p class="research-source">Starting point: <a href="#ref-streaming">TRIÈST</a>, with careful attention to which variant matches the chosen stream model.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="research-direction" id="learning" aria-labelledby="learning-title">
+      <div class="research-margin"><span class="research-number">03</span><span>Research proposal</span></div>
+      <div class="research-body">
+        <p class="research-kicker">Computational learning theory</p>
+        <h3 id="learning-title">Separate representation<br>from learnability.</h3>
+        <p class="research-name" data-acronym="RACHEL"><b>R</b>epresentation-<b>A</b>ware <b>C</b>haracterization of
+        <b>H</b>ypothesis <b>E</b>xpressivity and <b>L</b>earnability</p>
+        <p class="research-question">How do explicit restrictions on a hypothesis representation change
+        the functions it can express, the samples it needs, and the computation required to learn?</p>
+        <p><strong>Initial scope.</strong> Choose one restricted Boolean-function or sequence-model family.
+        Define the input encoding, size or depth, numerical precision, and learning model before making
+        any claim. Restricted Transformer architectures are a possible later specialization.</p>
+        <div class="research-lenses" aria-label="Three distinct questions">
+          <div><span>Expressivity</span><p>What can the class represent?</p></div>
+          <div><span>Sample complexity</span><p>How much data is sufficient or necessary?</p></div>
+          <div><span>Computation</span><p>Can learning be efficient?</p></div>
+        </div>
+        <details class="research-details">
+          <summary>Proposed approach &amp; intended contribution</summary>
+          <div>
+            <h4>Method to investigate</h4>
+            <p>Use constructions and separating examples for expressivity. For a binary class, investigate
+            VC dimension or covering arguments for sample bounds under a stated PAC setting. Distinguish
+            realizable from agnostic learning, and proper from improper learners. Explore computational
+            reductions only after fixing the learner's access to examples or queries.</p>
+            <h4>First milestone</h4>
+            <p>Define a small family precisely and reproduce its known expressivity and learning bounds.
+            Seek one informative separation between representation sizes or restrictions, with a complete
+            proof or an explicit counterexample to the initial conjecture.</p>
+            <h4>Target contribution</h4>
+            <p>A structural theorem, a sample-complexity bound, or a computational hardness result with
+            every assumption stated. Expressing a function does not by itself imply efficient learning;
+            any conditional lower bound would be labeled with its complexity or cryptographic assumption.</p>
+            <p class="research-source">Starting point: <a href="#ref-learning">Kearns &amp; Valiant on cryptographic limitations of learning</a>.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+  </section>
+
+  <section class="research-section research-ai" id="exploratory-ai" aria-labelledby="ai-title">
+    <div class="research-section-heading">
+      <p class="research-kicker">Secondary directions / Exploratory proposals</p>
+      <h2 id="ai-title">Exploratory AI Research Ideas</h2>
+      <p>Five adjacent questions to revisit as the theoretical foundations develop. These are possible
+      studies, not implemented systems or claims of demonstrated capability.</p>
+    </div>
+    <div class="research-ai-list">
+      <details>
+        <summary><span class="research-ai-no">A</span><span><strong>Mathematical conjecture discovery</strong><span>Can counterexamples help a system ask better mathematical questions?</span></span></summary>
+        <div class="research-ai-body">
+          <p><strong>Proposed method.</strong> Restrict exploration to a small mathematical domain. Combine
+          conjecture generation, counterexample search, and attempts at formal proof; compare against the
+          same generator without feedback.</p>
+          <p><strong>Evaluation &amp; goal.</strong> Measure formal validity, counterexample rates, duplication,
+          and expert-assessed interest on held-out tasks. Aim for a reproducible benchmark and an analysis of
+          feedback's effect. Formal validity alone would not establish novelty or mathematical importance.</p>
+        </div>
+      </details>
+      <details>
+        <summary><span class="research-ai-no">B</span><span><strong>Continual agents</strong><span>Can experience improve future behavior without erasing earlier skills?</span></span></summary>
+        <div class="research-ai-body">
+          <p><strong>Proposed method.</strong> Compare episodic memory, retrieval, and controlled learning
+          updates across a fixed sequence of tasks, including a no-memory baseline.</p>
+          <p><strong>Evaluation &amp; goal.</strong> Measure retention, transfer to new tasks, repeated mistakes,
+          and resource use. Aim for an evaluation protocol that distinguishes recalled solutions from newly
+          learned behavior, and tests whether improvements persist after the task distribution changes.</p>
+        </div>
+      </details>
+      <details>
+        <summary><span class="research-ai-no">C</span><span><strong>Causal hypothesis discovery</strong><span>Can a system propose hypotheses that survive an intervention?</span></span></summary>
+        <div class="research-ai-body">
+          <p><strong>Proposed method.</strong> Combine literature-grounded hypothesis generation with explicit
+          causal models and experiment selection. Start in synthetic environments where interventions and
+          ground truth are available.</p>
+          <p><strong>Evaluation &amp; goal.</strong> Assess intervention predictions, experiment efficiency,
+          source attribution, and sensitivity to hidden confounding. Aim for a traceable hypothesis-to-test
+          workflow. Observational associations would not be presented as established causal effects.</p>
+        </div>
+      </details>
+      <details>
+        <summary><span class="research-ai-no">D</span><span><strong>Reliable reasoning</strong><span>Can uncertainty identify the first unsupported step in a mathematical argument?</span></span></summary>
+        <div class="research-ai-body">
+          <p><strong>Proposed method.</strong> Evaluate step-level verification and confidence estimates on
+          mathematical solutions with human-checked or formally checked error labels, including plausible
+          but incorrect derivations.</p>
+          <p><strong>Evaluation &amp; goal.</strong> Measure error localization, calibration, and accuracy when
+          the system can abstain, including on unfamiliar problems. Aim for a transparent reliability
+          benchmark; a confident explanation would not count as evidence of correctness.</p>
+        </div>
+      </details>
+      <details>
+        <summary><span class="research-ai-no">E</span><span><strong>Self-improving coding</strong><span>Can verified repair feedback improve performance on genuinely new bugs?</span></span></summary>
+        <div class="research-ai-body">
+          <p><strong>Proposed method.</strong> Study bounded cycles of diagnosis, patch generation, testing,
+          and feedback on isolated benchmark repositories. Keep evaluation tests hidden and separate training
+          feedback from held-out tasks.</p>
+          <p><strong>Evaluation &amp; goal.</strong> Measure repair success, regressions, test overfitting,
+          cost, and transfer across repositories. Aim for a reproducible account of when feedback helps;
+          passing visible tests alone would not establish program correctness or general self-improvement.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="research-section" aria-labelledby="next-title">
+    <div class="research-section-heading">
+      <p class="research-kicker">From an idea to a research question</p>
+      <h2 id="next-title">A modest, testable beginning.</h2>
+    </div>
+    <ol class="research-roadmap">
+      <li><strong>Read &amp; delimit</strong><span>Map known results and choose one precise model.</span></li>
+      <li><strong>Reproduce</strong><span>Understand a baseline proof and its limitations.</span></li>
+      <li><strong>Conjecture &amp; test</strong><span>Look for a small improvement or a decisive counterexample.</span></li>
+      <li><strong>Prove &amp; document</strong><span>State assumptions, evidence, and what remains unresolved.</span></li>
+    </ol>
+    <p class="research-naming">RACHEL is a working name for these proposed directions. The highlighted
+    initials identify six substantive components in each TCS title; connecting words are not counted.
+    The names do not assert originality or exclusive use.</p>
+  </section>
+
+  <section class="research-section research-references" aria-labelledby="references-title">
+    <div class="research-section-heading">
+      <p class="research-kicker">Foundations / External work</p>
+      <h2 id="references-title">Starting points for reading</h2>
+      <p>Established work by other researchers, included as background. These references do not constitute
+      a complete literature review or establish the novelty of the proposals above.</p>
+    </div>
+    <ol>
+      <li id="ref-spectral">Daniel A. Spielman and Nikhil Srivastava.
+      <a href="https://arxiv.org/abs/0803.0929">Graph Sparsification by Effective Resistances</a>.
+      <span>Foundational resistance-based spectral sparsification.</span></li>
+      <li id="ref-streaming">Lorenzo De Stefani, Alessandro Epasto, Matteo Riondato, and Eli Upfal.
+      <a href="https://arxiv.org/abs/1602.07424">TRIÈST: Counting Local and Global Triangles in Fully-dynamic Streams with Fixed Memory Size</a>.
+      <span>A starting point for reservoir sampling and triangle estimation.</span></li>
+      <li id="ref-learning">Michael Kearns and Leslie Valiant.
+      <a href="https://www.cis.upenn.edu/~mkearns/papers/cryptojacm.pdf">Cryptographic Limitations on Learning Boolean Formulae and Finite Automata</a>.
+      <span>Conditional computational barriers to learning.</span></li>
+    </ol>
+  </section>
+
+  <aside class="research-closing">
+    <p>For the geometric intuition behind one of these interests, explore
+    <a href="{{ '/projects/hear-the-shape/' | relative_url }}">Can You Hear the Shape of a Drum?</a></p>
+    <p>Suggestions for a sharper question or a useful reference are welcome.
+    <a href="{{ '/contact/' | relative_url }}">Get in touch <span aria-hidden="true">↗</span></a></p>
+  </aside>
+</article>
