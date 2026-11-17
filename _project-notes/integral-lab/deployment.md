@@ -25,3 +25,10 @@ Validation: all original 31 tests pass against this release, including all 70 ca
 ## Chinese keyboard input fix — 2026-11-17
 
 The fifth qualifier's mathematically correct answer was rejected solely because the opening parentheses were full-width `（`. Normalize full-width ASCII characters before the existing restricted arithmetic parser, preserving superscript square/cube handling and all function, syntax, and complexity restrictions. The exact user input and a fully full-width equivalent now verify correctly; invalid functions and unbalanced parentheses remain invalid. The entry/Worker/verifier cache version is advanced together. All original 31 tests and seven regression tests pass.
+
+
+## Hyperbolic/exponential equivalence fix — 2026-11-17
+
+Qualifier #6 rejected `sqrt(2)*(e^(x/2)-e^(-x/2))` as numeric-only while accepting its `2*sqrt(2)*sinh(x/2)` equivalent. After the existing independent derivative/domain guard, the verifier now uses the exact exponential definitions of sinh and cosh to try a symbolic difference/derivative proof against the reference answer. A restricted arithmetic AST preserves grouping and a 4096-character expansion limit bounds nested rewrites. Finite sample agreement alone is still not accepted; no square-root branch is dropped.
+
+Regression coverage includes the exact user expression, exp notation, reciprocal/factored exponentials, additive constants, incorrect factors/signs, domain violations, and a perturbation whose value and derivative vanish at all selected samples. Only the proven equivalent answers pass. The existing 31 tests plus eight regression tests pass. Release entry/Worker/verifier URLs use version `20261117d`.

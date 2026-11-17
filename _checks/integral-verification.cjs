@@ -97,3 +97,21 @@ test('Chinese keyboard characters preserve the fifth qualifier answer and the re
  assert.equal(c.verify('ｃｏｎｓｔｒｕｃｔｏｒ（ｘ）',p).status,'invalid');
  assert.equal(c.verify('（x＋１',p).status,'invalid');
 });
+
+test('hyperbolic and exponential answers are proved equivalent without accepting numeric-only matches',()=>{
+ const c={};vm.createContext(c);
+ vm.runInContext(fs.readFileSync(path.join(root,'vendor/nerdamer.js'),'utf8'),c);
+ vm.runInContext(fs.readFileSync(path.join(root,'verifier.js'),'utf8').replace(/export function/g,'function')+';this.verify=verifyAnswer;',c);
+ const verify=(input,problem)=>{c.input=input;c.problem=problem;return vm.runInContext('verify(input,problem)',c,{timeout:3000});};
+ const p={kind:'indefinite',integrand:'sqrt(1+cosh(x))',answer:'2*sqrt(2)*sinh(x/2)',samples:[-3.2,-1.4,-.3,.7,1.9,3.1]};
+ for(const input of ['sqrt(2)*(e^(x/2)-e^(-x/2))','sqrt(2)*(exp(x/2)-exp(-x/2))','sqrt(2)*(exp(x/2)-1/exp(x/2))+7','sqrt(2)*exp(-x/2)*(exp(x)-1)'])assert.equal(verify(input,p).status,'correct',input);
+ for(const input of ['sqrt(2)*(e^x-e^(-x))/2','sqrt(2)*(e^(x/2)-e^(-x/2))/2','sqrt(2)*(e^(x/2)+e^(-x/2))'])assert.notEqual(verify(input,p).status,'correct',input);
+ const samplesOnly='sqrt(2)*(e^(x/2)-e^(-x/2))+(x*(x-1)*(x-2))^2';
+ const unproven=verify(samplesOnly,{...p,samples:[0,1,2]});
+ assert.equal(unproven.status,'inconclusive','Agreement at all selected samples is not a symbolic proof.');
+ assert.equal(verify('sqrt(2)*(e^(x/2)-e^(-x/2))+log(x)',p).status,'invalid');
+ for(const [input,integrand,answer] of [
+  ['(exp(x)-exp(-x))/2','cosh(x)','sinh(x)'],
+  ['(exp(x)+exp(-x))/2','sinh(x)','cosh(x)']
+ ])assert.equal(verify(input,{kind:'indefinite',integrand,answer,samples:[-2,-.7,.3,1.4]}).status,'correct',input);
+});

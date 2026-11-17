@@ -75,7 +75,7 @@ async function checkAnswer(input,p){
  // A cold cache or slow connection must not look like a difficult/wrong answer.
  timeout=setTimeout(()=>finish({status:'inconclusive',method:'load-timeout',message:'驗證工具尚未載入完成，可能是連線較慢。請稍後重試；這次不計入作答或學習紀錄。'}),30000);
  try{
-  worker=new Worker('./check-worker.js?v=20261117c');
+  worker=new Worker('./check-worker.js?v=20261117d');
   worker.onmessage=({data})=>{
    if(epoch!==checkEpoch||settled)return;
    if(data.type==='ready'&&!ready){

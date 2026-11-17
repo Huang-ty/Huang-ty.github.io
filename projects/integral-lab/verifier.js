@@ -81,6 +81,31 @@ function parseArithmetic(source){
   }
   const tree=parse();if(pos!==tokens.length)throw Error('tokens');return tree;
 }
+// Exact defining identities, used only after the independent derivative guard.
+// Keep parsing restricted and bound expansion size for nested hyperbolic calls.
+function exponentialForm(source){
+  function render(t){
+    if(t.op==='number')return t.raw;
+    if(['x','e','pi'].includes(t.op))return t.op;
+    const a=render(t.a);let result;
+    if(t.op==='unary+'||t.op==='unary-')result=`(${t.op.slice(-1)}${a})`;
+    else if(t.op==='^'&&t.a.op==='e')result=`exp(${render(t.b)})`;
+    else if(t.b)result=`(${a}${t.op}${render(t.b)})`;
+    else if(t.op==='sinh')result=`((exp(${a})-exp(-(${a})))/2)`;
+    else if(t.op==='cosh')result=`((exp(${a})+exp(-(${a})))/2)`;
+    else result=`${t.op}(${a})`;
+    if(result.length>4096)throw Error('exponential expansion too large');
+    return result;
+  }
+  return render(parseArithmetic(source));
+}
+function sameDerivativeInExponentialForm(input,answer){
+  if(!/(?:sinh|cosh)\(/.test(input+' '+answer))return false;
+  try{
+    const n=cas(),difference=n(`(${exponentialForm(input)})-(${exponentialForm(answer)})`);
+    return !difference.variables().includes('x')||isZero(n.diff(difference.text(),'x').text());
+  }catch{return false;}
+}
 function compileArithmetic(source){
   const tree=parseArithmetic(source);
   const hasX=node=>node.op==='x'||!!(node.a&&hasX(node.a))||!!(node.b&&hasX(node.b));
@@ -220,6 +245,7 @@ export function verifyAnswer(input,problem){
     // valid on the declared domain but beyond the CAS chain-rule support.
     const difference=n(`(${normalized})-(${problem.answer})`);
     if(!difference.variables().includes('x'))return {status:'correct',method:'symbolic',message:'正確！已核對定義域內的導數，並符號驗證你的原函數與核對答案只差常數。'};
+    if(problem.answer && sameDerivativeInExponentialForm(normalized,problem.answer))return {status:'correct',method:'symbolic-exponential',message:'正確！已用雙曲函數的指數定義作符號化簡，證明你的答案與核對原函數只差常數（採本題所列定義域）。'};
     derivative=n.diff(normalized,'x').text();
     referenceDerivative=problem.integrand || n.diff(problem.answer,'x').text();
     const residual=`(${derivative})-(${referenceDerivative})`;
