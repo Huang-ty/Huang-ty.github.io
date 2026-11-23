@@ -3,6 +3,9 @@ layout: default
 ---
 <h1 class="page-title">{{ page.title | escape }}</h1>
 
+{% if site.posts.size == 0 %}
+<p>No notes published here yet.</p>
+{% else %}
 {% assign cats = site.posts | map: "categories" | join: "," | split: "," | uniq %}
 {% assign tags = site.posts | map: "tags" | join: "," | split: "," | uniq %}
 
@@ -48,3 +51,4 @@ layout: default
 </ul>
 
 <p class="empty-note" id="empty-note" hidden>No posts match this filter.</p>
+{% endif %}

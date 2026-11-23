@@ -6,6 +6,7 @@ permalink: /publications/
 <div class="reading">
   <h1 class="page-title">Publications</h1>
 
+  {% if site.data.publications.size > 0 %}
   <p>Selected papers. Most recent first.</p>
 
   <hr>
@@ -28,4 +29,7 @@ permalink: /publications/
       </li>
     {% endfor %}
   </ul>
+  {% else %}
+  <p>No publications listed yet.</p>
+  {% endif %}
 </div>
