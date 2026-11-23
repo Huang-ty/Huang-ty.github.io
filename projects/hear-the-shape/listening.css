@@ -1,0 +1,31 @@
+.listening-section { padding-top: 40px; padding-bottom: 44px; border-top: 1px solid #cbd5c8; }
+.listening-section h2 { font-size: clamp(32px, 4vw, 52px); }
+.listen-intro { max-width: 70ch; margin: 16px 0 22px; color: #53665e; }
+.listen-panel { padding: clamp(18px, 3vw, 32px); border: 1px solid #cbd5c8; border-radius: 8px; background: #fafbf7; }
+.listen-panel [hidden] { display: none !important; }
+.listen-panel h3 { margin: 0 0 12px; }
+.listen-actions, .mystery-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 15px; }
+.reference-pair, .mode-duet { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: clamp(10px, 3vw, 32px); }
+.reference-pair { padding-bottom: 18px; border-bottom: 1px solid #cbd5c8; }
+.outline-stage { height: 58px; display: flex; align-items: center; }
+.outline-stage i { border: 2px solid #246d64; background: #e5eee4; }
+.square-outline { width: 42px; height: 42px; }
+.rectangle-outline { width: 84px; height: 21px; }
+.mystery-row { margin: 20px 0 12px; }
+.mystery-row label, .listen-status, .duet-key { font-size: .85rem; color: #425b50; }
+.listen-panel [data-hz] { display: inline-block; font-variant-numeric: tabular-nums; }
+#guess-feedback:not(:empty), #guess-reveal .listen-actions { margin-top: 14px; }
+#guess-feedback { font-weight: 600; }
+#guess-reveal p { max-width: 72ch; }
+.listen-status:not(:empty) { margin-top: 10px; }
+.square-lesson { margin: 22px 0; }
+.square-lesson h3 { font-family: Georgia, serif; font-weight: normal; font-size: clamp(24px,3vw,36px); }
+.mode-duet { max-width: 640px; margin: 20px auto 14px; text-align: center; }
+.mode-duet canvas { width: min(100%,180px); height: auto; border: 2px solid #a8b7a9; display: block; margin: 0 auto; }
+.mode-duet figcaption { margin: 7px 0; font-size: .86rem; }
+.duet-equation { font-family: Georgia, serif; margin: 15px 0 5px; color: #205b52; font-size: 1.15rem; }
+.listen-panel button[aria-pressed="true"] { outline: 2px solid #246d64; outline-offset: 2px; }
+@media (max-width: 520px) {
+  .reference-pair .button, .mode-duet .button { padding: 9px 10px; }
+  .reference-pair h3 { font-size: 1rem; }
+}
