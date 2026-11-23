@@ -25,6 +25,7 @@ function transfer(k){
   el.classList.toggle('add-piece',source&&v>0);el.classList.toggle('subtract-piece',source&&v<0);el.classList.toggle('target-piece',!source&&v>0);
   if(el.classList.contains('transfer-label'))el.textContent=(source?(v>0?'+':v<0?'−':''):'')+(source?'f':'g')+sub[i];
  });
+ if(window.DrumPointProbe)DrumPointProbe.select(k);
 }
 document.querySelectorAll('[data-cutoff]').forEach(b=>b.addEventListener('click',()=>area(Number(b.dataset.cutoff),true)));
 document.querySelectorAll('[data-target]').forEach(b=>b.addEventListener('click',()=>transfer(Number(b.dataset.target))));

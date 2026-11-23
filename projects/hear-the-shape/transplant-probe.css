@@ -1,0 +1,18 @@
+#probe-title {font: normal clamp(23px,3vw,34px)/1.2 Georgia,serif; margin: 24px 0 9px;}
+#point-transplant .transfer-diagrams {margin-top: 12px;}
+#point-transplant .probe-target {touch-action: none; cursor: crosshair;}
+#point-transplant .probe-target:focus-visible {outline: 3px solid #246d64; outline-offset: -3px;}
+.probe-dot {pointer-events: none; stroke: #192f2a; stroke-width: 2; paint-order: stroke; filter: drop-shadow(0 0 2px white);}
+.point-readout {display: grid; grid-template-columns: minmax(120px,175px) minmax(0,1fr); gap: 18px; align-items: center; padding: 16px; margin: 12px 0; border: 1px solid #cad5ca; border-radius: 6px; background: #fafbf6;}
+.point-readout[hidden] {display:none;}
+.point-map {text-align:center;}
+#point-map {width: 100%; max-width: 180px; aspect-ratio:1; display:block; margin:auto; touch-action:none; cursor:crosshair;}
+.point-map figcaption {font-size:12px;}
+#probe-rule, #probe-sum {margin:3px 0; line-height:1.4;}
+#probe-rule {font: 1.14rem Georgia,serif;}
+#probe-sum {font-size:clamp(.99rem,2.8vw,1.32rem); font-weight:600; font-variant-numeric:tabular-nums;}
+.probe-actions {display:flex; flex-wrap:wrap; gap:8px; margin:10px 0;}
+.probe-actions button {border:1px solid #9db2a0; border-radius:4px; background:transparent; padding:7px 12px; color:#244c43;}
+#probe-edge-note {margin:6px 0; color:#375d50;}
+.probe-sr {position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%);}
+@media (max-width:600px) {.point-readout {grid-template-columns:1fr;} #point-map {max-width:145px;}}
