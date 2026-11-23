@@ -5,3 +5,8 @@
 @media print{.congruence-page .site-header nav,.comparison-controls,.drag-hint,.proof-action{display:none}.comparison-layout{display:block}.comparison{border-color:#aaa}.comparison-stage{max-width:650px;margin:0 auto}.comparison-visual{padding:20px}.proof-section{padding-top:25px}.proof-step{break-inside:avoid}.proof-takeaway{display:block}.congruence-page .wrap{padding:0}.compare-intro{padding-top:10px}.compare-intro h1{font-size:34px}.comparison-footer{padding-bottom:0}}
 
 @media(max-width:680px){#comparison-svg .compare-corner-label{font-size:34px}#comparison-svg .compare-tile-label{font-size:28px}#comparison-svg .compare-witness-label{font-size:24px}}
+
+#angle-at-p {margin:12px 0;padding:12px 16px;background:#f4f6ee;border:1px solid #c9d5c8;border-radius:6px;}
+#angle-at-p summary {cursor:pointer;font-weight:600;}
+#angle-at-p svg {display:block;width:min(290px,100%);margin:auto;}
+#angle-at-p p {margin:7px 0;font-size:.9rem;}

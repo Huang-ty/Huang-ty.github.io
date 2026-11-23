@@ -57,6 +57,14 @@ for(const button of document.querySelectorAll('[data-proof]'))button.addEventLis
  $('comparison').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});
  svg.focus({preventScroll:true});
 });
+svg.addEventListener('click',event=>{
+ if(!event.target.closest('[data-inspect-p]'))return;
+ $('angle-at-p').open=true;
+ $('angle-at-p').scrollIntoView({block:'center'});
+});
+$('show-p-inner').addEventListener('change',event=>{
+ $('p-inner-layer').style.display=event.target.checked?'':'none';
+});
 function localPoint(event){const point=new DOMPoint(event.clientX,event.clientY);return point.matrixTransform(svg.getScreenCTM().inverse())}
 svg.addEventListener('pointerdown',event=>{
  if(event.button!==0||!event.target.closest('[data-drag-a]'))return;

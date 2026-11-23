@@ -7,9 +7,9 @@
 <meta name="description" content="移动、旋转、翻转两块等谱鼓膜，观察未重合区域，再用三个凹角理解它们为什么是不同的形状。An interactive non-congruence demonstration.">
 <link rel="canonical" href="https://huang-ty.github.io/projects/hear-the-shape/non-congruent.html">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="style.css?v=20261109"><link rel="stylesheet" href="congruence.css?v=20261109">
+<link rel="stylesheet" href="style.css?v=20261109"><link rel="stylesheet" href="congruence.css?v=20261124">
 <link rel="stylesheet" href="mathematics.css?v=20261110b"><script src="mathematics.js?v=20261110b" defer></script><script src="/assets/vendor/mathjax/tex-chtml.js" defer></script>
-<script src="congruence-math.js?v=20261109" defer></script><script src="congruence-diagram.js?v=20261109" defer></script><script src="congruence.js?v=20261110b" defer></script>
+<script src="congruence-math.js?v=20261109" defer></script><script src="congruence-diagram.js?v=20261124" defer></script><script src="congruence.js?v=20261124" defer></script>
 </head>
 <body class="congruence-page">
 <a class="skip" href="#comparison" data-en="Skip to the comparison">跳到叠放实验</a>
@@ -22,6 +22,18 @@
 <div class="comparison-layout">
 <div class="comparison-visual"><div class="comparison-key" aria-label="Diagram legend"><span><i class="legend-a"></i><span data-en="A · move this shape">A · 可以移动</span></span><span><i class="legend-b"></i><span data-en="B · stays still">B · 位置固定</span></span><span><i class="legend-overlap"></i><span data-en="Overlap">重合部分</span></span></div>
 <div class="comparison-stage"><img id="comparison-fallback" src="assets/non-congruent-overlay.svg" alt="两个中心三角形已对齐的鼓膜：外轮廓仍不同，斜线标出未重合区域。"><svg id="comparison-svg" viewBox="0 0 960 720" role="img" aria-labelledby="overlay-title" aria-describedby="overlay-description keyboard-help" tabindex="0" hidden></svg></div>
+<details id="angle-at-p"><summary data-en="Inspect corner P">放大凹角 P</summary>
+<p data-en="Zoom in on drum A. The shaded sector is membrane material. Follow the long arc from one outer edge to the other.">放大看鼓膜 A。底色表示有鼓膜的区域。沿着长弧，从一段外轮廓走到另一段。</p>
+<svg viewBox="0 0 290 236" role="img" aria-labelledby="p-angle-title"><title id="p-angle-title" data-en="Outer and central angles at the same point P on drum A">鼓膜 A 在同一点 P 的外轮廓角和中央拼块角</title>
+<path d="M145,118 L75.364,196.586 A105,105 0 1 0 75.364,39.414 Z" fill="#dbeadf"/>
+<path d="M75.364,196.586 L145,118 L75.364,39.414" fill="none" stroke="#205d53" stroke-width="3"/>
+<path d="M93.270,176.378 A78,78 0 1 0 93.270,59.622" fill="none" stroke="#205d53" stroke-width="3"/>
+<text x="203" y="190" fill="#205d53">263.1°</text>
+<g id="p-inner-layer" style="display:none"><path d="M145,118 L248.000,118.000 A103,103 0 0 0 187.268,24.072 Z" fill="#e5c29d" fill-opacity=".48"/><path d="M249.000,118.000 L145,118 L187.678,23.160" fill="none" stroke="#874d30" stroke-width="2" stroke-dasharray="4 3"/><path d="M176.000,118.000 A31,31 0 0 0 157.721,89.730" fill="none" stroke="#874d30" stroke-width="3"/><text x="181" y="99" fill="#693820">65.8°</text></g>
+<circle cx="145" cy="118" r="4" fill="#203d3b"/><text x="126" y="124">P</text></svg>
+<label><input type="checkbox" id="show-p-inner"> <span data-en="Show the central triangle angle">叠上中央三角形的角</span></label>
+<p data-en="The large angle uses the outer rim. The small angle uses two internal seams. Even after those seams are erased, P is still a landmark on the outline.">大角沿两段外轮廓量，小角沿两条内缝量。擦掉内缝以后，P 依然是轮廓上的地标。</p>
+</details>
 <p class="drag-hint" id="keyboard-help" data-en="Drag the teal shape. Keyboard: focus the diagram; arrows move A, R rotates 15°, F flips, Home aligns the three corners. Sliders provide the same controls.">拖动青绿色的 A。键盘：选中图后，方向键移动，R 旋转 15°，F 翻转，Home 对齐三个凹角；也可使用右侧滑块。</p>
 <div class="overlap-reading"><div><span class="metric-label" data-en="OVERLAP / AREA OF ONE DRUMHEAD">重合面积 / 一张鼓膜的面积</span><strong id="overlap-value" aria-hidden="true">57.1<small>%</small></strong></div><p id="comparison-status" role="status" aria-live="polite">中心三角形已对齐；外轮廓仍有未重合区域。</p></div>
 <p class="measurement-note" data-en="This percentage describes the current placement. The geometric argument below rules out every possible rigid placement.">百分比描述当前摆法；下方的几何论证才排除所有可能的刚性摆法。</p></div>

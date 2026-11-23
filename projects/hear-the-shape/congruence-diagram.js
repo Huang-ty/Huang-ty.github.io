@@ -37,6 +37,7 @@ function scene(pose={},options={}){
    const p=project(side==='A'?M.transform(M.landmarks[i],pose):M.landmarks[i]);
    const color=side==='A'?'#167b79':side==='B'?'#a65f40':'#73561d';
    out+=`<circle cx="${p[0]}" cy="${p[1]}" r="7" fill="#fcfaf5" stroke="${color}" stroke-width="2.5" pointer-events="none"/><text class="compare-corner-label" x="${p[0]+(i===0?-15:15)}" y="${p[1]+(i===2?-18:26)}" text-anchor="${i===0?'end':'start'}" font-family="Arial,sans-serif" font-size="23" fill="${color}" font-weight="700" pointer-events="none">${['P','Q','R'][i]}${side==='both'?'':'_'+side}</text>`;
+   if(i===0 && side!=='B') out+=`<circle data-inspect-p="true" cx="${p[0]}" cy="${p[1]}" r="21" fill="transparent" style="cursor:pointer"/>`;
   }
  }
  if(options.witness&&aligned){

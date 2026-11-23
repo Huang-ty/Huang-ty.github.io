@@ -111,6 +111,11 @@
     }
     const state = t < .5 ? 'On B’s tile 0' : t > .5 ? 'On B’s tile 1' : 'On B’s shared edge';
     if (output.textContent !== state) output.textContent = state;
+    const completed = t === 1;
+    root.querySelector('.seam-rules').classList.toggle('checked-pair', completed);
+    const verdict = completed ? 'You’ve checked one seam between two of the seven rules.' : '';
+    const note = document.getElementById('seam-verdict');
+    if (note.textContent !== verdict) note.textContent = verdict;
     input.setAttribute('aria-valuetext', state + ' · ' + input.value + '%');
   }
 

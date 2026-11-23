@@ -108,3 +108,10 @@
   .seam-diagrams svg { max-height: 232px; }
   .seam-control { grid-template-columns: 1fr; gap: 2px; }
 }
+.seam-rules.checked-pair p {background:#e1eee1; box-shadow:inset 3px 0 #246d64;}
+.seam-rules p {padding:7px 10px;}
+#seam-verdict:not(:empty) {font-weight:600; color:#20594d;}
+#seam-verdict:empty {display:none;}
+#perimeter-lab select {font:inherit;padding:4px 9px;}
+#perimeter-lab .area-cards {margin:14px 0;}
+#perimeter-lab summary, #proof-reverse summary {cursor:pointer;}
