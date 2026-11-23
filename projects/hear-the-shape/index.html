@@ -12,7 +12,10 @@
 <script src="audio.js?v=20261110a" defer></script>
 <script src="forward-math.js?v=20261110" defer></script><script src="forward.js?v=20261110b" defer></script>
 <link rel="stylesheet" href="transplant-probe.css?v=1">
-<script src="math.js?v=20261028" defer></script><script src="transplant-sample.js?v=1" defer></script><script src="transplant-probe.js?v=1" defer></script><script src="explore.js?v=20261123p" defer></script><script src="app.js?v=20261110b" defer></script>
+<script src="math.js?v=20261028" defer></script><script src="transplant-sample.js?v=1" defer></script><script src="transplant-probe.js?v=2" defer></script><script src="explore.js?v=20261123p" defer></script><script src="app.js?v=20261110b" defer></script>
+<link rel="stylesheet" href="seam-transfer.css?v=1">
+<script src="congruence-math.js?v=20261101" defer></script>
+<script src="seam-transfer.js?v=1" defer></script>
 <link rel="stylesheet" href="listening.css?v=1">
 <script src="listening.js?v=1" defer></script>
 </head>
@@ -159,11 +162,33 @@
     <p id="probe-keyboard" class="small-copy">Keyboard: focus drum B and use the arrow keys to move the dot.</p><span class="probe-sr" id="probe-announce" role="status"></span>
   </div>
 </div>
-<p class="small-copy">The heights sample one precomputed finite-element approximation of A’s second mode, scaled so its greatest absolute height is 1. The same signed rule is applied everywhere on B. This example illustrates one mode. The argument below explains why the rule works for every eigenvalue.</p>
+<p class="small-copy">The heights sample one precomputed finite-element approximation of A’s second mode, scaled so its greatest absolute height is 1. The same signed rule is applied everywhere on B. This example illustrates one mode. The argument below explains why the rule works for every eigenvalue. <a href="#seam-transfer">Follow one rule across a seam ↓</a></p>
 </section>
 <div class="transfer-result" role="status" aria-live="polite" aria-atomic="true"><p class="transfer-equation" id="transfer-equation">g₀ = f₁ + f₂ + f₄</p><p id="transfer-explanation">Align pieces 1, 2 and 4 with target triangle 0, then add their values point by point.</p></div>
 <div class="math-live"><span class="math-label">THE SELECTED RULE, WITH ITS COORDINATE MAPS</span><div class="math-equation" id="math-transfer-live" data-math-tex="g_0(x)=f_1(\tau_{01}(x))+f_2(\tau_{02}(x))+f_4(\tau_{04}(x))">g₀(x) = f₁(τ₀₁(x))+f₂(τ₀₂(x))+f₄(τ₀₄(x))</div><div class="math-equation" id="math-transfer-operator" data-math-tex="-\Delta g_0=\sum_j T_{0j}\bigl[(-\Delta f_j)\circ\tau_{0j}\bigr]=\lambda g_0">−Δg₀ = ΣⱼT₀ⱼ[(−Δfⱼ)∘τ₀ⱼ] = λg₀</div><p id="math-transfer-reading">Each τ maps the target triangle isometrically to the indicated source triangle. All source pieces have the same λ.</p></div>
 <p class="small-copy">Green + adds a function; rust − subtracts it. These colors identify terms, not displacement. Each symbol stands for a whole function after geometric alignment, not a number or a loose physical tile.</p>
+<section class="seam-transfer" id="seam-transfer" aria-labelledby="seam-title">
+<h3 id="seam-title">Cross a seam. Where does the minus sign come from?</h3>
+<p>Start with B’s centre tile, where <strong>g₀ = f₁ + f₂ + f₄</strong>. Move a point into tile 1. On A, follow the same step through each matching edge.</p>
+<div class="seam-interaction" hidden>
+  <div class="seam-control">
+    <label for="seam-position">Move the gold dot across B’s seam</label>
+    <output id="seam-state" for="seam-position" aria-live="polite">On B’s tile 0</output>
+    <input id="seam-position" type="range" min="0" max="100" step="1" value="0">
+  </div>
+  <div class="seam-diagrams">
+    <figure><figcaption>B · Cross from tile 0 to tile 1</figcaption><svg id="seam-drum-b" viewBox="0 0 320 268" role="img" aria-label="A gold point moves from tile zero across an internal seam into tile one of drum B."></svg></figure>
+    <figure><figcaption>A · Follow the three matching paths</figcaption><svg id="seam-drum-a" viewBox="0 0 320 268" role="img" aria-label="Drum A: two paths cross internal seams, from two to zero and four to three. The third path crosses a fixed rim into the sign-reversed mirror of tile one."></svg></figure>
+  </div>
+  <div class="seam-legend"><span><i aria-hidden="true"></i> Internal seam</span><span><i class="seam-rim" aria-hidden="true"></i> Fixed rim and reflected copy</span></div>
+</div>
+<div class="seam-rules">
+  <p><span>Before crossing · B’s tile 0</span><strong>g₀ = f₁ + f₂ + f₄</strong></p>
+  <p><span>After crossing · B’s tile 1</span><strong>g₁ = f₀ − f₁ + f₃</strong></p>
+</div>
+<p>On A, the paths from tiles 2 and 4 stay on the membrane, so we read on into tiles 0 and 3. The path from tile 1 reaches the fixed rim, where the height is zero. Across it we extend the height map by reflection and reverse its sign. The dashed triangle shows this mathematical extension outside A.</p>
+<p class="small-copy">Picture a short walk perpendicular to the rim. Sample heights <strong>2, 1, 0</strong> continue as <strong>−1, −2</strong> in an odd reflection, keeping the slope through zero. This shows why the reflected term enters as <strong>−f₁</strong>. <a class="cite" href="#source-buser">[2]</a></p>
+</section>
 <ol class="proof-steps"><li><strong>Keep the same eigenvalue.</strong> Reflection preserves the Laplacian. Linearity lets aligned pieces with the same λ be combined.</li><li><strong>Make the pieces fit.</strong> The particular rules match across internal seams and make the sum vanish at the fixed outer edge. A minus sign represents a sign-reversed reflected function.</li><li><strong>Account for every mode.</strong> The invertible correspondence acts on each λ-eigenspace, preserving its dimension. This gives equal eigenvalues and multiplicities throughout the spectrum.</li></ol>
 <p class="small-copy">This is a guide to the published proof, not a simulated eigenmode or a proof from a few matching frequencies. Arbitrary triangle rearrangements do not satisfy these rules. <a href="https://math.dartmouth.edu/~doyle/docs/drum/drum.pdf">Read Buser et al., §2 and Figure 3.</a></p>
 <noscript><p>All seven rules are available in the <a href="static.html#transplantation">static edition</a>.</p></noscript>

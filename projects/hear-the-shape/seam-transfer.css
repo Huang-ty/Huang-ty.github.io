@@ -1,0 +1,110 @@
+.seam-transfer {
+  margin: 28px 0;
+  padding-top: 20px;
+  border-top: 1px solid #ccd6c9;
+}
+
+.seam-transfer h3 {
+  margin: 0 0 9px;
+  font: normal clamp(23px, 3vw, 34px)/1.2 Georgia, serif;
+}
+
+.seam-transfer p + p { margin-top: 9px; }
+
+.seam-control {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6px 16px;
+  align-items: baseline;
+  margin: 16px 0 12px;
+  font-size: .9rem;
+}
+
+.seam-control label { font-weight: 600; }
+.seam-control output { color: #4f665a; }
+
+.seam-control input {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin: 0;
+  min-height: 30px;
+  accent-color: #246d64;
+}
+
+.seam-diagrams {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.seam-diagrams figure {
+  min-width: 0;
+  margin: 0;
+  border: 1px solid #d8dfd1;
+  background: #f6f7f0;
+}
+
+.seam-diagrams figcaption {
+  padding: 9px 10px 0;
+  text-align: center;
+  font-size: .85rem;
+}
+
+.seam-diagrams svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 285px;
+}
+
+.seam-diagrams polygon,
+.seam-diagrams line { vector-effect: non-scaling-stroke; }
+
+.seam-diagrams text {
+  fill: #203d3b;
+  stroke: #f6f7f0;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  paint-order: stroke;
+  font: 17px Arial, sans-serif;
+}
+
+.seam-diagrams text.is-muted { fill: #52655a; }
+.seam-diagrams text.is-reflected { fill: #885037; }
+
+.seam-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 15px;
+  margin-top: 8px;
+  font-size: .83rem;
+  color: #4e6358;
+}
+
+.seam-legend i {
+  display: inline-block;
+  width: 16px;
+  vertical-align: middle;
+  border-top: 3px solid #246d64;
+}
+
+.seam-legend i.seam-rim { border-top: 3px dashed #925039; }
+
+.seam-rules {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 15px 0;
+  border-bottom: 1px solid #ccd6c9;
+  padding-bottom: 12px;
+}
+
+.seam-rules p + p { margin-top: 0; }
+.seam-rules span { display: block; color: #4f665a; font-size: .82rem; }
+.seam-rules strong { font: normal clamp(17px, 3vw, 23px)/1.35 Georgia, serif; }
+
+@media (max-width: 600px) {
+  .seam-diagrams { grid-template-columns: 1fr; }
+  .seam-diagrams svg { max-height: 232px; }
+  .seam-control { grid-template-columns: 1fr; gap: 2px; }
+}

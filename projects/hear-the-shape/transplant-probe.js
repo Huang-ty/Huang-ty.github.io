@@ -162,13 +162,15 @@
     weights=[0.46,0.54,0]; document.querySelector('[data-target="4"]').click(); render(true);
   });
   const details = byId('transfer-exploration');
-  function openLinkedProbe() {
-    if (location.hash==='#point-transplant') {
-      details.open=true; byId('point-transplant').scrollIntoView();
+  function openLinkedDemonstration() {
+    const target = location.hash.slice(1);
+    if (target === 'point-transplant' || target === 'seam-transfer') {
+      details.open = true;
+      byId(target).scrollIntoView();
     }
   }
-  window.addEventListener('hashchange', openLinkedProbe);
+  window.addEventListener('hashchange', openLinkedDemonstration);
   window.DrumPointProbe={select};
   byId('probe-readout').hidden=false;
-  openLinkedProbe();
+  openLinkedDemonstration();
 })();
