@@ -12,7 +12,7 @@ permalink: /work/
   <hr>
 
   <h2 class="entry-title">Looking ahead</h2>
-  <p>My <a href="{{ '/research-ideas/' | relative_url }}">RACHEL research directions</a> collect
+  <p>My <a href="{{ '/research-ideas/' | relative_url }}">Vibe research idea</a> collect
   three theoretical computer science proposals and five exploratory AI ideas. They describe questions
   I hope to investigate, rather than completed projects or published results.</p>
 
