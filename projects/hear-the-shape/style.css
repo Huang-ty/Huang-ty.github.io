@@ -51,3 +51,12 @@
   .acknowledgments-photo img{width:108px;flex:none}
   .acknowledgments-photo figcaption{max-width:160px;margin:0}
 }
+
+.drum-outlook {padding-block:16px 20px;color:#344e45}
+.drum-outlook h2 {font-size:25px;line-height:1.2;margin:0 0 10px}
+.drum-outlook > p {font:15px/1.55 Arial,sans-serif;max-width:82ch;margin:6px 0}
+.drum-outlook .drum-outlook-quote {max-width:72ch;border-left:2px solid #91b1a2;padding-left:14px;margin:14px 0 0}
+.drum-outlook blockquote,.drum-outlook blockquote p {margin:0}
+.drum-outlook blockquote p {font:italic 16px/1.5 Georgia,serif}
+.drum-outlook figcaption {font:13px/1.5 Arial,sans-serif;margin-top:4px;color:#50665c}
+.static-article .drum-outlook h2 {margin:0 0 10px;font-size:25px}
