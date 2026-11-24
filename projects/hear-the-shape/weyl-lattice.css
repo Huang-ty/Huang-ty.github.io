@@ -25,3 +25,9 @@
 .weyl-track i {display:block;height:100%;background:#397766}
 .weyl-explain {margin-top:16px;max-width:85ch}
 @media(max-width:700px){.weyl-plots{grid-template-columns:1fr}.weyl-drum{padding:12px}.weyl-row{min-height:0}}
+
+.weyl-key .weyl-outline-key i {width:15px;height:9px;border:1.5px dashed #405d88;border-radius:0;background:none}
+.weyl-box {fill:none;stroke:#405d88;stroke-width:1.5;stroke-dasharray:6 3;pointer-events:none}
+.weyl-guide {display:block;width:100%;height:auto;max-height:100px;margin:8px 0;border-bottom:1px solid #d9e1d4}
+.weyl-guide text {font:13px Arial,sans-serif;fill:#354f44}
+.weyl-intercepts {margin:0 0 8px;font-size:13px;line-height:1.5;color:#405d75}

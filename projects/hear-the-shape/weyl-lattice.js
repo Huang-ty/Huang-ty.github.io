@@ -14,9 +14,25 @@
     parent.appendChild(node);
     return node;
   }
+  // The left outline uses physical side lengths; the right sketch uses mode indices.
+  function drawGuide({id,a,b}) {
+    const svg = document.querySelector('#weyl-'+id+' .weyl-guide');
+    const label = a+' × '+b;
+    svg.setAttribute('aria-label',label+' drum outline and full cutoff ellipse, with its positive quadrant highlighted.');
+    const cx=246, cy=38, rx=12*a, ry=12*b;
+    element(svg,'rect',{x:78-9*a,y:cy-9*b,width:18*a,height:18*b,class:'weyl-box'});
+    element(svg,'text',{x:78,y:80,'text-anchor':'middle'},label+' drumhead');
+    element(svg,'path',{d:'M141 38h22m-5 -4 5 4 -5 4',fill:'none',stroke:'#6b8177'});
+    element(svg,'ellipse',{cx,cy,rx,ry,fill:'#eef1e9',stroke:'#84988b'});
+    element(svg,'path',{d:'M'+cx+' '+cy+'h'+rx+'a'+rx+' '+ry+' 0 0 0 '+(-rx)+' '+(-ry)+'Z',fill:'#9dc6a7',stroke:'#386b54'});
+    element(svg,'path',{d:'M'+(cx-rx-6)+' '+cy+'h'+(2*rx+12)+' M'+cx+' '+(cy+ry+5)+'v'+(-2*ry-10),fill:'none',stroke:'#6d8176'});
+    element(svg,'rect',{x:cx,y:cy-ry,width:rx,height:ry,class:'weyl-box'});
+    element(svg,'text',{x:cx,y:80,'text-anchor':'middle'},'Count this quarter');
+  }
+  shapes.forEach(drawGuide);
   function plot({id,a,b}, rows, previous) {
     const card = document.getElementById('weyl-'+id);
-    const svg = card.querySelector('svg');
+    const svg = card.querySelector('.weyl-plot');
     const layer = document.createDocumentFragment();
     const N = rows.reduce((sum,k)=>sum+k,0);
     const row = Number(selector.value);
@@ -60,6 +76,10 @@
     if(previous) element(layer,'path',{d:arc(previous),fill:'none',stroke:'#805033','stroke-width':1.6,'stroke-dasharray':'4 3'});
     const step=view===80?2:view===800?5:20;
     element(layer,'path',{d:'M33 19V169H342',fill:'none',stroke:'#617a6b'});
+    const r = Math.sqrt(cutoff)/Math.PI;
+    const mIntercept=a*r, nIntercept=b*r;
+    element(layer,'rect',{x:x(0),y:y(nIntercept),width:mIntercept*scale,height:nIntercept*scale,class:'weyl-box'});
+    card.querySelector('.weyl-intercepts').textContent = 'Dashed box: '+mIntercept.toFixed(2)+' across × '+nIntercept.toFixed(2)+' up in mode-index units. Each drum length is scaled by √Λ/π.';
     element(layer,'text',{x:20,y:183},'0');
     for(let m=step;m*scale<=width-4;m+=step) {
       element(layer,'path',{d:'M'+x(m)+' 169v4',stroke:'#617a6b'});

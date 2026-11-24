@@ -12,7 +12,7 @@
 <script src="audio.js?v=20261110a" defer></script>
 <script src="forward-math.js?v=20261110" defer></script><script src="forward.js?v=20261110b" defer></script>
 <link rel="stylesheet" href="transplant-probe.css?v=1">
-<script src="math.js?v=20261124w" defer></script><script src="transplant-sample.js?v=1" defer></script><script src="transplant-probe.js?v=2" defer></script><script src="weyl-lattice.js?v=1" defer></script><link rel="stylesheet" href="weyl-lattice.css?v=1"><script src="explore.js?v=20261124w" defer></script><script src="app.js?v=20261110b" defer></script>
+<script src="math.js?v=20261124w" defer></script><script src="transplant-sample.js?v=1" defer></script><script src="transplant-probe.js?v=2" defer></script><script src="weyl-lattice.js?v=2" defer></script><link rel="stylesheet" href="weyl-lattice.css?v=2"><script src="explore.js?v=20261124w" defer></script><script src="app.js?v=20261110b" defer></script>
 <link rel="stylesheet" href="seam-transfer.css?v=2">
 <script src="congruence-math.js?v=20261101" defer></script>
 <script src="seam-transfer.js?v=2" defer></script>
@@ -169,19 +169,23 @@
 <div class="cutoff-controls" role="group" aria-label="Choose the eigenvalue cutoff"><button type="button" data-cutoff="80" aria-pressed="true">Low cutoff · 80</button><button type="button" data-cutoff="800" aria-pressed="false">Higher · 800</button><button type="button" data-cutoff="8000" aria-pressed="false">Much higher · 8,000</button></div>
 <div id="weyl-lattice">
 <p id="cutoff-label">Eigenvalue cutoff Λ = 80. Repeated eigenvalues are counted separately.</p>
-<p>A dot counts when π²[(m/a)² + (n/b)²] ≤ Λ. The curved line marks equality. In the square, (1, 2) and (2, 1) share a pitch and count as two dots.</p>
+<p><strong>Why a quarter ellipse?</strong> The two directions share one budget: π²[(m/a)² + (n/b)²] ≤ Λ. More half-waves across the drum leave room for fewer up it. At equality the two squared terms trace an ellipse. A fixed-edge mode needs at least one half-wave in each direction, so we count only the upper-right quarter, excluding the axes. For a square drum the two intercepts are equal, giving a quarter circle.</p>
 <div class="weyl-controls"><label>Inspect a row <select id="weyl-row"><option value="0">All rows</option></select></label>
 <label><input type="checkbox" id="weyl-fixed"> Keep axes fixed at the 8,000 view</label></div>
-<div class="weyl-key"><span><i></i>Counted mode</span><span><i></i>First excluded dot in a row</span><span id="weyl-prior" hidden><i></i>Previous preset boundary</span></div>
+<div class="weyl-key"><span><i></i>Counted mode</span><span><i></i>First excluded dot in a row</span><span id="weyl-prior" hidden><i></i>Previous preset boundary</span><span class="weyl-outline-key"><i></i>Same proportions as the drum</span></div>
 <div class="weyl-plots"><figure class="weyl-drum" id="weyl-long">
   <figcaption><h3>4 × 1 rectangle</h3><strong><span id="area-count-long">18</span> modes</strong></figcaption>
+  <svg class="weyl-guide" viewBox="0 0 360 89" role="img"></svg>
   <svg class="weyl-plot" viewBox="0 0 360 214" role="img" aria-label="Mode-index plot for the 4 × 1 rectangle"></svg>
+  <p class="weyl-intercepts"></p>
   <p class="weyl-row"></p>
   <div class="weyl-est"><span>Area estimate <strong id="area-estimate-long">2.83</strong></span><span>True area <b>4</b></span></div>
   <div class="weyl-track" aria-hidden="true"><i></i></div>
 </figure><figure class="weyl-drum" id="weyl-square">
   <figcaption><h3>2 × 2 square</h3><strong><span id="area-count-square">20</span> modes</strong></figcaption>
+  <svg class="weyl-guide" viewBox="0 0 360 89" role="img"></svg>
   <svg class="weyl-plot" viewBox="0 0 360 214" role="img" aria-label="Mode-index plot for the 2 × 2 square"></svg>
+  <p class="weyl-intercepts"></p>
   <p class="weyl-row"></p>
   <div class="weyl-est"><span>Area estimate <strong id="area-estimate-square">3.14</strong></span><span>True area <b>4</b></span></div>
   <div class="weyl-track" aria-hidden="true"><i></i></div>
