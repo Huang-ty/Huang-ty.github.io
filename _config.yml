@@ -8,7 +8,7 @@ url: "https://huang-ty.github.io"
 baseurl: ""
 
 # Language / locale.
-lang: zh
+lang: en
 
 # ---------- Build settings ----------
 markdown: kramdown

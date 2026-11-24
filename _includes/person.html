@@ -1,0 +1,17 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": {{ '/#john-huang' | absolute_url | jsonify }},
+  "name": {{ site.author | jsonify }},
+  "alternateName": ["Huang Tung Yee", "Huang Tung Yee John", "Huang-ty", "Huang TY"],
+  "url": {{ '/' | absolute_url | jsonify }},
+  "mainEntityOfPage": {{ '/about/' | absolute_url | jsonify }},
+  "sameAs": [{{ site.social.github | jsonify }}, {{ site.social.linkedin | jsonify }}],
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "The Hong Kong University of Science and Technology",
+    "alternateName": "HKUST"
+  }
+}
+</script>

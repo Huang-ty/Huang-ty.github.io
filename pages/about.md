@@ -1,10 +1,13 @@
 ---
 layout: default
-title: About
+title: About Huang Tung Yee
+description: Meet John Huang (Huang Tung Yee), a mathematics and AI undergraduate at HKUST. Read about his education, research experience, and mathematics awards.
+seo:
+  type: WebPage
 permalink: /about/
 ---
 <div class="reading">
-  <h1 class="page-title">About</h1>
+  <h1 class="page-title">About John Huang</h1>
 
   <p>I'm <strong>John Huang</strong> (Huang Tung Yee John), an undergraduate at
   <strong>The Hong Kong University of Science and Technology</strong>, reading
@@ -48,7 +51,7 @@ permalink: /about/
 
   <h2>Elsewhere</h2>
   <ul>
-    <li><a href="{{ site.social.github | default: '#' }}" rel="me">GitHub</a></li>
+    <li><a href="{{ site.social.github }}" rel="me">Huang-ty on GitHub</a></li>
     <li><a href="{{ site.social.linkedin | default: '#' }}" rel="me">LinkedIn</a></li>
     <li><a href="mailto:{{ site.social.email }}">Email</a></li>
   </ul>
