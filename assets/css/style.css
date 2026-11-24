@@ -291,3 +291,24 @@ img { max-width: 100%; height: auto; display: block; margin: 1.5rem auto; }
   .site-main { padding-bottom: 2rem; }
   .intro .lead { font-size: 1.15rem; }
 }
+
+.home-introduction {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(7rem, 25%);
+  grid-template-areas: "name photo" "bio photo";
+  column-gap: 1.5rem;
+  align-items: start;
+}
+.home-introduction h1 { grid-area: name; }
+.home-introduction .lead { grid-area: bio; }
+.home-portrait { grid-area: photo; width: 100%; margin: .75rem 0 1.5rem; }
+
+@media (max-width: 34rem) {
+  .home-introduction {
+    grid-template-columns: minmax(0, 1fr) 5rem;
+    grid-template-areas: "name photo" "bio bio";
+    column-gap: 1rem;
+    align-items: center;
+  }
+  .home-portrait { margin: .5rem 0 1rem; }
+}
