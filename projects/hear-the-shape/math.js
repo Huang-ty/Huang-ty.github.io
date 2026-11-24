@@ -16,15 +16,19 @@ const transplant=[
  [0,0,0,-1,1,0,-1],
  [0,0,1,-1,0,-1,0]
 ];
-function countModes(a,b,cutoff){
+function modeRowCounts(a,b,cutoff){
  if(![a,b,cutoff].every(Number.isFinite)||a<=0||b<=0||cutoff<0)throw new RangeError('Positive side lengths and a nonnegative finite cutoff are required.');
- const q=cutoff/Math.PI**2;let count=0;
+ const q=cutoff/Math.PI**2;const rows=[];
  for(let n=1;n<=Math.floor(b*Math.sqrt(q)+1e-10);n++){
-  count+=Math.max(0,Math.floor(a*Math.sqrt(Math.max(0,q-(n/b)**2))+1e-10));
+  const width=Math.floor(a*Math.sqrt(Math.max(0,q-(n/b)**2))+1e-10);
+  if(width>0)rows.push(width);
  }
- return count;
+ return rows;
+}
+function countModes(a,b,cutoff){
+ return modeRowCounts(a,b,cutoff).reduce((total,width)=>total+width,0);
 }
 function areaEstimate(a,b,cutoff){return cutoff>0?4*Math.PI*countModes(a,b,cutoff)/cutoff:0}
-const api={eigenvalue,relativeFrequency,shape,displacement,transplant,countModes,areaEstimate};
+const api={eigenvalue,relativeFrequency,shape,displacement,transplant,modeRowCounts,countModes,areaEstimate};
 if(typeof module==='object'&&module.exports)module.exports=api;else root.DrumMath=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

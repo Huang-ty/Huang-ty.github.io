@@ -8,6 +8,7 @@ function area(cutoff,announce){
  $('area-estimate-long').textContent=longArea;$('area-estimate-square').textContent=squareArea;
  $('cutoff-label').textContent=`Eigenvalue cutoff Λ = ${cutoff.toLocaleString('en-US')}. Repeated eigenvalues are counted separately.`;
  document.querySelectorAll('[data-cutoff]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.cutoff)===cutoff)));
+ window.DrumWeyl.draw(cutoff);
  if(window.DrumMathUI)DrumMathUI.area(cutoff,longCount,squareCount);
  if(announce)$('area-status').textContent=`Cutoff ${cutoff}: estimated areas ${longArea} and ${squareArea}. Both true areas are 4 square units.`;
 }

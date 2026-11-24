@@ -1,0 +1,27 @@
+#weyl-lattice {margin:12px 0 22px;color:#304e43}
+#cutoff-label {font-weight:600;margin:0 0 6px}
+.weyl-controls,.weyl-key,.weyl-est {display:flex;align-items:center;flex-wrap:wrap;gap:10px 20px}
+.weyl-controls {margin:16px 0 9px}
+.weyl-controls label {display:flex;align-items:center;gap:7px;font-size:13px}
+.weyl-controls select {font:inherit;padding:5px 8px;color:inherit}
+.weyl-controls input {accent-color:#246d64}
+.weyl-key {font-size:12px;margin:12px 0}
+.weyl-key span {display:inline-flex;align-items:center;gap:6px}
+.weyl-key [hidden]{display:none}
+.weyl-key i {display:inline-block;width:8px;height:8px;background:#17594d;border-radius:50%}
+.weyl-key span:nth-child(2) i {background:none;border:1.5px solid #9c593c}
+.weyl-key span:nth-child(3) i {width:18px;height:0;border-radius:0;border-top:2px dashed #805033;background:none}
+.weyl-plots {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.weyl-drum {padding:16px;background:#fbfbf4;border:1px solid #c7d6c9;min-width:0}
+.weyl-drum figcaption,.weyl-est {display:flex;justify-content:space-between;align-items:baseline;gap:5px 12px;flex-wrap:wrap}
+.weyl-drum h3 {font:normal clamp(19px,2.4vw,26px) Georgia,serif;margin:0;color:#234c41}
+.weyl-drum figcaption strong {font-size:15px;color:#17594d}
+.weyl-plot {width:100%;height:auto;display:block;color:#2f5146}
+.weyl-plot text {font:12px Arial,sans-serif;fill:currentColor}
+.weyl-row {line-height:1.5;font-size:13px;min-height:3em}
+.weyl-est {font-size:12px;margin:12px 0 4px}
+.weyl-est strong {font-size:20px;color:#17594d;margin-left:4px}
+.weyl-track {background:#edddbd;height:7px;border-right:2px solid #705136}
+.weyl-track i {display:block;height:100%;background:#397766}
+.weyl-explain {margin-top:16px;max-width:85ch}
+@media(max-width:700px){.weyl-plots{grid-template-columns:1fr}.weyl-drum{padding:12px}.weyl-row{min-height:0}}

@@ -12,7 +12,7 @@
 <script src="audio.js?v=20261110a" defer></script>
 <script src="forward-math.js?v=20261110" defer></script><script src="forward.js?v=20261110b" defer></script>
 <link rel="stylesheet" href="transplant-probe.css?v=1">
-<script src="math.js?v=20261028" defer></script><script src="transplant-sample.js?v=1" defer></script><script src="transplant-probe.js?v=2" defer></script><script src="explore.js?v=20261123p" defer></script><script src="app.js?v=20261110b" defer></script>
+<script src="math.js?v=20261124w" defer></script><script src="transplant-sample.js?v=1" defer></script><script src="transplant-probe.js?v=2" defer></script><script src="weyl-lattice.js?v=1" defer></script><link rel="stylesheet" href="weyl-lattice.css?v=1"><script src="explore.js?v=20261124w" defer></script><script src="app.js?v=20261110b" defer></script>
 <link rel="stylesheet" href="seam-transfer.css?v=2">
 <script src="congruence-math.js?v=20261101" defer></script>
 <script src="seam-transfer.js?v=2" defer></script>
@@ -165,13 +165,30 @@
 <div class="editorial-copy"><p>The full frequency list contains more than a lowest note. At high frequencies, the rate at which modes accumulate reveals the drumhead’s <strong>area</strong>. For smooth boundaries and ordinary polygons, the complete spectrum also determines the <strong>perimeter</strong>. These are exact facts about the ideal model, not estimates from an everyday recording. <a class="cite" href="#source-kac">[4]</a></p><p>So the question is tempting: if the spectrum knows that much, might it know the whole outline? The study of these connections between geometry and eigenvalues is called <strong>spectral geometry</strong>.</p></div>
 <div class="math-note"><p class="math-kicker">THE MATHEMATICS / INCREASE THE CUTOFF</p><h3>Count modes, then take a limit.</h3><div class="math-grid"><div><div class="math-equation" data-math-tex="N(\Lambda)=\#\{j:\lambda_j\le\Lambda\}">N(Λ) = number of eigenvalues ≤ Λ, with multiplicity</div><p>Λ is the cutoff you choose. N counts independent modes; two independent modes at one eigenvalue count twice.</p></div><div><div class="math-equation" data-math-tex="\frac{N(\Lambda)}{\Lambda}\longrightarrow\frac{A}{4\pi},\qquad A_{\rm est}=\frac{4\pi N(\Lambda)}{\Lambda}">N(Λ)/Λ → A/(4π); finite estimate Aest = 4πN(Λ)/Λ</div><p>Weyl’s law concerns the growth rate at large cutoffs. The finite number displayed by the experiment is an estimate, not an exact area formula.</p></div></div><p class="math-tools">Mathematical tools: integer lattice points · asymptotic growth · limits</p></div>
 <details class="exploration" id="area-exploration"><summary><span>Try it: count more modes, estimate the area</span><span aria-hidden="true">+</span></summary><div class="exploration-body">
-<p>These two rectangles both have area 4, but different spectra. Include modes up to progressively higher cutoffs. The estimates get closer to 4; the two lists do not become identical.</p>
-<div class="cutoff-controls" role="group" aria-label="Choose the eigenvalue cutoff"><button type="button" data-cutoff="80" aria-pressed="true">Low cutoff</button><button type="button" data-cutoff="800" aria-pressed="false">Higher</button><button type="button" data-cutoff="8000" aria-pressed="false">Much higher</button></div>
-<p class="small-copy" id="cutoff-label">Eigenvalue cutoff Λ = 80. Repeated eigenvalues are counted separately.</p><p class="small-copy">A higher eigenvalue cutoff includes higher-frequency modes; λ is proportional to frequency squared.</p>
+<p>Each dot (m, n) is one vibration pattern: m half-waves across the drum, n up. A cutoff is the largest eigenvalue we agree to count. Change it and watch which patterns make the cut.</p>
+<div class="cutoff-controls" role="group" aria-label="Choose the eigenvalue cutoff"><button type="button" data-cutoff="80" aria-pressed="true">Low cutoff · 80</button><button type="button" data-cutoff="800" aria-pressed="false">Higher · 800</button><button type="button" data-cutoff="8000" aria-pressed="false">Much higher · 8,000</button></div>
+<div id="weyl-lattice">
+<p id="cutoff-label">Eigenvalue cutoff Λ = 80. Repeated eigenvalues are counted separately.</p>
+<p>A dot counts when π²[(m/a)² + (n/b)²] ≤ Λ. The curved line marks equality. In the square, (1, 2) and (2, 1) share a pitch and count as two dots.</p>
+<div class="weyl-controls"><label>Inspect a row <select id="weyl-row"><option value="0">All rows</option></select></label>
+<label><input type="checkbox" id="weyl-fixed"> Keep axes fixed at the 8,000 view</label></div>
+<div class="weyl-key"><span><i></i>Counted mode</span><span><i></i>First excluded dot in a row</span><span id="weyl-prior" hidden><i></i>Previous preset boundary</span></div>
+<div class="weyl-plots"><figure class="weyl-drum" id="weyl-long">
+  <figcaption><h3>4 × 1 rectangle</h3><strong><span id="area-count-long">18</span> modes</strong></figcaption>
+  <svg class="weyl-plot" viewBox="0 0 360 214" role="img" aria-label="Mode-index plot for the 4 × 1 rectangle"></svg>
+  <p class="weyl-row"></p>
+  <div class="weyl-est"><span>Area estimate <strong id="area-estimate-long">2.83</strong></span><span>True area <b>4</b></span></div>
+  <div class="weyl-track" aria-hidden="true"><i></i></div>
+</figure><figure class="weyl-drum" id="weyl-square">
+  <figcaption><h3>2 × 2 square</h3><strong><span id="area-count-square">20</span> modes</strong></figcaption>
+  <svg class="weyl-plot" viewBox="0 0 360 214" role="img" aria-label="Mode-index plot for the 2 × 2 square"></svg>
+  <p class="weyl-row"></p>
+  <div class="weyl-est"><span>Area estimate <strong id="area-estimate-square">3.14</strong></span><span>True area <b>4</b></span></div>
+  <div class="weyl-track" aria-hidden="true"><i></i></div>
+</figure></div>
+<p class="weyl-explain"><strong>Why the estimate improves.</strong> Give each counted dot the unit square just below and to its left. The green staircase covers part of the quarter ellipse; the pale strip is what it misses. When Λ grows, the strip takes up a smaller share. The ellipse’s area is <i>abΛ/(4π)</i>, so each count gives a drum-area estimate of <i>4πN/Λ</i>.</p>
+</div>
 <div class="math-live"><span class="math-label">SUBSTITUTE THE COUNTS YOU JUST SELECTED</span><div class="math-equation" id="math-area-live" data-math-tex="\begin{aligned}A_{4\times1}^{\rm est}&amp;=4\pi\cdot18/80\approx2.83,\\A_{2\times2}^{\rm est}&amp;=4\pi\cdot20/80\approx3.14.\end{aligned}">At Λ=80: 4π×18/80≈2.83; 4π×20/80≈3.14</div><p id="math-area-reading">Both true areas are 4. Increasing the cutoff includes more independent modes.</p></div>
-<div class="area-cards">
-<div class="area-card"><svg viewBox="0 0 160 100" role="img" aria-label="A rectangle four units wide and one unit high"><rect x="20" y="35" width="120" height="30"/></svg><h3>4 × 1 rectangle</h3><p><strong id="area-count-long">18</strong> modes counted</p><p class="area-reading"><span id="area-estimate-long">2.83</span><small>estimated area</small></p></div>
-<div class="area-card"><svg viewBox="0 0 160 100" role="img" aria-label="A square with side length two units, drawn at the same scale as the rectangle"><rect x="50" y="20" width="60" height="60"/></svg><h3>2 × 2 square</h3><p><strong id="area-count-square">20</strong> modes counted</p><p class="area-reading"><span id="area-estimate-square">3.14</span><small>estimated area</small></p></div></div>
 <p class="area-status" id="area-status" role="status" aria-live="polite"></p>
 <p class="small-copy">We use Weyl’s law: area ≈ 4π × (number of eigenvalues ≤ Λ) / Λ. It becomes exact in the limit Λ → ∞. Finite estimates fluctuate and contain boundary effects; they need not improve at every step. Both shapes use the same length units and wave speed.</p>
 <p><a href="#perimeter-lab">Use the same two shapes to recover their perimeters ↓</a></p>
