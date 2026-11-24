@@ -1,0 +1,29 @@
+.ink-dots {margin-block: 36px 66px}
+.ink-panel {display:grid; grid-template-columns:minmax(240px,.82fr) minmax(300px,1.18fr); align-items:center; gap:clamp(18px,4vw,60px); padding:clamp(18px,3vw,38px); background:#f9f8f1; border:1px solid #c3cfc2}
+.ink-copy h2 {font-size:clamp(30px,3.5vw,46px);margin:0 0 12px}
+.ink-copy p {font-size:15px;max-width:38ch;color:#425c54}
+.ink-readings {margin:18px 0;display:grid;gap:5px}
+.ink-readings div {display:flex;gap:18px;justify-content:space-between;align-items:center;border-bottom:1px solid #d4dcd0;max-width:290px}
+.ink-readings dt {font-size:14px}
+.ink-readings b {font-size:12px;display:inline-block;color:white;background:#235d52;border-radius:50%;width:20px;text-align:center;margin-right:5px}
+.ink-readings div+div b {background:#9d492f}
+.ink-readings dd {margin:0;font-variant-numeric:tabular-nums}
+.ink-controls:not([hidden]) {display:grid;gap:6px;max-width:290px}
+.ink-controls div {display:flex;align-items:center;gap:17px;margin-bottom:9px}
+.ink-controls label {font-size:13px}
+.ink-controls input {accent-color:#246d64}
+#ink-phase {width:100%;margin:0;min-height:24px}
+.ink-panel svg {display:block;width:100%;height:auto;overflow:visible}
+.ink-a circle {fill:#235d52;stroke:#fff;stroke-width:1.4}
+.ink-b circle {fill:#9d492f;stroke:#fff;stroke-width:1.4}
+.ink-a text,.ink-b text {text-anchor:middle;dominant-baseline:central;fill:white;font:bold 11px Arial,sans-serif}
+.ink-side-label {font:600 11px Arial,sans-serif;letter-spacing:1px;fill:#48645b}
+.ink-panel figcaption {font-size:13px;color:#49665b;line-height:1.5}
+@media(max-width:760px) {
+ .ink-panel {display:flex;flex-direction:column;align-items:stretch;gap:16px}
+ .ink-copy {display:contents}
+ .ink-copy h2,.ink-copy p,.ink-readings {margin:0}
+ .ink-panel figure {order:1}
+ .ink-readings {order:2}
+ .ink-controls {order:3}
+}
